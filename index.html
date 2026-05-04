@@ -963,7 +963,11 @@ function saveSessionToHistory() {
 
     // Send to Google Sheets (silent — localStorage is primary)
     if (SHEET_URL && !SHEET_URL.includes('PASTE_YOUR')) {
-        fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', headers: {'Content-Type':'text/plain'}, body: JSON.stringify(session) }).catch(function(){});
+        try {
+            const form = new FormData();
+            form.append('data', JSON.stringify(session));
+            fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: form }).catch(function(){});
+        } catch(e) {}
     }
     sessionSaved = true;
 
