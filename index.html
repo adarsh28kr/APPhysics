@@ -248,6 +248,14 @@
         [data-theme="dark"] .explanation-box { background: #14532d; }
         .choice.correct-reveal { border-color: var(--success); background: rgba(22,163,74,0.1); }
         .choice.wrong-reveal { border-color: var(--danger); background: rgba(220,38,38,0.05); }
+        /* Teacher live monitoring dots */
+        .nav-dot.correct-teacher { background: var(--success); color: white; border-color: var(--success); }
+        .nav-dot.wrong-teacher { background: var(--danger); color: white; border-color: var(--danger); }
+        .teacher-answer-hint {
+            margin-top: 10px; padding: 8px 12px; border-radius: 6px; font-size: 0.85rem;
+            display: none;
+        }
+        body.teacher-mode .teacher-answer-hint { display: block; }
         .action-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
         .action-links a, .action-links button {
             text-decoration: none; display: inline-block;
@@ -587,6 +595,15 @@ function updateNavGrid() {
         else if (currentSection === 'mc' && answers[i] !== null) dot.classList.add('answered');
         else if (currentSection === 'frq' && frqAnswers[i] && Object.values(frqAnswers[i]).some(v => v && v.trim())) dot.classList.add('answered');
     });
+    // Teacher live monitoring: show correct/wrong on nav dots
+    if (teacherMode && currentSection === 'mc') {
+        dots.forEach((dot, i) => {
+            if (answers[i] !== null) {
+                dot.classList.remove('answered','flagged');
+                dot.classList.add(answers[i] === mcQuestions[i].correctIndex ? 'correct-teacher' : 'wrong-teacher');
+            }
+        });
+    }
 }
 
 function renderQuestion() {
@@ -627,6 +644,23 @@ function renderQuestion() {
             </div>`;
         }
 
+        // Teacher live hint (hidden from student via CSS)
+        let teacherHintHTML = '';
+        if (answers[currentQuestion] !== null) {
+            const isCorrect = answers[currentQuestion] === q.correctIndex;
+            const icon = isCorrect ? '&#10003;' : '&#10007;';
+            const color = isCorrect ? 'rgba(22,163,74,0.15)' : 'rgba(220,38,38,0.1)';
+            const borderColor = isCorrect ? 'var(--success)' : 'var(--danger)';
+            const studentPick = letters[answers[currentQuestion]];
+            teacherHintHTML = `<div class="teacher-answer-hint" style="background:${color};border-left:4px solid ${borderColor};">
+                ${icon} Student chose <strong>(${studentPick})</strong> &mdash; Correct answer: <strong>(${letters[q.correctIndex]})</strong>
+            </div>`;
+        } else {
+            teacherHintHTML = `<div class="teacher-answer-hint" style="background:rgba(37,99,235,0.05);border-left:4px solid var(--primary);">
+                Correct answer: <strong>(${letters[q.correctIndex]})</strong> &mdash; Not yet answered
+            </div>`;
+        }
+
         card.innerHTML = `
             <div class="question-number">Question ${currentQuestion + 1} of 35</div>
             <div class="question-topic">${q.topic}</div>
@@ -634,6 +668,7 @@ function renderQuestion() {
             <div class="choices">${choicesHTML}</div>
             ${confHTML}
             ${explanationHTML}
+            ${teacherHintHTML}
         `;
         document.getElementById('q-current').textContent = currentQuestion + 1;
         document.getElementById('q-total').textContent = 35;
@@ -730,6 +765,9 @@ function submitSection() {
     if (timerInterval) clearInterval(timerInterval);
     const elapsed = Date.now() - currentQuestionStart;
     questionTotalTime[currentQuestion + (currentSection === 'mc' ? 0 : 35)] += elapsed;
+
+    // Ensure state is persisted before section transition
+    saveState();
 
     if (currentSection === 'mc') {
         document.getElementById('exam-body').style.display = 'none';
@@ -849,10 +887,9 @@ function showResults() {
     revHTML += '</div>';
     reviewDiv.innerHTML = revHTML;
 
-    localStorage.removeItem('apPhysicsExamState');
-
-    // Auto-save session
+    // Auto-save session FIRST, then clear temp state
     saveSessionToHistory();
+    localStorage.removeItem('apPhysicsExamState');
 }
 
 let errorClassifications = {};
