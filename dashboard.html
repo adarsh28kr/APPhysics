@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Physics C - Progress Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #f5f5f5; --card: #ffffff; --text: #1a1a1a;
+            --text-secondary: #555; --border: #ddd; --primary: #2563eb;
+            --success: #16a34a; --danger: #dc2626; --warning: #f59e0b;
+        }
+        [data-theme="dark"] {
+            --bg: #1a1a2e; --card: #16213e; --text: #e0e0e0;
+            --text-secondary: #aaa; --border: #333; --primary: #4f8cff;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; padding: 20px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        h1 { font-size: 1.8rem; margin-bottom: 5px; }
+        .subtitle { color: var(--text-secondary); margin-bottom: 25px; }
+        .toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; }
+        .toolbar button, .toolbar a {
+            padding: 8px 16px; border: 2px solid var(--border); border-radius: 6px;
+            background: var(--card); color: var(--text); cursor: pointer; font-size: 0.85rem;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
+        }
+        .toolbar button:hover, .toolbar a:hover { border-color: var(--primary); color: var(--primary); }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+        .card h3 { font-size: 1rem; color: var(--primary); margin-bottom: 12px; }
+        .card-full { grid-column: 1 / -1; }
+        canvas { width: 100%; max-height: 250px; }
+        /* Stats */
+        .stat-row { display: flex; justify-content: space-around; text-align: center; margin-bottom: 20px; }
+        .stat { padding: 10px; }
+        .stat .value { font-size: 2rem; font-weight: bold; color: var(--primary); }
+        .stat .label { font-size: 0.8rem; color: var(--text-secondary); }
+        /* Table */
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .data-table th, .data-table td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+        .data-table th { font-weight: 600; color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; }
+        .data-table tr:hover { background: rgba(37,99,235,0.03); }
+        /* Topic bars */
+        .topic-bar { display: flex; align-items: center; margin-bottom: 8px; font-size: 0.85rem; }
+        .topic-bar .lbl { width: 130px; font-size: 0.8rem; }
+        .topic-bar .bar-bg { flex: 1; height: 18px; background: #e5e7eb; border-radius: 9px; overflow: hidden; margin: 0 8px; }
+        [data-theme="dark"] .topic-bar .bar-bg { background: #2a2a4a; }
+        .topic-bar .bar-fill { height: 100%; border-radius: 9px; }
+        .topic-bar .pct { width: 40px; text-align: right; font-weight: bold; font-size: 0.8rem; }
+        /* Recommendations */
+        .rec-item { padding: 10px 12px; border-left: 4px solid var(--primary); margin-bottom: 10px; background: rgba(37,99,235,0.05); border-radius: 0 6px 6px 0; font-size: 0.9rem; }
+        .rec-item.critical { border-left-color: var(--danger); background: rgba(220,38,38,0.05); }
+        .rec-item.warning { border-left-color: var(--warning); background: rgba(245,158,11,0.05); }
+        .rec-item.good { border-left-color: var(--success); background: rgba(22,163,74,0.05); }
+        /* Error breakdown */
+        .error-pie { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .pie-legend { font-size: 0.85rem; }
+        .pie-legend div { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+        .pie-legend .dot { width: 14px; height: 14px; border-radius: 3px; }
+        /* Empty state */
+        .empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); }
+        .empty-state h2 { margin-bottom: 10px; color: var(--text); }
+        .empty-state a { color: var(--primary); }
+        /* Print */
+        @media print { body { background: white; } .toolbar { display: none; } .card { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; } }
+        .theme-toggle { position: fixed; bottom: 20px; right: 20px; padding: 10px; border-radius: 50%; border: 2px solid var(--border); background: var(--card); cursor: pointer; font-size: 1.2rem; z-index: 200; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Progress Dashboard</h1>
+        <p class="subtitle">AP Physics C: Mechanics — Performance Tracking</p>
+
+        <div class="toolbar">
+            <a href="index.html">Take Exam</a>
+            <a href="drill.html">Topic Drills</a>
+            <a href="answer-key.html">Answer Key</a>
+            <button onclick="exportData()">Export Data</button>
+            <button onclick="document.getElementById('import-file').click()">Import Data</button>
+            <input type="file" id="import-file" style="display:none;" accept=".json" onchange="importData(event)">
+            <button onclick="window.print()">Print Report</button>
+        </div>
+
+        <div id="dashboard-content"></div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">&#9790;</button>
+
+<script>
+function getHistory() {
+    return JSON.parse(localStorage.getItem('apPhysicsHistory') || '{"sessions":[],"errorJournal":[],"studyLog":[]}');
+}
+
+function render() {
+    const history = getHistory();
+    const container = document.getElementById('dashboard-content');
+
+    if (history.sessions.length === 0) {
+        container.innerHTML = `<div class="empty-state">
+            <h2>No Sessions Yet</h2>
+            <p>Complete a practice exam or topic drill to see your progress here.</p>
+            <p style="margin-top:15px;"><a href="index.html">Take your first practice exam</a></p>
+        </div>`;
+        return;
+    }
+
+    const sessions = history.sessions.sort((a,b) => new Date(a.date) - new Date(b.date));
+    const latest = sessions[sessions.length - 1];
+    const totalSessions = sessions.length;
+    const avgScore = Math.round(sessions.reduce((s,x) => s + (x.mcScore/x.mcTotal)*100, 0) / totalSessions);
+    const bestScore = Math.max(...sessions.map(s => s.mcScore));
+    const totalTime = sessions.reduce((s,x) => s + (x.totalTime||0), 0);
+
+    let html = '';
+
+    // Summary stats
+    html += `<div class="stat-row">
+        <div class="stat"><div class="value">${totalSessions}</div><div class="label">Sessions</div></div>
+        <div class="stat"><div class="value">${avgScore}%</div><div class="label">Avg Score</div></div>
+        <div class="stat"><div class="value">${bestScore}/35</div><div class="label">Best MC</div></div>
+        <div class="stat"><div class="value">${Math.round(totalTime/60000)}m</div><div class="label">Total Study</div></div>
+    </div>`;
+
+    // Charts grid
+    html += `<div class="grid">`;
+
+    // Score trend
+    html += `<div class="card"><h3>Score Trend</h3><canvas id="score-chart" height="200"></canvas></div>`;
+
+    // Topic mastery (aggregate)
+    html += `<div class="card"><h3>Topic Mastery (All Sessions)</h3><div id="topic-mastery"></div></div>`;
+
+    // Error breakdown
+    html += `<div class="card"><h3>Error Classification</h3><div id="error-breakdown"></div></div>`;
+
+    // Confidence calibration
+    html += `<div class="card"><h3>Confidence Calibration</h3><div id="conf-calibration"></div></div>`;
+
+    // Recommendations
+    html += `<div class="card card-full"><h3>Study Recommendations</h3><div id="recommendations"></div></div>`;
+
+    // Session history table
+    html += `<div class="card card-full"><h3>Session History</h3><div style="overflow-x:auto;"><table class="data-table">
+        <thead><tr><th>Date</th><th>Type</th><th>MC Score</th><th>FRQ</th><th>Time</th><th>Confidence Rated</th></tr></thead>
+        <tbody id="session-table"></tbody>
+    </table></div></div>`;
+
+    html += `</div>`;
+    container.innerHTML = html;
+
+    // Render components
+    renderScoreChart(sessions);
+    renderTopicMastery(sessions);
+    renderErrorBreakdown(sessions);
+    renderConfidenceCalibration(sessions);
+    renderRecommendations(sessions);
+    renderSessionTable(sessions);
+}
+
+function renderScoreChart(sessions) {
+    const canvas = document.getElementById('score-chart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width - 40;
+    canvas.height = 200;
+
+    const w = canvas.width, h = canvas.height;
+    const padding = { top: 20, right: 20, bottom: 30, left: 40 };
+    const plotW = w - padding.left - padding.right;
+    const plotH = h - padding.top - padding.bottom;
+
+    ctx.clearRect(0, 0, w, h);
+
+    // Scores as percentages
+    const scores = sessions.map(s => Math.round(s.mcScore / s.mcTotal * 100));
+    const n = scores.length;
+
+    // Grid
+    ctx.strokeStyle = '#e5e7eb';
+    ctx.lineWidth = 1;
+    for (let pct = 0; pct <= 100; pct += 25) {
+        const y = padding.top + plotH - (pct / 100) * plotH;
+        ctx.beginPath(); ctx.moveTo(padding.left, y); ctx.lineTo(w - padding.right, y); ctx.stroke();
+        ctx.fillStyle = '#888'; ctx.font = '11px sans-serif'; ctx.textAlign = 'right';
+        ctx.fillText(pct + '%', padding.left - 5, y + 4);
+    }
+
+    // Line
+    if (n > 1) {
+        ctx.beginPath();
+        ctx.strokeStyle = '#2563eb';
+        ctx.lineWidth = 3;
+        ctx.lineJoin = 'round';
+        scores.forEach((s, i) => {
+            const x = padding.left + (i / (n - 1)) * plotW;
+            const y = padding.top + plotH - (s / 100) * plotH;
+            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+
+        // Points
+        scores.forEach((s, i) => {
+            const x = padding.left + (i / (n - 1)) * plotW;
+            const y = padding.top + plotH - (s / 100) * plotH;
+            ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI * 2);
+            ctx.fillStyle = '#2563eb'; ctx.fill();
+            ctx.fillStyle = '#333'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+            ctx.fillText(s + '%', x, y - 10);
+        });
+    } else {
+        const x = padding.left + plotW / 2;
+        const y = padding.top + plotH - (scores[0] / 100) * plotH;
+        ctx.beginPath(); ctx.arc(x, y, 8, 0, Math.PI * 2);
+        ctx.fillStyle = '#2563eb'; ctx.fill();
+        ctx.fillStyle = '#333'; ctx.font = '13px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(scores[0] + '%', x, y - 14);
+    }
+
+    // X labels
+    ctx.fillStyle = '#888'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+    sessions.forEach((s, i) => {
+        const x = n > 1 ? padding.left + (i / (n - 1)) * plotW : padding.left + plotW / 2;
+        const d = new Date(s.date);
+        ctx.fillText(`${d.getMonth()+1}/${d.getDate()}`, x, h - 5);
+    });
+}
+
+function renderTopicMastery(sessions) {
+    const div = document.getElementById('topic-mastery');
+    const topics = {};
+    sessions.forEach(s => {
+        if (s.topicScores) {
+            for (const t in s.topicScores) {
+                if (!topics[t]) topics[t] = { correct: 0, total: 0 };
+                topics[t].correct += s.topicScores[t].correct;
+                topics[t].total += s.topicScores[t].total;
+            }
+        }
+    });
+
+    const colors = ['#2563eb','#16a34a','#f59e0b','#dc2626','#8b5cf6','#06b6d4'];
+    let html = '', ci = 0;
+    const sorted = Object.entries(topics).sort((a,b) => (a[1].correct/a[1].total) - (b[1].correct/b[1].total));
+    sorted.forEach(([topic, {correct, total}]) => {
+        const pct = Math.round(correct / total * 100);
+        const color = pct >= 70 ? '#16a34a' : pct >= 50 ? '#f59e0b' : '#dc2626';
+        html += `<div class="topic-bar"><span class="lbl">${topic}</span><div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${color}"></div></div><span class="pct">${pct}%</span></div>`;
+        ci++;
+    });
+    div.innerHTML = html || '<p style="color:var(--text-secondary);">No topic data yet.</p>';
+}
+
+function renderErrorBreakdown(sessions) {
+    const div = document.getElementById('error-breakdown');
+    const counts = { knowledge: 0, calculation: 0, careless: 0, time: 0 };
+    let total = 0;
+    sessions.forEach(s => {
+        if (s.errorTypes) {
+            for (const q in s.errorTypes) {
+                const t = s.errorTypes[q];
+                if (counts.hasOwnProperty(t)) { counts[t]++; total++; }
+            }
+        }
+    });
+
+    if (total === 0) {
+        div.innerHTML = '<p style="color:var(--text-secondary);">No errors classified yet. After each exam, classify why you got questions wrong.</p>';
+        return;
+    }
+
+    const colorMap = { knowledge: '#dc2626', calculation: '#f59e0b', careless: '#8b5cf6', time: '#06b6d4' };
+    const labelMap = { knowledge: 'Knowledge Gap', calculation: 'Calculation Error', careless: 'Misread/Careless', time: 'Time Pressure' };
+
+    let html = '<div class="error-pie"><div class="pie-legend">';
+    for (const type in counts) {
+        const pct = Math.round(counts[type] / total * 100);
+        html += `<div><span class="dot" style="background:${colorMap[type]}"></span>${labelMap[type]}: ${counts[type]} (${pct}%)</div>`;
+    }
+    html += `</div><div style="font-size:0.8rem;color:var(--text-secondary);">Total classified: ${total}</div></div>`;
+
+    // Simple horizontal stacked bar
+    html += '<div style="margin-top:12px;height:24px;border-radius:12px;overflow:hidden;display:flex;">';
+    for (const type in counts) {
+        if (counts[type] > 0) {
+            const pct = (counts[type] / total * 100);
+            html += `<div style="width:${pct}%;background:${colorMap[type]};"></div>`;
+        }
+    }
+    html += '</div>';
+    div.innerHTML = html;
+}
+
+function renderConfidenceCalibration(sessions) {
+    const div = document.getElementById('conf-calibration');
+    const buckets = [{label:'Guessing',correct:0,total:0},{label:'Unsure',correct:0,total:0},{label:'Confident',correct:0,total:0}];
+
+    sessions.forEach(s => {
+        if (s.confidence && s.answers) {
+            s.confidence.forEach((c, i) => {
+                if (c > 0 && c <= 3) {
+                    buckets[c-1].total++;
+                    // Need to check correctness - we'll use the question data
+                    if (i < 35 && s.answers[i] !== null) {
+                        // We can't access mcQuestions here easily, so use mcScore relationship
+                        // Actually we stored topicScores but not per-question... let's just use the stored answers vs correct
+                    }
+                }
+            });
+        }
+    });
+
+    // Recalculate using raw answers against known correct indices
+    const correctIndices = [0,2,2,2,2,2,2,3,3,1,1,1,1,2,0,2,3,1,1,1,2,1,2,2,2,2,0,1,2,0,1,3,2,2,1];
+    buckets.forEach(b => { b.correct = 0; b.total = 0; });
+
+    sessions.forEach(s => {
+        if (s.confidence && s.answers) {
+            s.confidence.forEach((c, i) => {
+                if (c > 0 && c <= 3 && i < 35) {
+                    buckets[c-1].total++;
+                    if (s.answers[i] === correctIndices[i]) buckets[c-1].correct++;
+                }
+            });
+        }
+    });
+
+    const colors = ['#dc2626', '#f59e0b', '#16a34a'];
+    let html = '';
+    buckets.forEach((b, i) => {
+        const pct = b.total > 0 ? Math.round(b.correct / b.total * 100) : 0;
+        html += `<div class="topic-bar"><span class="lbl">${b.label} (n=${b.total})</span><div class="bar-bg"><div class="bar-fill" style="width:${pct}%;background:${colors[i]}"></div></div><span class="pct">${pct}% acc</span></div>`;
+    });
+
+    // Calibration insight
+    const confPct = buckets[2].total > 0 ? Math.round(buckets[2].correct/buckets[2].total*100) : 0;
+    const guessPct = buckets[0].total > 0 ? Math.round(buckets[0].correct/buckets[0].total*100) : 0;
+    let insight = '';
+    if (buckets[2].total > 5 && confPct < 70) insight = '<p style="margin-top:8px;color:var(--danger);font-size:0.85rem;">You\'re overconfident — "confident" answers are only right ' + confPct + '% of the time. Slow down and double-check.</p>';
+    else if (buckets[0].total > 5 && guessPct > 50) insight = '<p style="margin-top:8px;color:var(--success);font-size:0.85rem;">Your "guesses" are right ' + guessPct + '% — you know more than you think!</p>';
+    else if (confPct > 85 && buckets[2].total > 10) insight = '<p style="margin-top:8px;color:var(--success);font-size:0.85rem;">Great calibration! Your confidence accurately predicts your accuracy.</p>';
+    html += insight;
+    div.innerHTML = html || '<p style="color:var(--text-secondary);">Rate your confidence on each question to see calibration data.</p>';
+}
+
+function renderRecommendations(sessions) {
+    const div = document.getElementById('recommendations');
+    const recs = [];
+
+    // Analyze topic trends (last 2 sessions)
+    const recent = sessions.slice(-2);
+    const topicAgg = {};
+    recent.forEach(s => {
+        if (s.topicScores) {
+            for (const t in s.topicScores) {
+                if (!topicAgg[t]) topicAgg[t] = { correct: 0, total: 0 };
+                topicAgg[t].correct += s.topicScores[t].correct;
+                topicAgg[t].total += s.topicScores[t].total;
+            }
+        }
+    });
+
+    for (const topic in topicAgg) {
+        const pct = topicAgg[topic].total > 0 ? topicAgg[topic].correct / topicAgg[topic].total * 100 : 100;
+        if (pct < 50) recs.push({ type: 'critical', text: `<strong>Critical:</strong> ${topic} at ${Math.round(pct)}%. Focus your next study session entirely on this topic.` });
+        else if (pct < 70) recs.push({ type: 'warning', text: `<strong>Needs work:</strong> ${topic} at ${Math.round(pct)}%. Do targeted drills to push above 80%.` });
+    }
+
+    // Error type analysis
+    const errCounts = { knowledge: 0, calculation: 0, careless: 0, time: 0 };
+    let errTotal = 0;
+    sessions.forEach(s => { if (s.errorTypes) for (const q in s.errorTypes) { errCounts[s.errorTypes[q]]++; errTotal++; } });
+    if (errTotal > 3) {
+        const dominant = Object.entries(errCounts).sort((a,b)=>b[1]-a[1])[0];
+        if (dominant[1] / errTotal > 0.4) {
+            const advice = {
+                knowledge: 'Review formulas and derivations. Make a formula sheet and practice re-deriving each one.',
+                calculation: 'Practice careful arithmetic. Write every step. Check units at each step.',
+                careless: 'Read questions twice before solving. Circle key words. Check your answer against the question.',
+                time: 'Practice speed. Do timed sets of 5 questions. Cut time on easy questions to save for hard ones.'
+            };
+            recs.push({ type: 'warning', text: `<strong>Error pattern:</strong> ${Math.round(dominant[1]/errTotal*100)}% of your errors are ${dominant[0]} errors. ${advice[dominant[0]]}` });
+        }
+    }
+
+    // Score trend
+    if (sessions.length >= 3) {
+        const last3 = sessions.slice(-3).map(s => s.mcScore / s.mcTotal * 100);
+        if (last3[2] > last3[0] + 10) recs.push({ type: 'good', text: `<strong>Great progress!</strong> You've improved ${Math.round(last3[2]-last3[0])}% over your last 3 sessions. Keep up the momentum.` });
+        else if (last3[2] < last3[0] - 5) recs.push({ type: 'warning', text: `<strong>Score dip:</strong> Recent scores are trending down. Consider taking a rest day, then doing focused review.` });
+    }
+
+    // Confidence
+    const correctIndices = [0,2,2,2,2,2,2,3,3,1,1,1,1,2,0,2,3,1,1,1,2,1,2,2,2,2,0,1,2,0,1,3,2,2,1];
+    let confHigh = 0, confHighCorrect = 0;
+    sessions.forEach(s => {
+        if (s.confidence && s.answers) {
+            s.confidence.forEach((c,i) => { if (c === 3 && i < 35) { confHigh++; if (s.answers[i] === correctIndices[i]) confHighCorrect++; } });
+        }
+    });
+    if (confHigh > 10 && confHighCorrect/confHigh < 0.7) {
+        recs.push({ type: 'warning', text: `<strong>Overconfidence alert:</strong> You're "confident" but only ${Math.round(confHighCorrect/confHigh*100)}% accurate. Slow down on questions you think you know — verify your work.` });
+    }
+
+    if (recs.length === 0) recs.push({ type: 'good', text: 'Complete more sessions to get personalized recommendations. Try classifying your errors after each exam.' });
+
+    div.innerHTML = recs.map(r => `<div class="rec-item ${r.type}">${r.text}</div>`).join('');
+}
+
+function renderSessionTable(sessions) {
+    const tbody = document.getElementById('session-table');
+    let html = '';
+    sessions.slice().reverse().forEach(s => {
+        const d = new Date(s.date);
+        const dateStr = `${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${d.getMinutes().toString().padStart(2,'0')}`;
+        const frqStr = s.frqScores && s.frqScores.some(x=>x!==null) ? s.frqScores.map(x=>x!==null?x:'—').join(', ') : '—';
+        const timeStr = s.totalTime ? Math.round(s.totalTime/60000) + 'm' : '—';
+        const confRated = s.confidence ? s.confidence.filter(c=>c>0).length : 0;
+        html += `<tr>
+            <td>${dateStr}</td>
+            <td>${s.type || 'exam'}${s.mode==='review'?' (review)':''}</td>
+            <td><strong>${s.mcScore}/${s.mcTotal}</strong> (${Math.round(s.mcScore/s.mcTotal*100)}%)</td>
+            <td>${frqStr}</td>
+            <td>${timeStr}</td>
+            <td>${confRated}/35</td>
+        </tr>`;
+    });
+    tbody.innerHTML = html;
+}
+
+// ============================================
+// EXPORT / IMPORT
+// ============================================
+function exportData() {
+    const data = localStorage.getItem('apPhysicsHistory');
+    if (!data) { return; }
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `ap-physics-progress-${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = JSON.parse(e.target.result);
+            if (data.sessions) {
+                localStorage.setItem('apPhysicsHistory', JSON.stringify(data));
+                render();
+            }
+        } catch(err) {
+            console.error('Invalid file');
+        }
+    };
+    reader.readAsText(file);
+}
+
+// ============================================
+// THEME
+// ============================================
+function toggleTheme() {
+    if (document.body.getAttribute('data-theme') === 'dark') {
+        document.body.removeAttribute('data-theme');
+        localStorage.setItem('apPhysicsTheme', 'light');
+    } else {
+        document.body.setAttribute('data-theme', 'dark');
+        localStorage.setItem('apPhysicsTheme', 'dark');
+    }
+}
+if (localStorage.getItem('apPhysicsTheme') === 'dark') document.body.setAttribute('data-theme', 'dark');
+
+// Init
+render();
+</script>
+</body>
+</html>
