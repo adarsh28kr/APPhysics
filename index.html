@@ -313,15 +313,19 @@
             </ul>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px;align-items:center;">
+            <input type="text" id="student-name" placeholder="Enter your name" required
+                style="padding:12px 20px;font-size:1rem;border:2px solid var(--border);border-radius:8px;text-align:center;width:280px;background:var(--bg);color:var(--text);">
             <button class="btn btn-primary" onclick="startExam('timed')">Start Timed Exam</button>
             <button class="btn btn-secondary teacher-only" onclick="startExam('review')" style="font-size:0.9rem;">Review Mode (untimed, with answers)</button>
         </div>
         <div class="teacher-only" style="margin-top:20px;gap:10px;">
-            <a href="dashboard.html" style="color:var(--primary);font-size:0.9rem;">Progress Dashboard</a>
+            <a href="dashboard.html" style="color:var(--primary);font-size:0.9rem;">Dashboard</a>
             <span style="color:var(--border);">|</span>
-            <a href="drill.html" style="color:var(--primary);font-size:0.9rem;">Topic Drills</a>
+            <a href="drill.html" style="color:var(--primary);font-size:0.9rem;">Drills</a>
             <span style="color:var(--border);">|</span>
             <a href="answer-key.html" style="color:var(--primary);font-size:0.9rem;">Answer Key</a>
+            <span style="color:var(--border);">|</span>
+            <a href="curriculum.html" style="color:var(--primary);font-size:0.9rem;">Curriculum</a>
         </div>
     </div>
 
@@ -532,11 +536,23 @@ let questionTotalTime = new Array(38).fill(0);
 let currentQuestionStart = 0;
 let examStarted = false;
 let sessionSaved = false;
+let studentName = '';
+
+// Google Sheets endpoint (replace with your Apps Script URL)
+const SHEET_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
 
 // ============================================
 // CORE FUNCTIONS
 // ============================================
 function startExam(mode) {
+    const nameInput = document.getElementById('student-name');
+    if (!nameInput.value.trim()) {
+        nameInput.style.borderColor = 'var(--danger)';
+        nameInput.focus();
+        nameInput.placeholder = 'Please enter your name first';
+        return;
+    }
+    studentName = nameInput.value.trim();
     examMode = mode;
     document.getElementById('start-screen').style.display = 'none';
     document.getElementById('exam-header').style.display = 'flex';
@@ -925,6 +941,7 @@ function saveSessionToHistory() {
     const session = {
         id: Date.now().toString(36) + Math.random().toString(36).slice(2,6),
         date: new Date().toISOString(),
+        studentName: studentName,
         type: 'full-exam',
         mode: examMode,
         mcScore: answers.reduce((s,a,i) => s + (a === mcQuestions[i].correctIndex ? 1 : 0), 0),
@@ -943,6 +960,11 @@ function saveSessionToHistory() {
     const history = JSON.parse(localStorage.getItem('apPhysicsHistory') || '{"sessions":[],"errorJournal":[],"studyLog":[]}');
     history.sessions.push(session);
     localStorage.setItem('apPhysicsHistory', JSON.stringify(history));
+
+    // Send to Google Sheets (silent — localStorage is primary)
+    if (SHEET_URL && !SHEET_URL.includes('PASTE_YOUR')) {
+        fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', headers: {'Content-Type':'text/plain'}, body: JSON.stringify(session) }).catch(function(){});
+    }
     sessionSaved = true;
 
     // Update button visual

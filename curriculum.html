@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Physics C — 15-Day Curriculum</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#f8fafc;--card:#fff;--text:#1e293b;--text2:#64748b;--border:#e2e8f0;--primary:#2563eb;--success:#16a34a;--danger:#dc2626;--warning:#d97706}
+        [data-theme="dark"]{--bg:#1a1a2e;--card:#16213e;--text:#e0e0e0;--text2:#aaa;--border:#333;--primary:#4f8cff}
+        body{font-family:'Segoe UI',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;padding:20px}
+        .container{max-width:900px;margin:0 auto}
+        .nav{font-size:.85rem;margin-bottom:20px}
+        .nav a{color:var(--primary);text-decoration:none;margin-right:15px}
+        h1{font-size:1.8rem;color:var(--primary);margin-bottom:5px}
+        .sub{color:var(--text2);margin-bottom:25px}
+        h2{font-size:1.2rem;color:var(--text);margin:30px 0 12px;padding:8px 12px;background:var(--primary);color:#fff;border-radius:8px}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:15px}
+        .card h3{color:var(--primary);font-size:1rem;margin-bottom:8px}
+        .day{display:flex;gap:15px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+        .day:last-child{border-bottom:none}
+        .day-num{min-width:65px;font-weight:800;color:var(--primary);font-size:.95rem}
+        .day-content{flex:1;font-size:.92rem}
+        .day-time{min-width:50px;text-align:right;color:var(--text2);font-size:.85rem;font-weight:600}
+        .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.7rem;font-weight:600;margin-right:4px}
+        .tag-critical{background:#fee2e2;color:#991b1b}
+        .tag-newton{background:#dbeafe;color:#1e40af}
+        .tag-momentum{background:#fef3c7;color:#92400e}
+        .tag-energy{background:#dcfce7;color:#166534}
+        .tag-rotation{background:#f3e8ff;color:#6b21a8}
+        .tag-osc{background:#e0f2fe;color:#075985}
+        .tag-strategy{background:#f1f5f9;color:#475569}
+        table{width:100%;border-collapse:collapse;font-size:.85rem;margin:10px 0}
+        th,td{padding:6px 10px;text-align:left;border-bottom:1px solid var(--border)}
+        th{font-weight:600;color:var(--text2);font-size:.75rem;text-transform:uppercase}
+        .finding{padding:10px 14px;border-left:4px solid;border-radius:0 6px 6px 0;margin-bottom:10px;font-size:.9rem}
+        .f-red{border-color:var(--danger);background:#fef2f2}
+        .f-yellow{border-color:var(--warning);background:#fffbeb}
+        .f-green{border-color:var(--success);background:#f0fdf4}
+        .theme-toggle{position:fixed;bottom:20px;right:20px;padding:10px;border-radius:50%;border:2px solid var(--border);background:var(--card);cursor:pointer;font-size:1.2rem}
+        @media print{body{background:#fff}.nav,.theme-toggle{display:none}h2{background:var(--text);-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+    </style>
+</head>
+<body>
+    <!-- PIN Gate -->
+    <div id="pin-gate" style="position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;align-items:center;justify-content:center;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:30px;text-align:center;width:280px;">
+            <h3 style="margin-bottom:15px;">Teacher Access Required</h3>
+            <input type="password" id="gate-pin" maxlength="4" inputmode="numeric" style="width:120px;padding:10px;text-align:center;font-size:1.5rem;border:2px solid var(--border);border-radius:8px;letter-spacing:8px;background:var(--bg);color:var(--text);" onkeydown="if(event.key==='Enter')gateCheck()">
+            <div id="gate-err" style="color:#dc2626;font-size:.8rem;margin-top:8px;display:none;">Incorrect PIN</div>
+            <br><button onclick="gateCheck()" style="margin-top:15px;padding:8px 20px;font-size:.9rem;border:none;border-radius:8px;background:#2563eb;color:#fff;cursor:pointer;">Unlock</button>
+        </div>
+    </div>
+    <script>
+    function gateCheck(){if(document.getElementById('gate-pin').value==='2026'){sessionStorage.setItem('apPhysicsTeacher','true');document.getElementById('pin-gate').style.display='none';}else{document.getElementById('gate-err').style.display='block';document.getElementById('gate-pin').value='';}}
+    if(sessionStorage.getItem('apPhysicsTeacher')==='true'){document.getElementById('pin-gate').style.display='none';}else{setTimeout(function(){document.getElementById('gate-pin').focus();},100);}
+    </script>
+
+    <div class="container">
+        <div class="nav">
+            <a href="index.html">Exam</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="drill.html">Drills</a>
+            <a href="answer-key.html">Answer Key</a>
+        </div>
+
+        <h1>15-Day Preparation Curriculum</h1>
+        <p class="sub">Based on diagnostic exam analysis &bull; AP Physics C: Mechanics</p>
+
+        <!-- DIAGNOSTIC FINDINGS -->
+        <h2>Diagnostic Findings</h2>
+
+        <div class="card">
+            <h3>Score Analysis</h3>
+            <table>
+                <tr><td>Actual Score</td><td><strong>11/35 (31%)</strong></td></tr>
+                <tr><td>Potential Score (fixing minor mistakes)</td><td><strong style="color:var(--success)">26/35 (74%)</strong></td></tr>
+                <tr><td>Knowledge Gaps</td><td>9 questions (37% of errors)</td></tr>
+                <tr><td>Minor Mistakes (calc/rush/sign/application)</td><td>15 questions (63% of errors)</td></tr>
+                <tr><td>Time Used</td><td>42m 30s of 45m (excellent pacing)</td></tr>
+                <tr><td>Confidence Calibration</td><td>50% accuracy when "Confident" (overconfident)</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3>Key Findings</h3>
+            <div class="finding f-red"><strong>Core Issue:</strong> Student deploys wrong formulas for the situation — confuses simple/physical/conical pendulum, elastic/inelastic collisions, sliding vs rolling. Knows formulas exist but pulls the wrong one.</div>
+            <div class="finding f-red"><strong>Overconfidence:</strong> 50% accuracy on "Confident" questions. Doesn't know what they don't know — practices wrong approaches without realizing it.</div>
+            <div class="finding f-yellow"><strong>Execution Failures:</strong> 15 of 24 wrong answers were minor mistakes — sign errors, missing factors, wrong formula application. More knowledge than their score shows.</div>
+            <div class="finding f-green"><strong>Strengths:</strong> Good time management, completes all questions, can perform calculus integration when setup is clear, understands basic rotation concepts.</div>
+        </div>
+
+        <div class="card">
+            <h3>Topic Mastery</h3>
+            <table>
+                <tr><th>Topic</th><th>Score</th><th>Status</th><th>Priority</th></tr>
+                <tr><td>Kinematics</td><td>3/6 (50%)</td><td><span class="tag tag-newton">Needs Work</span></td><td>Medium</td></tr>
+                <tr><td>Newton's Laws</td><td>1/6 (17%)</td><td><span class="tag tag-critical">Critical</span></td><td>Highest — mostly execution errors</td></tr>
+                <tr><td>Work & Energy</td><td>2/6 (33%)</td><td><span class="tag tag-critical">Critical</span></td><td>High — mixed gaps + execution</td></tr>
+                <tr><td>Momentum</td><td>1/6 (17%)</td><td><span class="tag tag-critical">Critical</span></td><td>Highest — needs reteaching</td></tr>
+                <tr><td>Rotation</td><td>3/6 (50%)</td><td><span class="tag tag-newton">Needs Work</span></td><td>Medium — solid foundations</td></tr>
+                <tr><td>Oscillations & Grav.</td><td>1/5 (20%)</td><td><span class="tag tag-critical">Critical</span></td><td>High — formula disambiguation needed</td></tr>
+            </table>
+        </div>
+
+        <!-- 15-DAY PLAN -->
+        <h2>Week 1: Foundation Repair (Days 1-7)</h2>
+
+        <div class="card">
+            <div class="day">
+                <div class="day-num">Day 1</div>
+                <div class="day-content">
+                    <strong>The Reckoning</strong> <span class="tag tag-strategy">Review</span><br>
+                    Review every wrong answer from diagnostic exam WITH the student. For each, student writes: "I got this wrong because ___." Don't show answers — have them re-derive. Builds the self-awareness their confidence scores show they lack.
+                </div>
+                <div class="day-time">2 hrs</div>
+            </div>
+            <div class="day">
+                <div class="day-num">Day 2</div>
+                <div class="day-content">
+                    <strong>Newton's Laws Boot Camp</strong> <span class="tag tag-newton">Newton</span><br>
+                    <em>30 min:</em> FBD drill — 10 different scenarios (incline+horizontal force, elevator, stacked blocks, conical pendulum)<br>
+                    <em>30 min:</em> Sign convention drill — T = M(g+a) up, T = M(g-a) down. 10 elevator problems alternating directions.<br>
+                    <em>30 min:</em> Friction direction — "Which way moving? Friction opposes that." 10 problems.<br>
+                    <em>30 min:</em> Two-body systems — "Find system acceleration first, then internal forces."
+                </div>
+                <div class="day-time">2 hrs</div>
+            </div>
+            <div class="day">
+                <div class="day-num">Day 3</div>
+                <div class="day-content">
+                    <strong>Momentum Reboot</strong> <span class="tag tag-momentum">Momentum</span><br>
+                    <em>30 min:</em> Elastic vs inelastic decision tree. Drill the formula: v1' = (m1-m2)/(m1+m2) * v1.<br>
+                    <em>30 min:</em> 2D momentum as vectors. "Perpendicular = Pythagorean theorem, NOT addition."<br>
+                    <em>30 min:</em> Rocket equation derivation. Practice: "Half mass expelled → delta-v = v_e ln(2)."<br>
+                    <em>30 min:</em> Center of mass calculations. Memorize: hemisphere 3R/8.
+                </div>
+                <div class="day-time">2 hrs</div>
+            </div>
+            <div class="day">
+                <div class="day-num">Day 4</div>
+                <div class="day-content">
+                    <strong>Work & Energy Precision</strong> <span class="tag tag-energy">Energy</span><br>
+                    <em>30 min:</em> Spring PE drill. Write "1/2 k x^2" fifty times. Then 10 spring-launch problems.<br>
+                    <em>30 min:</em> Stability analysis. F = -dU/dx, check d2U/dx2: positive = stable, negative = unstable.<br>
+                    <em>30 min:</em> Power. "P = Fv. Lifting: F = mg. So P = mgv." 5 problems, always verify g is included.
+                </div>
+                <div class="day-time">1.5 hrs</div>
+            </div>
+            <div class="day">
+                <div class="day-num">Day 5</div>
+                <div class="day-content">
+                    <strong>Oscillations & Gravitation</strong> <span class="tag tag-osc">Osc/Grav</span><br>
+                    <em>30 min:</em> Formula disambiguation chart — simple vs physical vs conical pendulum. Do 3 of each type. IDENTIFY the type first before writing any formula.<br>
+                    <em>30 min:</em> Orbits. v_orbit = sqrt(GM/r), v_escape = v_orbit * sqrt(2). Planet gravity: g = GM/R^2.<br>
+                    <em>30 min:</em> SHM energy. Total = 1/2 kA^2. At position x: KE = 1/2 k(A^2 - x^2). 5 problems.
+                </div>
+                <div class="day-time">1.5 hrs</div>
+            </div>
+            <div class="day">
+                <div class="day-num">Day 6</div>
+                <div class="day-content">
+                    <strong>The Verification Habit</strong> <span class="tag tag-strategy">Strategy</span><br>
+                    <strong>Most important session.</strong> Teach the 3-second check for every answer:<br>
+                    1. <strong>Units:</strong> Does my answer have the right units?<br>
+                    2. <strong>Limits:</strong> If mass → 0 or angle → 0/90°, does it make sense?<br>
+                    3. <strong>Magnitude:</strong> Is this a reasonable number?<br>
+                    Redo 10 wrong answers from diagnostic, applying all 3 checks each time.
+                </div>
+                <div class="day-time">1.5 hrs</div>
+            </div>
+            <div class="day">
+                <div class="day-num">Day 7</div>
+                <div class="day-content">
+                    <strong>Rotation Refinement</strong> <span class="tag tag-rotation">Rotation</span><br>
+                    <em>30 min:</em> Moment of inertia table: disk 1/2MR^2, sphere 2/5MR^2, shell 2/3MR^2, hoop MR^2, rod(end) 1/3ML^2. "More I → rolls slower. Solid beats hollow."<br>
+                    <em>30 min:</em> Angular momentum vs energy. "L conserved ≠ KE conserved. Skater: L same, KE up. Disk coupling: L same, KE down." 5 problems.
+                </div>
+                <div class="day-time">1 hr</div>
+            </div>
+        </div>
+
+        <h2>Week 2: Integration & Exams (Days 8-15)</h2>
+
+        <div class="card">
+            <div class="day">
+                <div class="day-num">Day 8</div>
+                <div class="day-content"><strong>Full Practice Exam #2</strong> <span class="tag tag-strategy">Exam</span><br>Timed, 45 min, no aids. Target: beat 18/35. Apply verification habit to every question.</div>
+                <div class="day-time">2 hrs</div>
+            </div>
+            <div class="day">
+                <div class="day-num">Day 9</div>
+                <div class="day-content"><strong>Error Comparison</strong> <span class="tag tag-strategy">Review</span><br>Compare Exam 1 errors to Exam 2. Which mistakes eliminated? Which persisted? Persistent errors get red flag for extra drill.</div>
+                <div class="day-time">1 hr</div>
+            </div>
+            <div class="day">
+                <div class="day-num">Day 10</div>
+                <div class="day-content"><strong>Free Response Practice</strong> <span class="tag tag-strategy">FRQ</span><br>3 full FRQs, timed 15 min each. Rule: "Write every equation, even if you can't solve. Partial credit is generous." Practice: diagram → principles → equations → solve → check limits.</div>
+                <div class="day-time">2 hrs</div>
+            </div>
+            <div class="day">
+                <div class="day-num">Day 11</div>
+                <div class="day-content"><strong>Mixed Problem Set</strong> <span class="tag tag-strategy">Mixed</span><br>20 random problems across ALL topics (unlabeled). Forces student to IDENTIFY the topic before solving — critical for real exam which doesn't label questions.</div>
+                <div class="day-time">1.5 hrs</div>
+            </div>
+            <div class="day">
+                <div class="day-num">Day 12</div>
+                <div class="day-content"><strong>Weak Spot Blitz</strong> <span class="tag tag-critical">Targeted</span><br>Whatever is still below 60% from Exam 2, drill exclusively. Use "teach it back" method: student explains each concept aloud as if they're the teacher.</div>
+                <div class="day-time">1 hr</div>
+            </div>
+            <div class="day">
+                <div class="day-num">Day 13</div>
+                <div class="day-content"><strong>Full Practice Exam #3</strong> <span class="tag tag-strategy">Exam</span><br>Final timed exam. Target: 22+/35 (63%+). Apply all verification habits. Flag uncertain questions but still answer them.</div>
+                <div class="day-time">2 hrs</div>
+            </div>
+            <div class="day">
+                <div class="day-num">Day 14</div>
+                <div class="day-content"><strong>Light Review</strong> <span class="tag tag-strategy">Review</span><br>Review formula sheet one last time. Do 5 easy confidence-building problems. Review common mistakes list from all exams. Review 3-second check habit.</div>
+                <div class="day-time">45 min</div>
+            </div>
+            <div class="day">
+                <div class="day-num">Day 15</div>
+                <div class="day-content"><strong>Exam Eve</strong> <span class="tag tag-strategy">Rest</span><br>No new material. 3 warm-up problems (ones they've gotten right before). Review exam strategy: 75s per MC, skip and return, never leave blank, write every FRQ equation. Sleep by 10 PM.</div>
+                <div class="day-time">30 min</div>
+            </div>
+        </div>
+
+        <!-- PROJECTION -->
+        <h2>Expected Progress</h2>
+        <div class="card">
+            <table>
+                <tr><th>Milestone</th><th>Expected Score</th><th>AP Grade</th></tr>
+                <tr><td>Diagnostic (Day 0)</td><td>11/35 (31%)</td><td>1-2</td></tr>
+                <tr><td>After Week 1 (Day 7)</td><td>18-20/35 (51-57%)</td><td>3</td></tr>
+                <tr><td>After Exam #3 (Day 13)</td><td>22-25/35 (63-71%)</td><td>4</td></tr>
+                <tr><td>Best Case (Exam Day)</td><td>26-28/35 (74-80%)</td><td>4-5</td></tr>
+            </table>
+        </div>
+
+        <div style="text-align:center;margin:30px 0;color:var(--text2);font-size:.8rem;">
+            AP Physics C: Mechanics — 15-Day Curriculum<br>
+            Based on diagnostic exam data from May 4, 2026
+        </div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">&#9790;</button>
+    <script>
+    function toggleTheme(){document.body.getAttribute('data-theme')==='dark'?(document.body.removeAttribute('data-theme'),localStorage.setItem('apPhysicsTheme','light')):(document.body.setAttribute('data-theme','dark'),localStorage.setItem('apPhysicsTheme','dark'));}
+    if(localStorage.getItem('apPhysicsTheme')==='dark')document.body.setAttribute('data-theme','dark');
+    </script>
+</body>
+</html>
