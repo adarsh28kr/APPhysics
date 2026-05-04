@@ -385,7 +385,7 @@
             <div id="detailed-review"></div>
         </div>
         <div class="action-links">
-            <button class="btn btn-success" onclick="saveSessionToHistory()">Save Progress to Dashboard</button>
+            <button class="btn btn-success" id="save-btn" onclick="saveSessionToHistory()" disabled style="opacity:0.8;">&#10003; Progress Saved</button>
             <a href="dashboard.html" class="btn btn-primary" style="color:white;">View Dashboard</a>
             <a href="answer-key.html" class="btn btn-secondary">Full Answer Key</a>
         </div>
@@ -808,6 +808,9 @@ function showResults() {
     reviewDiv.innerHTML = revHTML;
 
     localStorage.removeItem('apPhysicsExamState');
+
+    // Auto-save session
+    saveSessionToHistory();
 }
 
 let errorClassifications = {};
@@ -863,11 +866,9 @@ function saveSessionToHistory() {
     localStorage.setItem('apPhysicsHistory', JSON.stringify(history));
     sessionSaved = true;
 
-    // Update button
-    const btn = event.target;
-    btn.textContent = 'Saved!';
-    btn.style.background = 'var(--success)';
-    btn.disabled = true;
+    // Update button visual
+    const btn = document.getElementById('save-btn');
+    if (btn) { btn.textContent = '\u2713 Progress Saved'; btn.disabled = true; btn.style.opacity = '0.8'; }
 }
 
 // ============================================
