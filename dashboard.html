@@ -69,7 +69,17 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- PIN Gate -->
+    <div id="pin-gate" style="display:none;position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;align-items:center;justify-content:center;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:30px;text-align:center;width:280px;">
+            <h3 style="margin-bottom:15px;">Teacher Access Required</h3>
+            <input type="password" id="pin-input" maxlength="4" inputmode="numeric" style="width:120px;padding:10px;text-align:center;font-size:1.5rem;border:2px solid var(--border);border-radius:8px;letter-spacing:8px;background:var(--bg);color:var(--text);" onkeydown="if(event.key==='Enter')checkPin()">
+            <div id="pin-error" style="color:#dc2626;font-size:0.8rem;margin-top:8px;display:none;">Incorrect PIN</div>
+            <br><button onclick="checkPin()" style="margin-top:15px;padding:8px 20px;font-size:0.9rem;border:none;border-radius:8px;background:#2563eb;color:white;cursor:pointer;">Unlock</button>
+        </div>
+    </div>
+
+    <div class="container" id="main-content">
         <h1>Progress Dashboard</h1>
         <p class="subtitle">AP Physics C: Mechanics — Performance Tracking</p>
 
@@ -476,6 +486,31 @@ function toggleTheme() {
     }
 }
 if (localStorage.getItem('apPhysicsTheme') === 'dark') document.body.setAttribute('data-theme', 'dark');
+
+// ============================================
+// PIN GATE
+// ============================================
+function checkPin() {
+    const pin = document.getElementById('pin-input').value;
+    if (pin === '2026') {
+        sessionStorage.setItem('apPhysicsTeacher', 'true');
+        document.getElementById('pin-gate').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+    } else {
+        document.getElementById('pin-error').style.display = 'block';
+        document.getElementById('pin-input').value = '';
+        document.getElementById('pin-input').focus();
+    }
+}
+
+if (sessionStorage.getItem('apPhysicsTeacher') === 'true') {
+    document.getElementById('pin-gate').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+} else {
+    document.getElementById('pin-gate').style.display = 'flex';
+    document.getElementById('main-content').style.display = 'none';
+    setTimeout(() => document.getElementById('pin-input').focus(), 100);
+}
 
 // Init
 render();

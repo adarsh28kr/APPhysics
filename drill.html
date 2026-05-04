@@ -108,6 +108,20 @@
     </style>
 </head>
 <body>
+    <!-- PIN Gate -->
+    <div id="pin-gate" style="position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;align-items:center;justify-content:center;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:30px;text-align:center;width:280px;">
+            <h3 style="margin-bottom:15px;">Teacher Access Required</h3>
+            <input type="password" id="gate-pin" maxlength="4" inputmode="numeric" style="width:120px;padding:10px;text-align:center;font-size:1.5rem;border:2px solid var(--border);border-radius:8px;letter-spacing:8px;background:var(--bg);color:var(--text);" onkeydown="if(event.key==='Enter')gateCheck()">
+            <div id="gate-err" style="color:#dc2626;font-size:0.8rem;margin-top:8px;display:none;">Incorrect PIN</div>
+            <br><button onclick="gateCheck()" style="margin-top:15px;padding:8px 20px;font-size:0.9rem;border:none;border-radius:8px;background:#2563eb;color:white;cursor:pointer;">Unlock</button>
+        </div>
+    </div>
+    <script>
+    function gateCheck(){var p=document.getElementById('gate-pin').value;if(p==='2026'){sessionStorage.setItem('apPhysicsTeacher','true');document.getElementById('pin-gate').style.display='none';}else{document.getElementById('gate-err').style.display='block';document.getElementById('gate-pin').value='';}}
+    if(sessionStorage.getItem('apPhysicsTeacher')==='true'){document.getElementById('pin-gate').style.display='none';}else{setTimeout(function(){document.getElementById('gate-pin').focus();},100);}
+    </script>
+
     <div class="container">
         <div class="nav-links">
             <a href="index.html">Full Exam</a>

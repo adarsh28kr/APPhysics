@@ -254,12 +254,37 @@
             padding: 12px 24px; border-radius: 8px; font-weight: 600;
             font-size: 0.95rem; cursor: pointer; border: none;
         }
+        /* Teacher mode */
+        .teacher-only { display: none !important; }
+        body.teacher-mode .teacher-only { display: flex !important; }
+        body.teacher-mode .teacher-only-block { display: block !important; }
+        .teacher-only-block { display: none !important; }
+        body.teacher-mode .student-only { display: none !important; }
+        /* PIN modal */
+        .pin-overlay {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+            z-index: 600; align-items: center; justify-content: center;
+        }
+        .pin-overlay.active { display: flex; }
+        .pin-box {
+            background: var(--card); border-radius: 12px; padding: 30px;
+            text-align: center; width: 280px;
+        }
+        .pin-box h3 { margin-bottom: 15px; font-size: 1rem; }
+        .pin-box input {
+            width: 120px; padding: 10px; text-align: center; font-size: 1.5rem;
+            border: 2px solid var(--border); border-radius: 8px; letter-spacing: 8px;
+            background: var(--bg); color: var(--text);
+        }
+        .pin-box input:focus { outline: none; border-color: var(--primary); }
+        .pin-box .pin-error { color: var(--danger); font-size: 0.8rem; margin-top: 8px; display: none; }
+        .pin-box button { margin-top: 15px; }
     </style>
 </head>
 <body>
     <!-- Start Screen -->
     <div id="start-screen" class="container">
-        <h1>AP Physics C: Mechanics</h1>
+        <h1 id="app-title" style="cursor:default;">AP Physics C: Mechanics</h1>
         <p class="subtitle">Practice Examination</p>
         <div class="exam-info">
             <h3>Exam Structure</h3>
@@ -281,14 +306,24 @@
         </div>
         <div style="display:flex;flex-direction:column;gap:10px;align-items:center;">
             <button class="btn btn-primary" onclick="startExam('timed')">Start Timed Exam</button>
-            <button class="btn btn-secondary" onclick="startExam('review')" style="font-size:0.9rem;">Review Mode (untimed, with answers)</button>
+            <button class="btn btn-secondary teacher-only" onclick="startExam('review')" style="font-size:0.9rem;">Review Mode (untimed, with answers)</button>
         </div>
-        <div style="margin-top:20px;display:flex;gap:10px;">
+        <div class="teacher-only" style="margin-top:20px;gap:10px;">
             <a href="dashboard.html" style="color:var(--primary);font-size:0.9rem;">Progress Dashboard</a>
             <span style="color:var(--border);">|</span>
             <a href="drill.html" style="color:var(--primary);font-size:0.9rem;">Topic Drills</a>
             <span style="color:var(--border);">|</span>
             <a href="answer-key.html" style="color:var(--primary);font-size:0.9rem;">Answer Key</a>
+        </div>
+    </div>
+
+    <!-- PIN Modal -->
+    <div class="pin-overlay" id="pin-overlay">
+        <div class="pin-box">
+            <h3>Enter PIN</h3>
+            <input type="password" id="pin-input" maxlength="4" inputmode="numeric" pattern="[0-9]*" onkeydown="if(event.key==='Enter')checkPin()">
+            <div class="pin-error" id="pin-error">Incorrect PIN</div>
+            <br><button class="btn btn-primary" style="padding:8px 20px;font-size:0.9rem;" onclick="checkPin()">Unlock</button>
         </div>
     </div>
 
@@ -342,7 +377,14 @@
 
     <!-- Results Screen -->
     <div id="results-screen" class="container">
-        <div class="results-header">
+        <!-- Student view: simple confirmation -->
+        <div id="student-results" class="student-only" style="text-align:center;padding:60px 20px;">
+            <h1 style="color:var(--success);margin-bottom:15px;">Exam Submitted Successfully</h1>
+            <p style="font-size:1.1rem;color:var(--text-secondary);max-width:400px;margin:0 auto;">Your responses have been saved. Your teacher will review your results with you.</p>
+            <p style="margin-top:30px;color:var(--text-secondary);font-size:0.9rem;">You may close this page now.</p>
+        </div>
+        <!-- Teacher view: full analytics -->
+        <div class="results-header teacher-only-block">
             <h1>Exam Complete</h1>
             <div class="score-circle">
                 <div class="score" id="final-score">0</div>
@@ -350,7 +392,7 @@
             </div>
             <p id="score-percent" style="font-size:1.2rem;margin-top:10px;"></p>
         </div>
-        <div class="results-grid">
+        <div class="results-grid teacher-only-block">
             <div class="result-card">
                 <h4>Topic Breakdown</h4>
                 <div id="topic-breakdown"></div>
@@ -360,19 +402,19 @@
                 <div class="time-analysis" id="time-analysis"></div>
             </div>
         </div>
-        <div class="result-card" style="margin-bottom:20px;">
+        <div class="result-card teacher-only-block" style="margin-bottom:20px;">
             <h4>Confidence Calibration</h4>
             <div id="confidence-analysis" style="font-size:0.85rem;"></div>
         </div>
-        <div class="result-card" style="margin-bottom:20px;">
+        <div class="result-card teacher-only-block" style="margin-bottom:20px;">
             <h4>Flagged Questions</h4>
             <p id="flagged-summary" style="font-size:0.9rem;color:var(--text-secondary);"></p>
         </div>
-        <div class="result-card" style="margin-bottom:20px;">
+        <div class="result-card teacher-only-block" style="margin-bottom:20px;">
             <h4>Error Classification <span style="font-size:0.75rem;color:var(--text-secondary);">(Select why you got each wrong)</span></h4>
             <div id="error-classification"></div>
         </div>
-        <div class="result-card" style="margin-bottom:20px;">
+        <div class="result-card teacher-only-block" style="margin-bottom:20px;">
             <h4>FRQ Scores <span style="font-size:0.75rem;color:var(--text-secondary);">(Uncle enters after grading)</span></h4>
             <div class="frq-score-entry">
                 <div class="score-input"><label>FRQ 1:</label><input type="number" id="frq-score-1" min="0" max="15" placeholder="0"> <span>/ 15</span></div>
@@ -380,12 +422,12 @@
                 <div class="score-input"><label>FRQ 3:</label><input type="number" id="frq-score-3" min="0" max="15" placeholder="0"> <span>/ 15</span></div>
             </div>
         </div>
-        <div class="result-card" style="margin-bottom:20px;">
+        <div class="result-card teacher-only-block" style="margin-bottom:20px;">
             <h4>Detailed Review</h4>
             <div id="detailed-review"></div>
         </div>
-        <div class="action-links">
-            <button class="btn btn-success" id="save-btn" onclick="saveSessionToHistory()" disabled style="opacity:0.8;">&#10003; Progress Saved</button>
+        <div class="action-links teacher-only">
+            <button class="btn btn-success" id="save-btn" disabled style="opacity:0.8;">&#10003; Progress Saved</button>
             <a href="dashboard.html" class="btn btn-primary" style="color:white;">View Dashboard</a>
             <a href="answer-key.html" class="btn btn-secondary">Full Answer Key</a>
         </div>
@@ -892,6 +934,49 @@ function loadSavedState() {
         } catch(e) {}
     }
 }
+
+// ============================================
+// TEACHER MODE
+// ============================================
+let teacherMode = sessionStorage.getItem('apPhysicsTeacher') === 'true';
+let titleClicks = 0;
+let titleClickTimer = null;
+
+function initTeacherMode() {
+    if (teacherMode) document.body.classList.add('teacher-mode');
+
+    const title = document.getElementById('app-title');
+    if (title) {
+        title.addEventListener('click', () => {
+            titleClicks++;
+            if (titleClickTimer) clearTimeout(titleClickTimer);
+            titleClickTimer = setTimeout(() => { titleClicks = 0; }, 2000);
+            if (titleClicks >= 5) {
+                titleClicks = 0;
+                document.getElementById('pin-overlay').classList.add('active');
+                document.getElementById('pin-input').focus();
+            }
+        });
+    }
+}
+
+function checkPin() {
+    const pin = document.getElementById('pin-input').value;
+    if (pin === '2026') {
+        sessionStorage.setItem('apPhysicsTeacher', 'true');
+        teacherMode = true;
+        document.body.classList.add('teacher-mode');
+        document.getElementById('pin-overlay').classList.remove('active');
+        document.getElementById('pin-input').value = '';
+        document.getElementById('pin-error').style.display = 'none';
+    } else {
+        document.getElementById('pin-error').style.display = 'block';
+        document.getElementById('pin-input').value = '';
+        document.getElementById('pin-input').focus();
+    }
+}
+
+initTeacherMode();
 
 // ============================================
 // THEME
