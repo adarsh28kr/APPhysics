@@ -200,6 +200,7 @@
 
         <!-- ===================== MC SOLUTIONS ===================== -->
         <h2 id="mc-answers">Multiple Choice: Detailed Solutions</h2>
+        <p style="color:var(--text-secondary);margin-bottom:20px;">Each solution includes step-by-step work, the key concept being tested, and a teaching tip for explaining to your nephew.</p>
 
         <h3>Kinematics (Q1-6)</h3>
 
@@ -210,282 +211,309 @@
             </div>
             <div class="correct-answer">Answer: (A) 0 m</div>
             <div class="solution">
-                Displacement $= \int_0^6 (4t - t^2)\,dt = \left[2t^2 - \frac{t^3}{3}\right]_0^6 = 2(36) - \frac{216}{3} = 72 - 72 = 0$ m
+                <strong>Key concept:</strong> Displacement = integral of velocity (calculus required).<br><br>
+                <strong>Step 1:</strong> Write the displacement integral:<br>
+                $\Delta x = \int_0^6 v(t)\,dt = \int_0^6 (4t - t^2)\,dt$<br><br>
+                <strong>Step 2:</strong> Evaluate the antiderivative:<br>
+                $= \left[2t^2 - \frac{t^3}{3}\right]_0^6$<br><br>
+                <strong>Step 3:</strong> Plug in bounds:<br>
+                $= \left(2(36) - \frac{216}{3}\right) - (0) = 72 - 72 = 0$ m<br><br>
+                <strong>Why it's zero:</strong> The velocity $v = 4t - t^2 = t(4-t)$ is positive from $t=0$ to $t=4$ and negative from $t=4$ to $t=6$. The particle moves forward then backward, returning to its starting position.
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Students who get 12 m likely computed the distance (absolute value of displacement in each interval) rather than the net displacement. Others get 36 by forgetting to integrate and just plugging $t=6$ into $v(t)$.
+                <strong>Common mistake:</strong> Getting 12 m by computing total <em>distance</em> (adding absolute values of each interval) instead of net displacement. Or getting 36 by plugging $t=6$ into $v(t)$ without integrating — velocity is NOT displacement!<br><br>
+                <strong>How to explain:</strong> "Displacement asks WHERE you ended up. Distance asks HOW FAR you walked. If you walk 5 m forward and 5 m back, displacement is 0 but distance is 10 m. The integral of velocity gives displacement."
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 2</span>
-                <span class="q-topic">Kinematics</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 2</span><span class="q-topic">Kinematics</span></div>
             <div class="correct-answer">Answer: (C) $3H/4$</div>
             <div class="solution">
-                At max height: $v_0^2 = 2gH$, so $H = v_0^2/(2g)$.<br>
-                When speed = $v_0/2$: $v^2 = v_0^2 - 2gh \Rightarrow (v_0/2)^2 = v_0^2 - 2gh$<br>
-                $v_0^2/4 = v_0^2 - 2gh \Rightarrow 2gh = 3v_0^2/4 \Rightarrow h = 3v_0^2/(8g) = 3H/4$
+                <strong>Key concept:</strong> Energy conservation — KE converts to PE. Speed and height are related through $v^2$, not $v$.<br><br>
+                <strong>Step 1:</strong> Express $H$ in terms of $v_0$. At max height, all KE becomes PE:<br>
+                $\frac{1}{2}mv_0^2 = mgH \Rightarrow H = \frac{v_0^2}{2g}$<br><br>
+                <strong>Step 2:</strong> Use kinematics at height $h$ where speed is $v_0/2$:<br>
+                $v^2 = v_0^2 - 2gh \Rightarrow \left(\frac{v_0}{2}\right)^2 = v_0^2 - 2gh$<br><br>
+                <strong>Step 3:</strong> Solve for $h$:<br>
+                $\frac{v_0^2}{4} = v_0^2 - 2gh \Rightarrow 2gh = \frac{3v_0^2}{4} \Rightarrow h = \frac{3v_0^2}{8g} = \frac{3}{4} \cdot \frac{v_0^2}{2g} = \frac{3H}{4}$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Choosing $H/2$ — this confuses "half the speed" with "half the height." Energy is proportional to $v^2$, so half speed means 3/4 of the KE has converted to PE.
+                <strong>Common mistake:</strong> Choosing $H/2$ by thinking "half the speed = half the height." This is wrong because KE depends on $v^2$. Half the speed means $1/4$ of the original KE remains, so $3/4$ has converted to PE, meaning the ball is at $3/4$ of the maximum height.<br><br>
+                <strong>How to explain:</strong> "Energy goes as speed SQUARED. So if speed drops to half, kinetic energy drops to one-quarter. That means three-quarters of the energy has become potential energy, so you're at three-quarters of the max height."
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 3</span>
-                <span class="q-topic">Kinematics</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 3</span><span class="q-topic">Kinematics</span></div>
             <div class="correct-answer">Answer: (C) $g$, directed downward</div>
             <div class="solution">
-                The acceleration due to gravity is constant throughout projectile motion: $\vec{a} = -g\hat{j}$ everywhere, including at the top. The velocity is purely horizontal at the top, but acceleration is always $g$ downward.
+                <strong>Key concept:</strong> In projectile motion, acceleration is ALWAYS $g$ downward, at every point in the trajectory.<br><br>
+                <strong>The reasoning:</strong> The only force acting on the projectile (ignoring air resistance) is gravity: $\vec{F} = -mg\hat{j}$. By Newton's second law, $\vec{a} = \vec{F}/m = -g\hat{j}$. This is constant — it does not depend on the position or velocity of the projectile.<br><br>
+                At the highest point, $v_y = 0$ but $v_x = v_0\cos\theta \neq 0$. The velocity is purely horizontal, but the acceleration is still $g$ downward.
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Choosing (A) $0$ — students confuse the fact that the vertical velocity is zero at the top with the acceleration being zero. Others choose (E) thinking of centripetal acceleration formula.
+                <strong>Common mistake:</strong> Choosing (A) "$0$" — confusing zero vertical <em>velocity</em> with zero <em>acceleration</em>. Velocity and acceleration are different quantities! A ball at the top of its arc is momentarily not moving vertically, but gravity is still pulling it down (that's why it comes back down).<br><br>
+                <strong>How to explain:</strong> "If the acceleration were zero at the top, the ball would just keep going horizontally forever. The fact that it curves back down proves the acceleration is NOT zero — gravity never takes a break."
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 4</span>
-                <span class="q-topic">Kinematics</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 4</span><span class="q-topic">Kinematics</span></div>
             <div class="correct-answer">Answer: (C) $t = 2$ s and $t = 4$ s</div>
             <div class="solution">
-                $v(t) = dx/dt = 3t^2 - 18t + 24 = 3(t^2 - 6t + 8) = 3(t-2)(t-4) = 0$<br>
-                Solutions: $t = 2$ s and $t = 4$ s.
+                <strong>Key concept:</strong> "At rest" means $v = 0$. Velocity is the derivative of position.<br><br>
+                <strong>Step 1:</strong> Differentiate position to get velocity:<br>
+                $v(t) = \frac{dx}{dt} = 3t^2 - 18t + 24$<br><br>
+                <strong>Step 2:</strong> Set $v = 0$ and factor:<br>
+                $3t^2 - 18t + 24 = 0 \Rightarrow t^2 - 6t + 8 = 0 \Rightarrow (t-2)(t-4) = 0$<br><br>
+                <strong>Step 3:</strong> Solutions: $t = 2$ s and $t = 4$ s
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Setting $x(t) = 0$ instead of $v(t) = 0$. "At rest" means zero velocity, not zero position.
+                <strong>Common mistake:</strong> Setting $x(t) = 0$ instead of $v(t) = 0$. "At rest" means zero VELOCITY, not zero position. Position = 0 means the particle is at the origin; velocity = 0 means it has stopped momentarily.<br><br>
+                <strong>How to explain:</strong> "Think of a ball thrown straight up — at the very top, it's at rest (v=0) for an instant, but it's NOT at position zero. 'At rest' always means take the derivative and set it to zero."
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 5</span>
-                <span class="q-topic">Kinematics</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 5</span><span class="q-topic">Kinematics</span></div>
             <div class="correct-answer">Answer: (C) They hit the ground at the same time</div>
             <div class="solution">
-                Both objects have the same initial vertical velocity (zero) and experience the same vertical acceleration ($g$). Horizontal and vertical motions are independent. Time to fall depends only on height and vertical initial velocity.
+                <strong>Key concept:</strong> Independence of horizontal and vertical motion in projectile motion.<br><br>
+                <strong>The reasoning:</strong> Both objects start with the same vertical velocity ($v_{y,0} = 0$) from the same height. The vertical equation of motion is the same for both:<br>
+                $y = h - \frac{1}{2}gt^2$<br>
+                Setting $y = 0$: $t = \sqrt{2h/g}$ — identical for both objects.<br><br>
+                Object B's horizontal velocity ($v$) has no effect on the vertical motion because horizontal and vertical motions are independent (no air resistance).
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Choosing (A) because "shorter path" seems intuitive, or (D) thinking horizontal motion somehow "uses up" time. This tests understanding of independence of perpendicular motions.
+                <strong>Common mistake:</strong> Thinking that the horizontal velocity "uses up" some of the object's ability to fall, or that a longer path means more time. Horizontal and vertical are completely decoupled.<br><br>
+                <strong>How to explain:</strong> "Imagine two balls side by side — one you drop, one you flick sideways. Gravity pulls them both down equally. The flicked one goes farther horizontally but falls at the exact same rate. Try it with two coins off a table edge!"
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 6</span>
-                <span class="q-topic">Kinematics</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 6</span><span class="q-topic">Kinematics</span></div>
             <div class="correct-answer">Answer: (C) 9 m/s</div>
             <div class="solution">
-                Maximum velocity occurs when $a(t) = 0$: $6 - 2t = 0 \Rightarrow t = 3$ s.<br>
-                $v = \int_0^3 (6-2t)\,dt = [6t - t^2]_0^3 = 18 - 9 = 9$ m/s
+                <strong>Key concept:</strong> With non-constant acceleration, must integrate to find velocity (calculus trap).<br><br>
+                <strong>Step 1:</strong> Find when $v$ is maximum. Velocity increases while $a > 0$ and decreases when $a < 0$. So max $v$ occurs when $a = 0$:<br>
+                $6 - 2t = 0 \Rightarrow t = 3$ s<br><br>
+                <strong>Step 2:</strong> Integrate acceleration to find velocity (starting from rest, $v_0 = 0$):<br>
+                $v(3) = \int_0^3 (6 - 2t)\,dt = \left[6t - t^2\right]_0^3 = 18 - 9 = 9$ m/s
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Getting 6 m/s by evaluating $a(0) \times t$ (not recognizing non-constant acceleration requires integration). Getting 18 by forgetting the $-t^2$ term.
+                <strong>Common mistake:</strong> Using $v = at$ with $a = 6$ gives $v = 18$ m/s — wrong because acceleration is NOT constant. Or using the average $a_{avg} = 3$ m/s$^2$ with $v = a_{avg} \times t = 9$, which accidentally gives the right answer but for the wrong reason. Must integrate.<br><br>
+                <strong>How to explain:</strong> "When acceleration changes with time, you can't use $v = v_0 + at$. That formula only works for constant acceleration. With variable acceleration, you MUST integrate: $v = \int a\,dt$. This is why Physics C requires calculus."
             </div>
         </div>
 
         <h3>Newton's Laws (Q7-12)</h3>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 7</span>
-                <span class="q-topic">Newton's Laws</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 7</span><span class="q-topic">Newton's Laws</span></div>
             <div class="correct-answer">Answer: (C) $mg\tan\theta$</div>
             <div class="solution">
-                For equilibrium on frictionless incline with horizontal force $F$:<br>
-                Along incline: $F\cos\theta = mg\sin\theta$<br>
-                $F = mg\tan\theta$<br>
-                (Normal to incline: $N = mg\cos\theta + F\sin\theta$)
+                <strong>Key concept:</strong> A horizontal force on an incline must be decomposed along and perpendicular to the incline surface.<br><br>
+                <strong>Step 1:</strong> Draw the free-body diagram. Three forces act on the block: weight $mg$ (down), normal force $N$ (perpendicular to incline), and horizontal force $F$.<br><br>
+                <strong>Step 2:</strong> Choose axes along and perpendicular to incline. Decompose $F$:<br>
+                &bull; Along incline (up): $F\cos\theta$<br>
+                &bull; Into incline: $F\sin\theta$<br><br>
+                <strong>Step 3:</strong> Equilibrium along incline:<br>
+                $F\cos\theta = mg\sin\theta \Rightarrow F = mg\frac{\sin\theta}{\cos\theta} = mg\tan\theta$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Choosing $mg\sin\theta$ — this would be correct if the force were along the incline, but it's horizontal. Must decompose $F$ along and perpendicular to the incline.
+                <strong>Common mistake:</strong> Choosing $mg\sin\theta$ — that's the force needed if applied ALONG the incline. A horizontal force has a different component along the incline ($F\cos\theta$), so the required $F$ is larger.<br><br>
+                <strong>How to explain:</strong> "The force is horizontal, but the incline is tilted. Only the component of $F$ that is parallel to the incline surface does the job of preventing sliding. Since that component is $F\cos\theta$, you need $F = mg\sin\theta/\cos\theta = mg\tan\theta$."
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 8</span>
-                <span class="q-topic">Newton's Laws</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 8</span><span class="q-topic">Newton's Laws</span></div>
             <div class="correct-answer">Answer: (D) 60 N</div>
             <div class="solution">
-                For the 5 kg block not to slide, friction must provide its acceleration: $f_s = m_{top} \cdot a$<br>
-                Maximum static friction: $f_{s,max} = \mu_s m_{top} g = 0.4 \times 5 \times 10 = 20$ N<br>
-                Maximum acceleration: $a_{max} = f_{s,max}/m_{top} = 20/5 = 4$ m/s$^2$<br>
-                Both blocks must have this acceleration: $F = (m_{top} + m_{bottom}) \times a_{max} = 15 \times 4 = 60$ N
+                <strong>Key concept:</strong> Two-body problem — the friction between blocks must provide enough force to accelerate the top block along with the bottom block.<br><br>
+                <strong>Step 1:</strong> What keeps the top block from sliding? Static friction. Max friction = $\mu_s m_{top} g = 0.4 \times 5 \times 10 = 20$ N<br><br>
+                <strong>Step 2:</strong> This friction is the ONLY horizontal force on the top block, so it determines its max acceleration:<br>
+                $a_{max} = \frac{f_{s,max}}{m_{top}} = \frac{20}{5} = 4$ m/s$^2$<br><br>
+                <strong>Step 3:</strong> Both blocks must accelerate together at this rate. $F$ accelerates the entire system:<br>
+                $F = (m_{top} + m_{bottom}) \times a_{max} = 15 \times 4 = 60$ N
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Getting 20 N by computing $\mu mg$ for the top block only, forgetting that $F$ accelerates both blocks. Getting 40 N by applying friction force to just the bottom block mass.
+                <strong>Common mistake:</strong> Getting 20 N by thinking "the friction force is 20 N so $F = 20$ N." But $F$ must accelerate BOTH blocks (15 kg total), not just overcome friction. The 20 N friction only accelerates the 5 kg block.<br><br>
+                <strong>How to explain:</strong> "Think of it this way: friction is what drags the top block along. The maximum friction (20 N) can accelerate the 5 kg block at 4 m/s$^2$. Now, the whole 15 kg system must accelerate at that same rate, so $F = 15 \times 4 = 60$ N."
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 9</span>
-                <span class="q-topic">Newton's Laws</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 9</span><span class="q-topic">Newton's Laws</span></div>
             <div class="correct-answer">Answer: (D) $5Mg/4$</div>
             <div class="solution">
-                Newton's second law: $T - Mg = Ma$<br>
-                $T = M(g + a) = M(g + g/4) = 5Mg/4$
+                <strong>Key concept:</strong> Newton's second law for an elevator. The tension must support the weight AND provide the upward acceleration.<br><br>
+                <strong>Step 1:</strong> Draw FBD: tension $T$ (up), weight $Mg$ (down).<br><br>
+                <strong>Step 2:</strong> Apply Newton's second law (taking up as positive):<br>
+                $T - Mg = Ma$<br><br>
+                <strong>Step 3:</strong> Solve with $a = g/4$:<br>
+                $T = M(g + a) = M(g + g/4) = \frac{5Mg}{4}$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Getting $3Mg/4$ by writing $T = M(g-a)$ (sign error — this would be for downward acceleration). The tension must exceed $Mg$ for upward acceleration.
+                <strong>Common mistake:</strong> Getting $3Mg/4$ by writing $T = M(g - a)$. This sign error gives the tension for an elevator accelerating DOWNWARD. Quick check: if accelerating upward, you should feel heavier, so $T > Mg$. Since $5Mg/4 > Mg$, that's correct.<br><br>
+                <strong>How to explain:</strong> "Stand on a scale in an elevator going up — you feel heavier. The cable has to pull harder than your weight to accelerate you upward. $T = M(g + a)$ always. If going down, $T = M(g - a)$."
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 10</span>
-                <span class="q-topic">Newton's Laws</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 10</span><span class="q-topic">Newton's Laws</span></div>
             <div class="correct-answer">Answer: (B) $x = 0$ and $x = \pm\sqrt{k/b}$</div>
             <div class="solution">
-                Equilibrium: $F(x) = 0 \Rightarrow -kx + bx^3 = 0 \Rightarrow x(-k + bx^2) = 0$<br>
-                Solutions: $x = 0$ or $x^2 = k/b \Rightarrow x = \pm\sqrt{k/b}$
+                <strong>Key concept:</strong> Equilibrium occurs where the net force is zero. Factor carefully to find ALL solutions.<br><br>
+                <strong>Step 1:</strong> Set $F = 0$: $-kx + bx^3 = 0$<br><br>
+                <strong>Step 2:</strong> Factor out $x$: $x(-k + bx^2) = 0$<br><br>
+                <strong>Step 3:</strong> Two cases:<br>
+                &bull; $x = 0$ (one solution)<br>
+                &bull; $bx^2 = k \Rightarrow x = \pm\sqrt{k/b}$ (two more solutions)<br><br>
+                <strong>Stability note:</strong> $x = 0$ is stable (restoring force), while $x = \pm\sqrt{k/b}$ are unstable (force pushes away).
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Only finding $x = 0$ by dividing both sides by $x$ (losing solutions). Note: stability analysis shows $x = 0$ is stable, $x = \pm\sqrt{k/b}$ are unstable (check $dF/dx$).
+                <strong>Common mistake:</strong> Dividing both sides by $x$ early: $-k + bx^2 = 0 \Rightarrow x = \pm\sqrt{k/b}$ — this LOSES the $x = 0$ solution! Never divide by a variable that could be zero.<br><br>
+                <strong>How to explain:</strong> "When you have $x \cdot (\text{something}) = 0$, you get TWO cases: either $x = 0$ OR the something = 0. If you divide by $x$, you're assuming $x \neq 0$ and you lose a solution. Always factor first, never divide by a variable."
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 11</span>
-                <span class="q-topic">Newton's Laws</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 11</span><span class="q-topic">Newton's Laws</span></div>
             <div class="correct-answer">Answer: (B) $2\pi\sqrt{L\cos\theta/g}$</div>
             <div class="solution">
-                For conical pendulum, radius $r = L\sin\theta$.<br>
-                Vertical: $T\cos\theta = mg$<br>
-                Horizontal: $T\sin\theta = m\omega^2 r = m\omega^2 L\sin\theta$<br>
-                Dividing: $\cos\theta = g/(\omega^2 L) \Rightarrow \omega^2 = g/(L\cos\theta)$<br>
-                Period $= 2\pi/\omega = 2\pi\sqrt{L\cos\theta/g}$
+                <strong>Key concept:</strong> Conical pendulum — circular motion in the horizontal plane with gravity balanced by the vertical component of tension.<br><br>
+                <strong>Step 1:</strong> The bob moves in a circle of radius $r = L\sin\theta$.<br><br>
+                <strong>Step 2:</strong> Vertical equilibrium: $T\cos\theta = mg$<br>
+                <strong>Step 3:</strong> Horizontal (centripetal): $T\sin\theta = m\omega^2 r = m\omega^2 L\sin\theta$<br><br>
+                <strong>Step 4:</strong> Divide Step 3 by Step 2:<br>
+                $\frac{\sin\theta}{\cos\theta} = \frac{\omega^2 L\sin\theta}{g} \Rightarrow \frac{1}{\cos\theta} = \frac{\omega^2 L}{g}$<br>
+                $\omega^2 = \frac{g}{L\cos\theta} \Rightarrow T_{period} = \frac{2\pi}{\omega} = 2\pi\sqrt{\frac{L\cos\theta}{g}}$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Getting $2\pi\sqrt{L/g}$ by confusing with simple pendulum. The conical pendulum period depends on the angle.
+                <strong>Common mistake:</strong> Using $2\pi\sqrt{L/g}$ (simple pendulum formula). The conical pendulum is NOT the same as a simple pendulum — it moves in a circle, not back and forth. The $\cos\theta$ factor matters.<br><br>
+                <strong>How to explain:</strong> "A conical pendulum swings around in a circle like a tetherball. The vertical component of tension holds up the weight, while the horizontal component provides centripetal force. It's a circular motion problem, not a simple pendulum problem."
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 12</span>
-                <span class="q-topic">Newton's Laws</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 12</span><span class="q-topic">Newton's Laws</span></div>
             <div class="correct-answer">Answer: (B) $g(\sin\theta - \mu_k\cos\theta)$</div>
             <div class="solution">
-                Along incline (positive = down): $mg\sin\theta - f_k = ma$<br>
-                Normal: $N = mg\cos\theta$, so $f_k = \mu_k mg\cos\theta$<br>
+                <strong>Key concept:</strong> Block on a rough incline — decompose forces along and perpendicular to the surface.<br><br>
+                <strong>Step 1:</strong> Forces along incline (positive = down the slope):<br>
+                &bull; Gravity component down: $mg\sin\theta$<br>
+                &bull; Friction up (opposes motion): $f_k = \mu_k N$<br><br>
+                <strong>Step 2:</strong> Perpendicular to incline: $N = mg\cos\theta$<br><br>
+                <strong>Step 3:</strong> Newton's second law along incline:<br>
+                $ma = mg\sin\theta - \mu_k mg\cos\theta$<br>
                 $a = g(\sin\theta - \mu_k\cos\theta)$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Adding friction instead of subtracting (getting choice A) — friction opposes motion, which is down the incline, so friction acts up the incline.
+                <strong>Common mistake:</strong> Getting choice (A) $g(\sin\theta + \mu_k\cos\theta)$ by adding friction instead of subtracting. Friction OPPOSES motion — if the block slides down, friction acts UP the incline, so subtract it.<br><br>
+                <strong>How to explain:</strong> "Always ask: which way is the block moving? Then friction points the opposite way. Block slides down → friction points up the incline → subtract friction from the gravity component."
             </div>
         </div>
 
         <h3>Work, Energy & Power (Q13-18)</h3>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 13</span>
-                <span class="q-topic">Work & Energy</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 13</span><span class="q-topic">Work & Energy</span></div>
             <div class="correct-answer">Answer: (B) 18 J</div>
             <div class="solution">
-                $W = \int_1^3 (3x^2 - 2x)\,dx = [x^3 - x^2]_1^3 = (27-9) - (1-1) = 18 - 0 = 18$ J.
+                <strong>Key concept:</strong> Work by a variable force = integral of $F\,dx$ (cannot use $W = Fd$).<br><br>
+                <strong>Step 1:</strong> Set up the integral: $W = \int_1^3 (3x^2 - 2x)\,dx$<br><br>
+                <strong>Step 2:</strong> Find the antiderivative: $= \left[x^3 - x^2\right]_1^3$<br><br>
+                <strong>Step 3:</strong> Evaluate: $= (27 - 9) - (1 - 1) = 18 - 0 = 18$ J
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Evaluating $F(3) \times (3-1) = (27-6)(2) = 42$ — using the final force times displacement instead of integrating. Must use $W = \int F\,dx$ for variable forces.
+                <strong>Common mistake:</strong> Using $W = F \times d = F(3) \times 2 = 42$ J — this is wrong because the force varies with position. $W = Fd$ only works for constant forces. Variable forces require integration.<br><br>
+                <strong>How to explain:</strong> "When force changes as you move, you can't just multiply. Think of it like computing area under a curve — you need calculus. $W = \int F\,dx$ is the area under the force-position graph."
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 14</span>
-                <span class="q-topic">Work & Energy</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 14</span><span class="q-topic">Work & Energy</span></div>
             <div class="correct-answer">Answer: (C) $\sqrt{2g(h - \mu_k d)}$</div>
             <div class="solution">
-                Energy conservation with friction: $mgh = \frac{1}{2}mv^2 + \mu_k mg d$<br>
-                $v = \sqrt{2g(h - \mu_k d)}$<br>
-                This is equivalent to $\sqrt{2gh - 2\mu_k gd}$ which is choice (B) written differently — both are the same expression.
+                <strong>Key concept:</strong> Work-energy theorem with friction. Friction does negative work that removes energy from the system.<br><br>
+                <strong>Step 1:</strong> Initial energy (top of track): $E_i = mgh$ (all PE, starts from rest)<br><br>
+                <strong>Step 2:</strong> Energy lost to friction on horizontal section: $W_{friction} = \mu_k mg \cdot d$<br><br>
+                <strong>Step 3:</strong> Final KE after rough section: $\frac{1}{2}mv^2 = mgh - \mu_k mgd$<br><br>
+                <strong>Step 4:</strong> Solve: $v = \sqrt{2g(h - \mu_k d)}$<br><br>
+                Note: This equals $\sqrt{2gh - 2\mu_k gd}$ (choice B), which is algebraically identical.
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Forgetting the factor of 2 in front of $\mu_k gd$ (choice A), or squaring $d$ incorrectly (choice E). Also: choice (D) subtracts $\mu_k gd$ outside the square root — dimensionally wrong.
+                <strong>Common mistake:</strong> Choice (A) forgets the factor of 2 from $\frac{1}{2}mv^2$. Choice (D) subtracts $\mu_k gd$ outside the square root, which is dimensionally wrong (you'd be subtracting m/s from m$^2$/s$^2$).<br><br>
+                <strong>How to explain:</strong> "Friction steals energy. Start with $mgh$ of PE, subtract $\mu_k mgd$ of friction loss, what's left becomes KE. Then solve $\frac{1}{2}mv^2 = $ leftover energy for $v$."
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 15</span>
-                <span class="q-topic">Work & Energy</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 15</span><span class="q-topic">Work & Energy</span></div>
             <div class="correct-answer">Answer: (A) $x = 0$ only</div>
             <div class="solution">
-                Equilibrium: $F = -dU/dx = -(8x - 4x^3) = 0 \Rightarrow 4x(2-x^2)=0$<br>
-                Solutions: $x = 0, \pm\sqrt{2}$<br>
-                Stability check: $d^2U/dx^2 = 8 - 12x^2$.<br>
-                At $x=0$: $d^2U/dx^2 = 8 > 0$ → local minimum of $U$ → <strong>stable</strong>.<br>
-                At $x=\pm\sqrt{2}$: $d^2U/dx^2 = 8-24 = -16 < 0$ → local maximum of $U$ → <strong>unstable</strong>.<br>
-                Only $x=0$ is a position of stable equilibrium.
+                <strong>Key concept:</strong> Stable equilibrium = local MINIMUM of potential energy. Must check both $F = 0$ AND stability via second derivative.<br><br>
+                <strong>Step 1:</strong> Find equilibrium points ($F = 0$):<br>
+                $F = -\frac{dU}{dx} = -(8x - 4x^3) = 0 \Rightarrow 4x(2 - x^2) = 0$<br>
+                Solutions: $x = 0$ and $x = \pm\sqrt{2}$<br><br>
+                <strong>Step 2:</strong> Check stability using $\frac{d^2U}{dx^2}$:<br>
+                $\frac{d^2U}{dx^2} = 8 - 12x^2$<br>
+                &bull; At $x = 0$: $\frac{d^2U}{dx^2} = 8 > 0$ → concave up → local <strong>minimum</strong> → <strong>STABLE</strong><br>
+                &bull; At $x = \pm\sqrt{2}$: $\frac{d^2U}{dx^2} = 8 - 24 = -16 < 0$ → concave down → local <strong>maximum</strong> → <strong>UNSTABLE</strong><br><br>
+                Only $x = 0$ is stable equilibrium.
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Finding all equilibrium points ($x = 0, \pm\sqrt{2}$) and selecting (C) without checking stability. You must compute $d^2U/dx^2$ to determine which are stable (local minima of $U$) vs unstable (local maxima). This is a classic calculus trap on the AP exam.
+                <strong>Common mistake:</strong> Choosing (C) — finding all three equilibrium points but not checking which are stable. The question specifically asks for STABLE equilibrium. A ball at the top of a hill ($U$ maximum) is in equilibrium but will roll away if nudged — that's unstable.<br><br>
+                <strong>How to explain:</strong> "Think of a bowl vs a hilltop. A ball at the bottom of a bowl (U minimum) returns to the center if pushed — that's stable. A ball on a hilltop (U maximum) rolls away — that's unstable. The second derivative tells you which one you have: positive = bowl = stable."
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 16</span>
-                <span class="q-topic">Work & Energy</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 16</span><span class="q-topic">Work & Energy</span></div>
             <div class="correct-answer">Answer: (C) $kd^2/(2mg)$</div>
             <div class="solution">
-                Energy conservation: $\frac{1}{2}kd^2 = mgh$<br>
-                $h = kd^2/(2mg)$
+                <strong>Key concept:</strong> Spring PE converts entirely to gravitational PE at maximum height.<br><br>
+                <strong>Step 1:</strong> Spring PE when compressed: $U_{spring} = \frac{1}{2}kd^2$<br><br>
+                <strong>Step 2:</strong> At max height, all energy is gravitational PE: $U_{grav} = mgh$<br><br>
+                <strong>Step 3:</strong> Energy conservation: $\frac{1}{2}kd^2 = mgh \Rightarrow h = \frac{kd^2}{2mg}$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Forgetting the $1/2$ in spring PE (getting choice B: $kd^2/mg$), or using $kd$ instead of $kd^2$ (choice A). The spring stores energy as $\frac{1}{2}kx^2$, not $kx$.
+                <strong>Common mistake:</strong> Forgetting the $\frac{1}{2}$ in spring PE gives $h = kd^2/(mg)$ (choice B — off by a factor of 2). Or confusing $kd$ with $kd^2$ (choice A) — spring energy depends on displacement SQUARED.<br><br>
+                <strong>How to explain:</strong> "The spring formula is $\frac{1}{2}kx^2$ — two things to remember: the $\frac{1}{2}$ AND the $x$ is squared. Both are common exam traps."
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 17</span>
-                <span class="q-topic">Work & Energy</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 17</span><span class="q-topic">Work & Energy</span></div>
             <div class="correct-answer">Answer: (D) 6000 W</div>
             <div class="solution">
-                $P = Fv = mgv = 200 \times 10 \times 3 = 6000$ W<br>
-                (Using $g \approx 10$ m/s$^2$ as is standard for AP Physics)
+                <strong>Key concept:</strong> Power = force times velocity for constant speed. $P = Fv$.<br><br>
+                <strong>Step 1:</strong> At constant speed, the net force is zero. The motor force equals gravity: $F = mg$<br><br>
+                <strong>Step 2:</strong> Power: $P = Fv = mgv = 200 \times 10 \times 3 = 6000$ W<br><br>
+                (Using $g = 10$ m/s$^2$ as standard for AP Physics MC)
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Using $g = 9.8$ gives 5880 W (not a choice, so students should recognize $g = 10$ is expected). Getting 600 W by forgetting to multiply by $g$.
+                <strong>Common mistake:</strong> Getting 600 W by forgetting to multiply by $g$ (using $P = mv$ instead of $P = mgv$). Force is not mass — force is mass times $g$ when lifting against gravity.<br><br>
+                <strong>How to explain:</strong> "At constant speed, the motor has to push with exactly the weight of the crate ($mg$). Power is how fast you do work: $P = Fv$. So $P = mg \times v$."
             </div>
         </div>
 
         <div class="answer-card">
-            <div class="q-header">
-                <span class="q-num">Question 18</span>
-                <span class="q-topic">Work & Energy</span>
-            </div>
+            <div class="q-header"><span class="q-num">Question 18</span><span class="q-topic">Work & Energy</span></div>
             <div class="correct-answer">Answer: (B) $\sqrt{20}$ m/s</div>
             <div class="solution">
-                Work = area of triangle = $\frac{1}{2}(10)(4) = 20$ J<br>
-                Work-energy theorem: $W = \frac{1}{2}mv^2 - 0$<br>
-                $20 = \frac{1}{2}(2)v^2 \Rightarrow v^2 = 20 \Rightarrow v = \sqrt{20} = 2\sqrt{5}$ m/s<br>
-                Note: choices (B) and (C) are the same value written differently.
+                <strong>Key concept:</strong> Work = area under force-displacement graph. Then use work-energy theorem.<br><br>
+                <strong>Step 1:</strong> The graph is a triangle (F = 10 N at x = 0, linearly to F = 0 at x = 4 m):<br>
+                $W = \text{area} = \frac{1}{2} \times \text{base} \times \text{height} = \frac{1}{2}(4)(10) = 20$ J<br><br>
+                <strong>Step 2:</strong> Work-energy theorem (starts from rest):<br>
+                $W = \Delta KE = \frac{1}{2}mv^2 - 0$<br>
+                $20 = \frac{1}{2}(2)v^2 \Rightarrow v^2 = 20 \Rightarrow v = \sqrt{20} = 2\sqrt{5}$ m/s
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Using $F \times d = 10 \times 4 = 40$ J (rectangle instead of triangle). Must read the graph carefully — it's a triangle, so area = $\frac{1}{2}$ base $\times$ height.
+                <strong>Common mistake:</strong> Using $W = F \times d = 10 \times 4 = 40$ J (treating it as a rectangle instead of a triangle). The force is NOT constant — it decreases linearly. Must read the graph shape and compute the correct area.<br><br>
+                <strong>How to explain:</strong> "The work done by a variable force is the AREA under the F vs. x graph. A triangle has area = $\frac{1}{2}$ base $\times$ height. If you use the full rectangle, you're pretending the force never decreased — that gives double the correct work."
             </div>
         </div>
 
@@ -499,11 +527,13 @@
             <div class="correct-answer">Answer: (B) 1 m/s in the opposite direction</div>
             <div class="solution">
                 Elastic collision formulas:<br>
-                $v_1' = \frac{m_1 - m_2}{m_1 + m_2}v_1 = \frac{2-3}{5}(5) = -1$ m/s<br>
-                Negative means opposite direction. Speed = 1 m/s opposite to original.
+                <strong>Key concept:</strong> In elastic collisions, use the derived formula (saves time over solving two simultaneous equations).<br><br>
+                $v_1' = \frac{m_1 - m_2}{m_1 + m_2}v_1 = \frac{2-3}{5}(5) = \frac{-1}{5}(5) = -1$ m/s<br><br>
+                Negative means opposite direction. Speed = 1 m/s in the opposite direction.
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Using inelastic collision formula (just momentum conservation) gives $v = 2$ m/s for combined mass. Must use both momentum AND energy conservation for elastic collisions.
+                <strong>Common mistake:</strong> Using only momentum conservation gives $v_f = (2 \times 5)/(2+3) = 2$ m/s — but that's the perfectly INELASTIC result (objects stick together). Elastic collisions conserve both momentum AND kinetic energy.<br><br>
+                <strong>How to explain:</strong> "For elastic collisions, memorize this formula: $v_1' = \frac{m_1-m_2}{m_1+m_2}v_1$. Lighter ball bounces back (negative), heavier ball barely moves. If masses are equal, the first ball stops completely."
             </div>
         </div>
 
@@ -521,7 +551,8 @@
                 $p_3 = 3m \cdot v_3 = mv\sqrt{2} \Rightarrow v_3 = v\sqrt{2}/3$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Adding momenta algebraically ($2mv$) instead of vectorially. Since the pieces are perpendicular, use Pythagorean theorem.
+                <strong>Common mistake:</strong> Adding momenta algebraically ($2mv$) instead of vectorially. Since the pieces are perpendicular, use Pythagorean theorem: $\sqrt{(mv)^2 + (mv)^2} = mv\sqrt{2}$, NOT $mv + mv = 2mv$.<br><br>
+                <strong>How to explain:</strong> "Momentum is a vector! When two momenta are perpendicular, you can't just add them — use the Pythagorean theorem. It's like walking 3 blocks east and 4 blocks north: you're 5 blocks away, not 7."
             </div>
         </div>
 
@@ -537,7 +568,8 @@
                 Impulse $= |\Delta \vec{p}| = 2mv\cos\theta$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Getting $2mv$ by ignoring the angle. Or $2mv\sin\theta$ by confusing which component reverses. The angle is measured from the normal, so the perpendicular component is $v\cos\theta$.
+                <strong>Common mistake:</strong> Getting $2mv$ by ignoring the angle (that's only true for head-on collision, $\theta = 0$). Or $2mv\sin\theta$ by confusing which component reverses — since $\theta$ is from the NORMAL, the perpendicular component is $v\cos\theta$ (cos, not sin).<br><br>
+                <strong>How to explain:</strong> "Only the component hitting the wall head-on reverses. The component sliding along the wall doesn't change. Since the angle is from the normal (perpendicular to wall), the head-on component is $v\cos\theta$. It reverses: change = $2mv\cos\theta$."
             </div>
         </div>
 
@@ -552,7 +584,8 @@
                 With $M_f = M_0/2$: $\Delta v = v_e \ln(M_0/(M_0/2)) = v_e \ln 2$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Writing $v_e \times (M_0 - M_f)/M_0 = v_e/2$ (linearizing instead of using the logarithmic relationship). The rocket equation involves a logarithm because the mass changes continuously.
+                <strong>Common mistake:</strong> Writing $v_e \times (M_0 - M_f)/M_0 = v_e/2$ — this linear approximation is wrong because as the rocket gets lighter, each bit of expelled fuel gives MORE acceleration. The logarithm captures this cumulative effect.<br><br>
+                <strong>How to explain:</strong> "The rocket equation $\Delta v = v_e \ln(M_0/M_f)$ is one of the few formulas worth memorizing. The $\ln$ appears because the thrust is constant but the mass keeps decreasing, so the acceleration increases over time. You integrate $F/m(t)$ and that integral gives you a logarithm."
             </div>
         </div>
 
@@ -582,7 +615,8 @@
                 $1(10) + 2(4) = 3v_f \Rightarrow v_f = 18/3 = 6$ m/s
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Averaging speeds $(10+4)/2 = 7$ (ignoring unequal masses). Must weight by mass.
+                <strong>Common mistake:</strong> Averaging speeds: $(10+4)/2 = 7$ m/s. This only works if masses are equal. With unequal masses, you must weight by mass: $v_f = (m_1 v_1 + m_2 v_2)/(m_1 + m_2)$.<br><br>
+                <strong>How to explain:</strong> "Perfectly inelastic means they stick together. Just conserve momentum: total momentum before = total momentum after. $p_{before} = 1(10) + 2(4) = 18$. Total mass after = 3 kg. So $v = 18/3 = 6$ m/s."
             </div>
         </div>
 
@@ -595,12 +629,14 @@
             </div>
             <div class="correct-answer">Answer: (C) $(2/3)g\sin\theta$</div>
             <div class="solution">
-                For rolling without slipping: $a = \frac{g\sin\theta}{1 + I/(MR^2)}$<br>
-                Solid disk: $I = \frac{1}{2}MR^2$, so $I/(MR^2) = 1/2$<br>
-                $a = \frac{g\sin\theta}{1 + 1/2} = \frac{2}{3}g\sin\theta$
+                <strong>Key concept:</strong> Rolling without slipping — energy goes into BOTH translation and rotation, so the acceleration is reduced.<br><br>
+                <strong>The master formula:</strong> $a = \frac{g\sin\theta}{1 + I/(MR^2)}$<br><br>
+                For a solid disk: $I = \frac{1}{2}MR^2$, so $I/(MR^2) = 1/2$<br>
+                $a = \frac{g\sin\theta}{1 + 1/2} = \frac{g\sin\theta}{3/2} = \frac{2}{3}g\sin\theta$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Getting $g\sin\theta$ by ignoring rotational inertia (treating it as sliding). Getting $(5/7)g\sin\theta$ by using the moment of inertia for a solid sphere instead of a disk.
+                <strong>Common mistake:</strong> Using $g\sin\theta$ (that's for sliding without friction — no rotation). Or using the wrong moment of inertia: disk = $\frac{1}{2}MR^2$, sphere = $\frac{2}{5}MR^2$, shell = $\frac{2}{3}MR^2$, hoop = $MR^2$.<br><br>
+                <strong>How to explain:</strong> "When something rolls, gravity has to spin it AND slide it. That 'tax' for spinning slows it down. The more rotational inertia, the more tax, the slower it rolls. Memorize: $a = g\sin\theta / (1 + I/(MR^2))$ — it works for any shape."
             </div>
         </div>
 
@@ -651,7 +687,8 @@
                 $KE_f = \frac{1}{2}(I/3)(3\omega_0)^2 = \frac{1}{2}(I/3)(9\omega_0^2) = \frac{3}{2}I\omega_0^2 = 3 \times KE_i$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Thinking energy is conserved (choice A). The skater does internal work by pulling arms in. Or getting factor of 9 by only tracking $\omega$ increase without accounting for reduced $I$.
+                <strong>Common mistake:</strong> Thinking energy is conserved (choice A) — the skater's muscles do internal work! Or getting factor of 9 by computing $\omega_f^2/\omega_0^2 = 9$ but forgetting that $I$ also changed (by factor $1/3$), so the net KE change is $9 \times 1/3 = 3$.<br><br>
+                <strong>How to explain:</strong> "Angular momentum is conserved (no external torque), but energy is NOT — the skater does work with her muscles. $L = I\omega$ stays constant, so if $I$ drops by 3, $\omega$ triples. KE = $\frac{1}{2}I\omega^2 = L^2/(2I)$. Since $I$ drops by 3, KE increases by 3."
             </div>
         </div>
 
@@ -668,7 +705,8 @@
                 Fraction lost $= (KE_i - KE_f)/KE_i = 1 - 1/2 = 1/2$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Thinking no energy is lost because angular momentum is conserved. Angular momentum conservation does NOT imply energy conservation when internal friction does work.
+                <strong>Common mistake:</strong> Thinking no energy is lost because angular momentum is conserved. Conservation of $L$ does NOT mean conservation of $KE$! The friction between the disks converts kinetic energy to heat.<br><br>
+                <strong>How to explain:</strong> "This is like an inelastic collision but for rotation. Angular momentum is conserved (like linear momentum in collisions), but kinetic energy is lost to friction between the disks. $KE_f/KE_i = I/(2I) \times (\omega/2)^2/(\omega^2) = 1/2$. So half the energy is lost."
             </div>
         </div>
 
@@ -682,7 +720,8 @@
                 $\omega = \frac{1}{I}\int_0^\infty \tau_0 e^{-t/T}\,dt = \frac{\tau_0}{I}[-T e^{-t/T}]_0^\infty = \frac{\tau_0}{I}(0-(-T)) = \frac{\tau_0 T}{I}$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Forgetting the $T$ factor from integrating the exponential. $\int e^{-t/T}dt = -Te^{-t/T}$, not just $-e^{-t/T}$. This is a calculus trap — must know how to integrate exponentials.
+                <strong>Common mistake:</strong> Forgetting the factor of $T$ from the chain rule. $\int e^{-t/T}dt = -Te^{-t/T}$, NOT $-e^{-t/T}$. The inner derivative $(-1/T)$ creates a factor of $T$ in the result.<br><br>
+                <strong>How to explain:</strong> "This is a pure calculus question in a physics disguise. $\omega = \frac{1}{I}\int_0^\infty \tau_0 e^{-t/T}dt$. To integrate $e^{-t/T}$, use substitution: let $u = -t/T$, $du = -dt/T$, so $dt = -T\,du$. The integral becomes $-T[e^{-t/T}]_0^\infty = -T(0-1) = T$. Final answer: $\tau_0 T/I$."
             </div>
         </div>
 
@@ -701,7 +740,8 @@
                 $v = \sqrt{3kA^2/(4m)} = \frac{A}{2}\sqrt{3k/m}$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Using $v = \omega A$ (max speed) at all positions. Or getting $\sqrt{kA^2/(4m)}$ by subtracting wrong term. Remember: $v = \omega\sqrt{A^2 - x^2}$.
+                <strong>Common mistake:</strong> Using $v = \omega A$ everywhere — that's the MAX speed (at $x = 0$ only). At other positions, use $v = \omega\sqrt{A^2 - x^2}$.<br><br>
+                <strong>How to explain:</strong> "In SHM, total energy = $\frac{1}{2}kA^2$ is shared between PE ($\frac{1}{2}kx^2$) and KE ($\frac{1}{2}mv^2$). At $x = A/2$: PE uses $1/4$ of total energy (since $(A/2)^2 = A^2/4$), leaving $3/4$ for KE. So $v^2 = \frac{3kA^2}{4m}$."
             </div>
         </div>
 
@@ -716,7 +756,8 @@
                 $T' = 2\pi\sqrt{L/g'} = 2\pi\sqrt{2L/g} = T\sqrt{2}$
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Thinking twice the mass means twice the gravity (forgetting radius is also doubled and appears squared). Or getting $T/\sqrt{2}$ by inverting the ratio.
+                <strong>Common mistake:</strong> Thinking "double mass = double gravity" — this ignores that radius is also doubled and appears SQUARED in the denominator. $g = GM/R^2$, so doubling both $M$ and $R$: $g' = G(2M)/(2R)^2 = 2GM/(4R^2) = g/2$. Gravity is actually HALVED!<br><br>
+                <strong>How to explain:</strong> "Surface gravity depends on $M/R^2$. If you double both M and R: the numerator doubles but the denominator quadruples (since $R$ is squared). Net effect: gravity is halved. With half the gravity, the pendulum swings slower by factor $\sqrt{2}$."
             </div>
         </div>
 
@@ -732,7 +773,8 @@
                 The satellite reaches exactly escape velocity and will escape to infinity.
             </div>
             <div class="common-mistake">
-                <strong>Common mistake:</strong> Thinking $\sqrt{2}$ times the speed means a circular orbit of twice the radius (confusing $v \propto 1/\sqrt{r}$ with escape). This is exactly the escape condition.
+                <strong>Common mistake:</strong> Thinking a larger speed means a bigger circular orbit. Increasing speed by $\sqrt{2}$ is the EXACT factor needed to escape — this is a key relationship to know.<br><br>
+                <strong>How to explain:</strong> "There's a beautiful relationship: escape speed = orbital speed $\times \sqrt{2}$. So if you multiply an orbiting satellite's speed by $\sqrt{2}$, it has EXACTLY enough energy to escape to infinity. This comes from $v_{escape} = \sqrt{2GM/r}$ vs $v_{orbit} = \sqrt{GM/r}$."
             </div>
         </div>
 
