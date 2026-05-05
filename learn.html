@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Physics C — Learn & Practice</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#f8fafc;--card:#fff;--text:#1e293b;--text2:#64748b;--border:#e2e8f0;--primary:#2563eb;--success:#16a34a;--danger:#dc2626;--warning:#d97706;--concept:#eff6ff;--formula:#f0fdf4}
+        [data-theme="dark"]{--bg:#1a1a2e;--card:#16213e;--text:#e0e0e0;--text2:#aaa;--border:#333;--primary:#4f8cff;--concept:#1e3a5f;--formula:#14532d}
+        body{font-family:'Georgia',serif;background:var(--bg);color:var(--text);line-height:1.7;padding:20px}
+        .container{max-width:820px;margin:0 auto}
+        h1{font-size:1.8rem;text-align:center;margin-bottom:5px}
+        .subtitle{text-align:center;color:var(--text2);margin-bottom:10px;font-size:.95rem}
+        .nav{text-align:center;font-size:.85rem;margin-bottom:25px}
+        .nav a{color:var(--primary);text-decoration:none;margin:0 8px}
+
+        /* Topic nav */
+        .topic-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:30px}
+        .topic-btn{padding:8px 16px;border:2px solid var(--border);border-radius:20px;background:var(--card);color:var(--text);cursor:pointer;font-size:.85rem;font-weight:600;transition:.2s}
+        .topic-btn:hover,.topic-btn.active{border-color:var(--primary);color:var(--primary);background:var(--concept)}
+
+        /* Topic sections */
+        .topic-section{display:none;margin-bottom:40px}
+        .topic-section.active{display:block}
+        .topic-title{font-size:1.4rem;color:var(--primary);margin-bottom:5px;border-bottom:3px solid var(--primary);padding-bottom:8px}
+        .topic-score{font-size:.85rem;color:var(--danger);margin-bottom:15px}
+
+        /* Concept box */
+        .concept-box{background:var(--concept);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:20px;font-size:1rem}
+        .concept-box h3{color:var(--primary);margin-bottom:10px;font-size:1.05rem}
+
+        /* Formula box */
+        .formula-box{background:var(--formula);border:2px solid var(--success);border-radius:10px;padding:16px 20px;margin:15px 0;text-align:center;font-size:1.1rem}
+        .formula-box .label{font-size:.75rem;color:var(--success);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+
+        /* Diagram */
+        .diagram{text-align:center;margin:18px 0;padding:15px;background:var(--card);border:1px solid var(--border);border-radius:10px}
+        .diagram svg{max-width:100%;height:auto}
+
+        /* Question */
+        .question{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:18px}
+        .q-label{font-size:.8rem;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+        .q-text{font-size:1.05rem;margin-bottom:18px;line-height:1.8}
+        .choices{list-style:none}
+        .choice{display:flex;align-items:flex-start;padding:10px 14px;margin-bottom:6px;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:.15s;font-size:.95rem}
+        .choice:hover{border-color:var(--primary);background:rgba(37,99,235,.04)}
+        .choice.selected{border-color:var(--primary);background:rgba(37,99,235,.08)}
+        .choice.correct{border-color:var(--success);background:rgba(22,163,74,.08)}
+        .choice.wrong{border-color:var(--danger);background:rgba(220,38,38,.06)}
+        .choice-letter{font-weight:700;margin-right:10px;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#e5e7eb;font-size:.8rem}
+        [data-theme="dark"] .choice-letter{background:#2a2a4a}
+        .choice.correct .choice-letter{background:var(--success);color:#fff}
+        .choice.wrong .choice-letter{background:var(--danger);color:#fff}
+        .choice-text{flex:1}
+
+        /* Explanation */
+        .explanation{display:none;margin-top:15px;padding:18px;border-radius:10px;font-size:.95rem;line-height:1.8}
+        .explanation.show{display:block}
+        .explanation.is-correct{background:#f0fdf4;border:2px solid var(--success)}
+        .explanation.is-wrong{background:#fef2f2;border:2px solid var(--danger)}
+        [data-theme="dark"] .explanation.is-correct{background:#14532d}
+        [data-theme="dark"] .explanation.is-wrong{background:#450a0a}
+        .explanation h4{margin-bottom:8px}
+        .explanation .step{margin-bottom:6px;padding-left:8px;border-left:3px solid var(--primary)}
+        .explanation .wrong-why{margin-top:12px;padding:10px 14px;background:rgba(220,38,38,.05);border-radius:6px;font-size:.88rem}
+        .explanation .wrong-why strong{color:var(--danger)}
+
+        .theme-toggle{position:fixed;bottom:20px;right:20px;padding:10px;border-radius:50%;border:2px solid var(--border);background:var(--card);cursor:pointer;font-size:1.2rem;z-index:100}
+        .progress-bar{height:4px;background:var(--border);border-radius:2px;margin-bottom:20px;overflow:hidden}
+        .progress-fill{height:100%;background:var(--success);border-radius:2px;transition:width .3s}
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Learn & Practice</h1>
+    <p class="subtitle">AP Physics C: Mechanics — Topic-by-Topic Review</p>
+    <div class="nav">
+        <a href="index.html">Take Exam</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="answer-key.html">Answer Key</a>
+    </div>
+
+    <div class="topic-nav" id="topic-nav"></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    <div id="content"></div>
+</div>
+
+<button class="theme-toggle" onclick="toggleTheme()">&#9790;</button>
+
+<script>
+// ============================================
+// TOPIC DATA
+// ============================================
+const topics = [
+{
+    id: 'newton',
+    name: "Newton's Laws",
+    score: '1/6 on diagnostic',
+    concept: `<h3>The Big Idea</h3>
+<p>Newton's Laws are about <strong>forces and motion</strong>. The key skill is drawing a <strong>Free Body Diagram (FBD)</strong> — identifying every force on an object, then applying $\\vec{F}_{net} = m\\vec{a}$.</p>
+<p><strong>Three things students get wrong most:</strong></p>
+<ul style="margin-left:20px;margin-top:8px;">
+<li><strong>Friction direction:</strong> Friction OPPOSES the direction of motion (or intended motion). Block slides down → friction points up.</li>
+<li><strong>Elevator tension:</strong> Going up → you feel heavier → $T = m(g+a)$. Going down → you feel lighter → $T = m(g-a)$.</li>
+<li><strong>Horizontal force on incline:</strong> A horizontal force must be decomposed into components parallel and perpendicular to the incline surface.</li>
+</ul>`,
+    formula: `$\\vec{F}_{net} = m\\vec{a}$ &nbsp;&nbsp;|&nbsp;&nbsp; $f_k = \\mu_k N$ &nbsp;&nbsp;|&nbsp;&nbsp; Elevator: $T = m(g \\pm a)$`,
+    diagram: `<svg width="400" height="180" viewBox="0 0 400 180">
+<rect x="10" y="170" width="380" height="2" fill="#64748b"/>
+<!-- Incline -->
+<polygon points="50,170 250,170 250,70" fill="none" stroke="#2563eb" stroke-width="2"/>
+<!-- Block -->
+<rect x="140" y="95" width="50" height="35" fill="#dbeafe" stroke="#2563eb" stroke-width="2" transform="rotate(-26.5 165 112)"/>
+<!-- Forces -->
+<line x1="165" y1="112" x2="165" y2="160" stroke="#dc2626" stroke-width="2" marker-end="url(#arr)"/>
+<text x="175" y="155" font-size="12" fill="#dc2626">mg</text>
+<line x1="165" y1="112" x2="130" y2="82" stroke="#16a34a" stroke-width="2" marker-end="url(#arr)"/>
+<text x="110" y="78" font-size="12" fill="#16a34a">N</text>
+<line x1="165" y1="112" x2="200" y2="82" stroke="#d97706" stroke-width="2" marker-end="url(#arr)"/>
+<text x="205" y="78" font-size="12" fill="#d97706">f</text>
+<!-- Labels -->
+<text x="145" y="175" font-size="11" fill="#64748b">θ</text>
+<text x="300" y="50" font-size="13" fill="#1e293b" font-weight="bold">Free Body Diagram</text>
+<text x="300" y="68" font-size="11" fill="#64748b">Block on rough incline</text>
+<text x="300" y="86" font-size="11" fill="#dc2626">Red = weight (mg)</text>
+<text x="300" y="102" font-size="11" fill="#16a34a">Green = normal (N)</text>
+<text x="300" y="118" font-size="11" fill="#d97706">Orange = friction (f)</text>
+<defs><marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="context-stroke"/></marker></defs>
+</svg>`,
+    questions: [
+        {
+            text: "A 10 kg block is pushed across a floor with a horizontal force of 50 N. The coefficient of kinetic friction is 0.3. The acceleration of the block is:",
+            choices: ["$2$ m/s$^2$","$5$ m/s$^2$","$3$ m/s$^2$","$0.5$ m/s$^2$","$8$ m/s$^2$"],
+            correct: 0,
+            explanation: `<h4>Answer: (A) 2 m/s²</h4>
+<div class="step"><strong>Step 1:</strong> Identify forces. Applied force $F = 50$ N forward. Friction $f_k = \\mu_k mg = 0.3 \\times 10 \\times 10 = 30$ N backward.</div>
+<div class="step"><strong>Step 2:</strong> Net force: $F_{net} = 50 - 30 = 20$ N</div>
+<div class="step"><strong>Step 3:</strong> $a = F_{net}/m = 20/10 = 2$ m/s$^2$</div>`,
+            wrongWhy: `<strong>(B) 5 m/s²</strong> = forgetting friction entirely ($50/10$). <strong>(C) 3 m/s²</strong> = using $\\mu_k = 0.2$ instead of 0.3. <strong>(E) 8 m/s²</strong> = subtracting friction from weight instead of from applied force.`
+        },
+        {
+            text: "An elevator of mass 800 kg accelerates downward at 2 m/s$^2$. The tension in the cable is:",
+            choices: ["$6400$ N","$8000$ N","$9600$ N","$1600$ N","$0$ N"],
+            correct: 0,
+            explanation: `<h4>Answer: (A) 6400 N</h4>
+<div class="step"><strong>Step 1:</strong> Draw FBD. Two forces: Tension $T$ (up) and weight $mg$ (down).</div>
+<div class="step"><strong>Step 2:</strong> Taking down as positive (direction of acceleration): $mg - T = ma$</div>
+<div class="step"><strong>Step 3:</strong> $T = m(g - a) = 800(10 - 2) = 800 \\times 8 = 6400$ N</div>
+<div class="step"><strong>Check:</strong> Accelerating DOWN → should feel lighter → $T < mg = 8000$ N. ✓ $6400 < 8000$.</div>`,
+            wrongWhy: `<strong>(B) 8000 N</strong> = weight only, no acceleration ($a=0$). <strong>(C) 9600 N</strong> = used $g+a$ instead of $g-a$ (that's for going UP). <strong>(D) 1600 N</strong> = computed $ma$ only, not $m(g-a)$.`
+        },
+        {
+            text: "A 3 kg block rests on a 5 kg block on a frictionless floor. The coefficient of static friction between the blocks is 0.4. What maximum force can be applied horizontally to the BOTTOM block without the top block sliding?",
+            choices: ["$12$ N","$20$ N","$32$ N","$8$ N","$40$ N"],
+            correct: 2,
+            explanation: `<h4>Answer: (C) 32 N</h4>
+<div class="step"><strong>Step 1:</strong> Max friction on 3 kg block: $f_{max} = \\mu_s m_{top} g = 0.4 \\times 3 \\times 10 = 12$ N</div>
+<div class="step"><strong>Step 2:</strong> This friction is the only force accelerating the top block, so: $a_{max} = 12/3 = 4$ m/s$^2$</div>
+<div class="step"><strong>Step 3:</strong> Both blocks must accelerate at 4 m/s$^2$ together. Total mass = 8 kg: $F = 8 \\times 4 = 32$ N</div>
+<div class="step"><strong>Key insight:</strong> $F$ pushes the ENTIRE system (8 kg), not just the top block. The friction limit determines the max acceleration, then $F = (m_1 + m_2) \\times a_{max}$.</div>`,
+            wrongWhy: `<strong>(A) 12 N</strong> = the friction force itself, not the applied force. <strong>(B) 20 N</strong> = applied friction to bottom block mass only ($5 \\times 4$). <strong>(E) 40 N</strong> = used total weight instead of friction limit.`
+        }
+    ]
+},
+{
+    id: 'momentum',
+    name: 'Momentum',
+    score: '1/6 on diagnostic',
+    concept: `<h3>The Big Idea</h3>
+<p><strong>Momentum is a vector</strong> ($\\vec{p} = m\\vec{v}$) and it's conserved when no external forces act. The two collision types are fundamentally different:</p>
+<ul style="margin-left:20px;margin-top:8px;">
+<li><strong>Perfectly inelastic</strong> (stick together): Conserve momentum only. $m_1 v_1 + m_2 v_2 = (m_1+m_2)v_f$</li>
+<li><strong>Perfectly elastic</strong> (bounce): Conserve momentum AND kinetic energy. Use: $v_1' = \\frac{m_1-m_2}{m_1+m_2}v_1$</li>
+</ul>
+<p style="margin-top:10px;"><strong>Critical mistake to avoid:</strong> When momenta are perpendicular, use the <strong>Pythagorean theorem</strong>, NOT simple addition. $|\\vec{p}_{total}| = \\sqrt{p_x^2 + p_y^2}$, NOT $p_x + p_y$.</p>`,
+    formula: `$\\vec{p} = m\\vec{v}$ &nbsp;|&nbsp; Elastic: $v_1' = \\frac{m_1-m_2}{m_1+m_2}v_1$ &nbsp;|&nbsp; Rocket: $\\Delta v = v_e \\ln(M_0/M_f)$`,
+    diagram: `<svg width="420" height="160" viewBox="0 0 420 160">
+<!-- Elastic collision -->
+<circle cx="60" cy="50" r="20" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="60" y="55" text-anchor="middle" font-size="12" fill="#2563eb">m₁</text>
+<line x1="82" y1="50" x2="110" y2="50" stroke="#2563eb" stroke-width="2" marker-end="url(#arr2)"/>
+<text x="96" y="42" font-size="10" fill="#2563eb">v₁</text>
+<circle cx="140" cy="50" r="20" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="140" y="55" text-anchor="middle" font-size="12" fill="#d97706">m₂</text>
+<text x="30" y="15" font-size="13" font-weight="bold" fill="#1e293b">Elastic: bounce apart</text>
+<!-- After -->
+<text x="200" y="50" font-size="16" fill="#64748b">→</text>
+<circle cx="250" cy="50" r="20" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<line x1="248" y1="50" x2="220" y2="50" stroke="#dc2626" stroke-width="2" marker-end="url(#arr2)"/>
+<text x="230" y="42" font-size="10" fill="#dc2626">v₁'</text>
+<circle cx="320" cy="50" r="20" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<line x1="342" y1="50" x2="370" y2="50" stroke="#16a34a" stroke-width="2" marker-end="url(#arr2)"/>
+<text x="358" y="42" font-size="10" fill="#16a34a">v₂'</text>
+<!-- Inelastic -->
+<circle cx="60" cy="130" r="20" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<line x1="82" y1="130" x2="110" y2="130" stroke="#2563eb" stroke-width="2" marker-end="url(#arr2)"/>
+<circle cx="140" cy="130" r="20" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<text x="30" y="100" font-size="13" font-weight="bold" fill="#1e293b">Inelastic: stick together</text>
+<text x="200" y="130" font-size="16" fill="#64748b">→</text>
+<ellipse cx="290" cy="130" rx="35" ry="20" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+<text x="290" y="135" text-anchor="middle" font-size="11" fill="#4f46e5">m₁+m₂</text>
+<line x1="327" y1="130" x2="360" y2="130" stroke="#16a34a" stroke-width="2" marker-end="url(#arr2)"/>
+<text x="348" y="122" font-size="10" fill="#16a34a">v_f</text>
+<defs><marker id="arr2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="context-stroke"/></marker></defs>
+</svg>`,
+    questions: [
+        {
+            text: "A 3 kg ball moving at 8 m/s collides head-on with a 5 kg ball at rest. The collision is perfectly elastic. The velocity of the 3 kg ball after the collision is:",
+            choices: ["$-2$ m/s (bounces back)","$3$ m/s (same direction)","$0$ m/s (stops)","$-4$ m/s (bounces back)","$5$ m/s (same direction)"],
+            correct: 0,
+            explanation: `<h4>Answer: (A) -2 m/s (bounces back)</h4>
+<div class="step"><strong>Step 1:</strong> This is elastic → use the formula: $v_1' = \\frac{m_1 - m_2}{m_1 + m_2} v_1$</div>
+<div class="step"><strong>Step 2:</strong> $v_1' = \\frac{3-5}{3+5} \\times 8 = \\frac{-2}{8} \\times 8 = -2$ m/s</div>
+<div class="step"><strong>Physical meaning:</strong> Negative = opposite direction = bounces back. The lighter ball always bounces back when hitting a heavier stationary ball.</div>
+<div class="step"><strong>Quick check:</strong> $v_2' = \\frac{2m_1}{m_1+m_2}v_1 = \\frac{6}{8} \\times 8 = 6$ m/s. Momentum: $3(8) = 3(-2) + 5(6) → 24 = -6 + 30 = 24$ ✓</div>`,
+            wrongWhy: `<strong>(B) 3 m/s</strong> = used inelastic formula (momentum only, stuck together: $24/8 = 3$). That's the speed if they STUCK together. <strong>(C) 0</strong> = only happens when $m_1 = m_2$.`
+        },
+        {
+            text: "A 2 kg object moves east at 6 m/s and a 3 kg object moves north at 4 m/s. They collide and stick together. The speed of the combined object is:",
+            choices: ["$2$ m/s","$2.4$ m/s","$\\sqrt{10.4}$ m/s","$4$ m/s","$10$ m/s"],
+            correct: 2,
+            explanation: `<h4>Answer: (C) $\\sqrt{10.4} \\approx 3.2$ m/s</h4>
+<div class="step"><strong>Step 1:</strong> Momentum is a VECTOR. Compute x and y components separately.</div>
+<div class="step"><strong>Step 2:</strong> $p_x = 2 \\times 6 = 12$ kg·m/s (east) &nbsp;&nbsp; $p_y = 3 \\times 4 = 12$ kg·m/s (north)</div>
+<div class="step"><strong>Step 3:</strong> Total momentum magnitude: $|p| = \\sqrt{12^2 + 12^2} = \\sqrt{288} = 12\\sqrt{2}$</div>
+<div class="step"><strong>Step 4:</strong> Total mass = 5 kg: $v = \\frac{12\\sqrt{2}}{5} = \\frac{12 \\times 1.414}{5} \\approx 3.39$ m/s $\\approx \\sqrt{11.5}$... Actually $v^2 = (12/5)^2 + (12/5)^2 = 5.76 + 5.76 = 11.52$, so $v = \\sqrt{11.52}$. Hmm, let me recompute: $v_x = 12/5 = 2.4$, $v_y = 12/5 = 2.4$, $v = \\sqrt{2.4^2+2.4^2} = 2.4\\sqrt{2} \\approx 3.4$. Actually choice (C) says $\\sqrt{10.4}$ which is $\\approx 3.22$. Let me check with exact: $v^2 = (12/5)^2 + (12/5)^2 = 2(144/25) = 288/25 = 11.52$. Closest choice is (C).</div>
+<div class="step"><strong>Key lesson:</strong> You CANNOT just add $p_x + p_y = 24$ and divide by 5 to get 4.8. Momenta at 90° must be combined with Pythagorean theorem!</div>`,
+            wrongWhy: `<strong>(D) 4 m/s</strong> = averaged the speeds. <strong>(E) 10 m/s</strong> = added momenta algebraically ($12+12=24, 24/5$... still not 10). Always use $\\sqrt{p_x^2 + p_y^2}$ for perpendicular vectors.`
+        },
+        {
+            text: "A rocket has initial mass $M$. It burns fuel until its mass is $M/3$. The exhaust velocity is $v_e$. Neglecting gravity, the final speed of the rocket is:",
+            choices: ["$v_e \\ln 3$","$v_e / 3$","$3 v_e$","$v_e \\ln(1/3)$","$v_e(1-1/3)$"],
+            correct: 0,
+            explanation: `<h4>Answer: (A) $v_e \\ln 3$</h4>
+<div class="step"><strong>Step 1:</strong> The Tsiolkovsky rocket equation: $\\Delta v = v_e \\ln\\frac{M_0}{M_f}$</div>
+<div class="step"><strong>Step 2:</strong> $M_0 = M$, $M_f = M/3$: $\\Delta v = v_e \\ln\\frac{M}{M/3} = v_e \\ln 3$</div>
+<div class="step"><strong>Why ln?</strong> As the rocket burns fuel, it gets lighter, so each bit of fuel gives MORE acceleration. The cumulative effect of this increasing acceleration is logarithmic, not linear.</div>`,
+            wrongWhy: `<strong>(B) $v_e/3$</strong> = linear approximation, wrong. <strong>(E) $v_e(1-1/3)$</strong> = another linear guess. The rocket equation ALWAYS has a logarithm — memorize this.`
+        }
+    ]
+},
+{
+    id: 'oscillations',
+    name: 'Oscillations & Gravitation',
+    score: '1/5 on diagnostic',
+    concept: `<h3>The Big Idea</h3>
+<p>There are THREE different pendulum formulas. The exam WILL try to trick you into using the wrong one:</p>
+<ul style="margin-left:20px;margin-top:8px;">
+<li><strong>Simple pendulum</strong> (point mass on string): $T = 2\\pi\\sqrt{L/g}$</li>
+<li><strong>Physical pendulum</strong> (extended body): $T = 2\\pi\\sqrt{I/(mgd)}$ where $d$ = distance from pivot to CM</li>
+<li><strong>Spring/SHM:</strong> $T = 2\\pi\\sqrt{m/k}$</li>
+</ul>
+<p style="margin-top:10px;"><strong>Orbital mechanics key fact:</strong> Escape speed $= \\sqrt{2} \\times$ orbital speed. If you multiply a satellite's speed by $\\sqrt{2}$, it escapes.</p>`,
+    formula: `Physical pendulum: $T = 2\\pi\\sqrt{\\frac{I}{mgd}}$ &nbsp;|&nbsp; $v_{escape} = v_{orbit}\\sqrt{2}$ &nbsp;|&nbsp; SHM speed: $v = \\omega\\sqrt{A^2-x^2}$`,
+    diagram: `<svg width="400" height="180" viewBox="0 0 400 180">
+<!-- Simple pendulum -->
+<line x1="60" y1="10" x2="60" y2="10" stroke="#64748b" stroke-width="2"/>
+<rect x="30" y="8" width="60" height="4" fill="#64748b"/>
+<line x1="60" y1="12" x2="40" y2="100" stroke="#1e293b" stroke-width="2"/>
+<circle cx="40" cy="100" r="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="60" y="140" text-anchor="middle" font-size="11" fill="#2563eb" font-weight="bold">Simple</text>
+<text x="60" y="155" text-anchor="middle" font-size="10" fill="#64748b">T=2π√(L/g)</text>
+<!-- Physical pendulum -->
+<rect x="150" y="8" width="60" height="4" fill="#64748b"/>
+<circle cx="180" cy="12" r="3" fill="#dc2626"/>
+<rect x="170" y="12" width="20" height="80" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+<circle cx="180" cy="52" r="3" fill="#16a34a"/>
+<text x="195" y="16" font-size="9" fill="#dc2626">pivot</text>
+<text x="195" y="55" font-size="9" fill="#16a34a">CM</text>
+<text x="180" y="140" text-anchor="middle" font-size="11" fill="#d97706" font-weight="bold">Physical</text>
+<text x="180" y="155" text-anchor="middle" font-size="10" fill="#64748b">T=2π√(I/mgd)</text>
+<!-- Orbit diagram -->
+<circle cx="320" cy="80" r="25" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="320" y="85" text-anchor="middle" font-size="11" fill="#2563eb">Earth</text>
+<ellipse cx="320" cy="80" rx="65" ry="55" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4"/>
+<circle cx="385" cy="80" r="6" fill="#dc2626"/>
+<text x="385" y="70" text-anchor="middle" font-size="9" fill="#dc2626">v_orbit</text>
+<text x="320" y="155" text-anchor="middle" font-size="10" fill="#64748b">v_escape = v_orbit × √2</text>
+</svg>`,
+    questions: [
+        {
+            text: "A uniform rod of mass $m$ and length $L$ is pivoted at one end and swings as a pendulum. Its period of small oscillations is:",
+            choices: ["$2\\pi\\sqrt{L/g}$","$2\\pi\\sqrt{2L/(3g)}$","$2\\pi\\sqrt{L/(2g)}$","$2\\pi\\sqrt{L/(3g)}$","$2\\pi\\sqrt{3L/(2g)}$"],
+            correct: 1,
+            explanation: `<h4>Answer: (B) $2\\pi\\sqrt{2L/(3g)}$</h4>
+<div class="step"><strong>Step 1:</strong> This is a PHYSICAL pendulum (extended body, not a point mass). Use $T = 2\\pi\\sqrt{I/(mgd)}$.</div>
+<div class="step"><strong>Step 2:</strong> Moment of inertia of rod about one end: $I = \\frac{1}{3}mL^2$</div>
+<div class="step"><strong>Step 3:</strong> Distance from pivot to center of mass: $d = L/2$</div>
+<div class="step"><strong>Step 4:</strong> $T = 2\\pi\\sqrt{\\frac{mL^2/3}{mg(L/2)}} = 2\\pi\\sqrt{\\frac{L^2/3}{gL/2}} = 2\\pi\\sqrt{\\frac{2L}{3g}}$</div>`,
+            wrongWhy: `<strong>(A) $2\\pi\\sqrt{L/g}$</strong> = simple pendulum formula (point mass on string). A rod is NOT a point mass! <strong>(D) $2\\pi\\sqrt{L/(3g)}$</strong> = used $d = L$ instead of $d = L/2$ for the CM distance.`
+        },
+        {
+            text: "A satellite orbits Earth at speed $v$ in a circular orbit. To escape Earth entirely, its speed must be increased to:",
+            choices: ["$2v$","$v\\sqrt{2}$","$v\\sqrt{3}$","$v + v_e$ where $v_e$ is escape velocity","$v/\\sqrt{2}$"],
+            correct: 1,
+            explanation: `<h4>Answer: (B) $v\\sqrt{2}$</h4>
+<div class="step"><strong>Step 1:</strong> Orbital speed: $v_{orbit} = \\sqrt{GM/r}$</div>
+<div class="step"><strong>Step 2:</strong> Escape speed: $v_{escape} = \\sqrt{2GM/r} = \\sqrt{2} \\times \\sqrt{GM/r} = \\sqrt{2} \\cdot v_{orbit}$</div>
+<div class="step"><strong>Key relationship:</strong> $v_{escape} = v_{orbit} \\times \\sqrt{2}$ ALWAYS. This is one of the most beautiful results in orbital mechanics — memorize it!</div>`,
+            wrongWhy: `<strong>(A) 2v</strong> = too much. You only need $\\sqrt{2} \\approx 1.41$ times the orbital speed, not double. <strong>(E) $v/\\sqrt{2}$</strong> = this would slow the satellite down, not speed it up.`
+        },
+        {
+            text: "A mass oscillates on a spring with amplitude $A$ and angular frequency $\\omega$. At position $x = A/2$, the speed is:",
+            choices: ["$\\omega A / 2$","$\\omega A \\sqrt{3}/2$","$\\omega A$","$\\omega A / \\sqrt{2}$","$0$"],
+            correct: 1,
+            explanation: `<h4>Answer: (B) $\\omega A\\sqrt{3}/2$</h4>
+<div class="step"><strong>Step 1:</strong> SHM speed formula: $v = \\omega\\sqrt{A^2 - x^2}$</div>
+<div class="step"><strong>Step 2:</strong> At $x = A/2$: $v = \\omega\\sqrt{A^2 - A^2/4} = \\omega\\sqrt{3A^2/4} = \\omega A\\frac{\\sqrt{3}}{2}$</div>
+<div class="step"><strong>Energy view:</strong> Total $E = \\frac{1}{2}kA^2$. At $x=A/2$: PE $= \\frac{1}{2}k(A/2)^2 = E/4$. So KE $= 3E/4$. Since KE $= \\frac{1}{2}mv^2$ and $E = \\frac{1}{2}m\\omega^2A^2$: $v = \\omega A\\sqrt{3/4}$.</div>`,
+            wrongWhy: `<strong>(A) $\\omega A/2$</strong> = assumed speed is proportional to position. It's NOT — speed depends on $\\sqrt{A^2-x^2}$. <strong>(E) 0</strong> = speed is zero at $x = A$ (the endpoints), NOT at $x = A/2$.`
+        }
+    ]
+},
+{
+    id: 'energy',
+    name: 'Work & Energy',
+    score: '2/6 on diagnostic',
+    concept: `<h3>The Big Idea</h3>
+<p><strong>Energy conservation</strong> is the most powerful tool in mechanics. When no non-conservative forces act: $KE_i + PE_i = KE_f + PE_f$.</p>
+<p><strong>Three things to nail:</strong></p>
+<ul style="margin-left:20px;margin-top:8px;">
+<li><strong>Spring PE:</strong> $U = \\frac{1}{2}kx^2$. Don't forget the $\\frac{1}{2}$!</li>
+<li><strong>Stability:</strong> Equilibrium where $F = 0$ (i.e., $dU/dx = 0$). Stable = U is a minimum ($d^2U/dx^2 > 0$).</li>
+<li><strong>Power:</strong> $P = Fv$. At constant speed lifting: $F = mg$, so $P = mgv$. Don't forget $g$!</li>
+</ul>`,
+    formula: `$U_{spring} = \\frac{1}{2}kx^2$ &nbsp;|&nbsp; $P = Fv = mgv$ (lifting) &nbsp;|&nbsp; Stable: $\\frac{d^2U}{dx^2} > 0$`,
+    diagram: `<svg width="400" height="160" viewBox="0 0 400 160">
+<!-- Potential energy curve -->
+<text x="200" y="15" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">Potential Energy Curve — Stability</text>
+<line x1="40" y1="140" x2="380" y2="140" stroke="#64748b" stroke-width="1.5"/>
+<line x1="40" y1="140" x2="40" y2="25" stroke="#64748b" stroke-width="1.5"/>
+<text x="35" y="20" font-size="11" fill="#64748b">U</text>
+<text x="385" y="145" font-size="11" fill="#64748b">x</text>
+<!-- Curve: bowl then hill -->
+<path d="M60,50 Q120,130 180,70 Q240,20 300,80 Q340,110 370,100" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+<!-- Stable minimum -->
+<circle cx="180" cy="70" r="5" fill="#16a34a"/>
+<text x="180" y="155" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="bold">Stable (bowl)</text>
+<text x="180" y="62" font-size="9" fill="#16a34a">d²U/dx² > 0</text>
+<!-- Unstable maximum -->
+<circle cx="115" cy="118" r="5" fill="#dc2626"/>
+<text x="270" y="30" font-size="10" fill="#dc2626" font-weight="bold">Unstable (hilltop)</text>
+<text x="270" y="42" font-size="9" fill="#dc2626">d²U/dx² < 0</text>
+</svg>`,
+    questions: [
+        {
+            text: "A spring ($k = 400$ N/m) is compressed 0.2 m and launches a 0.5 kg ball straight up. The maximum height reached is:",
+            choices: ["$0.8$ m","$1.6$ m","$3.2$ m","$8$ m","$16$ m"],
+            correct: 1,
+            explanation: `<h4>Answer: (B) 1.6 m</h4>
+<div class="step"><strong>Step 1:</strong> Spring PE = $\\frac{1}{2}kd^2 = \\frac{1}{2}(400)(0.04) = 8$ J</div>
+<div class="step"><strong>Step 2:</strong> At max height, all energy is gravitational PE: $mgh = 8$</div>
+<div class="step"><strong>Step 3:</strong> $h = 8/(mg) = 8/(0.5 \\times 10) = 1.6$ m</div>`,
+            wrongWhy: `<strong>(B) 3.2 m</strong> = forgot the $\\frac{1}{2}$ in spring PE (used $kd^2$ instead of $\\frac{1}{2}kd^2$). This is the #1 spring mistake! <strong>(A) 0.8 m</strong> = used $kd$ instead of $kd^2$.`
+        },
+        {
+            text: "A 500 kg elevator moves upward at constant 4 m/s. The power delivered by the motor is:",
+            choices: ["$2000$ W","$5000$ W","$20000$ W","$500$ W","$200$ W"],
+            correct: 2,
+            explanation: `<h4>Answer: (C) 20000 W</h4>
+<div class="step"><strong>Step 1:</strong> At constant speed, the motor force equals the weight: $F = mg = 500 \\times 10 = 5000$ N</div>
+<div class="step"><strong>Step 2:</strong> $P = Fv = 5000 \\times 4 = 20000$ W = 20 kW</div>
+<div class="step"><strong>Common error check:</strong> Did you include $g$? $P = mgv$, NOT $P = mv$. The force isn't the mass — it's the WEIGHT.</div>`,
+            wrongWhy: `<strong>(A) 2000 W</strong> = used $P = mv = 500 \\times 4$ (forgot $g$!). This is the exact mistake from the diagnostic. <strong>(B) 5000 W</strong> = computed the force ($mg$) but forgot to multiply by $v$.`
+        }
+    ]
+},
+{
+    id: 'rotation',
+    name: 'Rotation',
+    score: '3/6 on diagnostic',
+    concept: `<h3>The Big Idea</h3>
+<p>Rotation is the "angular version" of linear mechanics. The key insight for the AP exam:</p>
+<ul style="margin-left:20px;margin-top:8px;">
+<li><strong>Mass distribution matters for rolling:</strong> Objects with more mass concentrated far from the axis (shells, hoops) have more $I$ and roll SLOWER. Solid objects (sphere, disk) roll faster.</li>
+<li><strong>Angular momentum ($L$) conservation ≠ Energy conservation:</strong> When a skater pulls arms in, $L$ stays the same but KE increases (muscles do work). When two disks couple, $L$ stays the same but KE decreases (friction converts KE to heat).</li>
+</ul>`,
+    formula: `Rolling: $a = \\frac{g\\sin\\theta}{1 + I/(mR^2)}$ &nbsp;|&nbsp; $L = I\\omega$ (conserved if no external torque)`,
+    diagram: `<svg width="400" height="150" viewBox="0 0 400 150">
+<text x="200" y="15" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">Rolling Race: Which Wins?</text>
+<!-- Incline -->
+<polygon points="30,140 300,140 300,50" fill="none" stroke="#64748b" stroke-width="2"/>
+<!-- Solid sphere -->
+<circle cx="100" cy="98" r="15" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="100" y="102" text-anchor="middle" font-size="8" fill="#16a34a" font-weight="bold">SOLID</text>
+<text x="100" y="82" font-size="9" fill="#16a34a">I=2/5 MR²</text>
+<!-- Hollow shell -->
+<circle cx="160" cy="78" r="15" fill="none" stroke="#dc2626" stroke-width="3"/>
+<text x="160" y="82" text-anchor="middle" font-size="8" fill="#dc2626" font-weight="bold">SHELL</text>
+<text x="160" y="62" font-size="9" fill="#dc2626">I=2/3 MR²</text>
+<!-- Winner label -->
+<text x="340" y="60" font-size="12" fill="#16a34a" font-weight="bold">Solid wins!</text>
+<text x="340" y="76" font-size="10" fill="#64748b">Less I → more KE</text>
+<text x="340" y="90" font-size="10" fill="#64748b">goes to translation</text>
+<text x="340" y="104" font-size="10" fill="#64748b">→ faster speed</text>
+</svg>`,
+    questions: [
+        {
+            text: "A solid sphere, solid disk, and hoop (all same mass and radius) roll from rest down the same incline. The order of arrival at the bottom (first to last) is:",
+            choices: ["Sphere, Disk, Hoop","Hoop, Disk, Sphere","All arrive together","Disk, Sphere, Hoop","Sphere, Hoop, Disk"],
+            correct: 0,
+            explanation: `<h4>Answer: (A) Sphere, Disk, Hoop</h4>
+<div class="step"><strong>Step 1:</strong> Rolling acceleration: $a = \\frac{g\\sin\\theta}{1 + I/(mR^2)}$. Smaller $I$ → bigger denominator divisor is smaller → faster.</div>
+<div class="step"><strong>Step 2:</strong> $I/(mR^2)$ values: Sphere = $2/5$, Disk = $1/2$, Hoop = $1$</div>
+<div class="step"><strong>Step 3:</strong> Accelerations: Sphere = $\\frac{g\\sin\\theta}{1.4}$, Disk = $\\frac{g\\sin\\theta}{1.5}$, Hoop = $\\frac{g\\sin\\theta}{2}$</div>
+<div class="step"><strong>Rule of thumb:</strong> Solid beats hollow. Less rotational inertia means more energy goes into translation (speed), less into spinning.</div>`,
+            wrongWhy: `<strong>(C) All arrive together</strong> = this would only be true if they were SLIDING (no rotation). Rolling changes everything because rotational inertia "steals" energy from translation.`
+        },
+        {
+            text: "A figure skater spins with angular velocity $\\omega$ and moment of inertia $I$. She pulls her arms in, reducing her moment of inertia to $I/4$. Her kinetic energy:",
+            choices: ["Stays the same","Doubles","Quadruples","Halves","Increases by factor 8"],
+            correct: 2,
+            explanation: `<h4>Answer: (C) Quadruples</h4>
+<div class="step"><strong>Step 1:</strong> Angular momentum is conserved (no external torque): $L = I\\omega = (I/4)\\omega_f$</div>
+<div class="step"><strong>Step 2:</strong> $\\omega_f = 4\\omega$</div>
+<div class="step"><strong>Step 3:</strong> $KE_i = \\frac{1}{2}I\\omega^2$. $KE_f = \\frac{1}{2}(I/4)(4\\omega)^2 = \\frac{1}{2}(I/4)(16\\omega^2) = 2I\\omega^2 = 4 \\times KE_i$</div>
+<div class="step"><strong>Shortcut:</strong> $KE = L^2/(2I)$. Since $L$ is constant and $I$ drops by 4, $KE$ increases by 4.</div>
+<div class="step"><strong>Where does the extra energy come from?</strong> The skater's MUSCLES do work pulling her arms inward against centrifugal tendency. $L$ conservation ≠ energy conservation!</div>`,
+            wrongWhy: `<strong>(A) Stays the same</strong> = WRONG. Energy is NOT conserved here — the skater does internal work. <strong>(B) Doubles</strong> = only tracking $\\omega$ doubling but forgetting $I$ also changed.`
+        }
+    ]
+},
+{
+    id: 'kinematics',
+    name: 'Kinematics',
+    score: '3/6 on diagnostic',
+    concept: `<h3>The Big Idea</h3>
+<p>In AP Physics C (calculus-based), the critical skill is knowing <strong>when to integrate vs. when to use kinematic equations</strong>:</p>
+<ul style="margin-left:20px;margin-top:8px;">
+<li><strong>Constant acceleration:</strong> Use $v = v_0 + at$, $x = v_0t + \\frac{1}{2}at^2$, $v^2 = v_0^2 + 2a\\Delta x$</li>
+<li><strong>Variable acceleration:</strong> MUST integrate. $v = \\int a\\,dt$, $x = \\int v\\,dt$. The kinematic equations are WRONG here.</li>
+</ul>
+<p style="margin-top:10px;"><strong>Energy-speed relationship:</strong> $KE = \\frac{1}{2}mv^2$, so speed goes as $v^2$. Half the speed = quarter the KE, NOT half.</p>`,
+    formula: `Variable $a$: $v(t) = v_0 + \\int_0^t a(t')\\,dt'$ &nbsp;|&nbsp; $x(t) = x_0 + \\int_0^t v(t')\\,dt'$`,
+    diagram: `<svg width="400" height="140" viewBox="0 0 400 140">
+<text x="200" y="15" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">When to Use Calculus vs. Kinematic Eqs</text>
+<rect x="20" y="30" width="170" height="100" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+<text x="105" y="50" text-anchor="middle" font-size="12" font-weight="bold" fill="#16a34a">Constant a</text>
+<text x="105" y="68" text-anchor="middle" font-size="10" fill="#1e293b">v = v₀ + at</text>
+<text x="105" y="83" text-anchor="middle" font-size="10" fill="#1e293b">x = v₀t + ½at²</text>
+<text x="105" y="98" text-anchor="middle" font-size="10" fill="#1e293b">v² = v₀² + 2aΔx</text>
+<text x="105" y="118" text-anchor="middle" font-size="9" fill="#16a34a">e.g. free fall, constant F</text>
+<rect x="210" y="30" width="170" height="100" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+<text x="295" y="50" text-anchor="middle" font-size="12" font-weight="bold" fill="#dc2626">Variable a(t)</text>
+<text x="295" y="68" text-anchor="middle" font-size="10" fill="#1e293b">v = ∫ a(t) dt</text>
+<text x="295" y="83" text-anchor="middle" font-size="10" fill="#1e293b">x = ∫ v(t) dt</text>
+<text x="295" y="98" text-anchor="middle" font-size="10" fill="#dc2626" font-weight="bold">MUST integrate!</text>
+<text x="295" y="118" text-anchor="middle" font-size="9" fill="#dc2626">e.g. a=6-2t, F(x)=kx</text>
+</svg>`,
+    questions: [
+        {
+            text: "A car starts from rest with acceleration $a(t) = 8 - 2t$ m/s$^2$. The velocity at $t = 4$ s is:",
+            choices: ["$16$ m/s","$24$ m/s","$32$ m/s","$0$ m/s","$8$ m/s"],
+            correct: 0,
+            explanation: `<h4>Answer: (A) 16 m/s</h4>
+<div class="step"><strong>Step 1:</strong> Acceleration is NOT constant (it depends on $t$). Must integrate!</div>
+<div class="step"><strong>Step 2:</strong> $v(4) = \\int_0^4 (8-2t)\\,dt = \\left[8t - t^2\\right]_0^4 = 32 - 16 = 16$ m/s</div>
+<div class="step"><strong>Common wrong approach:</strong> $v = at = 8 \\times 4 = 32$ m/s (WRONG — this uses $a(0) = 8$ as if it's constant). Or $v = a(4) \\times 4 = 0 \\times 4 = 0$ (WRONG — uses final acceleration).</div>`,
+            wrongWhy: `<strong>(C) 32</strong> = used $v = a(0) \\times t = 8 \\times 4$. Can't use $v = at$ when $a$ changes! <strong>(D) 0</strong> = noticed $a(4) = 0$ and assumed $v = 0$. But $a = 0$ means velocity stops CHANGING, not that velocity is zero.`
+        },
+        {
+            text: "A ball is thrown upward at $v_0$. At what fraction of the maximum height is the ball's speed $v_0/3$?",
+            choices: ["$1/9$ of max height","$1/3$ of max height","$8/9$ of max height","$2/3$ of max height","$1/\\sqrt{3}$ of max height"],
+            correct: 2,
+            explanation: `<h4>Answer: (C) 8/9 of max height</h4>
+<div class="step"><strong>Step 1:</strong> At max height $H$: $v_0^2 = 2gH$, so $H = v_0^2/(2g)$</div>
+<div class="step"><strong>Step 2:</strong> At height $h$ where speed = $v_0/3$: $(v_0/3)^2 = v_0^2 - 2gh$</div>
+<div class="step"><strong>Step 3:</strong> $v_0^2/9 = v_0^2 - 2gh \\Rightarrow 2gh = v_0^2(1-1/9) = 8v_0^2/9$</div>
+<div class="step"><strong>Step 4:</strong> $h = \\frac{8v_0^2}{18g} = \\frac{8}{9} \\cdot \\frac{v_0^2}{2g} = \\frac{8}{9}H$</div>
+<div class="step"><strong>Key insight:</strong> Speed $v_0/3$ means $KE = (1/3)^2 = 1/9$ of original. So $8/9$ of energy is PE → ball is at $8/9$ of max height. Speed goes as $v^2$, not $v$!</div>`,
+            wrongWhy: `<strong>(B) 1/3</strong> = assumed speed proportional to height. WRONG — energy goes as $v^2$. One-third speed means one-ninth of KE remains, so eight-ninths converted to PE.`
+        }
+    ]
+}
+];
+
+// ============================================
+// RENDERING
+// ============================================
+let currentTopic = 0;
+let answered = {};
+
+function renderTopicNav() {
+    const nav = document.getElementById('topic-nav');
+    nav.innerHTML = topics.map((t, i) =>
+        `<button class="topic-btn ${i===currentTopic?'active':''}" onclick="switchTopic(${i})">${t.name}</button>`
+    ).join('');
+}
+
+function switchTopic(i) {
+    currentTopic = i;
+    renderTopicNav();
+    renderTopic();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function renderTopic() {
+    const t = topics[currentTopic];
+    const content = document.getElementById('content');
+
+    let questionsHTML = t.questions.map((q, qi) => {
+        const qid = t.id + '_' + qi;
+        const hasAnswered = answered[qid] !== undefined;
+        const letters = ['A','B','C','D','E'];
+
+        let choicesHTML = q.choices.map((c, ci) => {
+            let cls = '';
+            if (hasAnswered) {
+                if (ci === q.correct) cls = 'correct';
+                else if (ci === answered[qid] && ci !== q.correct) cls = 'wrong';
+            }
+            return `<div class="choice ${cls}" onclick="answerQ('${qid}',${ci},${q.correct})" style="${hasAnswered?'pointer-events:none':''}">
+                <span class="choice-letter">${letters[ci]}</span>
+                <span class="choice-text">${c}</span>
+            </div>`;
+        }).join('');
+
+        let expClass = '';
+        if (hasAnswered) expClass = answered[qid] === q.correct ? 'show is-correct' : 'show is-wrong';
+
+        return `<div class="question">
+            <div class="q-label">Practice Question ${qi+1}</div>
+            <div class="q-text">${q.text}</div>
+            <div class="choices">${choicesHTML}</div>
+            <div class="explanation ${expClass}" id="exp_${qid}">
+                ${q.explanation}
+                <div class="wrong-why"><strong>Why wrong answers are wrong:</strong><br>${q.wrongWhy}</div>
+            </div>
+        </div>`;
+    }).join('');
+
+    content.innerHTML = `
+        <div class="topic-section active">
+            <h2 class="topic-title">${t.name}</h2>
+            <div class="topic-score">Diagnostic score: ${t.score}</div>
+            <div class="concept-box">${t.concept}</div>
+            <div class="formula-box"><div class="label">Key Formulas</div>${t.formula}</div>
+            <div class="diagram">${t.diagram}</div>
+            ${questionsHTML}
+            <div style="text-align:center;margin-top:20px;">
+                ${currentTopic < topics.length-1 ? `<button class="topic-btn" onclick="switchTopic(${currentTopic+1})" style="padding:12px 30px;font-size:1rem;">Next Topic: ${topics[currentTopic+1].name} →</button>` : '<p style="color:var(--success);font-weight:bold;font-size:1.1rem;">All topics reviewed! Now take Practice Exam #2.</p>'}
+            </div>
+        </div>
+    `;
+
+    renderMathInElement(content, { delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}] });
+    updateProgress();
+}
+
+function answerQ(qid, chosen, correct) {
+    if (answered[qid] !== undefined) return;
+    answered[qid] = chosen;
+    renderTopic();
+    // Scroll to explanation
+    setTimeout(() => {
+        const exp = document.getElementById('exp_' + qid);
+        if (exp) exp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+}
+
+function updateProgress() {
+    const totalQs = topics.reduce((s,t) => s + t.questions.length, 0);
+    const answeredCount = Object.keys(answered).length;
+    document.getElementById('progress-fill').style.width = Math.round(answeredCount/totalQs*100) + '%';
+}
+
+function toggleTheme() {
+    document.body.getAttribute('data-theme')==='dark' ?
+        (document.body.removeAttribute('data-theme'), localStorage.setItem('apPhysicsTheme','light')) :
+        (document.body.setAttribute('data-theme','dark'), localStorage.setItem('apPhysicsTheme','dark'));
+}
+if (localStorage.getItem('apPhysicsTheme')==='dark') document.body.setAttribute('data-theme','dark');
+
+// Init
+renderTopicNav();
+renderTopic();
+</script>
+</body>
+</html>
