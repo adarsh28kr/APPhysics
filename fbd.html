@@ -304,7 +304,7 @@ function renderExercises() {
     });
     container.innerHTML = html;
     document.getElementById('progress').textContent = revealed.size + ' / 20 revealed';
-    renderMathInElement(container, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
+    renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
 }
 
 function reveal(num) {
