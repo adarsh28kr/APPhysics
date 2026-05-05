@@ -328,6 +328,27 @@ const exercises = [
 ];
 
 // ============================================
+// TEACHER MODE (PIN 2027)
+// ============================================
+let teacherMode = sessionStorage.getItem('apFbdTeacher') === 'true';
+let titleClicks = 0, titleTimer = null;
+
+document.querySelector('h1').addEventListener('click', function() {
+    titleClicks++;
+    if (titleTimer) clearTimeout(titleTimer);
+    titleTimer = setTimeout(() => { titleClicks = 0; }, 2000);
+    if (titleClicks >= 5) {
+        titleClicks = 0;
+        const pin = prompt('Enter teacher PIN:');
+        if (pin === '2027') {
+            sessionStorage.setItem('apFbdTeacher', 'true');
+            teacherMode = true;
+            renderExercises();
+        }
+    }
+});
+
+// ============================================
 // RENDERING
 // ============================================
 let revealed = new Set();
@@ -341,7 +362,10 @@ function renderExercises() {
             if (ex.levelDesc) html += `<p style="color:var(--text2);font-size:.9rem;margin-bottom:10px">${ex.levelDesc}</p>`;
             return;
         }
-        const isRevealed = revealed.has(ex.num);
+        const isRevealed = teacherMode && revealed.has(ex.num);
+        const clickMsg = teacherMode
+            ? 'Click to reveal FBD'
+            : 'Draw your own FBD first! (Teacher reveals answers)';
         html += `<div class="exercise ${isRevealed?'revealed':''}">
             <div class="ex-header"><span class="ex-num">#${ex.num}</span><span class="ex-tag">${ex.tag}</span></div>
             <div class="ex-desc">${ex.desc}</div>
@@ -350,7 +374,7 @@ function renderExercises() {
                 <div class="fbd-box ${isRevealed?'revealed':''}">
                     <div class="label">Free Body Diagram</div>
                     <div class="content">
-                        <div class="hidden-msg" onclick="reveal(${ex.num})">Click to reveal FBD</div>
+                        <div class="hidden-msg" onclick="reveal(${ex.num})">${clickMsg}</div>
                         ${ex.fbd}
                     </div>
                 </div>
@@ -359,11 +383,13 @@ function renderExercises() {
         </div>`;
     });
     container.innerHTML = html;
-    document.getElementById('progress').textContent = revealed.size + ' / 20 revealed';
+    const status = teacherMode ? '(Teacher mode active)' : '(Student mode — draw FBDs on paper first)';
+    document.getElementById('progress').textContent = revealed.size + ' / 20 revealed ' + status;
     renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
 }
 
 function reveal(num) {
+    if (!teacherMode) return;
     revealed.add(num);
     renderExercises();
 }
