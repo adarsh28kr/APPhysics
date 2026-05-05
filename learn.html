@@ -181,10 +181,10 @@ const topics = [
         solDiagram:`<svg width="380" height="110" viewBox="0 0 380 110"><rect x="10" y="100" width="360" height="2" fill="#94a3b8"/><rect x="120" y="55" width="80" height="45" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="160" y="82" text-anchor="middle" font-size="10" fill="#d97706">6 kg (bottom)</text><rect x="135" y="20" width="50" height="35" rx="4" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text x="160" y="42" text-anchor="middle" font-size="10" fill="#2563eb">4 kg (top)</text><line x1="200" y1="78" x2="270" y2="78" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="240" y="70" font-size="10" fill="#16a34a" font-weight="bold">F = 50 N</text><line x1="135" y1="38" x2="185" y2="38" stroke="#dc2626" stroke-width="2" marker-end="url(#a)"/><text x="210" y="35" font-size="9" fill="#dc2626">f = 20 N max</text><text x="270" y="100" font-size="9" fill="#64748b">a_max = 20/4 = 5 m/s²</text><text x="270" y="112" font-size="9" fill="#64748b">F = 10 × 5 = 50 N</text></svg>`,
         wrongWhy:`<strong>(A) 20 N</strong> = the friction force itself — but $F$ pushes 10 kg, not 4 kg! <strong>(B) 30 N</strong> = multiplied friction by bottom mass only ($6 \\times 5$). <strong>(D) 40 N</strong> = used $F = \\mu_s (m_1 + m_2) g$ which is wrong.`,
         variation:{
-            text:"Now the force is applied to the TOP block instead. Maximum force so the bottom block doesn't get left behind?",
-            choices:["$50$ N","$20$ N","$30$ N","$40$ N"],
+            text:"Now the force is applied to the TOP block instead. The bottom block has mass 6 kg. Maximum force so the bottom block doesn't get left behind?",
+            choices:["$50$ N","$20$ N","$100/3$ N $\\approx 33.3$ N","$40$ N"],
             correct:2,
-            explanation:"Now friction accelerates the BOTTOM block: $f_{max} = \\mu_s m_{top} g = 20$ N (same). But the bottom block has mass 6 kg: $a_{max} = 20/6 = 10/3$ m/s². Force on top block: $F = m_{total} \\times a_{max} = 10 \\times 10/3 \\approx 33$ N. Closest is 30 N. Notice: the answer CHANGES when you switch which block the force acts on!"
+            explanation:"Now friction accelerates the BOTTOM block: $f_{max} = \\mu_s m_{top} g = 0.5 \\times 4 \\times 10 = 20$ N. The bottom block (6 kg) has max acceleration: $a_{max} = 20/6 = 10/3$ m/s². The force on the whole system: $F = (4+6) \\times 10/3 = 100/3 \\approx 33.3$ N. Notice: the answer CHANGES depending on which block the force acts on! When pushing the heavier block, you can push harder (50 N) because friction only needs to accelerate the lighter block."
         }
     }
     ]
@@ -456,13 +456,15 @@ const topics = [
     {
         text:"$U(x) = x^3 - 3x$. The stable equilibrium position is:",
         choices:["$x = 1$","$x = -1$","$x = 0$","$x = \\sqrt{3}$","No stable equilibrium"],
-        correct:1,
-        explanation:`<h4>Answer: (B) $x = -1$</h4>
-<div class="step"><strong>Step 1 — Find equilibria</strong> <span class="tip-ref">Tip #2</span>: $F = -dU/dx = -(3x^2 - 3) = -3(x^2-1) = 0$. So $x = \\pm 1$.</div>
-<div class="step"><strong>Step 2 — Check stability</strong> <span class="tip-ref">Tip #2</span>: $d^2U/dx^2 = 6x$. At $x = 1$: $6(1) = 6 > 0$ → stable? Wait: $d^2U/dx^2 > 0$ means U is concave up = minimum = <strong>STABLE</strong>... Hmm but at $x=1$: $U = 1-3 = -2$ (minimum). At $x=-1$: $d^2U/dx^2 = -6 < 0$ → concave down = maximum = UNSTABLE.</div>
-<div class="step"><strong>Step 3 — Correction:</strong> Actually $x=1$ is stable (minimum) and $x=-1$ is unstable (maximum). But wait — I need to re-examine. $U(1) = 1-3 = -2$, $U(-1) = -1+3 = 2$. So $x=1$ is a local minimum (stable) and $x=-1$ is a local maximum (unstable). The answer should be $x=1$... Let me recheck: the answer listed is (B) $x=-1$. Let me verify: $d^2U/dx^2 = 6x$. At $x=-1$: $6(-1) = -6 < 0$ → maximum → UNSTABLE. At $x=1$: $6(1) = 6 > 0$ → minimum → STABLE. So the correct answer is (A) $x=1$.</div>
-<div class="verify-box"><strong>Quick verify:</strong> $U(1) = 1-3 = -2$ (low point). $U(-1) = -1+3 = 2$ (high point). Stable = low point = $x=1$ ✓.</div>`,
-        wrongWhy:`<strong>(A) is actually correct!</strong> $x=1$ is stable (U minimum). <strong>(B) $x=-1$</strong> is UNSTABLE (U maximum). <strong>(E)</strong> is wrong — there IS a stable point at $x=1$.`,
+        correct:0,
+        explanation:`<h4>Answer: (A) $x = 1$</h4>
+<div class="step"><strong>Step 1 — Find equilibria</strong> <span class="tip-ref">Tip #2</span>: $F = -dU/dx = -(3x^2 - 3) = 0$. So $3x^2 = 3 \\Rightarrow x = \\pm 1$. Two equilibrium points.</div>
+<div class="step"><strong>Step 2 — Check stability</strong> <span class="tip-ref">Tip #2</span>: $d^2U/dx^2 = 6x$.<br>
+At $x = 1$: $d^2U/dx^2 = 6 > 0$ → concave up → local minimum of $U$ → <strong>STABLE</strong> (like a bowl).<br>
+At $x = -1$: $d^2U/dx^2 = -6 < 0$ → concave down → local maximum of $U$ → <strong>UNSTABLE</strong> (like a hilltop).</div>
+<div class="step"><strong>Step 3 — Confirm with values:</strong> $U(1) = 1-3 = -2$ (low point ✓). $U(-1) = -1+3 = 2$ (high point ✓). Stable = low point = bowl = $x = 1$.</div>
+<div class="verify-box"><strong>Quick verify:</strong> Think of a ball on the $U(x)$ curve. At $x=1$ (valley), a nudge brings it back → stable. At $x=-1$ (hilltop), a nudge sends it away → unstable. ✓</div>`,
+        wrongWhy:`<strong>(B) $x=-1$</strong> is UNSTABLE — it's a local maximum of $U$ (hilltop). A common trap: finding equilibrium but not checking stability. <strong>(E)</strong> is wrong — there IS a stable point at $x=1$. <strong>(C) $x=0$</strong> is not an equilibrium at all ($F \\neq 0$ there).`,
         variation:{
             text:"For $U(x) = x^4 - 2x^2$, how many stable equilibrium points are there?",
             choices:["0","1","2","3"],
@@ -596,8 +598,8 @@ const topics = [
         variation:{
             text:"Same $a(t) = 12-4t$. What is the displacement from $t=0$ to $t=3$?",
             choices:["$27$ m","$18$ m","$36$ m","$54$ m"],
-            correct:0,
-            explanation:"$v(t) = 12t - 2t^2$ (from the integral above). $x = \\int_0^3(12t-2t^2)dt = [6t^2 - \\frac{2}{3}t^3]_0^3 = 54 - 18 = 36$... wait: $6(9) = 54$, $\\frac{2}{3}(27) = 18$. $54-18 = 36$. Hmm, but 27 is listed as answer. Let me recheck: $x = [6t^2 - 2t^3/3]_0^3 = 6(9) - 2(27)/3 = 54 - 18 = 36$. So the answer should be 36 m (C). But the variation choices have 27 as (A). Let me recompute... Actually $\\int_0^3(12t-2t^2)dt = [6t^2 - (2/3)t^3]_0^3 = 54 - 18 = 36$. The answer is 36 m = choice (C)."
+            correct:2,
+            explanation:"We found $v(t) = 12t - 2t^2$. Now integrate again: $x = \\int_0^3(12t-2t^2)\\,dt = [6t^2 - \\frac{2}{3}t^3]_0^3 = 6(9) - \\frac{2}{3}(27) = 54 - 18 = 36$ m. Key: for variable acceleration, you must integrate TWICE — once to get $v(t)$, again to get $x(t)$."
         }
     },
     {
