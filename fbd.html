@@ -62,26 +62,26 @@
     <div class="nav"><a href="index.html">Exam</a> <a href="learn.html">Learn</a> <a href="answer-key.html">Answer Key</a></div>
     <div class="progress" id="progress">0 / 20 revealed</div>
 
-    <!-- FORCE CHECKLIST -->
+    <!-- THE 6-STEP METHOD -->
     <div class="checklist">
-        <h3>The Force Checklist — Run This EVERY Time</h3>
-        <p style="margin-bottom:10px">Before drawing any FBD, go through this list. If the answer is "yes," draw that force. If "no," skip it. <strong>No other forces exist.</strong></p>
+        <h3>The 6-Step Method — Follow This For EVERY Problem</h3>
+        <p style="margin-bottom:12px">Never skip a step. Do them in order. Every single time.</p>
         <ol>
-            <li><strong>Gravity?</strong> → Always YES (unless the problem says "weightless"). Draw $mg$ straight DOWN. Always.</li>
-            <li><strong>Touching a surface?</strong> → Normal force $N$ PERPENDICULAR to the surface. Not "up" — perpendicular to whatever the object sits on.</li>
-            <li><strong>Could it slide on that surface?</strong> → Friction $f$ ALONG the surface, opposing motion (or tendency to move).</li>
-            <li><strong>Attached to a string/rope?</strong> → Tension $T$ ALONG the string, pulling AWAY from the object.</li>
-            <li><strong>Touching a spring?</strong> → Spring force $F = kx$ along the spring axis.</li>
-            <li><strong>Someone pushing/pulling?</strong> → Applied force $F$ in the stated direction.</li>
+            <li><strong>Step 1 — Draw the Free Body Diagram.</strong> Isolate the object. Draw it as a simple box or dot. Show ALL forces acting ON it as arrows starting from the center. Forces to check: gravity ($mg$, always straight down), normal ($N$, ⊥ to surface), friction ($f$, along surface opposing motion), tension ($T$, along string pulling away), applied ($F$, as stated).</li>
+            <li><strong>Step 2 — Label each force.</strong> Write the name AND formula next to every arrow: $mg$, $N$, $f = \mu N$, $T$, $F$. If you can't label it, it probably shouldn't be there.</li>
+            <li><strong>Step 3 — Draw coordinate axes.</strong> Place the origin at the center of the object. Choose $x$-axis <strong>parallel to the surface</strong> the object moves on (or along the direction of motion). $y$-axis perpendicular to surface. <strong>On inclines: TILT your axes to match the slope.</strong> This is the key — once axes are tilted, the normal force is purely in $y$ and only gravity needs to be decomposed.</li>
+            <li><strong>Step 4 — Find the net force.</strong> Decompose any forces not aligned with your axes into $x$ and $y$ components. Sum all $x$-components → $F_{net,x}$. Sum all $y$-components → $F_{net,y}$. Draw $\vec{F}_{net}$ on the diagram.</li>
+            <li><strong>Step 5 — Write Newton's Law: $F = ma$.</strong> Write it for EACH axis separately: $F_{net,x} = ma_x$ and $F_{net,y} = ma_y$. Usually one axis has $a = 0$ (no acceleration in that direction).</li>
+            <li><strong>Step 6 — Derive the asked value.</strong> Solve the equations from Step 5 for whatever the problem asks (acceleration, tension, normal force, etc.).</li>
         </ol>
     </div>
 
     <div class="rule-box">
-        <strong>THE GOLDEN RULES:</strong><br>
+        <strong>CRITICAL RULES:</strong><br>
         1. Only draw forces that act ON the object (not forces the object exerts on others).<br>
-        2. $mg\sin\theta$ and $mg\cos\theta$ are NOT forces — they are components of gravity. Never draw them as separate arrows.<br>
-        3. Normal force is perpendicular to the SURFACE, not perpendicular to the ground.<br>
-        4. All force arrows start FROM the object (or its center of mass).
+        2. $mg\sin\theta$ and $mg\cos\theta$ are NOT forces — they are <strong>components</strong> of gravity that appear AFTER you tilt your axes in Step 3. Never draw them as separate arrows in Step 1.<br>
+        3. Normal force is perpendicular to the SURFACE, not perpendicular to the ground. On an incline, $N$ is tilted.<br>
+        4. On inclines: tilt axes so $x$ is along the slope → then $N$ is purely in $y$-direction, and only $mg$ needs decomposing: $mg\sin\theta$ along $x$, $mg\cos\theta$ along $y$.
     </div>
 
     <!-- EXERCISES -->
@@ -98,7 +98,7 @@ const exercises = [
     num:1, tag:"Basic", desc:"A book sits on a table, at rest.",
     setup:`<svg viewBox="0 0 300 160"><rect x="30" y="120" width="240" height="10" fill="#94a3b8" rx="2"/><rect x="110" y="80" width="80" height="40" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="4"/><text x="150" y="105" text-anchor="middle" font-size="12" fill="#2563eb">Book</text><text x="150" y="150" text-anchor="middle" font-size="10" fill="#64748b">Table</text></svg>`,
     fbd:`<svg viewBox="0 0 300 160"><rect x="120" y="60" width="60" height="40" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="4"/><line x1="150" y1="100" x2="150" y2="145" stroke="#dc2626" stroke-width="3" marker-end="url(#a)"/><text x="160" y="140" font-size="12" fill="#dc2626" font-weight="bold">mg</text><line x1="150" y1="60" x2="150" y2="15" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="160" y="25" font-size="12" fill="#16a34a" font-weight="bold">N</text><text x="240" y="85" font-size="10" fill="#64748b">2 forces</text><text x="240" y="100" font-size="10" fill="#64748b">N = mg</text><defs><marker id="a" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="context-stroke"/></marker></defs></svg>`,
-    note:"Simplest possible FBD. Gravity down, normal up. They balance because the book is at rest (a=0)."
+    note:"<strong>Step 1-2:</strong> Two forces: $mg$ down, $N$ up.<br><strong>Step 3:</strong> Axes: $x$ horizontal, $y$ vertical (surface is flat → no tilting needed).<br><strong>Step 4:</strong> $F_{net} = 0$ (at rest).<br><strong>Step 5:</strong> $y$: $N - mg = 0$.<br><strong>Step 6:</strong> $N = mg$. Simplest FBD — build from here."
 },
 {
     num:2, tag:"Basic", desc:"A ball hangs from a string attached to the ceiling.",
@@ -124,7 +124,7 @@ const exercises = [
     num:5, tag:"Friction", desc:"A block is pushed across a rough floor with a horizontal force. It's moving right.",
     setup:`<svg viewBox="0 0 300 130"><rect x="20" y="100" width="260" height="8" fill="#94a3b8"/><rect x="110" y="55" width="70" height="45" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="4"/><text x="145" y="82" text-anchor="middle" font-size="11" fill="#2563eb">Block</text><line x1="95" y1="78" x2="55" y2="78" stroke="#16a34a" stroke-width="3"/><polygon points="95,73 95,83 103,78" fill="#16a34a"/><text x="45" y="73" font-size="12" fill="#16a34a" font-weight="bold">F</text><text x="145" y="125" font-size="10" fill="#64748b">rough floor (μ)</text></svg>`,
     fbd:`<svg viewBox="0 0 300 140"><rect x="115" y="45" width="50" height="35" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="3"/><line x1="140" y1="80" x2="140" y2="125" stroke="#dc2626" stroke-width="3" marker-end="url(#a)"/><text x="152" y="120" font-size="11" fill="#dc2626" font-weight="bold">mg</text><line x1="140" y1="45" x2="140" y2="10" stroke="#8b5cf6" stroke-width="3" marker-end="url(#a)"/><text x="152" y="22" font-size="11" fill="#8b5cf6" font-weight="bold">N</text><line x1="115" y1="63" x2="65" y2="63" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="55" y="58" font-size="11" fill="#16a34a" font-weight="bold">F</text><line x1="165" y1="63" x2="215" y2="63" stroke="#d97706" stroke-width="3" marker-end="url(#a)"/><text x="220" y="58" font-size="11" fill="#d97706" font-weight="bold">f</text><text x="220" y="100" font-size="9" fill="#d97706">friction opposes</text><text x="220" y="113" font-size="9" fill="#d97706">motion (← left)</text></svg>`,
-    note:"Moving right → friction points LEFT. N = mg here because the applied force is horizontal (doesn't push block into floor)."
+    note:"<strong>Step 1-2:</strong> Four forces: $mg$ down, $N$ up, $F$ right, $f = \\mu N$ left (opposes motion).<br><strong>Step 3:</strong> Axes: $x$ horizontal (along motion), $y$ vertical. No tilting — flat surface.<br><strong>Step 4:</strong> $F_{net,x} = F - f = F - \\mu mg$ (right). $F_{net,y} = 0$.<br><strong>Step 5:</strong> $x$: $F - \\mu mg = ma$. $y$: $N = mg$.<br><strong>Step 6:</strong> $a = (F - \\mu mg)/m$."
 },
 {
     num:6, tag:"Angle pull", desc:"A block is pulled by a rope at angle $\\theta$ above horizontal across a rough floor.",
@@ -147,16 +147,63 @@ const exercises = [
 // ==================== LEVEL 3: INCLINES ====================
 { level:"Level 3: Inclines — The Key Challenge", levelDesc:"Normal force is perpendicular to the SURFACE, not the ground." },
 {
-    num:9, tag:"Incline", desc:"A block sits on a frictionless incline at angle $\\theta$.",
+    num:9, tag:"Incline", desc:"A block sits on a frictionless incline at angle $\\theta$. Find its acceleration.",
     setup:`<svg viewBox="0 0 300 160"><polygon points="30,150 250,150 250,50" fill="none" stroke="#64748b" stroke-width="2"/><rect x="130" y="72" width="50" height="35" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="4" transform="rotate(-24 155 90)"/><text x="155" y="95" text-anchor="middle" font-size="11" fill="#2563eb">Block</text><text x="70" y="148" font-size="12" fill="#64748b">θ</text><text x="140" y="155" font-size="10" fill="#16a34a">frictionless</text></svg>`,
-    fbd:`<svg viewBox="0 0 300 170"><rect x="120" y="55" width="40" height="30" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="3"/><line x1="140" y1="85" x2="140" y2="145" stroke="#dc2626" stroke-width="3" marker-end="url(#a)"/><text x="150" y="140" font-size="12" fill="#dc2626" font-weight="bold">mg</text><text x="150" y="153" font-size="9" fill="#dc2626">(straight down!)</text><line x1="140" y1="55" x2="110" y2="15" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="90" y="18" font-size="12" fill="#16a34a" font-weight="bold">N</text><text x="80" y="32" font-size="9" fill="#16a34a">⊥ to surface</text><text x="200" y="50" font-size="10" fill="#dc2626" font-weight="bold">mg is VERTICAL</text><text x="200" y="65" font-size="10" fill="#16a34a" font-weight="bold">N is ⊥ to slope</text><text x="200" y="85" font-size="9" fill="#64748b">Only 2 forces!</text><text x="200" y="100" font-size="9" fill="#64748b">Do NOT draw</text><text x="200" y="113" font-size="9" fill="#dc2626">mg sinθ or mg cosθ</text><text x="200" y="126" font-size="9" fill="#dc2626">as separate forces!</text></svg>`,
-    note:"THE KEY DIAGRAM. Only 2 forces: mg (straight down) and N (perpendicular to the incline surface). mg sinθ and mg cosθ are COMPONENTS of gravity when you tilt your axes — they are NOT separate forces. Never draw them as arrows on an FBD."
+    fbd:`<svg viewBox="0 0 340 200">
+<!-- Step 1-2: Forces -->
+<rect x="130" y="70" width="40" height="28" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="3"/>
+<line x1="150" y1="98" x2="150" y2="165" stroke="#dc2626" stroke-width="3" marker-end="url(#a)"/>
+<text x="160" y="160" font-size="11" fill="#dc2626" font-weight="bold">mg</text>
+<line x1="150" y1="70" x2="118" y2="28" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/>
+<text x="100" y="30" font-size="11" fill="#16a34a" font-weight="bold">N</text>
+<!-- Step 3: Tilted axes -->
+<line x1="90" y1="110" x2="220" y2="56" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6"/>
+<text x="222" y="52" font-size="10" fill="#8b5cf6" font-weight="bold">x</text>
+<line x1="175" y1="135" x2="118" y2="28" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6"/>
+<text x="112" y="22" font-size="10" fill="#8b5cf6" font-weight="bold">y</text>
+<text x="160" y="88" font-size="8" fill="#8b5cf6">origin</text>
+<!-- Step 4: mg decomposed (dashed) -->
+<line x1="150" y1="98" x2="182" y2="114" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#a)"/>
+<text x="186" y="120" font-size="9" fill="#dc2626">mg sinθ</text>
+<line x1="150" y1="98" x2="118" y2="140" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#a)"/>
+<text x="88" y="148" font-size="9" fill="#dc2626">mg cosθ</text>
+<!-- Steps 4-6 text -->
+<text x="230" y="80" font-size="9" fill="#64748b" font-weight="bold">Step 3: Tilt axes!</text>
+<text x="230" y="95" font-size="9" fill="#8b5cf6">x ∥ to slope</text>
+<text x="230" y="108" font-size="9" fill="#8b5cf6">y ⊥ to slope</text>
+<text x="230" y="128" font-size="9" fill="#64748b" font-weight="bold">Step 4: Decompose mg</text>
+<text x="230" y="141" font-size="9" fill="#dc2626">mg sinθ (along x)</text>
+<text x="230" y="154" font-size="9" fill="#dc2626">mg cosθ (along y)</text>
+<text x="10" y="175" font-size="9" fill="#64748b" font-weight="bold">Step 5:</text>
+<text x="10" y="188" font-size="9" fill="#1e293b">x: mg sinθ = ma → a = g sinθ</text>
+<text x="10" y="200" font-size="9" fill="#1e293b">y: N - mg cosθ = 0 → N = mg cosθ</text>
+</svg>`,
+    note:"<strong>THE KEY EXERCISE.</strong> Follow all 6 steps:<br><strong>Step 1-2:</strong> Only 2 REAL forces: $mg$ (down) and $N$ (⊥ to surface).<br><strong>Step 3:</strong> TILT your axes: $x$ along slope, $y$ perpendicular to slope. This is the critical step — once axes are tilted, $N$ is purely in the $y$-direction.<br><strong>Step 4:</strong> Only $mg$ needs decomposing: $mg\\sin\\theta$ along $x$ (down the slope), $mg\\cos\\theta$ along $-y$ (into surface). These components are shown as dashed lines — they are NOT separate forces.<br><strong>Step 5:</strong> $x$: $mg\\sin\\theta = ma \\Rightarrow a = g\\sin\\theta$. $y$: $N - mg\\cos\\theta = 0 \\Rightarrow N = mg\\cos\\theta$.<br><strong>Step 6:</strong> $a = g\\sin\\theta$. Done."
 },
 {
     num:10, tag:"Incline", desc:"A block slides DOWN a rough incline at angle $\\theta$.",
     setup:`<svg viewBox="0 0 300 160"><polygon points="30,150 250,150 250,50" fill="none" stroke="#64748b" stroke-width="2"/><rect x="130" y="72" width="50" height="35" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="4" transform="rotate(-24 155 90)"/><text x="155" y="95" text-anchor="middle" font-size="11" fill="#2563eb">Block</text><text x="70" y="148" font-size="12" fill="#64748b">θ</text><line x1="175" y1="75" x2="200" y2="90" stroke="#d97706" stroke-width="2" marker-end="url(#a)"/><text x="205" y="88" font-size="10" fill="#d97706">sliding ↓</text><text x="140" y="155" font-size="10" fill="#d97706">rough (μ)</text></svg>`,
-    fbd:`<svg viewBox="0 0 300 170"><rect x="120" y="55" width="40" height="30" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="3"/><line x1="140" y1="85" x2="140" y2="150" stroke="#dc2626" stroke-width="3" marker-end="url(#a)"/><text x="150" y="145" font-size="12" fill="#dc2626" font-weight="bold">mg</text><line x1="140" y1="55" x2="110" y2="15" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="90" y="18" font-size="12" fill="#16a34a" font-weight="bold">N</text><line x1="120" y1="55" x2="85" y2="75" stroke="#d97706" stroke-width="3" marker-end="url(#a)"/><text x="65" y="78" font-size="11" fill="#d97706" font-weight="bold">f</text><text x="65" y="92" font-size="9" fill="#d97706">(up the slope)</text><text x="200" y="50" font-size="10" fill="#64748b">3 forces total</text><text x="200" y="68" font-size="9" fill="#d97706">Friction opposes</text><text x="200" y="81" font-size="9" fill="#d97706">motion: block slides</text><text x="200" y="94" font-size="9" fill="#d97706">DOWN → f points UP</text><text x="200" y="115" font-size="9" fill="#64748b">f = μN = μmg cosθ</text></svg>`,
-    note:"Sliding DOWN the incline → friction points UP the incline. Still only 3 real forces. When you tilt axes parallel/perpendicular to surface: $mg$ decomposes into $mg\\sin\\theta$ (along) and $mg\\cos\\theta$ (into surface)."
+    fbd:`<svg viewBox="0 0 340 200">
+<rect x="130" y="65" width="40" height="28" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="3"/>
+<!-- Forces -->
+<line x1="150" y1="93" x2="150" y2="165" stroke="#dc2626" stroke-width="3" marker-end="url(#a)"/>
+<text x="160" y="158" font-size="11" fill="#dc2626" font-weight="bold">mg</text>
+<line x1="150" y1="65" x2="118" y2="25" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/>
+<text x="100" y="28" font-size="11" fill="#16a34a" font-weight="bold">N</text>
+<line x1="130" y1="65" x2="95" y2="48" stroke="#d97706" stroke-width="3" marker-end="url(#a)"/>
+<text x="75" y="45" font-size="11" fill="#d97706" font-weight="bold">f</text>
+<text x="72" y="58" font-size="8" fill="#d97706">(up slope)</text>
+<!-- Tilted axes -->
+<line x1="85" y1="108" x2="225" y2="52" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6"/>
+<text x="228" y="48" font-size="10" fill="#8b5cf6" font-weight="bold">+x (down slope)</text>
+<line x1="175" y1="132" x2="118" y2="25" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="6"/>
+<text x="112" y="18" font-size="10" fill="#8b5cf6" font-weight="bold">+y</text>
+<!-- Steps -->
+<text x="10" y="178" font-size="9" fill="#64748b" font-weight="bold">Step 5 — Newton's Law:</text>
+<text x="10" y="191" font-size="9" fill="#1e293b">x: mg sinθ - f = ma → mg sinθ - μmg cosθ = ma</text>
+<text x="10" y="204" font-size="9" fill="#1e293b">Step 6: a = g(sinθ - μcosθ)</text>
+</svg>`,
+    note:"<strong>Steps 1-2:</strong> 3 real forces: $mg$ (down), $N$ (⊥ to surface), friction $f$ (UP the slope — opposes downward sliding).<br><strong>Step 3:</strong> Tilt axes: $+x$ down the slope, $+y$ perpendicular to surface.<br><strong>Step 4:</strong> $mg$ decomposes: $mg\\sin\\theta$ in $+x$, $mg\\cos\\theta$ in $-y$. Friction $f = \\mu N$ in $-x$ direction.<br><strong>Step 5:</strong> $x$: $mg\\sin\\theta - \\mu mg\\cos\\theta = ma$. $y$: $N = mg\\cos\\theta$.<br><strong>Step 6:</strong> $a = g(\\sin\\theta - \\mu\\cos\\theta)$."
 },
 {
     num:11, tag:"Incline", desc:"A block is held in place on a rough incline by a horizontal force $F$.",
