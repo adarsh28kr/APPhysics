@@ -31,6 +31,10 @@
         .fbd svg{max-width:100%;height:auto}
         .mistake{margin-top:8px;padding:8px 12px;background:rgba(220,38,38,.05);border-left:3px solid var(--danger);border-radius:0 6px 6px 0;font-size:.85rem}
         .mistake strong{color:var(--danger)}
+        .gotcha{margin-top:8px;padding:8px 12px;background:rgba(139,92,246,.08);border-left:3px solid #8b5cf6;border-radius:0 6px 6px 0;font-size:.85rem}
+        .gotcha strong{color:#7c3aed}
+        .teach{margin-top:8px;padding:8px 12px;background:rgba(37,99,235,.05);border-left:3px solid var(--primary);border-radius:0 6px 6px 0;font-size:.88rem;font-style:italic}
+        .teach strong{color:var(--primary);font-style:normal}
         .theme-toggle{position:fixed;bottom:20px;right:20px;padding:10px;border-radius:50%;border:2px solid var(--border);background:var(--card);cursor:pointer;font-size:1.2rem;z-index:100}
         @media print{.nav,.theme-toggle,#pin-gate{display:none}body{background:#fff}}
     </style>
@@ -73,28 +77,40 @@
             <div class="step"><strong>Step 3:</strong> Standard axes: $x$ horizontal, $y$ vertical.</div>
             <div class="step"><strong>Step 4:</strong> $F_{net,x} = 60 - 20 - 25 = 15$ N right. $F_{net,y} = 0$.</div>
             <div class="step"><strong>Step 5:</strong> $F = ma$: $15 = 10a \Rightarrow a = 1.5$ m/s²</div>
-            <div class="mistake"><strong>Common mistake:</strong> Forgetting friction (getting $a = 4$) or subtracting friction from the wrong force.</div>
+            <div class="teach"><strong>Teacher's approach:</strong> Always compute friction FIRST before anything else. Write $f = \mu mg$ as your very first line. Then list all horizontal forces with signs. Students who rush skip friction and get 4.0 — that's choice B, the trap answer designed for you.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> The question has TWO horizontal forces PLUS friction. Three things in the x-equation. If you only subtracted one force from 60, you'd get the wrong answer. Always list ALL forces before writing F=ma.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (B) 4 m/s² = forgot friction entirely (40/10). (E) 6.5 = subtracted friction from only one applied force. (C) 2.5 = arithmetic error.</div>
         </div>
 
         <div class="sol">
             <div class="sol-header"><span class="sol-num">Q2</span><span class="sol-ans">Answer: (B) 50 N</span></div>
             <div class="fbd"><svg viewBox="0 0 380 90" width="380"><rect x="10" y="80" width="360" height="3" fill="#94a3b8"/><rect x="130" y="35" width="70" height="45" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="4"/><text x="165" y="62" text-anchor="middle" font-size="10" fill="#2563eb">12 kg</text><line x1="200" y1="58" x2="260" y2="58" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="235" y="50" font-size="10" fill="#16a34a">50 N →</text><line x1="130" y1="58" x2="80" y2="58" stroke="#d97706" stroke-width="3" marker-end="url(#a)"/><text x="90" y="50" font-size="10" fill="#d97706">← fₛ = 50 N</text><text x="250" y="20" font-size="9" fill="#64748b">Max fₛ = 0.5×120 = 60 N</text><text x="250" y="33" font-size="9" fill="#64748b">50 < 60 → doesn't move!</text><text x="250" y="46" font-size="9" fill="#16a34a">fₛ = F = 50 N (exact match)</text></svg></div>
-            <div class="step"><strong>Key insight:</strong> Max static friction = $\mu_s mg = 0.5 \times 120 = 60$ N. Applied force is only 50 N < 60 N. Block does NOT move.</div>
-            <div class="step"><strong>Result:</strong> Static friction adjusts to match: $f_s = 50$ N exactly. NOT $\mu_s N$!</div>
-            <div class="mistake"><strong>Common mistake:</strong> Computing $f = \mu_k mg = 36$ N (choice A). That's kinetic friction — but the block isn't moving! Static friction equals the applied force.</div>
+            <div class="step"><strong>Step 1:</strong> Check: does the block even move? Max static friction = $\mu_s mg = 0.5 \times 12 \times 10 = 60$ N.</div>
+            <div class="step"><strong>Step 2:</strong> Applied force = 50 N. Since $50 < 60$, block does NOT move. Static friction matches exactly: $f_s = 50$ N.</div>
+            <div class="teach"><strong>Teacher's approach:</strong> This is the #1 friction trap on AP exams. ALWAYS check "does it move?" BEFORE computing acceleration. Step 1: compute max static friction. Step 2: compare to applied force. If applied < max static, the block is stationary and $f_s$ = applied force. If applied > max static, THEN use $\mu_k$ for kinetic friction. Many students skip straight to $f = \mu_k N$ without checking — that's how you get choice (A) = 36 N.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> Static friction is NOT always $\mu_s N$. That's the MAXIMUM. If the block isn't on the verge of sliding, $f_s < \mu_s N$. Static friction is whatever it needs to be to prevent motion, up to its maximum.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (A) 36 N = used kinetic friction $\mu_k mg$ even though block isn't moving. (C) 60 N = used max static friction — that's the max, not the actual value when F < max.</div>
         </div>
 
         <div class="sol">
             <div class="sol-header"><span class="sol-num">Q3</span><span class="sol-ans">Answer: (A) 0.83 m/s²</span></div>
             <div class="fbd"><svg viewBox="0 0 380 100" width="380"><circle cx="165" cy="50" r="4" fill="#2563eb"/><line x1="165" y1="50" x2="200" y2="14" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="205" y="14" font-size="10" fill="#16a34a">F₁=30N</text><text x="180" y="30" font-size="9" fill="#64748b">60°</text><line x1="165" y1="50" x2="100" y2="50" stroke="#dc2626" stroke-width="3" marker-end="url(#a)"/><text x="88" y="45" font-size="10" fill="#dc2626">F₂=10N ←</text><line x1="165" y1="50" x2="165" y2="100" stroke="#64748b" stroke-width="1" stroke-dasharray="3"/><text x="250" y="30" font-size="9" fill="#64748b">F₁ₓ = 30cos60° = 15 N →</text><text x="250" y="45" font-size="9" fill="#64748b">F₂ₓ = 10 N ←</text><text x="250" y="60" font-size="9" fill="#1e293b">Net_x = 15 - 10 = 5 N</text><text x="250" y="75" font-size="9" fill="#1e293b">a = 5/6 = 0.83 m/s²</text></svg></div>
-            <div class="step"><strong>Step 3-4:</strong> $F_{1x} = 30\cos 60° = 15$ N right. $F_{2x} = 10$ N left. $F_{net,x} = 15 - 10 = 5$ N.</div>
-            <div class="step"><strong>Step 5-6:</strong> $a_x = 5/6 = 0.83$ m/s²</div>
+            <div class="step"><strong>Step 3:</strong> Standard axes (flat surface → no tilting). Only need x-axis since question asks for horizontal acceleration.</div>
+            <div class="step"><strong>Step 4:</strong> Decompose $F_1$: $F_{1x} = 30\cos 60° = 30 \times 0.5 = 15$ N right. $F_2$ is already horizontal: 10 N left.</div>
+            <div class="step"><strong>Step 5-6:</strong> $F_{net,x} = 15 - 10 = 5$ N. $a_x = 5/6 = 0.833$ m/s²</div>
+            <div class="teach"><strong>Teacher's approach:</strong> When a force is at an angle, ALWAYS decompose it BEFORE doing anything else. Write $F_x = F\cos\theta$ and $F_y = F\sin\theta$ as separate lines. Then add ALL x-components. Students who forget to decompose will use the full 30 N and get $a = (30-10)/6 = 3.33$ (choice C) — wrong because only the horizontal COMPONENT matters.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> $\cos 60° = 0.5$, NOT $\cos 30°$. Make sure you use the correct angle. The angle is measured from horizontal, so the horizontal component uses cosine of 60°. If you accidentally used $\sin 60° = 0.866$, you'd get $F_{1x} = 26$ N and $a = 2.67$ — not a listed choice, but a common calculator mistake.</div>
         </div>
 
         <div class="sol">
             <div class="sol-header"><span class="sol-num">Q4</span><span class="sol-ans">Answer: (B) Yes — max friction 30 N < weight 40 N</span></div>
             <div class="fbd"><svg viewBox="0 0 350 120" width="350"><rect x="248" y="10" width="10" height="100" fill="#94a3b8"/><rect x="180" y="30" width="68" height="50" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="4"/><text x="214" y="60" text-anchor="middle" font-size="9" fill="#2563eb">Block</text><line x1="170" y1="55" x2="115" y2="55" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="105" y="50" font-size="10" fill="#16a34a">← F=100N</text><line x1="214" y1="80" x2="214" y2="115" stroke="#dc2626" stroke-width="3" marker-end="url(#a)"/><text x="225" y="110" font-size="10" fill="#dc2626">mg=40N ↓</text><line x1="248" y1="55" x2="280" y2="55" stroke="#8b5cf6" stroke-width="3" marker-end="url(#a)"/><text x="283" y="50" font-size="10" fill="#8b5cf6">N=100N →</text><line x1="214" y1="30" x2="214" y2="8" stroke="#d97706" stroke-width="3" marker-end="url(#a)"/><text x="225" y="15" font-size="10" fill="#d97706">fₛ ↑</text><text x="10" y="100" font-size="9" fill="#dc2626">Max fₛ = μₛN = 0.3×100 = 30 N</text><text x="10" y="115" font-size="9" fill="#dc2626">Weight = 40 N > 30 N → SLIDES!</text></svg></div>
-            <div class="step"><strong>Key:</strong> N is perpendicular to WALL (horizontal = 100 N). Friction is perpendicular to N (vertical, upward). Max $f_s = 0.3 \times 100 = 30$ N. Weight = 40 N > 30 N. Block slides down.</div>
+            <div class="step"><strong>Step 1-2 (FBD):</strong> Four forces: $F = 100$ N pushing RIGHT into wall, $N = 100$ N from wall pushing LEFT, $mg = 40$ N DOWN, friction $f_s$ UP (trying to prevent sliding down).</div>
+            <div class="step"><strong>Step 3:</strong> N is perpendicular to the WALL surface → N is horizontal. Friction is along the wall surface → friction is vertical (upward).</div>
+            <div class="step"><strong>Step 4:</strong> Max $f_s = \mu_s N = 0.3 \times 100 = 30$ N upward. But weight = 40 N downward. Since 30 < 40, friction can't hold the block.</div>
+            <div class="step"><strong>Step 5:</strong> Block slides down. Net downward force = $40 - 30 = 10$ N. $a = 10/4 = 2.5$ m/s² downward (if $m = 4$ kg).</div>
+            <div class="teach"><strong>Teacher's approach:</strong> Wall problems flip everything students expect. On a floor: N is vertical, friction is horizontal. On a WALL: N is horizontal, friction is vertical. The key question is: can friction (vertical) support the weight? If $\mu_s N < mg$, the block slides. This is a favorite AP conceptual question because it forces you to think about WHICH surface determines N's direction.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> Choice (C) says "N exceeds weight so it won't slide." This is the trap for students who confuse N (100 N horizontal) with the force holding the block up (friction, only 30 N). N is horizontal — it pushes the block into the wall, it does NOT hold the block up. Only friction can do that.</div>
         </div>
 
         <div class="sol">
@@ -108,21 +124,30 @@
         <div class="sol">
             <div class="sol-header"><span class="sol-num">Q6</span><span class="sol-ans">Answer: (A) 8 m/s²</span></div>
             <div class="fbd"><svg viewBox="0 0 350 120" width="350"><polygon points="30,110 230,110 230,30" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/><rect x="115" y="50" width="35" height="24" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="3" transform="rotate(-24 133 62)"/><line x1="133" y1="74" x2="133" y2="108" stroke="#dc2626" stroke-width="2" marker-end="url(#a)"/><text x="140" y="104" font-size="9" fill="#dc2626">mg</text><line x1="133" y1="50" x2="110" y2="22" stroke="#16a34a" stroke-width="2" marker-end="url(#a)"/><text x="95" y="22" font-size="9" fill="#16a34a">N</text><text x="250" y="30" font-size="9" fill="#1e293b">a = gsin53°</text><text x="250" y="45" font-size="9" fill="#1e293b">= 10(0.8)</text><text x="250" y="60" font-size="9" fill="#16a34a" font-weight="bold">= 8 m/s²</text><text x="250" y="80" font-size="9" fill="#64748b">Only 2 forces: mg + N</text><text x="250" y="95" font-size="9" fill="#64748b">No friction (frictionless)</text></svg></div>
-            <div class="step"><strong>Step 1-2:</strong> Only $mg$ and $N$. No friction.</div>
-            <div class="step"><strong>Step 5:</strong> Along incline: $mg\sin 53° = ma \Rightarrow a = g\sin 53° = 10(0.8) = 8$ m/s²</div>
+            <div class="step"><strong>Step 1-2:</strong> Only $mg$ (straight down) and $N$ (perpendicular to incline). NO friction.</div>
+            <div class="step"><strong>Step 3:</strong> Tilt axes: $x$ along incline (down = positive), $y$ perpendicular to incline.</div>
+            <div class="step"><strong>Step 4-5:</strong> Along incline: $mg\sin 53° = ma$. Perpendicular: $N = mg\cos 53°$.</div>
+            <div class="step"><strong>Step 6:</strong> $a = g\sin 53° = 10 \times 0.8 = 8$ m/s²</div>
+            <div class="teach"><strong>Teacher's approach:</strong> This is the simplest incline problem — if you can't do this in 15 seconds, you need more practice. The formula $a = g\sin\theta$ should be instant recall for any frictionless incline. Three quick checks: (1) At $\theta = 0°$: $a = 0$ ✓ (flat surface). (2) At $\theta = 90°$: $a = g$ ✓ (free fall). (3) $a$ doesn't depend on mass ✓ (same as free fall).</div>
+            <div class="gotcha"><strong>Gotcha:</strong> Choice (B) 6 = $g\cos 53°$. Students mix up sin and cos on inclines. Remember: the component ALONG the incline is $g\sin\theta$ (not cos). Think: at $\theta = 90°$, the "along incline" direction IS straight down, so it should give $g$ — and $\sin 90° = 1$ ✓, $\cos 90° = 0$ ✗.</div>
         </div>
 
         <div class="sol">
             <div class="sol-header"><span class="sol-num">Q7</span><span class="sol-ans">Answer: (A) μ<sub>k</sub> = 1.0</span></div>
-            <div class="step"><strong>Constant velocity</strong> → $a = 0$ → net force = 0.</div>
-            <div class="step">Along incline: $mg\sin 45° = \mu_k mg\cos 45°$. Cancel $mg\cos 45°$: $\tan 45° = \mu_k = 1.0$.</div>
-            <div class="mistake"><strong>Key insight:</strong> Constant velocity on incline means $\mu_k = \tan\theta$. This is a must-know relationship!</div>
+            <div class="step"><strong>Step 1:</strong> "Constant velocity" is the magic phrase — it means $a = 0$, so net force = 0.</div>
+            <div class="step"><strong>Step 2:</strong> Along incline: gravity component down = friction up. $mg\sin 45° = \mu_k mg\cos 45°$.</div>
+            <div class="step"><strong>Step 3:</strong> Cancel $mg$ and $\cos 45°$: $\tan 45° = \mu_k = 1.0$.</div>
+            <div class="teach"><strong>Teacher's approach:</strong> Memorize this golden result: $\mu_k = \tan\theta$ when sliding at constant velocity. It appears on AP exams almost every year in some form. This is also how you experimentally MEASURE $\mu_k$ — tilt a board until the block slides at constant speed, then $\mu_k = \tan\theta$. Also: this is why $\mu_k = \tan\theta_{max}$ gives the maximum angle for static friction. Same idea.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> "Constant velocity" does NOT mean the block is stationary. It means it's MOVING but not accelerating. Students sometimes think constant velocity means $v = 0$ — wrong! It means $a = 0$.</div>
         </div>
 
         <div class="sol">
             <div class="sol-header"><span class="sol-num">Q8</span><span class="sol-ans">Answer: (A) 9 m/s²</span></div>
-            <div class="step"><strong>Forces along incline (down = +):</strong> $mg\sin 30° + F = ma$. $5(10)(0.5) + 20 = 5a$. $25 + 20 = 5a$. $a = 9$ m/s².</div>
-            <div class="mistake"><strong>Note:</strong> Both gravity component AND applied force point down the incline. They ADD, not subtract.</div>
+            <div class="step"><strong>Step 1-2 (FBD):</strong> Three forces: $mg$ down, $N$ perpendicular to incline, and $F = 20$ N along the incline (downward).</div>
+            <div class="step"><strong>Step 3:</strong> Tilt axes. Down the incline = positive $x$.</div>
+            <div class="step"><strong>Step 4-5:</strong> Along incline: $mg\sin 30° + F = ma$. $5(10)(0.5) + 20 = 5a$. $25 + 20 = 45 = 5a$. $a = 9$ m/s².</div>
+            <div class="teach"><strong>Teacher's approach:</strong> The key word is "PUSHED DOWN." Both the gravity component ($mg\sin\theta$) and the applied force point in the SAME direction (down the incline). They ADD. Students who subtract get $a = (25-20)/5 = 1$ — not even a listed choice, so they'd panic. Always ask: "Do these forces point the same way or opposite?"</div>
+            <div class="gotcha"><strong>Gotcha:</strong> If the problem said "pushed UP the incline" instead, you'd subtract: $F - mg\sin 30° = ma$ → $a = (20-25)/5 = -1$ m/s² (decelerating, or can't push it up if F < 25). The direction of the applied force completely changes the equation.</div>
         </div>
 
         <div class="sol">
@@ -145,8 +170,11 @@
         <div class="sol">
             <div class="sol-header"><span class="sol-num">Q12</span><span class="sol-ans">Answer: (A) 0 N</span></div>
             <div class="fbd"><svg viewBox="0 0 350 110" width="350"><polygon points="30,100 230,100 230,30" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/><rect x="90" y="52" width="30" height="20" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="2" transform="rotate(-20 105 62)"/><text x="105" y="66" text-anchor="middle" font-size="8" fill="#2563eb">1kg</text><rect x="140" y="42" width="35" height="22" fill="#fef3c7" stroke="#d97706" stroke-width="2" rx="2" transform="rotate(-20 158 53)"/><text x="158" y="57" text-anchor="middle" font-size="8" fill="#d97706">2kg</text><line x1="120" y1="60" x2="140" y2="52" stroke="#1e293b" stroke-width="2"/><text x="250" y="35" font-size="9" fill="#1e293b" font-weight="bold">T = 0 !</text><text x="250" y="52" font-size="9" fill="#64748b">Both blocks have same μ</text><text x="250" y="65" font-size="9" fill="#64748b">and same incline angle</text><text x="250" y="78" font-size="9" fill="#64748b">→ same acceleration</text><text x="250" y="91" font-size="9" fill="#64748b">→ string is slack (T=0)</text></svg></div>
-            <div class="step"><strong>Key insight:</strong> Both blocks have identical $\mu_k$ and same $\theta$. Each block independently accelerates at $a = g(\sin\theta - \mu_k\cos\theta)$. Since they have the SAME acceleration, the string is slack: $T = 0$.</div>
-            <div class="mistake"><strong>This is a conceptual trap.</strong> Students assume the heavier block "pulls" the lighter one, but on the same incline with same μ, mass cancels and both accelerate identically.</div>
+            <div class="step"><strong>Key insight:</strong> Both blocks have identical $\mu_k$ and same $\theta$. Each independently: $a = g(\sin\theta - \mu_k\cos\theta)$. Mass cancels! SAME acceleration for both.</div>
+            <div class="step"><strong>Result:</strong> Since both accelerate identically, the string has no reason to be taut. $T = 0$.</div>
+            <div class="teach"><strong>Teacher's approach:</strong> This is one of the best conceptual questions on AP exams. Students see "connected by a string" and immediately assume T > 0. But think about it: if you and your friend are both running at the same speed side by side holding a rope, is there tension in the rope? No! Same idea here. Both blocks accelerate at $g(\sin\theta - \mu_k\cos\theta)$ regardless of mass. The string is slack.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> This ONLY works because both blocks have the same μ AND the same θ. If one block had different friction, or if they were on different inclines, T would NOT be zero. The mass cancellation is the key insight — on an incline with friction, acceleration is independent of mass (just like free fall!).</div>
+            <div class="mistake"><strong>Common mistake:</strong> Computing $T = (m_2 - m_1)g\sin\theta$ or similar — treating it like an Atwood machine. It's NOT Atwood because both blocks are on the SAME surface, not on opposite sides.</div>
         </div>
 
         <!-- CATEGORY C -->
@@ -189,7 +217,11 @@
         <div class="sol">
             <div class="sol-header"><span class="sol-num">Q19</span><span class="sol-ans">Answer: (B) $\sqrt{20}$ m/s</span></div>
             <div class="fbd"><svg viewBox="0 0 300 100" width="300"><circle cx="150" cy="75" r="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><line x1="150" y1="75" x2="150" y2="100" stroke="#dc2626" stroke-width="2" marker-end="url(#a)"/><text x="160" y="98" font-size="9" fill="#dc2626">mg=5N ↓</text><line x1="150" y1="63" x2="150" y2="20" stroke="#d97706" stroke-width="3" marker-end="url(#a)"/><text x="160" y="30" font-size="9" fill="#d97706">T=15N ↑</text><text x="220" y="40" font-size="9" fill="#64748b">At BOTTOM:</text><text x="220" y="55" font-size="9" fill="#64748b">T - mg = mv²/r</text><text x="220" y="70" font-size="9" fill="#64748b">15 - 5 = 0.5v²/1</text><text x="220" y="85" font-size="9" fill="#16a34a" font-weight="bold">v² = 20, v = √20</text></svg></div>
-            <div class="step">At bottom: $T - mg = mv^2/r$. $15 - 5 = 0.5v^2/1$. $v^2 = 20$.</div>
+            <div class="step"><strong>Step 1-2:</strong> Two forces: $T = 15$ N upward (toward center), $mg = 0.5 \times 10 = 5$ N downward (away from center).</div>
+            <div class="step"><strong>Step 3-5:</strong> At BOTTOM, center is UP. Centripetal direction = up. $T - mg = mv^2/r$.</div>
+            <div class="step"><strong>Step 6:</strong> $15 - 5 = 0.5v^2/1$. $10 = 0.5v^2$. $v^2 = 20$. $v = \sqrt{20}$ m/s.</div>
+            <div class="teach"><strong>Teacher's approach:</strong> For vertical circles, always ask: "Where is the center?" At the BOTTOM, center is UP. At the TOP, center is DOWN. Then: forces toward center are positive, forces away from center are negative. Bottom: $T - mg = mv^2/r$ (T toward center, mg away). Top: $mg + T = mv^2/r$ (both toward center). This single framework handles every vertical circle problem.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> At the bottom $T > mg$ (you feel heavier — like a roller coaster valley). At the top $T < mg$ (you feel lighter). If you get $T < mg$ at the bottom, your signs are wrong. Quick check: $T = 15 > mg = 5$ ✓.</div>
         </div>
 
         <div class="sol">
@@ -209,7 +241,11 @@
 
         <div class="sol">
             <div class="sol-header"><span class="sol-num">Q23</span><span class="sol-ans">Answer: (A) 3mg</span></div>
-            <div class="step">Released from horizontal: $v^2 = 2gL$ (energy). At bottom: $T - mg = mv^2/L = m(2gL)/L = 2mg$. $T = 3mg$.</div>
+            <div class="step"><strong>Step 1 — Energy:</strong> Released from horizontal means height drop = $L$. $\frac{1}{2}mv^2 = mgL$. So $v^2 = 2gL$.</div>
+            <div class="step"><strong>Step 2 — Newton at bottom:</strong> Center is UP. $T - mg = mv^2/L = m(2gL)/L = 2mg$.</div>
+            <div class="step"><strong>Step 3:</strong> $T = mg + 2mg = 3mg$.</div>
+            <div class="teach"><strong>Teacher's approach:</strong> This combines energy AND Newton's Laws — the AP's favorite combination. Always use energy to find speed, THEN use Newton for forces. Never try to do it all with Newton alone (the force changes direction as the pendulum swings). The result $T = 3mg$ at the bottom when released from horizontal is worth memorizing. If released from directly above (180°): $T = 5mg$. General formula: $T = mg(1 + 2\cos\theta_0)$ where $\theta_0$ is the release angle from the bottom... wait actually from the top the formula is $T = mg(3 - 2\cos\theta_0)$ where $\theta_0$ is the initial angle from vertical. At $\theta_0 = 90°$ (horizontal): $T = 3mg$ ✓.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> Choice (B) $2mg$ = forgot to add $mg$ back. The centripetal acceleration gives $mv^2/L = 2mg$, but that's only the NET upward force. Tension must ALSO support the weight, so $T = mg + 2mg = 3mg$.</div>
         </div>
 
         <!-- CATEGORY E -->
@@ -222,7 +258,12 @@
 
         <div class="sol">
             <div class="sol-header"><span class="sol-num">Q25</span><span class="sol-ans">Answer: (A) $v_0 e^{-bt/m}$</span></div>
-            <div class="step">$m\frac{dv}{dt} = -bv \Rightarrow \frac{dv}{v} = -\frac{b}{m}dt \Rightarrow \ln(v/v_0) = -bt/m \Rightarrow v = v_0 e^{-bt/m}$</div>
+            <div class="step"><strong>Step 1:</strong> Newton's 2nd law: $m\frac{dv}{dt} = -bv$</div>
+            <div class="step"><strong>Step 2:</strong> Separate variables: $\frac{dv}{v} = -\frac{b}{m}dt$</div>
+            <div class="step"><strong>Step 3:</strong> Integrate both sides: $\ln v - \ln v_0 = -\frac{b}{m}t$. So $\ln(v/v_0) = -bt/m$.</div>
+            <div class="step"><strong>Step 4:</strong> Exponentiate: $v = v_0 e^{-bt/m}$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> This is THE calculus-based Newton's Law problem. It appears on AP Physics C EVERY YEAR in some form. The technique: (1) Write F=ma with the velocity-dependent force. (2) Separate variables (get all v's on one side, all t's on the other). (3) Integrate. (4) Solve for v(t). The result is ALWAYS exponential decay for linear drag. Memorize the form: $v = v_0 e^{-bt/m}$, and know that the time constant $\tau = m/b$ is when the speed drops to $v_0/e \approx 0.37v_0$.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> Choice (B) has $e^{-mt/b}$ — the exponent is inverted! Remember: it's $b/m$ in the exponent, not $m/b$. Dimensional check: $[bt/m] = (\text{kg/s})(s)/(\text{kg}) = $ dimensionless ✓. But $[mt/b] = (\text{kg})(s)/(\text{kg/s}) = s^2$ — NOT dimensionless ✗.</div>
         </div>
 
         <div class="sol">
@@ -250,7 +291,11 @@
 
         <div class="sol">
             <div class="sol-header"><span class="sol-num">Q30</span><span class="sol-ans">Answer: (A) Ground pushes horse forward > friction resists cart</span></div>
-            <div class="step">The horse-cart 3rd law forces are INTERNAL to the system. The system accelerates due to EXTERNAL forces: ground's static friction on horse's hooves (forward) minus ground's rolling friction on cart wheels (backward).</div>
+            <div class="step"><strong>The 3rd law pair:</strong> Horse pulls cart with force $F$. Cart pulls horse back with force $F$. These are EQUAL and opposite — that's 3rd law.</div>
+            <div class="step"><strong>But the system accelerates because:</strong> These are INTERNAL forces (within the horse-cart system). Internal forces cancel when you analyze the system as a whole. What matters are EXTERNAL forces.</div>
+            <div class="step"><strong>External forces:</strong> Horse's hooves push backward on ground → ground pushes horse FORWARD (friction). Cart wheels roll on ground → ground provides small rolling friction backward on cart. If horse-ground force > cart-ground friction, the system accelerates forward.</div>
+            <div class="teach"><strong>Teacher's approach:</strong> This is the most asked conceptual Newton's 3rd law question in all of physics. The key insight: 3rd law pairs act on DIFFERENT objects, so they can never cancel. The horse-on-cart and cart-on-horse forces act on different objects. The horse accelerates because the ground pushes it forward (a DIFFERENT force entirely). Always identify which force acts on which object.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> Choices B, C, D, E all contain common misconceptions. (B) "3rd law doesn't apply when accelerating" — WRONG, it always applies. (C) "Horse pulls harder" — WRONG, 3rd law forces are always equal. (D) "Internal forces can accelerate" — WRONG, internal forces cancel for the system. The correct answer is the only one that identifies an EXTERNAL force.</div>
         </div>
 
         <div class="sol">
