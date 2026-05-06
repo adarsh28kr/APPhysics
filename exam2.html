@@ -443,7 +443,7 @@
         <div class="action-links teacher-only">
             <button class="btn btn-success" id="save-btn" disabled style="opacity:0.8;">&#10003; Progress Saved</button>
             <a href="dashboard.html" class="btn btn-primary" style="color:white;">View Dashboard</a>
-            <a href="answer-key.html" class="btn btn-secondary">Full Answer Key</a>
+            <a href="answer-key-exam2.html" class="btn btn-secondary">Full Answer Key</a>
         </div>
     </div>
 
@@ -465,7 +465,7 @@
 // ============================================
 const mcQuestions = [
     // === CATEGORY A: FLAT SURFACE + FORCES (Q1-5) ===
-    { id:1, topic:"Newton's Laws", text:"A 8 kg crate is pushed across a rough floor ($\\mu_k = 0.3$) by two horizontal forces: 60 N to the right and 20 N to the left. The acceleration is:", choices:["$2.5$ m/s$^2$","$5$ m/s$^2$","$1.5$ m/s$^2$","$0$ (doesn't move)","$7.5$ m/s$^2$"], correctIndex:2 },
+    { id:1, topic:"Newton's Laws", text:"A 10 kg crate is pushed across a rough floor ($\\mu_k = 0.25$) by two horizontal forces: 60 N to the right and 20 N to the left. The acceleration is:", choices:["$1.5$ m/s$^2$","$4$ m/s$^2$","$2.5$ m/s$^2$","$0$ (doesn't move)","$6.5$ m/s$^2$"], correctIndex:0 },
     { id:2, topic:"Newton's Laws", text:"A 12 kg box on a rough floor ($\\mu_s = 0.5$, $\\mu_k = 0.3$) is pushed with 50 N horizontally. The friction force on the box is:", choices:["$36$ N","$50$ N","$60$ N","$0$ N","$48$ N"], correctIndex:1 },
     { id:3, topic:"Newton's Laws", text:"A 6 kg object on a frictionless surface has two forces applied: $F_1 = 30$ N at 60° above horizontal and $F_2 = 10$ N horizontally to the left. The horizontal acceleration is:", choices:["$0.83$ m/s$^2$","$2.5$ m/s$^2$","$3.33$ m/s$^2$","$5$ m/s$^2$","$1.67$ m/s$^2$"], correctIndex:0 },
     { id:4, topic:"Newton's Laws", text:"A block is pushed against a vertical wall by a horizontal force of 100 N. The block weighs 40 N. If $\\mu_s = 0.3$, does the block slide?", choices:["No — static friction (30 N) can hold the weight (40 N)... wait, it cannot","Yes — max friction is 30 N < weight 40 N","No — normal force equals 100 N which exceeds weight","Yes — the block always slides on a wall","Cannot determine without $\\mu_k$"], correctIndex:1 },
@@ -475,15 +475,15 @@ const mcQuestions = [
     { id:7, topic:"Newton's Laws", text:"A block slides DOWN a 45° rough incline at constant velocity. The coefficient of kinetic friction is:", choices:["$1.0$","$0.5$","$0.707$","$\\sqrt{2}$","$0.577$"], correctIndex:0 },
     { id:8, topic:"Newton's Laws", text:"A 5 kg block is PUSHED down a frictionless 30° incline by a force of 20 N applied parallel to the incline (downward along the surface). The acceleration is:", choices:["$9$ m/s$^2$","$4$ m/s$^2$","$5$ m/s$^2$","$7$ m/s$^2$","$14$ m/s$^2$"], correctIndex:0 },
     { id:9, topic:"Newton's Laws", text:"Two blocks ($m_1 = 2$ kg, $m_2 = 4$ kg) are in contact on a 30° frictionless incline. A force $F$ is applied to $m_1$ (the lower block) pushing it up the incline. The contact force between the blocks when $F = 90$ N is:", choices:["$60$ N","$40$ N","$30$ N","$20$ N","$50$ N"], correctIndex:0 },
-    { id:10, topic:"Newton's Laws", text:"A block on a 37° incline is connected to a horizontal spring (natural length, $k = 200$ N/m) attached to a wall at the base. The block has mass 2 kg. If $\\mu_s = 0.4$, the maximum spring stretch before the block slides up is:", choices:["$0.092$ m","$0.060$ m","$0.12$ m","$0.15$ m","$0.030$ m"], correctIndex:0 },
-    { id:11, topic:"Newton's Laws", text:"A block on a rough incline can be in equilibrium for angles between $15°$ and $45°$ (depending on the direction of applied force along the incline). The coefficient of static friction is:", choices:["$\\tan 15°$","$\\tan 30°$","$\\tan 45°$","$(\\tan 45° - \\tan 15°)/2$","$\\sin 30°$"], correctIndex:1 },
+    { id:10, topic:"Newton's Laws", text:"A 2 kg block on a 37° incline ($\\sin 37° = 0.6$, $\\cos 37° = 0.8$) is attached to a spring ($k = 200$ N/m) parallel to the incline surface. If $\\mu_s = 0.4$, the maximum spring compression before the block slides up the incline is:", choices:["$0.092$ m","$0.060$ m","$0.12$ m","$0.15$ m","$0.030$ m"], correctIndex:0 },
+    { id:11, topic:"Newton's Laws", text:"A 5 kg block is placed on a rough incline. The incline angle is slowly increased. The block begins to slide when the angle reaches $31°$. The coefficient of static friction is approximately:", choices:["$0.60$","$0.50$","$0.52$","$0.75$","$0.31$"], correctIndex:0 },
     { id:12, topic:"Newton's Laws", text:"A 2 kg block on a rough 30° incline ($\\mu_k = 0.2$) is connected by a string parallel to the incline to a 1 kg block further up the same incline. Both blocks slide down together. The tension in the string is:", choices:["$0$ N","$1.3$ N","$3.3$ N","$5$ N","$0.67$ N"], correctIndex:0 },
     // === CATEGORY C: CONNECTED SYSTEMS (Q13-18) ===
     { id:13, topic:"Newton's Laws", text:"A modified Atwood machine has a 6 kg mass on a frictionless table connected to a 4 kg hanging mass. A second string connects the 6 kg mass to a 2 kg mass hanging on the other side. The acceleration of the system is:", choices:["$1.67$ m/s$^2$","$2.5$ m/s$^2$","$3.33$ m/s$^2$","$5$ m/s$^2$","$0.83$ m/s$^2$"], correctIndex:0 },
     { id:14, topic:"Newton's Laws", text:"Two blocks ($m_1 = 3$ kg and $m_2 = 5$ kg) are on opposite sides of a frictionless triangular wedge (both sides at 30°). Connected by a string over the top. The acceleration is:", choices:["$2.5$ m/s$^2$","$0$ (balanced)","$1.25$ m/s$^2$","$5$ m/s$^2$","$3.75$ m/s$^2$"], correctIndex:2 },
     { id:15, topic:"Newton's Laws", text:"A 4 kg block on a rough table ($\\mu_k = 0.3$) is connected over a pulley to a 6 kg hanging block. If the system is released, the acceleration is:", choices:["$4.8$ m/s$^2$","$6$ m/s$^2$","$3.6$ m/s$^2$","$2.4$ m/s$^2$","$5.4$ m/s$^2$"], correctIndex:0 },
     { id:16, topic:"Newton's Laws", text:"In the previous problem (Q15), the tension in the string is:", choices:["$31.2$ N","$60$ N","$40$ N","$24$ N","$48$ N"], correctIndex:0 },
-    { id:17, topic:"Newton's Laws", text:"A block of mass $M$ rests on a frictionless cart of mass $m$. A string connects the block over a pulley at the cart's edge to a hanging weight of mass $m$. As the weight falls, the cart accelerates to the LEFT. The acceleration of the cart is:", choices:["$mg/(M + 2m)$","$mg/(M + m)$","$mg/M$","$2mg/(M+m)$","$mg/(M+m+m)$"], correctIndex:0 },
+    { id:17, topic:"Newton's Laws", text:"A 4 kg hanging block and a 6 kg block on a frictionless 30° incline are connected by a string over a pulley. The tension in the string is:", choices:["$36$ N","$30$ N","$40$ N","$48$ N","$24$ N"], correctIndex:0 },
     { id:18, topic:"Newton's Laws", text:"In an Atwood machine ($m_1$ and $m_2$, $m_2 > m_1$), if $m_2 = 3m_1$, the acceleration is:", choices:["$g/2$","$g/3$","$g/4$","$2g/3$","$3g/4$"], correctIndex:0 },
     // === CATEGORY D: CIRCULAR + NEWTON (Q19-23) ===
     { id:19, topic:"Newton's Laws", text:"A 0.5 kg ball on a 1 m string swings in a vertical circle. At the bottom, the string tension is 15 N. The speed at the bottom is:", choices:["$\\sqrt{10}$ m/s","$\\sqrt{20}$ m/s","$\\sqrt{30}$ m/s","$5$ m/s","$\\sqrt{5}$ m/s"], correctIndex:1 },
