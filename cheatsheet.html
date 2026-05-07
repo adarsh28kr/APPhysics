@@ -38,6 +38,8 @@
         .checklist{list-style:none;font-size:.75rem}
         .checklist li{padding:2px 0}
         .checklist li::before{content:"☐ ";color:#dc2626;font-weight:700;font-size:.85rem}
+        .rule{background:#1e293b;color:#fff;padding:4px 10px;border-radius:5px;font-size:.78rem;font-weight:700;margin:4px 0;text-align:center;letter-spacing:.3px}
+        .rule em{color:#fbbf24;font-style:normal}
         @media print{
             body{padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
             .poster{max-width:100%}
@@ -224,6 +226,7 @@
     <!-- ============ INCLINE: sin vs cos VISUAL ============ -->
     <div class="box b-purple">
         <h2>INCLINE: sin vs cos</h2>
+        <div class="rule"><em>PARALLEL</em> to slope = sin θ &nbsp;|&nbsp; <em>PERPENDICULAR</em> to slope = cos θ</div>
         <div class="rhyme">"SIN slides ALONG, COS squishes ACROSS"</div>
         <!-- θ=30°. Block center (130,78). Exact trig: down-slope(-0.866,0.5), into-surface(0.5,0.866) -->
         <svg viewBox="0 0 340 130">
@@ -269,6 +272,7 @@
     <!-- ============ CONNECTED SYSTEMS VISUAL ============ -->
     <div class="box b-red">
         <h2>CONNECTED SYSTEMS — Your 0/6 Topic</h2>
+        <div class="rule"><em>Same string</em> = Same tension everywhere &nbsp;|&nbsp; <em>Same string</em> = Same |a| for all blocks</div>
         <svg viewBox="0 0 340 100">
             <!-- Atwood visual -->
             <circle cx="80" cy="12" r="8" fill="none" stroke="#64748b" stroke-width="1.5"/>
@@ -294,6 +298,7 @@
     <!-- ============ FORCE COLORS LEGEND ============ -->
     <div class="box b-teal">
         <h2>FORCE COLOR CODE (Same Everywhere)</h2>
+        <div class="rule">Only draw forces that act <em>ON</em> the object. Never draw forces it exerts on others.</div>
         <svg viewBox="0 0 340 80">
             <line x1="15" y1="20" x2="15" y2="50" stroke="#dc2626" stroke-width="4" marker-end="url(#a)"/>
             <text x="25" y="30" font-size="10" fill="#dc2626" font-weight="700">RED = Weight (mg)</text>
@@ -311,6 +316,7 @@
     <!-- ============ N DIRECTION VISUAL ============ -->
     <div class="box b-green">
         <h2>N DIRECTION — Always ⊥ to SURFACE</h2>
+        <div class="rule">N ≠ mg always! N = mg <em>only on flat surfaces</em> with no vertical forces.</div>
         <svg viewBox="0 0 340 90">
             <!-- Floor -->
             <rect x="10" y="60" width="90" height="4" fill="#94a3b8"/>
@@ -337,6 +343,7 @@
     <!-- ============ FRICTION: DOES IT MOVE? ============ -->
     <div class="box b-red">
         <h2>FRICTION — Ask This FIRST</h2>
+        <div class="rule"><em>Static adjusts</em> (fs = whatever's needed, up to μsN) &nbsp;|&nbsp; <em>Kinetic is fixed</em> (fk = μkN, always)</div>
         <svg viewBox="0 0 340 75">
             <rect x="5" y="5" width="330" height="65" rx="8" fill="#fef2f2"/>
             <text x="170" y="22" text-anchor="middle" font-size="12" fill="#dc2626" font-weight="900">DOES IT MOVE?</text>
@@ -358,6 +365,7 @@
     <!-- ============ WRONG vs RIGHT ============ -->
     <div class="box b-amber">
         <h2>YOUR MISTAKES → THE FIX</h2>
+        <div class="rule">Before submitting: <em>Did I forget g?</em> &nbsp;|&nbsp; <em>Did I forget ½?</em> &nbsp;|&nbsp; <em>sin or cos?</em></div>
         <div class="compare">
             <div>
                 <div class="wrong-box">
@@ -408,7 +416,8 @@
 
     <!-- ============ KEY FORMULAS ============ -->
     <div class="box b-blue full">
-        <h2>KEY FORMULAS</h2>
+        <h2>KEY FORMULAS — One Rule Per Formula</h2>
+        <div class="rule">Elevator: <em>UP = heavier</em> T=m(g+a) &nbsp;|&nbsp; <em>DOWN = lighter</em> T=m(g−a) &nbsp;|&nbsp; Circular: <em>everything toward center</em></div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px">
             <div class="formula">$\vec{F}_{net} = m\vec{a}$</div>
             <div class="formula">$f_k = \mu_k N$</div>
@@ -425,6 +434,7 @@
     <!-- ============ BEFORE-SUBMIT CHECKLIST ============ -->
     <div class="box b-red full">
         <h2>BEFORE YOU SUBMIT — Your Personal Checklist</h2>
+        <div class="rule">Stuck over 90 seconds? → <em>FLAG IT</em> → <em>MOVE ON</em> → Come back at the end. You lost 6 Qs to time last exam.</div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
             <div>
                 <ul class="checklist">
