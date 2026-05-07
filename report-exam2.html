@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam 2 Performance Report — Newton's Laws</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',-apple-system,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6;padding:20px}
+        .container{max-width:960px;margin:0 auto}
+        @media print{body{background:#fff;font-size:10pt}.container{padding:0;max-width:100%}.no-print{display:none}.page-break{page-break-before:always}}
+        .report-header{text-align:center;padding:30px 20px;background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;border-radius:16px;margin-bottom:25px}
+        .report-header h1{font-size:1.6rem;margin-bottom:4px}
+        .report-header .sub{opacity:.8;font-size:.9rem}
+        .report-header .date{margin-top:10px;font-size:.8rem;opacity:.6}
+        .heroes{display:flex;justify-content:center;gap:25px;flex-wrap:wrap;margin:20px 0}
+        .hero{text-align:center;min-width:90px}
+        .hero .v{font-size:2.4rem;font-weight:800;line-height:1}
+        .hero .l{font-size:.75rem;color:#64748b;margin-top:3px}
+        h2{font-size:1.15rem;color:#1e3a5f;margin:25px 0 10px;padding-bottom:5px;border-bottom:2px solid #2563eb}
+        .card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin-bottom:15px}
+        .card h3{font-size:.95rem;color:#2563eb;margin-bottom:8px}
+        .grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+        @media(max-width:700px){.grid2{grid-template-columns:1fr}}
+        table{width:100%;border-collapse:collapse;font-size:.82rem}
+        th,td{padding:6px 10px;text-align:left;border-bottom:1px solid #e2e8f0}
+        th{font-weight:600;color:#64748b;font-size:.75rem;text-transform:uppercase;background:#f8fafc}
+        .cg{color:#16a34a;font-weight:700}.cr{color:#dc2626;font-weight:700}.cs{color:#d97706;font-weight:700}
+        .bar-row{display:flex;align-items:center;margin-bottom:7px}
+        .bar-label{width:150px;font-size:.82rem;font-weight:500}
+        .bar-bg{flex:1;height:20px;background:#e2e8f0;border-radius:10px;overflow:hidden;margin:0 8px}
+        .bar-fill{height:100%;border-radius:10px}
+        .bar-val{width:55px;font-size:.8rem;font-weight:700;text-align:right}
+        .stat-row{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0}
+        .stat-box{flex:1;min-width:100px;text-align:center;padding:12px;border-radius:8px;background:#f1f5f9}
+        .stat-box .sv{font-size:1.5rem;font-weight:800}.stat-box .sl{font-size:.72rem;color:#64748b}
+        canvas{display:block;max-width:100%}
+        .badge{display:inline-block;padding:2px 8px;border-radius:8px;font-size:.7rem;font-weight:600}
+        .b-r{background:#fee2e2;color:#991b1b}.b-y{background:#fef3c7;color:#92400e}.b-g{background:#dcfce7;color:#166534}
+        .flag-icon{color:#d97706;font-weight:700}
+        .compare-row{display:flex;gap:15px;margin:8px 0}
+        .compare-box{flex:1;padding:12px;border-radius:8px;text-align:center}
+        .print-bar{text-align:center;margin-bottom:15px}
+        .print-bar button{padding:8px 25px;font-size:.95rem;border:none;border-radius:8px;background:#2563eb;color:#fff;cursor:pointer;font-weight:600}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="print-bar no-print"><button onclick="window.print()">Print / Save as PDF</button></div>
+
+    <div class="report-header">
+        <h1>Newton's Laws Mastery Test</h1>
+        <div class="sub">Exam 2 — Performance Report</div>
+        <div class="date">Student: President Pandey &bull; May 6, 2026 &bull; Timed (45 min) &bull; 35 Questions (all Newton's Laws)</div>
+    </div>
+
+    <!-- HEROES -->
+    <div class="heroes">
+        <div class="hero"><div class="v" style="color:#dc2626">9<span style="font-size:1.2rem;color:#94a3b8">/35</span></div><div class="l">Score</div></div>
+        <div class="hero"><div class="v" style="color:#dc2626">26%</div><div class="l">Percentage</div></div>
+        <div class="hero"><div class="v" style="color:#d97706">6</div><div class="l">Unanswered</div></div>
+        <div class="hero"><div class="v" style="color:#2563eb">45:31</div><div class="l">Time Used</div></div>
+        <div class="hero"><div class="v" style="color:#d97706">5</div><div class="l">Flagged</div></div>
+        <div class="hero"><div class="v" style="color:#16a34a">67%</div><div class="l">Confident Acc.</div></div>
+    </div>
+
+    <!-- EXAM 1 vs EXAM 2 COMPARISON -->
+    <h2>Exam 1 vs Exam 2 Comparison</h2>
+    <div class="card">
+        <table>
+            <tr><th></th><th>Exam 1 (All Topics)</th><th>Exam 2 (Newton Only)</th><th>Change</th></tr>
+            <tr><td>Score</td><td>11/35 (31%)</td><td>9/35 (26%)</td><td style="color:#dc2626">-5%</td></tr>
+            <tr><td>Unanswered</td><td>0</td><td>6</td><td style="color:#dc2626">worse</td></tr>
+            <tr><td>Time</td><td>42.5 min</td><td>45.5 min</td><td style="color:#dc2626">over time</td></tr>
+            <tr><td>Confident accuracy</td><td>50% (5/10)</td><td>67% (4/6)</td><td style="color:#16a34a">+17%</td></tr>
+            <tr><td>Avg time/question</td><td>73s</td><td>78s</td><td>similar</td></tr>
+        </table>
+    </div>
+
+    <!-- CATEGORY BREAKDOWN -->
+    <h2>Performance by Category</h2>
+    <div class="card">
+        <div class="bar-row"><span class="bar-label">A: Flat surface</span><div class="bar-bg"><div class="bar-fill" style="width:40%;background:#d97706"></div></div><span class="bar-val">2/5 (40%)</span></div>
+        <div class="bar-row"><span class="bar-label">B: Inclines</span><div class="bar-bg"><div class="bar-fill" style="width:14%;background:#dc2626"></div></div><span class="bar-val" style="color:#dc2626">1/7 (14%)</span></div>
+        <div class="bar-row"><span class="bar-label">C: Connected systems</span><div class="bar-bg"><div class="bar-fill" style="width:0%;background:#dc2626"></div></div><span class="bar-val" style="color:#dc2626">0/6 (0%)</span></div>
+        <div class="bar-row"><span class="bar-label">D: Circular + Newton</span><div class="bar-bg"><div class="bar-fill" style="width:40%;background:#d97706"></div></div><span class="bar-val">2/5 (40%)</span></div>
+        <div class="bar-row"><span class="bar-label">E: Calculus-based</span><div class="bar-bg"><div class="bar-fill" style="width:33%;background:#dc2626"></div></div><span class="bar-val" style="color:#dc2626">2/6 (33%)</span></div>
+        <div class="bar-row"><span class="bar-label">F: Advanced</span><div class="bar-bg"><div class="bar-fill" style="width:33%;background:#dc2626"></div></div><span class="bar-val" style="color:#dc2626">2/6 (33%)</span></div>
+    </div>
+
+    <!-- TIME PER QUESTION -->
+    <h2>Time Per Question</h2>
+    <div class="card"><canvas id="timeChart" height="240"></canvas></div>
+
+    <!-- CONFIDENCE -->
+    <h2>Confidence Calibration</h2>
+    <div class="grid2">
+        <div class="card">
+            <div class="stat-row">
+                <div class="stat-box"><div class="sv" style="color:#16a34a">67%</div><div class="sl">"Confident" accuracy<br>4/6 correct</div></div>
+                <div class="stat-box"><div class="sv" style="color:#dc2626">11%</div><div class="sl">"Unsure" accuracy<br>1/9 correct</div></div>
+                <div class="stat-box"><div class="sv" style="color:#d97706">25%</div><div class="sl">"Guessing" accuracy<br>4/16 correct</div></div>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Improvement from Exam 1</h3>
+            <div class="compare-row">
+                <div class="compare-box" style="background:#fee2e2"><div style="font-size:1.3rem;font-weight:800;color:#dc2626">50%</div><div style="font-size:.75rem;color:#991b1b">Exam 1 Confident</div></div>
+                <div style="font-size:1.5rem;color:#64748b;align-self:center">→</div>
+                <div class="compare-box" style="background:#dcfce7"><div style="font-size:1.3rem;font-weight:800;color:#16a34a">67%</div><div style="font-size:.75rem;color:#166534">Exam 2 Confident</div></div>
+            </div>
+            <p style="font-size:.82rem;color:#64748b;margin-top:6px">Confidence calibration improved — better at knowing what he knows.</p>
+        </div>
+    </div>
+
+    <!-- TIME SPENT ANALYSIS -->
+    <h2>Time Spent: Where It Went</h2>
+    <div class="card">
+        <h3>Questions where &gt;2 minutes were spent</h3>
+        <table>
+            <tr><th>Q</th><th>Category</th><th>Time</th><th>Result</th><th>Observation</th></tr>
+            <tr><td>Q2</td><td>Static friction</td><td class="cr">4:54</td><td class="cr">Wrong</td><td>Longest time, still wrong</td></tr>
+            <tr><td>Q11</td><td>tanθ = μs</td><td class="cr">4:22</td><td class="cs">Skipped</td><td>Gave up after 4+ min</td></tr>
+            <tr><td>Q12</td><td>T=0 same incline</td><td class="cr">3:49</td><td class="cr">Wrong</td><td>Conceptual trap</td></tr>
+            <tr><td>Q35</td><td>Two-rope tension</td><td class="cr">3:30</td><td class="cs">Skipped</td><td>Gave up</td></tr>
+            <tr><td>Q15</td><td>Table+hanging+friction</td><td class="cr">3:03</td><td class="cr">Wrong</td><td>Connected system</td></tr>
+            <tr><td>Q3</td><td>Force decomposition</td><td>2:29</td><td class="cg">Correct</td><td>Slow but got it</td></tr>
+            <tr><td>Q4</td><td>Wall friction</td><td>2:13</td><td class="cg">Correct</td><td>Slow but got it</td></tr>
+        </table>
+        <p style="margin-top:8px;font-size:.82rem;color:#64748b">Total time on these 7 questions: 24.3 minutes (53% of exam time on 20% of questions)</p>
+    </div>
+
+    <div class="card">
+        <h3>Questions answered in under 20 seconds</h3>
+        <table>
+            <tr><th>Q</th><th>Time</th><th>Result</th><th>Confidence</th></tr>
+            <tr><td>Q13</td><td>6s</td><td class="cs">Skipped</td><td>—</td></tr>
+            <tr><td>Q9</td><td>12s</td><td class="cs">Skipped</td><td>—</td></tr>
+            <tr><td>Q30</td><td>12s</td><td class="cr">Wrong</td><td>Confident</td></tr>
+            <tr><td>Q14</td><td>14s</td><td class="cs">Skipped</td><td>Guessing</td></tr>
+            <tr><td>Q27</td><td>14s</td><td class="cr">Wrong</td><td>Guessing</td></tr>
+            <tr><td>Q20</td><td>15s</td><td class="cr">Wrong</td><td>Guessing</td></tr>
+            <tr><td>Q31</td><td>16s</td><td class="cr">Wrong</td><td>Guessing</td></tr>
+            <tr><td>Q16</td><td>18s</td><td class="cr">Wrong</td><td>Unsure</td></tr>
+            <tr><td>Q19</td><td>17s</td><td class="cg">Correct</td><td>Guessing</td></tr>
+            <tr><td>Q22</td><td>20s</td><td class="cg">Correct</td><td>Guessing</td></tr>
+        </table>
+        <p style="margin-top:8px;font-size:.82rem;color:#64748b">10 questions under 20s: 2 correct, 5 wrong, 3 skipped. Some quick guesses worked (Q19, Q22).</p>
+    </div>
+
+    <!-- WHAT WORKED -->
+    <h2>What Worked (Correct Answers)</h2>
+    <div class="card">
+        <table>
+            <tr><th>Q</th><th>Topic</th><th>What This Shows</th></tr>
+            <tr><td class="cg">Q3</td><td>Force at 60° decomposition</td><td>Can decompose forces into components — FBD practice helped</td></tr>
+            <tr><td class="cg">Q4</td><td>Wall friction (N horizontal)</td><td>Understands N ⊥ to surface, even on a wall</td></tr>
+            <tr><td class="cg">Q7</td><td>Constant velocity → μk = tanθ</td><td>Learned this key relationship from practice</td></tr>
+            <tr><td class="cg">Q19</td><td>Vertical circle (bottom)</td><td>T - mg = mv²/r at bottom position</td></tr>
+            <tr><td class="cg">Q22</td><td>Turntable μs = ω²r/g</td><td>Friction as centripetal force</td></tr>
+            <tr><td class="cg">Q24</td><td>∫F(t)dt impulse</td><td>Can integrate trigonometric force</td></tr>
+            <tr><td class="cg">Q29</td><td>F = ma with a(t)</td><td>Understands F = m × a(t) evaluation</td></tr>
+            <tr><td class="cg">Q32</td><td>Two-solution horizontal force</td><td>Conceptual understanding of equilibrium range</td></tr>
+            <tr><td class="cg">Q34</td><td>Dimensional analysis</td><td>Can eliminate wrong units — valuable exam skill</td></tr>
+        </table>
+    </div>
+
+    <!-- WHAT DIDN'T WORK -->
+    <div class="page-break"></div>
+    <h2>What Didn't Work</h2>
+    <div class="card">
+        <h3>Connected Systems: 0/6 (4 skipped, 2 wrong)</h3>
+        <table>
+            <tr><th>Q</th><th>Type</th><th>Time</th><th>What Happened</th></tr>
+            <tr><td>Q13</td><td>3-mass modified Atwood</td><td>6s</td><td>Skipped immediately — didn't attempt</td></tr>
+            <tr><td>Q14</td><td>Double incline</td><td>14s</td><td>Skipped immediately</td></tr>
+            <tr><td>Q15</td><td>Table + hanging + friction</td><td>183s</td><td>Spent 3 min, got wrong answer</td></tr>
+            <tr><td>Q16</td><td>Find tension from Q15</td><td>18s</td><td>Wrong (couldn't solve Q15)</td></tr>
+            <tr><td>Q17</td><td>Incline + hanging</td><td>96s</td><td>Wrong</td></tr>
+            <tr><td>Q18</td><td>Atwood m₂ = 3m₁</td><td>91s</td><td>Wrong — doesn't know the Atwood formula</td></tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>Inclines: 1/7 (only easiest one correct)</h3>
+        <table>
+            <tr><th>Q</th><th>What Went Wrong</th></tr>
+            <tr><td>Q6</td><td>Chose gcos53° instead of gsin53° — sin/cos confusion persists</td></tr>
+            <tr><td>Q8</td><td>Skipped (push down incline — forces ADD, not subtract)</td></tr>
+            <tr><td>Q9</td><td>Skipped (two blocks on incline — contact force)</td></tr>
+            <tr><td>Q10</td><td>Guessed wrong (spring on incline)</td></tr>
+            <tr><td>Q11</td><td>Spent 4.4 min, gave up (simple tanθ = μs)</td></tr>
+            <tr><td>Q12</td><td>Spent 3.8 min, wrong (T=0 conceptual trap)</td></tr>
+        </table>
+    </div>
+
+    <!-- UNANSWERED ANALYSIS -->
+    <h2>Unanswered Questions Analysis</h2>
+    <div class="card">
+        <table>
+            <tr><th>Q</th><th>Time Spent Looking</th><th>Category</th><th>Pattern</th></tr>
+            <tr><td>Q8</td><td>135s (2.3 min)</td><td>Push down incline</td><td>Looked but couldn't solve</td></tr>
+            <tr><td>Q9</td><td>12s</td><td>Contact force incline</td><td>Skipped immediately</td></tr>
+            <tr><td>Q11</td><td>262s (4.4 min)</td><td>tanθ = μs</td><td>Struggled, gave up</td></tr>
+            <tr><td>Q13</td><td>6s</td><td>3-mass Atwood</td><td>Skipped immediately</td></tr>
+            <tr><td>Q14</td><td>14s</td><td>Double incline</td><td>Skipped immediately</td></tr>
+            <tr><td>Q35</td><td>210s (3.5 min)</td><td>Two-rope tension</td><td>Struggled, gave up</td></tr>
+        </table>
+        <p style="margin-top:8px;font-size:.82rem;color:#64748b">Total time wasted on unanswered questions: 10.6 minutes. Three were instantly skipped (32s total), three were long struggles (607s total).</p>
+    </div>
+
+    <!-- COMPLETE LOG -->
+    <h2>Complete Question Log</h2>
+    <div class="card" style="overflow-x:auto">
+        <table>
+            <thead><tr><th>#</th><th>Cat</th><th>Student</th><th>Correct</th><th>Result</th><th>Conf</th><th>Time</th></tr></thead>
+            <tbody id="qlog"></tbody>
+        </table>
+    </div>
+
+    <!-- SCORE PROJECTION -->
+    <h2>Score Projection</h2>
+    <div class="card">
+        <table>
+            <tr><th>Scenario</th><th>Score</th><th>%</th></tr>
+            <tr><td>Actual</td><td>9/35</td><td>26%</td></tr>
+            <tr><td>If answered all 6 skipped (random guess, 20% chance each)</td><td>~10/35</td><td>29%</td></tr>
+            <tr><td>If connected systems fixed (0→3 of 6)</td><td>12/35</td><td>34%</td></tr>
+            <tr><td>If incline sin/cos fixed (1→4 of 7)</td><td>12/35</td><td>34%</td></tr>
+            <tr><td>If both fixed + no time waste</td><td>15-18/35</td><td>43-51%</td></tr>
+        </table>
+    </div>
+
+    <div style="text-align:center;margin:25px 0 15px;color:#94a3b8;font-size:.75rem">
+        Newton's Laws Mastery Test — Performance Report<br>
+        Exam 2 &bull; May 6, 2026 &bull; 35 Questions
+    </div>
+</div>
+
+<script>
+const answers = [2,2,0,1,3,2,0,null,null,4,null,2,null,null,3,1,1,1,1,3,2,0,2,0,2,2,2,1,0,2,1,0,4,0,null];
+const correct = [0,1,0,1,0,0,0,0,0,0,0,0,0,2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+const confidence = [3,3,3,2,2,2,3,2,0,1,0,1,0,1,2,2,2,1,1,1,2,1,1,3,1,1,1,1,3,3,1,1,1,1,0];
+const times = [65892,294251,148826,132734,81749,112518,94683,135352,11516,24448,262085,229367,6234,14197,182836,17616,95680,91168,17083,14850,43466,19534,30866,100667,36182,23568,13799,28668,26932,12417,16266,33834,35566,65984,210118];
+const cats = ['A','A','A','A','A','B','B','B','B','B','B','B','C','C','C','C','C','C','D','D','D','D','D','E','E','E','E','E','E','F','F','F','F','F','F'];
+const letters = ['A','B','C','D','E'];
+const confL = ['—','Guess','Unsure','Conf'];
+const isCorrect = answers.map((a,i) => a === correct[i]);
+
+// Question log
+let html = '';
+for (let i = 0; i < 35; i++) {
+    const res = answers[i] === null ? '<span class="cs">Skip</span>' : (isCorrect[i] ? '<span class="cg">Correct</span>' : '<span class="cr">Wrong</span>');
+    const yours = answers[i] !== null ? letters[answers[i]] : '—';
+    const corr = letters[correct[i]];
+    const t = Math.round(times[i]/1000);
+    const tClass = t > 120 ? ' style="color:#dc2626;font-weight:700"' : '';
+    html += `<tr><td>${i+1}</td><td>${cats[i]}</td><td>${yours}</td><td>${corr}</td><td>${res}</td><td>${confL[confidence[i]]}</td><td${tClass}>${t}s</td></tr>`;
+}
+document.getElementById('qlog').innerHTML = html;
+
+// Time chart
+(function() {
+    const c = document.getElementById('timeChart');
+    const cw = Math.min(c.parentElement.getBoundingClientRect().width - 36, 900);
+    const ch = 240;
+    c.width = cw; c.height = ch;
+    c.style.width = cw + 'px'; c.style.height = ch + 'px';
+    const ctx = c.getContext('2d');
+    const pad = {t:20,r:10,b:28,l:38};
+    const pw = cw-pad.l-pad.r, ph = ch-pad.t-pad.b;
+    const timeSec = times.map(t => Math.round(t/1000));
+    const maxT = Math.max(...timeSec);
+    const barW = pw/35 - 2;
+
+    // Grid
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    for (let v = 0; v <= maxT; v += 60) {
+        const y = pad.t + ph - (v/maxT)*ph;
+        ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(cw-pad.r,y); ctx.stroke();
+        ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'right';
+        ctx.fillText(v+'s', pad.l-4, y+3);
+    }
+    // 90s line
+    const y90 = pad.t + ph - (90/maxT)*ph;
+    ctx.strokeStyle = '#d97706'; ctx.lineWidth = 1.5; ctx.setLineDash([5,3]);
+    ctx.beginPath(); ctx.moveTo(pad.l,y90); ctx.lineTo(cw-pad.r,y90); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#d97706'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('90s target', cw-pad.r-50, y90-4);
+
+    for (let i = 0; i < 35; i++) {
+        const x = pad.l + (i/35)*pw + 1;
+        const bh = (timeSec[i]/maxT)*ph;
+        const y = pad.t + ph - bh;
+        ctx.fillStyle = answers[i] === null ? '#d97706' : (isCorrect[i] ? '#16a34a' : '#dc2626');
+        ctx.fillRect(x, y, barW, bh);
+        ctx.fillStyle = '#94a3b8'; ctx.font = '7px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(i+1, x+barW/2, ch-pad.b+10);
+    }
+    ctx.fillStyle = '#16a34a'; ctx.fillRect(pad.l, 4, 8, 8);
+    ctx.fillStyle = '#1e293b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Correct', pad.l+12, 12);
+    ctx.fillStyle = '#dc2626'; ctx.fillRect(pad.l+55, 4, 8, 8);
+    ctx.fillText('Wrong', pad.l+67, 12);
+    ctx.fillStyle = '#d97706'; ctx.fillRect(pad.l+105, 4, 8, 8);
+    ctx.fillText('Skipped', pad.l+117, 12);
+})();
+</script>
+</body>
+</html>

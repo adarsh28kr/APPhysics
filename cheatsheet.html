@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Physics C — Wall Poster</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',-apple-system,sans-serif;background:#fff;color:#1e293b;line-height:1.4}
+        .poster{max-width:820px;margin:0 auto;padding:10px}
+        .title-bar{background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;padding:10px 16px;border-radius:10px;text-align:center;margin-bottom:10px}
+        .title-bar h1{font-size:1.5rem;letter-spacing:1px}
+        .title-bar .mnemonic{font-size:1.1rem;margin-top:4px;letter-spacing:3px;font-weight:800;color:#93c5fd}
+        .title-bar .sub{font-size:.7rem;opacity:.7;margin-top:2px}
+        .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+        .full{grid-column:1/-1}
+        .box{border:2px solid;border-radius:8px;padding:8px;page-break-inside:avoid;overflow:hidden}
+        .box h2{font-size:.82rem;padding:2px 8px;border-radius:4px;color:#fff;display:inline-block;margin-bottom:5px}
+        .b-blue{border-color:#2563eb}.b-blue h2{background:#2563eb}
+        .b-red{border-color:#dc2626}.b-red h2{background:#dc2626}
+        .b-green{border-color:#16a34a}.b-green h2{background:#16a34a}
+        .b-purple{border-color:#7c3aed}.b-purple h2{background:#7c3aed}
+        .b-amber{border-color:#d97706}.b-amber h2{background:#d97706}
+        .b-teal{border-color:#0891b2}.b-teal h2{background:#0891b2}
+        svg{display:block;max-width:100%}
+        .formula{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:5px;padding:4px 8px;margin:4px 0;text-align:center;font-size:.82rem}
+        .wrong-box{background:#fef2f2;border:2px solid #dc2626;border-radius:6px;padding:6px;margin:4px 0;position:relative}
+        .wrong-box::after{content:"✗";position:absolute;top:-5px;right:5px;font-size:1.5rem;color:#dc2626;font-weight:900}
+        .right-box{background:#f0fdf4;border:2px solid #16a34a;border-radius:6px;padding:6px;margin:4px 0;position:relative}
+        .right-box::after{content:"✓";position:absolute;top:-5px;right:5px;font-size:1.5rem;color:#16a34a;font-weight:900}
+        .rhyme{background:#eff6ff;border:1px solid #93c5fd;border-radius:6px;padding:5px 10px;margin:4px 0;font-size:.85rem;font-style:italic;text-align:center;font-weight:600;color:#1e40af}
+        .mini{font-size:.72rem;color:#64748b;margin-top:2px}
+        .compare{display:flex;gap:6px}
+        .compare>div{flex:1}
+        .checklist{list-style:none;font-size:.75rem}
+        .checklist li{padding:2px 0}
+        .checklist li::before{content:"☐ ";color:#dc2626;font-weight:700;font-size:.85rem}
+        @media print{
+            body{padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+            .poster{max-width:100%}
+            .no-print{display:none}
+            .box{break-inside:avoid}
+        }
+    </style>
+</head>
+<body>
+<div class="no-print" style="text-align:center;padding:8px">
+    <button onclick="window.print()" style="padding:8px 20px;border:none;border-radius:6px;background:#2563eb;color:#fff;cursor:pointer;font-size:.9rem">Print for Wall</button>
+</div>
+
+<div class="poster">
+
+    <!-- TITLE with MNEMONIC -->
+    <div class="title-bar">
+        <h1>EVERY PROBLEM. EVERY TIME.</h1>
+        <div class="mnemonic">D · L · A · S · N · S</div>
+        <div class="sub">Draw · Label · Axes · Sum · Newton · Solve</div>
+    </div>
+
+    <div class="grid">
+
+    <!-- ============ THE 6 STEPS WITH PICTURES ============ -->
+    <div class="box b-blue full">
+        <h2>THE 6 STEPS — "DLANS"</h2>
+        <svg viewBox="0 0 780 110">
+            <!-- Step 1: Draw -->
+            <rect x="0" y="0" width="125" height="105" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+            <circle cx="62" cy="10" r="10" fill="#2563eb"/><text x="62" y="14" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">1</text>
+            <text x="62" y="30" text-anchor="middle" font-size="11" fill="#2563eb" font-weight="800">DRAW</text>
+            <rect x="30" y="40" width="30" height="22" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="3"/>
+            <line x1="45" y1="62" x2="45" y2="85" stroke="#dc2626" stroke-width="2" marker-end="url(#a)"/><text x="55" y="82" font-size="8" fill="#dc2626">mg</text>
+            <line x1="45" y1="40" x2="45" y2="20" stroke="#16a34a" stroke-width="2" marker-end="url(#a)"/><text x="55" y="28" font-size="8" fill="#16a34a">N</text>
+            <line x1="60" y1="51" x2="90" y2="51" stroke="#d97706" stroke-width="2" marker-end="url(#a)"/><text x="78" y="45" font-size="7" fill="#d97706">f</text>
+            <text x="62" y="100" text-anchor="middle" font-size="7" fill="#64748b">Isolate. All forces.</text>
+            <!-- Step 2: Label -->
+            <rect x="132" y="0" width="125" height="105" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+            <circle cx="194" cy="10" r="10" fill="#2563eb"/><text x="194" y="14" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">2</text>
+            <text x="194" y="30" text-anchor="middle" font-size="11" fill="#2563eb" font-weight="800">LABEL</text>
+            <text x="194" y="48" text-anchor="middle" font-size="10" fill="#dc2626" font-weight="700">mg↓</text>
+            <text x="194" y="62" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="700">N ⊥ surface</text>
+            <text x="194" y="76" text-anchor="middle" font-size="10" fill="#d97706" font-weight="700">f = μN</text>
+            <text x="194" y="90" text-anchor="middle" font-size="10" fill="#2563eb" font-weight="700">T along string</text>
+            <text x="194" y="102" text-anchor="middle" font-size="7" fill="#64748b">Name + formula</text>
+            <!-- Step 3: Axes -->
+            <rect x="264" y="0" width="125" height="105" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+            <circle cx="326" cy="10" r="10" fill="#7c3aed"/><text x="326" y="14" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">3</text>
+            <text x="326" y="30" text-anchor="middle" font-size="11" fill="#7c3aed" font-weight="800">AXES</text>
+            <!-- Flat axes -->
+            <line x1="285" y1="72" x2="340" y2="72" stroke="#7c3aed" stroke-width="2" marker-end="url(#a)"/><text x="342" y="70" font-size="9" fill="#7c3aed">î</text>
+            <line x1="285" y1="72" x2="285" y2="42" stroke="#7c3aed" stroke-width="2" marker-end="url(#a)"/><text x="280" y="40" font-size="9" fill="#7c3aed">ĵ</text>
+            <!-- Tilted axes -->
+            <line x1="340" y1="90" x2="380" y2="74" stroke="#dc2626" stroke-width="2" marker-end="url(#a)"/><text x="382" y="72" font-size="8" fill="#dc2626">î</text>
+            <line x1="340" y1="90" x2="324" y2="55" stroke="#dc2626" stroke-width="2" marker-end="url(#a)"/><text x="316" y="53" font-size="8" fill="#dc2626">ĵ</text>
+            <text x="360" y="100" font-size="7" fill="#dc2626" font-weight="700">TILT on inclines!</text>
+            <text x="300" y="100" font-size="7" fill="#7c3aed">flat</text>
+            <!-- Step 4: Sum -->
+            <rect x="396" y="0" width="125" height="105" rx="6" fill="#fefce8" stroke="#d97706" stroke-width="1.5"/>
+            <circle cx="458" cy="10" r="10" fill="#d97706"/><text x="458" y="14" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">4</text>
+            <text x="458" y="30" text-anchor="middle" font-size="11" fill="#d97706" font-weight="800">SUM</text>
+            <text x="458" y="50" text-anchor="middle" font-size="10" fill="#1e293b">Decompose tilted</text>
+            <text x="458" y="63" text-anchor="middle" font-size="10" fill="#1e293b">forces into î, ĵ</text>
+            <text x="458" y="80" text-anchor="middle" font-size="11" fill="#d97706" font-weight="700">ΣFx = ? &nbsp; ΣFy = ?</text>
+            <text x="458" y="100" text-anchor="middle" font-size="7" fill="#64748b">Add all x's. Add all y's.</text>
+            <!-- Step 5: Newton -->
+            <rect x="528" y="0" width="125" height="105" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+            <circle cx="590" cy="10" r="10" fill="#16a34a"/><text x="590" y="14" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">5</text>
+            <text x="590" y="30" text-anchor="middle" font-size="11" fill="#16a34a" font-weight="800">NEWTON</text>
+            <text x="590" y="55" text-anchor="middle" font-size="14" fill="#16a34a" font-weight="900">ΣF = ma</text>
+            <text x="590" y="75" text-anchor="middle" font-size="9" fill="#1e293b">ΣFx = max</text>
+            <text x="590" y="88" text-anchor="middle" font-size="9" fill="#1e293b">ΣFy = may</text>
+            <text x="590" y="100" text-anchor="middle" font-size="7" fill="#64748b">Each axis separately</text>
+            <!-- Step 6: Solve -->
+            <rect x="660" y="0" width="118" height="105" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+            <circle cx="719" cy="10" r="10" fill="#dc2626"/><text x="719" y="14" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">6</text>
+            <text x="719" y="30" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="800">SOLVE</text>
+            <text x="719" y="50" text-anchor="middle" font-size="9" fill="#1e293b">Algebra for</text>
+            <text x="719" y="62" text-anchor="middle" font-size="9" fill="#1e293b">the unknown</text>
+            <text x="719" y="82" text-anchor="middle" font-size="10" fill="#dc2626" font-weight="700">Then CHECK:</text>
+            <text x="719" y="95" text-anchor="middle" font-size="8" fill="#dc2626">Units? Limits? Size?</text>
+            <defs><marker id="a" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="context-stroke"/></marker></defs>
+        </svg>
+    </div>
+
+    <!-- ============ WORKED EXAMPLE: 6 STEPS ON A 30° INCLINE ============ -->
+    <!-- All geometry computed with exact trig for θ=30°:
+         slope direction (up-right): (cos30°, -sin30°) = (0.866, -0.5)
+         normal (away from surface): (-sin30°, -cos30°) = (-0.5, -0.866)
+         down-slope: (-0.866, 0.5)
+         into-surface: (0.5, 0.866) -->
+    <div class="box b-blue full">
+        <h2>EXAMPLE: All 6 Steps on a 30° Rough Incline (θ = 30°)</h2>
+        <svg viewBox="0 0 780 200">
+            <!-- ===== PANEL 1: Steps 1-2 FBD ===== -->
+            <rect x="0" y="0" width="250" height="195" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+            <text x="125" y="14" text-anchor="middle" font-size="10" fill="#2563eb" font-weight="800">Steps 1-2: DRAW + LABEL</text>
+            <!-- Incline surface: 30° angle. Base(30,175) to top(220,65). tan30°=0.577, rise=110, run=190 -->
+            <polygon points="30,175 220,175 220,65" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+            <!-- Angle arc at base -->
+            <path d="M 65,175 Q 68,168 76,164" fill="none" stroke="#1e293b" stroke-width="1.5"/>
+            <text x="78" y="170" font-size="11" fill="#1e293b" font-weight="800">30°</text>
+            <!-- Block on slope, center at (125,120), rotated 30° -->
+            <rect x="105" y="108" width="40" height="24" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="3" transform="rotate(-30 125 120)"/>
+            <text x="125" y="124" text-anchor="middle" font-size="8" fill="#2563eb" font-weight="700">m</text>
+            <!-- mg: straight down from center (125,120) length 50 -->
+            <line x1="125" y1="120" x2="125" y2="170" stroke="#dc2626" stroke-width="2.5" marker-end="url(#a)"/>
+            <text x="133" y="166" font-size="9" fill="#dc2626" font-weight="700">mg</text>
+            <!-- N: perpendicular to slope = direction (-0.5,-0.866), length 40 -->
+            <!-- endpoint: (125-20, 120-34.6) = (105, 85) -->
+            <line x1="125" y1="120" x2="105" y2="85" stroke="#16a34a" stroke-width="2.5" marker-end="url(#a)"/>
+            <text x="90" y="82" font-size="9" fill="#16a34a" font-weight="700">N</text>
+            <!-- f: up the slope = direction (0.866,-0.5), length 35 -->
+            <!-- endpoint: (125+30.3, 120-17.5) = (155, 103) -->
+            <line x1="125" y1="120" x2="155" y2="103" stroke="#d97706" stroke-width="2.5" marker-end="url(#a)"/>
+            <text x="158" y="98" font-size="8" fill="#d97706" font-weight="700">f = μN</text>
+            <text x="125" y="190" text-anchor="middle" font-size="8" fill="#dc2626" font-weight="700">ONLY 3 real forces!</text>
+
+            <!-- ===== PANEL 2: Step 3 AXES + decompose ===== -->
+            <rect x="258" y="0" width="210" height="195" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+            <text x="363" y="14" text-anchor="middle" font-size="10" fill="#7c3aed" font-weight="800">Step 3: TILT AXES + Decompose</text>
+            <!-- Block center dot at (363, 100) -->
+            <circle cx="363" cy="100" r="4" fill="#7c3aed"/>
+            <!-- +î axis (up slope): direction (0.866,-0.5), length 65 -->
+            <!-- endpoint: (363+56.3, 100-32.5) = (419, 68) -->
+            <line x1="307" y1="132" x2="419" y2="68" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5"/>
+            <text x="422" y="65" font-size="9" fill="#7c3aed" font-weight="800">+î</text>
+            <text x="422" y="76" font-size="7" fill="#7c3aed">(up slope)</text>
+            <!-- +ĵ axis (away from surface): direction (-0.5,-0.866), length 55 -->
+            <!-- endpoint: (363-27.5, 100-47.6) = (336, 52) -->
+            <line x1="390" y1="147" x2="336" y2="52" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5"/>
+            <text x="326" y="48" font-size="9" fill="#7c3aed" font-weight="800">+ĵ</text>
+            <text x="318" y="60" font-size="7" fill="#7c3aed">(⊥ slope)</text>
+            <!-- mg straight down: length 55 -->
+            <line x1="363" y1="100" x2="363" y2="155" stroke="#dc2626" stroke-width="2.5" marker-end="url(#a)"/>
+            <text x="371" y="152" font-size="9" fill="#dc2626" font-weight="700">mg</text>
+            <!-- mg sinθ along -î (down slope): 55*sin30°=27.5, direction (-0.866,0.5) -->
+            <!-- endpoint: (363-23.8, 100+13.75) = (339, 114) -->
+            <line x1="363" y1="100" x2="339" y2="114" stroke="#d97706" stroke-width="2" stroke-dasharray="4" marker-end="url(#a)"/>
+            <text x="310" y="116" font-size="8" fill="#d97706" font-weight="700">mg sin30°</text>
+            <text x="310" y="127" font-size="7" fill="#d97706">(along slope ↙)</text>
+            <!-- mg cosθ along into-surface (0.5,0.866): 55*cos30°=47.6 -->
+            <!-- endpoint: (363+23.8, 100+41.25) = (387, 141) — BUT we need to start from mg sinθ tip to reach mg tip -->
+            <!-- Actually draw from center: direction (0.5, 0.866), length = 55*cos30°*0.866... -->
+            <!-- Let me draw the right triangle properly: from center, go along -î by sinθ component, then along into-surface by cosθ component -->
+            <!-- into-surface direction: (0.5, 0.866). Length 55*cos30° = 47.6. Vector: (23.8, 41.25) -->
+            <!-- endpoint: (363+23.8, 100+41.25) = (387, 141) -->
+            <line x1="363" y1="100" x2="387" y2="141" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="4" marker-end="url(#a)"/>
+            <text x="392" y="130" font-size="8" fill="#8b5cf6" font-weight="700">mg cos30°</text>
+            <text x="392" y="141" font-size="7" fill="#8b5cf6">(into slope ↘)</text>
+            <!-- Dashed lines completing the parallelogram -->
+            <line x1="339" y1="114" x2="363" y2="155" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2"/>
+            <line x1="387" y1="141" x2="363" y2="155" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2"/>
+            <!-- Right angle mark at center between components -->
+            <rect x="360" y="103" width="5" height="5" fill="none" stroke="#7c3aed" stroke-width="0.8" transform="rotate(-30 363 100)"/>
+            <text x="363" y="185" text-anchor="middle" font-size="7" fill="#7c3aed" font-weight="700">Components form right triangle with mg</text>
+            <text x="363" y="195" text-anchor="middle" font-size="7" fill="#7c3aed">N aligns perfectly with +ĵ</text>
+
+            <!-- ===== PANEL 3: Steps 4-5-6 ===== -->
+            <rect x="476" y="0" width="302" height="195" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+            <text x="627" y="14" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="800">Steps 4-5-6: SUM → F=ma → SOLVE</text>
+            <!-- Step 4 -->
+            <circle cx="492" cy="30" r="8" fill="#d97706"/><text x="492" y="34" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">4</text>
+            <text x="504" y="34" font-size="9" fill="#d97706" font-weight="700">SUM along each axis:</text>
+            <text x="500" y="48" font-size="9" fill="#1e293b">î: mg sin30° − f (down − friction)</text>
+            <text x="500" y="61" font-size="9" fill="#1e293b">ĵ: N − mg cos30° (normal − weight)</text>
+            <!-- Step 5 -->
+            <circle cx="492" cy="78" r="8" fill="#16a34a"/><text x="492" y="82" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">5</text>
+            <text x="504" y="82" font-size="9" fill="#16a34a" font-weight="700">F = ma for each axis:</text>
+            <rect x="498" y="88" width="270" height="18" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
+            <text x="633" y="101" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="800">î: mg sin30° − μN = ma</text>
+            <rect x="498" y="110" width="270" height="18" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
+            <text x="633" y="123" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="800">ĵ: N − mg cos30° = 0</text>
+            <!-- Step 6 -->
+            <circle cx="492" cy="142" r="8" fill="#dc2626"/><text x="492" y="146" text-anchor="middle" font-size="9" fill="#fff" font-weight="700">6</text>
+            <text x="504" y="145" font-size="9" fill="#dc2626" font-weight="700">SOLVE:</text>
+            <text x="500" y="160" font-size="8" fill="#1e293b">From ĵ: N = mg cos30° → plug into î equation</text>
+            <rect x="498" y="166" width="270" height="22" rx="4" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+            <text x="633" y="181" text-anchor="middle" font-size="13" fill="#dc2626" font-weight="900">a = g(sin30° − μ cos30°)</text>
+        </svg>
+    </div>
+
+    <!-- ============ INCLINE: sin vs cos VISUAL ============ -->
+    <div class="box b-purple">
+        <h2>INCLINE: sin vs cos</h2>
+        <div class="rhyme">"SIN slides ALONG, COS squishes ACROSS"</div>
+        <!-- θ=30°. Block center (130,78). Exact trig: down-slope(-0.866,0.5), into-surface(0.5,0.866) -->
+        <svg viewBox="0 0 340 130">
+            <!-- Incline: base(20,120) to top(240,120) right to (240,47) -->
+            <polygon points="20,120 240,120 240,47" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+            <!-- Block center at (130,83), rotated 30° -->
+            <rect x="112" y="72" width="36" height="22" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="3" transform="rotate(-18.4 130 83)"/>
+            <!-- mg straight down: from (130,83) to (130,120), length 37 -->
+            <line x1="130" y1="83" x2="130" y2="120" stroke="#dc2626" stroke-width="2.5" marker-end="url(#a)"/>
+            <text x="137" y="117" font-size="9" fill="#dc2626" font-weight="700">mg</text>
+            <!-- mg sinθ along slope (down-left): sin18.4°≈0.316, length=37*0.316=11.7, dir(-0.949,0.316) -->
+            <!-- Using actual incline angle: rise=73, run=220, angle=arctan(73/220)=18.4° -->
+            <!-- down-slope dir: (-220/232, 73/232) = (-0.949, 0.315) -->
+            <!-- mg sinθ: 37*0.315=11.65, vector: (-0.949*11.65, 0.315*11.65) = (-11.06, 3.67) -->
+            <!-- endpoint: (130-11, 83+3.7) = (119, 87) -->
+            <line x1="130" y1="83" x2="119" y2="87" stroke="#d97706" stroke-width="2" stroke-dasharray="4" marker-end="url(#a)"/>
+            <text x="92" y="84" font-size="8" fill="#d97706" font-weight="700">mg sinθ</text>
+            <text x="92" y="94" font-size="7" fill="#d97706">ALONG slope ↙</text>
+            <!-- mg cosθ into surface: cos18.4°≈0.949, length=37*0.949=35.1 -->
+            <!-- into-surface dir: (73/232, 220/232) = (0.315, 0.949) -->
+            <!-- vector: (0.315*35.1, 0.949*35.1) = (11.06, 33.3) -->
+            <!-- endpoint: (130+11, 83+33.3) = (141, 116) -->
+            <line x1="130" y1="83" x2="141" y2="116" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="4" marker-end="url(#a)"/>
+            <text x="145" y="105" font-size="8" fill="#8b5cf6" font-weight="700">mg cosθ</text>
+            <text x="145" y="115" font-size="7" fill="#8b5cf6">INTO slope ↘</text>
+            <!-- Dashed lines completing triangle -->
+            <line x1="119" y1="87" x2="130" y2="120" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2"/>
+            <line x1="141" y1="116" x2="130" y2="120" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2"/>
+            <!-- Angle arc -->
+            <path d="M 50,120 Q 54,114 62,112" fill="none" stroke="#1e293b" stroke-width="1.5"/>
+            <text x="64" y="117" font-size="11" fill="#1e293b" font-weight="700">θ</text>
+            <!-- Quick check -->
+            <text x="250" y="45" font-size="9" fill="#1e293b" font-weight="700">Quick check:</text>
+            <text x="250" y="58" font-size="8" fill="#1e293b">At θ = 90° (vertical):</text>
+            <text x="250" y="70" font-size="8" fill="#16a34a">sin90° = 1 → full mg ✓</text>
+            <text x="250" y="82" font-size="8" fill="#dc2626">cos90° = 0 → zero ✗</text>
+            <text x="250" y="98" font-size="8" fill="#1e293b">Along slope should</text>
+            <text x="250" y="110" font-size="8" fill="#1e293b">be full mg at 90°.</text>
+            <text x="250" y="122" font-size="9" fill="#16a34a" font-weight="700">∴ sin = along ✓</text>
+        </svg>
+    </div>
+
+    <!-- ============ CONNECTED SYSTEMS VISUAL ============ -->
+    <div class="box b-red">
+        <h2>CONNECTED SYSTEMS — Your 0/6 Topic</h2>
+        <svg viewBox="0 0 340 100">
+            <!-- Atwood visual -->
+            <circle cx="80" cy="12" r="8" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <line x1="72" y1="12" x2="72" y2="60" stroke="#1e293b" stroke-width="1.5"/>
+            <line x1="88" y1="12" x2="88" y2="70" stroke="#1e293b" stroke-width="1.5"/>
+            <rect x="58" y="60" width="28" height="20" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="2"/>
+            <text x="72" y="74" text-anchor="middle" font-size="8" fill="#2563eb">m₁</text>
+            <rect x="74" y="70" width="28" height="22" fill="#fef3c7" stroke="#d97706" stroke-width="1.5" rx="2"/>
+            <text x="88" y="85" text-anchor="middle" font-size="8" fill="#d97706">m₂</text>
+            <!-- Formulas -->
+            <text x="130" y="18" font-size="10" fill="#1e293b" font-weight="700">2-Step Trick:</text>
+            <rect x="130" y="24" width="200" height="20" rx="4" fill="#fee2e2"/>
+            <text x="230" y="38" text-anchor="middle" font-size="10" fill="#dc2626" font-weight="700">① a = Fnet / mtotal</text>
+            <rect x="130" y="48" width="200" height="20" rx="4" fill="#dcfce7"/>
+            <text x="230" y="62" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="700">② Isolate 1 block → find T</text>
+            <!-- Key fact -->
+            <rect x="130" y="75" width="200" height="20" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1"/>
+            <text x="230" y="89" text-anchor="middle" font-size="9" fill="#2563eb" font-weight="700">Same string = Same T = Same |a|</text>
+        </svg>
+        <div class="formula" style="font-size:.78rem">Atwood: $a = \frac{(m_2-m_1)g}{m_1+m_2}$ &nbsp;&nbsp; $T = \frac{2m_1 m_2 g}{m_1+m_2}$</div>
+    </div>
+
+    <!-- ============ FORCE COLORS LEGEND ============ -->
+    <div class="box b-teal">
+        <h2>FORCE COLOR CODE (Same Everywhere)</h2>
+        <svg viewBox="0 0 340 80">
+            <line x1="15" y1="20" x2="15" y2="50" stroke="#dc2626" stroke-width="4" marker-end="url(#a)"/>
+            <text x="25" y="30" font-size="10" fill="#dc2626" font-weight="700">RED = Weight (mg)</text>
+            <text x="25" y="42" font-size="8" fill="#dc2626">Always straight DOWN</text>
+            <line x1="180" y1="50" x2="180" y2="20" stroke="#16a34a" stroke-width="4" marker-end="url(#a)"/>
+            <text x="190" y="30" font-size="10" fill="#16a34a" font-weight="700">GREEN = Normal (N)</text>
+            <text x="190" y="42" font-size="8" fill="#16a34a">Always ⊥ to surface</text>
+            <line x1="15" y1="65" x2="55" y2="65" stroke="#d97706" stroke-width="4" marker-end="url(#a)"/>
+            <text x="60" y="68" font-size="10" fill="#d97706" font-weight="700">ORANGE = Friction (f)</text>
+            <line x1="180" y1="65" x2="220" y2="65" stroke="#2563eb" stroke-width="4" marker-end="url(#a)"/>
+            <text x="225" y="68" font-size="10" fill="#2563eb" font-weight="700">BLUE = Tension (T)</text>
+        </svg>
+    </div>
+
+    <!-- ============ N DIRECTION VISUAL ============ -->
+    <div class="box b-green">
+        <h2>N DIRECTION — Always ⊥ to SURFACE</h2>
+        <svg viewBox="0 0 340 90">
+            <!-- Floor -->
+            <rect x="10" y="60" width="90" height="4" fill="#94a3b8"/>
+            <rect x="30" y="35" width="30" height="25" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="2"/>
+            <line x1="45" y1="35" x2="45" y2="12" stroke="#16a34a" stroke-width="2.5" marker-end="url(#a)"/>
+            <text x="52" y="18" font-size="8" fill="#16a34a" font-weight="700">N ↑</text>
+            <text x="45" y="82" text-anchor="middle" font-size="7" fill="#64748b">Floor: N is UP</text>
+            <!-- Incline -->
+            <polygon points="120,64 210,64 210,25" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <rect x="155" y="35" width="22" height="16" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="2" transform="rotate(-20 166 43)"/>
+            <line x1="166" y1="35" x2="148" y2="12" stroke="#16a34a" stroke-width="2.5" marker-end="url(#a)"/>
+            <text x="135" y="14" font-size="8" fill="#16a34a" font-weight="700">N ↗</text>
+            <text x="165" y="82" text-anchor="middle" font-size="7" fill="#64748b">Incline: N tilts!</text>
+            <!-- Wall -->
+            <rect x="305" y="5" width="4" height="65" fill="#94a3b8"/>
+            <rect x="270" y="20" width="35" height="28" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5" rx="2"/>
+            <line x1="270" y1="34" x2="245" y2="34" stroke="#16a34a" stroke-width="2.5" marker-end="url(#a)"/>
+            <text x="238" y="30" font-size="8" fill="#16a34a" font-weight="700">←N</text>
+            <text x="285" y="82" text-anchor="middle" font-size="7" fill="#64748b">Wall: N is HORIZONTAL</text>
+        </svg>
+        <div class="rhyme">"N is always perpendicular to what you're touching"</div>
+    </div>
+
+    <!-- ============ FRICTION: DOES IT MOVE? ============ -->
+    <div class="box b-red">
+        <h2>FRICTION — Ask This FIRST</h2>
+        <svg viewBox="0 0 340 75">
+            <rect x="5" y="5" width="330" height="65" rx="8" fill="#fef2f2"/>
+            <text x="170" y="22" text-anchor="middle" font-size="12" fill="#dc2626" font-weight="900">DOES IT MOVE?</text>
+            <!-- No branch -->
+            <text x="85" y="38" text-anchor="middle" font-size="10" fill="#1e293b" font-weight="700">NO →</text>
+            <text x="85" y="50" text-anchor="middle" font-size="9" fill="#d97706" font-weight="700">fs = Fapplied</text>
+            <text x="85" y="62" text-anchor="middle" font-size="7" fill="#d97706">(NOT μsN!)</text>
+            <!-- Yes branch -->
+            <text x="255" y="38" text-anchor="middle" font-size="10" fill="#1e293b" font-weight="700">YES →</text>
+            <text x="255" y="50" text-anchor="middle" font-size="9" fill="#dc2626" font-weight="700">fk = μkN</text>
+            <text x="255" y="62" text-anchor="middle" font-size="7" fill="#dc2626">(fixed value)</text>
+            <!-- Divider -->
+            <line x1="170" y1="28" x2="170" y2="65" stroke="#64748b" stroke-width="1" stroke-dasharray="3"/>
+            <!-- Check -->
+            <text x="170" y="72" text-anchor="middle" font-size="7" fill="#64748b">Check: Is Fapplied > μsN? Yes → moves. No → static.</text>
+        </svg>
+    </div>
+
+    <!-- ============ WRONG vs RIGHT ============ -->
+    <div class="box b-amber">
+        <h2>YOUR MISTAKES → THE FIX</h2>
+        <div class="compare">
+            <div>
+                <div class="wrong-box">
+                    <p style="font-size:.78rem">$P = mv = 2000 \times 2 = 4000$ W</p>
+                    <p style="font-size:.65rem;color:#dc2626">Forgot g!</p>
+                </div>
+                <div class="wrong-box">
+                    <p style="font-size:.78rem">$U = kx^2 = 8$ J</p>
+                    <p style="font-size:.65rem;color:#dc2626">Forgot ½!</p>
+                </div>
+                <div class="wrong-box">
+                    <p style="font-size:.78rem">Along slope $= mg\cos\theta$</p>
+                    <p style="font-size:.65rem;color:#dc2626">Wrong trig!</p>
+                </div>
+            </div>
+            <div>
+                <div class="right-box">
+                    <p style="font-size:.78rem">$P = \mathbf{mg}v = 2000(10)(2) = 40000$ W</p>
+                    <p style="font-size:.65rem;color:#16a34a">Force = mg, not m</p>
+                </div>
+                <div class="right-box">
+                    <p style="font-size:.78rem">$U = \mathbf{\frac{1}{2}}kx^2 = 4$ J</p>
+                    <p style="font-size:.65rem;color:#16a34a">Spring PE has ½</p>
+                </div>
+                <div class="right-box">
+                    <p style="font-size:.78rem">Along slope $= mg\mathbf{\sin}\theta$</p>
+                    <p style="font-size:.65rem;color:#16a34a">sin slides along!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ 3-SECOND CHECK ============ -->
+    <div class="box b-green full">
+        <h2>3-SECOND CHECK — After EVERY Answer</h2>
+        <svg viewBox="0 0 780 40">
+            <rect x="0" y="0" width="250" height="36" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+            <text x="125" y="15" text-anchor="middle" font-size="11" fill="#16a34a" font-weight="800">① UNITS OK?</text>
+            <text x="125" y="30" text-anchor="middle" font-size="8" fill="#1e293b">Force=N=kg·m/s² Energy=J Power=W</text>
+            <rect x="260" y="0" width="250" height="36" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+            <text x="385" y="15" text-anchor="middle" font-size="11" fill="#2563eb" font-weight="800">② LIMITS OK?</text>
+            <text x="385" y="30" text-anchor="middle" font-size="8" fill="#1e293b">m→0? θ→0°? θ→90°? Makes sense?</text>
+            <rect x="520" y="0" width="258" height="36" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+            <text x="649" y="15" text-anchor="middle" font-size="11" fill="#dc2626" font-weight="800">③ SIZE OK?</text>
+            <text x="649" y="30" text-anchor="middle" font-size="8" fill="#1e293b">T&lt;mg going UP? → WRONG SIGN</text>
+        </svg>
+    </div>
+
+    <!-- ============ KEY FORMULAS ============ -->
+    <div class="box b-blue full">
+        <h2>KEY FORMULAS</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px">
+            <div class="formula">$\vec{F}_{net} = m\vec{a}$</div>
+            <div class="formula">$f_k = \mu_k N$</div>
+            <div class="formula">$a_{incline} = g\sin\theta - \mu g\cos\theta$</div>
+            <div class="formula">$T_{up} = m(g+a)$</div>
+            <div class="formula">$T_{down} = m(g-a)$</div>
+            <div class="formula">$\mu_k = \tan\theta$ (const vel)</div>
+            <div class="formula">$a_{Atwood} = \frac{(m_2-m_1)g}{m_1+m_2}$</div>
+            <div class="formula">$F_c = \frac{mv^2}{r}$ toward center</div>
+            <div class="formula">$\tan\theta = \frac{v^2}{rg}$ (banked)</div>
+        </div>
+    </div>
+
+    <!-- ============ BEFORE-SUBMIT CHECKLIST ============ -->
+    <div class="box b-red full">
+        <h2>BEFORE YOU SUBMIT — Your Personal Checklist</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+            <div>
+                <ul class="checklist">
+                    <li>Did I draw the FBD?</li>
+                    <li>Did I include $g$ in $mg$?</li>
+                    <li>Did I include the ½ in $\frac{1}{2}kx^2$?</li>
+                    <li>Is it $\sin\theta$ along slope?</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="checklist">
+                    <li>Does it even MOVE? (static check)</li>
+                    <li>Which way is friction pointing?</li>
+                    <li>Same string → same T?</li>
+                    <li>Used system trick for $a$?</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="checklist">
+                    <li>$T > mg$ when going up? ✓</li>
+                    <li>$T < mg$ when going down? ✓</li>
+                    <li>Units check passed?</li>
+                    <li><strong>Stuck 90s → FLAG → MOVE ON</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </div><!-- grid -->
+
+    <div style="text-align:center;margin-top:4px;font-size:.6rem;color:#94a3b8">
+        AP Physics C: Mechanics — Personalized poster from Exam 1 & 2 error analysis &bull; DLANS: Draw · Label · Axes · Sum · Newton · Solve
+    </div>
+</div><!-- poster -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
+});
+</script>
+</body>
+</html>
