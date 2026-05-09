@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AP Physics C: Mechanics - Newton's Laws Retest</title>
+    <title>AP Physics C: Mechanics - Practice Exam 5</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -57,6 +57,7 @@
         .exam-info ul { list-style: none; }
         .exam-info li { padding: 6px 0; border-bottom: 1px solid var(--border); }
         .exam-info li:last-child { border-bottom: none; }
+        .exam-info .warn { color: var(--danger); font-weight: bold; }
         .btn {
             padding: 14px 40px; font-size: 1.1rem; border: none;
             border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.2s;
@@ -104,7 +105,6 @@
         }
         .choice.selected .choice-letter { background: var(--primary); color: white; }
         .choice-text { flex: 1; }
-        /* Confidence rating */
         .confidence-row {
             display: flex; gap: 8px; margin-top: 15px; padding-top: 12px;
             border-top: 1px dashed var(--border);
@@ -119,7 +119,6 @@
         .conf-btn.active-1 { border-color: var(--danger); background: rgba(220,38,38,0.1); color: var(--danger); }
         .conf-btn.active-2 { border-color: var(--warning); background: rgba(245,158,11,0.1); color: var(--warning); }
         .conf-btn.active-3 { border-color: var(--success); background: rgba(22,163,74,0.1); color: var(--success); }
-        /* FRQ */
         .frq-part { margin-bottom: 25px; }
         .frq-part label { font-weight: bold; display: block; margin-bottom: 8px; }
         .frq-part textarea {
@@ -129,7 +128,6 @@
             background: var(--bg); color: var(--text);
         }
         .frq-part textarea:focus { outline: none; border-color: var(--primary); }
-        /* Nav panel */
         .nav-panel { position: sticky; top: 80px; }
         .nav-panel h4 { margin-bottom: 10px; font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
         .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
@@ -159,11 +157,9 @@
         .flag-btn.flagged { border-color: var(--flagged); color: var(--flagged); }
         .nav-buttons { display: flex; gap: 10px; }
         .nav-buttons .btn { padding: 10px 20px; font-size: 0.9rem; }
-        /* Section transition */
         #section-transition { display: none; text-align: center; padding: 60px 20px; }
         #section-transition h2 { margin-bottom: 15px; }
         #section-transition p { color: var(--text-secondary); margin-bottom: 25px; }
-        /* Results */
         #results-screen { display: none; }
         .results-header { text-align: center; margin-bottom: 30px; }
         .score-circle {
@@ -181,13 +177,12 @@
         }
         .result-card h4 { margin-bottom: 12px; color: var(--primary); }
         .topic-bar { display: flex; align-items: center; margin-bottom: 8px; font-size: 0.85rem; }
-        .topic-bar .label { width: 140px; }
+        .topic-bar .label { width: 160px; }
         .topic-bar .bar-bg { flex: 1; height: 20px; background: var(--unanswered); border-radius: 10px; overflow: hidden; margin: 0 10px; }
         .topic-bar .bar-fill { height: 100%; border-radius: 10px; transition: width 0.5s; }
         .topic-bar .percent { width: 40px; text-align: right; font-weight: bold; }
         .time-analysis { font-size: 0.85rem; }
         .time-analysis .item { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid var(--border); }
-        /* Error classification */
         .error-row {
             display: flex; align-items: center; gap: 10px; padding: 8px 0;
             border-bottom: 1px solid var(--border); font-size: 0.85rem;
@@ -197,7 +192,6 @@
             font-size: 0.8rem; background: var(--bg); color: var(--text);
         }
         .error-row .q-info { min-width: 200px; }
-        /* FRQ Score entry */
         .frq-score-entry { margin-top: 15px; }
         .frq-score-entry .score-input {
             display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
@@ -207,20 +201,17 @@
             border-radius: 6px; text-align: center; font-size: 1rem;
             background: var(--bg); color: var(--text);
         }
-        /* Mode selector */
         .mode-selector { display: flex; gap: 10px; margin-top: 15px; }
         .mode-btn {
             padding: 8px 16px; border: 2px solid var(--border); border-radius: 6px;
             background: transparent; cursor: pointer; font-size: 0.85rem; color: var(--text);
         }
         .mode-btn.active { border-color: var(--primary); background: rgba(37,99,235,0.1); color: var(--primary); }
-        /* Theme toggle */
         .theme-toggle {
             position: fixed; bottom: 20px; right: 20px; padding: 10px;
             border-radius: 50%; border: 2px solid var(--border);
             background: var(--card); cursor: pointer; font-size: 1.2rem; z-index: 200;
         }
-        /* Modal */
         .modal-overlay {
             display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5);
             z-index: 500; align-items: center; justify-content: center;
@@ -233,7 +224,6 @@
         .modal h3 { margin-bottom: 15px; }
         .modal p { color: var(--text-secondary); margin-bottom: 20px; }
         .modal .btn { margin: 5px; }
-        /* Review mode indicator */
         .review-banner {
             background: #dbeafe; border: 2px solid var(--primary); border-radius: 8px;
             padding: 10px 16px; margin-bottom: 15px; font-size: 0.85rem; color: var(--primary);
@@ -248,7 +238,6 @@
         [data-theme="dark"] .explanation-box { background: #14532d; }
         .choice.correct-reveal { border-color: var(--success); background: rgba(22,163,74,0.1); }
         .choice.wrong-reveal { border-color: var(--danger); background: rgba(220,38,38,0.05); }
-        /* Teacher live monitoring dots */
         .nav-dot.correct-teacher { background: var(--success); color: white; border-color: var(--success); }
         .nav-dot.wrong-teacher { background: var(--danger); color: white; border-color: var(--danger); }
         .teacher-answer-hint {
@@ -262,13 +251,11 @@
             padding: 12px 24px; border-radius: 8px; font-weight: 600;
             font-size: 0.95rem; cursor: pointer; border: none;
         }
-        /* Teacher mode */
         .teacher-only { display: none !important; }
         body.teacher-mode .teacher-only { display: flex !important; }
         body.teacher-mode .teacher-only-block { display: block !important; }
         .teacher-only-block { display: none !important; }
         body.teacher-mode .student-only { display: none !important; }
-        /* PIN modal */
         .pin-overlay {
             display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6);
             z-index: 600; align-items: center; justify-content: center;
@@ -290,49 +277,44 @@
     </style>
 </head>
 <body>
-    <!-- Start Screen -->
     <div id="start-screen" class="container">
         <h1 id="app-title" style="cursor:default;">AP Physics C: Mechanics</h1>
-        <p class="subtitle">Newton's Laws Retest — Same Concepts, New Numbers</p>
+        <p class="subtitle">Practice Exam 5 &mdash; Realistic AP Format</p>
         <div class="exam-info">
             <h3>Exam Structure</h3>
             <ul>
                 <li><strong>Section I:</strong> 35 Multiple Choice &mdash; 45 minutes</li>
+                <li class="warn">NO CALCULATOR on Section I (just like the real AP!)</li>
                 <li><strong>Section II:</strong> 3 Free Response &mdash; 45 minutes</li>
+                <li><strong>Calculator:</strong> Allowed on Section II only</li>
                 <li><strong>Total Time:</strong> 90 minutes</li>
-                <li><strong>Calculator:</strong> Allowed on all sections</li>
             </ul>
         </div>
         <div class="exam-info">
-            <h3>Instructions</h3>
+            <h3>Topics Covered (All AP Mechanics)</h3>
             <ul>
-                <li>Rate your confidence on each question (builds metacognition)</li>
-                <li>You may flag questions for review</li>
-                <li>Navigate freely within a section</li>
-                <li>Progress is saved automatically</li>
+                <li>Kinematics (Q1-5)</li>
+                <li>Newton's Laws (Q6-12)</li>
+                <li>Work, Energy &amp; Power (Q13-18)</li>
+                <li>Momentum (Q19-21)</li>
+                <li>Rotation (Q22-27)</li>
+                <li>Oscillations &amp; Gravitation (Q28-30)</li>
+                <li>Cross-Topic / Integrated (Q31-35)</li>
             </ul>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px;align-items:center;">
             <input type="text" id="student-name" placeholder="Enter your name" required
                 style="padding:12px 20px;font-size:1rem;border:2px solid var(--border);border-radius:8px;text-align:center;width:280px;background:var(--bg);color:var(--text);">
             <button class="btn btn-primary" onclick="startExam('timed')">Start Timed Exam</button>
-            <a href="learn.html" class="btn btn-secondary" style="font-size:0.9rem;text-decoration:none;text-align:center;">Learn & Practice (with explanations)</a>
-            <a href="fbd.html" class="btn btn-secondary" style="font-size:0.9rem;text-decoration:none;text-align:center;">FBD Practice (20 exercises)</a>
-            <a href="exam5.html" class="btn btn-secondary" style="font-size:0.9rem;text-decoration:none;text-align:center;border-color:var(--primary);color:var(--primary);">Practice Exam 5 (Realistic AP Format)</a>
             <button class="btn btn-secondary teacher-only" onclick="startExam('review')" style="font-size:0.9rem;">Review Mode (untimed, with answers)</button>
         </div>
         <div class="teacher-only" style="margin-top:20px;gap:10px;">
             <a href="dashboard.html" style="color:var(--primary);font-size:0.9rem;">Dashboard</a>
             <span style="color:var(--border);">|</span>
-            <a href="drill.html" style="color:var(--primary);font-size:0.9rem;">Drills</a>
-            <span style="color:var(--border);">|</span>
-            <a href="answer-key.html" style="color:var(--primary);font-size:0.9rem;">Answer Key</a>
-            <span style="color:var(--border);">|</span>
-            <a href="curriculum.html" style="color:var(--primary);font-size:0.9rem;">Curriculum</a>
+            <a href="answer-key-exam5.html" style="color:var(--primary);font-size:0.9rem;">Answer Key</a>
         </div>
     </div>
 
-    <!-- PIN Modal -->
     <div class="pin-overlay" id="pin-overlay">
         <div class="pin-box">
             <h3>Enter PIN</h3>
@@ -342,17 +324,15 @@
         </div>
     </div>
 
-    <!-- Exam Header -->
     <div id="exam-header" class="exam-header" style="display:none;">
         <div>
-            <div class="section-label" id="section-label">Section I: Multiple Choice</div>
+            <div class="section-label" id="section-label">Section I: Multiple Choice (No Calculator)</div>
             <div>Question <span id="q-current">1</span> of <span id="q-total">35</span></div>
         </div>
         <div class="timer" id="timer">45:00</div>
         <button class="btn btn-danger" onclick="showSubmitModal()" style="padding:8px 16px;font-size:0.85rem;">Submit Section</button>
     </div>
 
-    <!-- Exam Body -->
     <div id="exam-body" class="container" style="display:none;">
         <div class="review-banner" id="review-banner">REVIEW MODE: Answers shown after selection. No timer.</div>
         <div class="exam-layout">
@@ -380,26 +360,18 @@
         </div>
     </div>
 
-    <!-- Section Transition -->
     <div id="section-transition" class="container">
         <h2>Section I Complete</h2>
         <p>You have completed the Multiple Choice section.<br>
         Section II contains 3 Free Response questions. You will have 45 minutes.<br>
+        <strong>Calculators are now allowed.</strong><br>
         Show all work and justify your answers.</p>
         <div id="mc-summary" style="margin-bottom:20px;color:var(--text-secondary);"></div>
         <button class="btn btn-primary" onclick="startFRQ()">Begin Section II: Free Response</button>
     </div>
 
-    <!-- Results Screen -->
     <div id="results-screen" class="container">
-        <!-- Student view: simple confirmation -->
-        <div id="student-results" class="student-only" style="text-align:center;padding:60px 20px;">
-            <h1 style="color:var(--success);margin-bottom:15px;">Exam Submitted Successfully</h1>
-            <p style="font-size:1.1rem;color:var(--text-secondary);max-width:400px;margin:0 auto;">Your responses have been saved. Your teacher will review your results with you.</p>
-            <p style="margin-top:30px;color:var(--text-secondary);font-size:0.9rem;">You may close this page now.</p>
-        </div>
-        <!-- Teacher view: full analytics -->
-        <div class="results-header teacher-only-block">
+        <div class="results-header">
             <h1>Exam Complete</h1>
             <div class="score-circle">
                 <div class="score" id="final-score">0</div>
@@ -407,7 +379,7 @@
             </div>
             <p id="score-percent" style="font-size:1.2rem;margin-top:10px;"></p>
         </div>
-        <div class="results-grid teacher-only-block">
+        <div class="results-grid">
             <div class="result-card">
                 <h4>Topic Breakdown</h4>
                 <div id="topic-breakdown"></div>
@@ -417,20 +389,20 @@
                 <div class="time-analysis" id="time-analysis"></div>
             </div>
         </div>
-        <div class="result-card teacher-only-block" style="margin-bottom:20px;">
+        <div class="result-card" style="margin-bottom:20px;">
             <h4>Confidence Calibration</h4>
             <div id="confidence-analysis" style="font-size:0.85rem;"></div>
         </div>
-        <div class="result-card teacher-only-block" style="margin-bottom:20px;">
+        <div class="result-card" style="margin-bottom:20px;">
             <h4>Flagged Questions</h4>
             <p id="flagged-summary" style="font-size:0.9rem;color:var(--text-secondary);"></p>
         </div>
         <div class="result-card teacher-only-block" style="margin-bottom:20px;">
-            <h4>Error Classification <span style="font-size:0.75rem;color:var(--text-secondary);">(Select why you got each wrong)</span></h4>
+            <h4>Error Classification <span style="font-size:0.75rem;color:var(--text-secondary);">(Teacher only)</span></h4>
             <div id="error-classification"></div>
         </div>
         <div class="result-card teacher-only-block" style="margin-bottom:20px;">
-            <h4>FRQ Scores <span style="font-size:0.75rem;color:var(--text-secondary);">(Uncle enters after grading)</span></h4>
+            <h4>FRQ Scores <span style="font-size:0.75rem;color:var(--text-secondary);">(Teacher only)</span></h4>
             <div class="frq-score-entry">
                 <div class="score-input"><label>FRQ 1:</label><input type="number" id="frq-score-1" min="0" max="15" placeholder="0"> <span>/ 15</span></div>
                 <div class="score-input"><label>FRQ 2:</label><input type="number" id="frq-score-2" min="0" max="15" placeholder="0"> <span>/ 15</span></div>
@@ -444,11 +416,10 @@
         <div class="action-links teacher-only">
             <button class="btn btn-success" id="save-btn" disabled style="opacity:0.8;">&#10003; Progress Saved</button>
             <a href="dashboard.html" class="btn btn-primary" style="color:white;">View Dashboard</a>
-            <a href="answer-key-exam4.html" class="btn btn-secondary">Full Answer Key</a>
+            <a href="answer-key-exam5.html" class="btn btn-secondary">Full Answer Key</a>
         </div>
     </div>
 
-    <!-- Submit Modal -->
     <div class="modal-overlay" id="submit-modal">
         <div class="modal">
             <h3>Submit Section?</h3>
@@ -462,75 +433,97 @@
 
 <script>
 // ============================================
-// QUESTION DATA
+// QUESTION DATA — 35 MC, Realistic AP Format
 // ============================================
 const mcQuestions = [
-    // === CATEGORY A: FLAT SURFACE + FORCES (Q1-5) — Same concepts, different numbers ===
-    { id:1, topic:"Newton's Laws", text:"A 8 kg crate is pushed across a rough floor ($\\mu_k = 0.3$) by two horizontal forces: 50 N to the right and 10 N to the left. The acceleration is:", choices:["$2$ m/s$^2$","$5$ m/s$^2$","$3$ m/s$^2$","$0$ (doesn't move)","$7.5$ m/s$^2$"], correctIndex:0 },
-    { id:2, topic:"Newton's Laws", text:"A 10 kg box on a rough floor ($\\mu_s = 0.4$, $\\mu_k = 0.2$) is pushed with 30 N horizontally. The friction force on the box is:", choices:["$20$ N","$30$ N","$40$ N","$0$ N","$10$ N"], correctIndex:1 },
-    { id:3, topic:"Newton's Laws", text:"A 4 kg object on a frictionless surface has two forces: $F_1 = 20$ N at 30° above horizontal (right) and $F_2 = 7.32$ N horizontally to the left. The horizontal acceleration is:", choices:["$2.5$ m/s$^2$","$1.83$ m/s$^2$","$4.33$ m/s$^2$","$3.17$ m/s$^2$","$5$ m/s$^2$"], correctIndex:0 },
-    { id:4, topic:"Newton's Laws", text:"A block is pushed against a vertical wall by a horizontal force of 80 N. The block weighs 20 N. If $\\mu_s = 0.3$, does the block slide?", choices:["No — max friction is 24 N > weight 20 N","Yes — max friction is 24 N < weight 80 N","No — normal force exceeds weight","Yes — the block always slides","Cannot determine"], correctIndex:0 },
-    { id:5, topic:"Newton's Laws", text:"A force vs. acceleration graph for an object on a rough surface is linear with slope 5 kg and x-intercept at $F = 15$ N. The coefficient of kinetic friction is ($g = 10$ m/s$^2$):", choices:["$0.3$","$0.4$","$0.5$","$0.25$","$0.6$"], correctIndex:0 },
-    // === CATEGORY B: INCLINES (Q6-12) ===
-    { id:6, topic:"Newton's Laws", text:"A 5 kg block on a frictionless 37° incline ($\\sin 37° = 0.6$, $\\cos 37° = 0.8$) has acceleration:", choices:["$6$ m/s$^2$","$8$ m/s$^2$","$4$ m/s$^2$","$10$ m/s$^2$","$5$ m/s$^2$"], correctIndex:0 },
-    { id:7, topic:"Newton's Laws", text:"A block slides DOWN a 30° rough incline at constant velocity. The coefficient of kinetic friction is:", choices:["$1/\\sqrt{3} \\approx 0.577$","$0.5$","$1.0$","$\\sqrt{3}$","$0.3$"], correctIndex:0 },
-    { id:8, topic:"Newton's Laws", text:"A 4 kg block is PUSHED down a frictionless 30° incline by a force of 30 N applied parallel to the incline. The acceleration is:", choices:["$12.5$ m/s$^2$","$5$ m/s$^2$","$7.5$ m/s$^2$","$10$ m/s$^2$","$2.5$ m/s$^2$"], correctIndex:0 },
-    { id:9, topic:"Newton's Laws", text:"Two blocks ($m_1 = 3$ kg, $m_2 = 6$ kg) are in contact on a 30° frictionless incline. A force $F = 135$ N pushes $m_1$ up the incline. The contact force between the blocks is:", choices:["$90$ N","$45$ N","$60$ N","$30$ N","$135$ N"], correctIndex:0 },
-    { id:10, topic:"Newton's Laws", text:"A 3 kg block on a 53° incline ($\\sin 53° = 0.8$, $\\cos 53° = 0.6$) is attached to a spring ($k = 300$ N/m) parallel to the surface. If $\\mu_s = 0.25$, the max spring compression before the block slides up is:", choices:["$0.095$ m","$0.080$ m","$0.12$ m","$0.065$ m","$0.050$ m"], correctIndex:0 },
-    { id:11, topic:"Newton's Laws", text:"A block on a rough incline begins to slide when the angle reaches $27°$. The coefficient of static friction is approximately:", choices:["$0.51$","$0.47$","$0.27$","$0.60$","$0.87$"], correctIndex:0 },
-    { id:12, topic:"Newton's Laws", text:"A 3 kg block on a rough 37° incline ($\\mu_k = 0.15$) is connected by a string to a 2 kg block further up the same incline. Both slide down together. The tension is:", choices:["$0$ N","$2$ N","$5$ N","$3$ N","$1$ N"], correctIndex:0 },
-    // === CATEGORY C: CONNECTED SYSTEMS (Q13-18) ===
-    { id:13, topic:"Newton's Laws", text:"A modified Atwood: 8 kg on frictionless table, 5 kg hanging right, 3 kg hanging left. The acceleration is:", choices:["$1.25$ m/s$^2$","$2.5$ m/s$^2$","$3.13$ m/s$^2$","$5$ m/s$^2$","$0.63$ m/s$^2$"], correctIndex:0 },
-    { id:14, topic:"Newton's Laws", text:"Two blocks ($m_1 = 2$ kg and $m_2 = 6$ kg) on opposite 30° frictionless inclines, connected over the top. The acceleration is:", choices:["$2.5$ m/s$^2$","$0$ (balanced)","$1.25$ m/s$^2$","$5$ m/s$^2$","$3.75$ m/s$^2$"], correctIndex:0 },
-    { id:15, topic:"Newton's Laws", text:"A 3 kg block on a rough table ($\\mu_k = 0.2$) is connected over a pulley to a 7 kg hanging block. The acceleration is:", choices:["$6.4$ m/s$^2$","$7$ m/s$^2$","$5$ m/s$^2$","$4$ m/s$^2$","$3.4$ m/s$^2$"], correctIndex:0 },
-    { id:16, topic:"Newton's Laws", text:"In Q15, the tension in the string is:", choices:["$25.2$ N","$70$ N","$30$ N","$42$ N","$35$ N"], correctIndex:0 },
-    { id:17, topic:"Newton's Laws", text:"A 3 kg hanging block and a 5 kg block on a frictionless 37° incline ($\\sin 37° = 0.6$) are connected over a pulley. The system is in equilibrium. The tension is:", choices:["$30$ N","$33$ N","$25$ N","$50$ N","$18$ N"], correctIndex:0 },
-    { id:18, topic:"Newton's Laws", text:"In an Atwood machine, if $m_2 = 4m_1$, the acceleration is:", choices:["$3g/5$","$g/2$","$g/4$","$3g/4$","$4g/5$"], correctIndex:0 },
-    // === CATEGORY D: CIRCULAR + NEWTON (Q19-23) ===
-    { id:19, topic:"Newton's Laws", text:"A 2 kg ball on a 0.5 m string swings in a vertical circle. At the bottom, the tension is 60 N. The speed at the bottom is:", choices:["$\\sqrt{10}$ m/s","$\\sqrt{20}$ m/s","$\\sqrt{5}$ m/s","$5$ m/s","$\\sqrt{40}$ m/s"], correctIndex:0 },
-    { id:20, topic:"Newton's Laws", text:"A car drives at 20 m/s on a flat circular track of radius 80 m. The minimum $\\mu_s$ to prevent sliding is:", choices:["$0.5$","$0.25$","$1.0$","$0.4$","$2.0$"], correctIndex:0 },
-    { id:21, topic:"Newton's Laws", text:"A satellite orbits Earth at radius $r$. The gravitational force provides the centripetal force. If the orbit radius doubles to $2r$, the orbital speed:", choices:["Decreases by factor $\\sqrt{2}$","Halves","Stays the same","Doubles","Increases by $\\sqrt{2}$"], correctIndex:0 },
-    { id:22, topic:"Newton's Laws", text:"A coin on a turntable at $r = 0.2$ m from center. If $\\mu_s = 0.5$, the maximum angular velocity before it slides is:", choices:["$5$ rad/s","$\\sqrt{25}$ rad/s","$\\sqrt{50}$ rad/s","$10$ rad/s","$2.5$ rad/s"], correctIndex:0 },
-    { id:23, topic:"Newton's Laws", text:"A pendulum bob (mass $m$, length $L$) is released from 60° from vertical. The tension at the bottom is:", choices:["$2mg$","$3mg$","$mg$","$1.5mg$","$2.5mg$"], correctIndex:0 },
-    // === CATEGORY E: CALCULUS-BASED (Q24-29) ===
-    { id:24, topic:"Newton's Laws", text:"A 4 kg object has force $F(t) = 12\\sin(3t)$ N from $t = 0$ to $t = \\pi/3$ s. Starting from rest, the final speed is:", choices:["$2$ m/s","$1$ m/s","$3$ m/s","$4$ m/s","$6$ m/s"], correctIndex:0 },
-    { id:25, topic:"Newton's Laws", text:"A 5 kg object with drag $F = -10v$ falls under gravity. The velocity as a function of time is:", choices:["$5(1 - e^{-2t})$ m/s","$5e^{-2t}$ m/s","$50(1 - e^{-t/5})$ m/s","$10(1 - e^{-t})$ m/s","$5t$ m/s"], correctIndex:0 },
-    { id:26, topic:"Newton's Laws", text:"A 0.5 kg particle falls with quadratic drag $F_{drag} = -0.05v^2$ N. The terminal velocity is:", choices:["$10$ m/s","$5$ m/s","$100$ m/s","$\\sqrt{50}$ m/s","$20$ m/s"], correctIndex:0 },
-    { id:27, topic:"Newton's Laws", text:"A 2 kg mass on a spring with $k = 18$ N/m. The period of oscillation is:", choices:["$2\\pi/3$ s","$\\pi/3$ s","$2\\pi$ s","$\\pi$ s","$3\\pi$ s"], correctIndex:0 },
-    { id:28, topic:"Newton's Laws", text:"Water flows onto a stationary plate at rate 3 kg/s with horizontal velocity 8 m/s. The force on the plate is:", choices:["$24$ N","$8$ N","$3$ N","$11$ N","$48$ N"], correctIndex:0 },
-    { id:29, topic:"Newton's Laws", text:"A 5 kg object has $a(t) = 6 - 2t$ m/s$^2$. The net force at $t = 2$ s is:", choices:["$10$ N","$20$ N","$30$ N","$0$ N","$5$ N"], correctIndex:0 },
-    // === CATEGORY F: ADVANCED (Q30-35) ===
-    { id:30, topic:"Newton's Laws", text:"A tug-of-war team pulls with 500 N on a rope. The other team also pulls with 500 N. The tension in the rope is:", choices:["$500$ N","$1000$ N","$0$ N","$250$ N","$750$ N"], correctIndex:0 },
-    { id:31, topic:"Newton's Laws", text:"A car goes over a hill of radius $R$ at speed $v$. The driver feels weightless. The speed must be:", choices:["$\\sqrt{gR}$","$\\sqrt{2gR}$","$gR$","$\\sqrt{gR/2}$","$0$"], correctIndex:0 },
-    { id:32, topic:"Newton's Laws", text:"A box on a rough flat surface ($\\mu_s = 0.4$) has a rope pulling at 45° above horizontal. The tension needed to START moving the box (mass 10 kg) is:", choices:["$\\frac{40}{\\cos 45° + 0.4\\sin 45°}$ N","$40$ N","$40/\\cos 45°$ N","$\\mu_s mg$ N","$100$ N"], correctIndex:0 },
-    { id:33, topic:"Newton's Laws", text:"Block A ($6$ kg) is on a 37° frictionless incline, connected to hanging Block B. Equilibrium requires $m_B =$:", choices:["$3.6$ kg","$6$ kg","$4.8$ kg","$2$ kg","$5$ kg"], correctIndex:0 },
-    { id:34, topic:"Newton's Laws", text:"Which expression has the SAME units as momentum (kg·m/s)?", choices:["$Ft$ (force × time)","$Fv$ (force × velocity)","$mv^2$ (mass × velocity²)","$ma$ (mass × acceleration)","$Fd$ (force × distance)"], correctIndex:0 },
-    { id:35, topic:"Newton's Laws", text:"A 5 kg lamp hangs from two ropes: one at 30° from vertical and one at 60° from vertical. The tension in the rope at 30° from vertical is:", choices:["$25\\sqrt{3}$ N","$25$ N","$50$ N","$50/\\sqrt{3}$ N","$50\\sqrt{3}$ N"], correctIndex:0 }
+    // === KINEMATICS (Q1-5) ===
+    { id:1, topic:"Kinematics", text:"A particle moves along the x-axis. Its velocity $v(t)$ is positive and decreasing for $0 < t < 2$ s, zero at $t = 2$ s, and negative for $t > 2$ s. At $t = 4$ s, the particle is:", choices:["At its starting position","To the left of its starting position and moving right","To the right of its starting position and moving left","To the right of its starting position and moving right","To the left of its starting position and moving left"], correctIndex:2 },
+    { id:2, topic:"Kinematics", text:"A particle starts from rest at the origin. Its acceleration is $a(t) = 6 - 2t$ m/s$^2$. The particle's velocity is zero again at:", choices:["$t = 3$ s","$t = 6$ s","$t = 2$ s","$t = 9$ s","The velocity never returns to zero"], correctIndex:1 },
+    { id:3, topic:"Kinematics", text:"Two balls are launched simultaneously from the same height: Ball A is dropped from rest, and Ball B is launched horizontally with speed $v_0$. Air resistance is negligible. Which statement is correct?", choices:["Ball A hits the ground first","Ball B hits the ground first","Ball A has a greater speed at impact","Ball B has a greater speed at impact but they hit at different times","They hit the ground at the same time and Ball B has greater speed at impact"], correctIndex:4 },
+    { id:4, topic:"Kinematics", text:"A projectile is launched from the ground at angle $\\theta$ with speed $v_0$. The range is $R = v_0^2 \\sin(2\\theta)/g$. If the launch speed is doubled while keeping $\\theta = 45°$, the range:", choices:["Quadruples","Doubles","Increases by factor $\\sqrt{2}$","Stays the same","Increases by factor 8"], correctIndex:0 },
+    { id:5, topic:"Kinematics", text:"The position of a particle is $x(t) = t^3 - 6t^2 + 9t$ (in meters). The particle momentarily changes direction at:", choices:["$t = 0$ only","$t = 3$ s only","$t = 2$ s and $t = 4$ s","$t = 1$ s and $t = 3$ s","$t = 1$ s only"], correctIndex:3 },
+
+    // === NEWTON'S LAWS (Q6-12) ===
+    { id:6, topic:"Newton's Laws", text:"A large truck collides head-on with a small car. During the collision, the magnitude of the force exerted by the truck on the car is:", choices:["Greater than the force the car exerts on the truck","Equal to the force the car exerts on the truck","Less than the force the car exerts on the truck","Greater because the truck has more mass","Dependent on the relative speeds"], correctIndex:1 },
+    { id:7, topic:"Newton's Laws", text:"A block of mass $m$ slides down a rough incline of angle $\\theta$ at constant velocity. The coefficient of kinetic friction $\\mu_k$ equals:", choices:["$\\sin\\theta$","$\\cos\\theta$","$1/\\tan\\theta$","$\\sin\\theta\\cos\\theta$","$\\tan\\theta$"], correctIndex:4 },
+    { id:8, topic:"Newton's Laws", text:"Three blocks of masses $m$, $2m$, and $3m$ are in contact on a frictionless surface. A force $F$ is applied to the $3m$ block. All blocks have the same acceleration. The net force on each block is:", choices:["The same for all three blocks","Greatest on the $m$ block, least on $3m$","Greatest on the $3m$ block, least on the $m$ block","Greatest on the $2m$ block","Zero on the middle block"], correctIndex:2 },
+    { id:9, topic:"Newton's Laws", text:"In an Atwood machine with masses $m_1$ and $m_2$ ($m_2 > m_1$), the acceleration is $a = (m_2 - m_1)g/(m_1 + m_2)$. If the same amount of mass $\\Delta m$ is added to BOTH sides, the acceleration:", choices:["Decreases","Increases","Stays the same","Depends on the ratio $m_1/m_2$","Becomes zero"], correctIndex:0 },
+    { id:10, topic:"Newton's Laws", text:"A ball on a string moves in a horizontal circle at constant speed. At the instant the ball is at the northernmost point (moving east), the string breaks. The ball's subsequent path is:", choices:["A curve continuing in the circle briefly","A straight line northward","A spiral outward","A straight line eastward (plus downward due to gravity)","A parabola curving northward"], correctIndex:3 },
+    { id:11, topic:"Newton's Laws", text:"A 60 kg person stands on a scale in an elevator accelerating downward at $3$ m/s$^2$. The scale reads: (Use $g = 10$ m/s$^2$)", choices:["780 N","420 N","600 N","180 N","360 N"], correctIndex:1 },
+    { id:12, topic:"Newton's Laws", text:"An object of mass $m$ falls through a fluid that exerts a drag force $F_d = -bv$. The terminal velocity is:", choices:["$b/mg$","$g/b$","$mb/g$","$\\sqrt{mg/b}$","$mg/b$"], correctIndex:4 },
+
+    // === WORK, ENERGY & POWER (Q13-18) ===
+    { id:13, topic:"Work & Energy", text:"A force $F(x) = 4x - x^2$ (in newtons, $x$ in meters) acts on a particle. The work done from $x = 0$ to $x = 3$ m is:", choices:["3 J","6 J","9 J","12 J","15 J"], correctIndex:2 },
+    { id:14, topic:"Work & Energy", text:"A block slides down a frictionless ramp from height $h$ and enters a circular loop of radius $R$. For the block to barely maintain contact at the top of the loop, the minimum $h$ is:", choices:["$5R/2$","$2R$","$R$","$3R$","$5R$"], correctIndex:0 },
+    { id:15, topic:"Work & Energy", text:"A particle has potential energy $U(x) = ax^4 - bx^2$, where $a$ and $b$ are positive constants. The particle is in stable equilibrium at:", choices:["$x = 0$ only","$x = \\sqrt{b/a}$","$x = b/(2a)$","$x = \\pm\\sqrt{b/(2a)}$","There is no stable equilibrium"], correctIndex:3 },
+    { id:16, topic:"Work & Energy", text:"A 5 kg object moving at $8$ m/s is brought to rest by a constant friction force over a distance of $4$ m. The magnitude of the friction force is:", choices:["20 N","40 N","80 N","160 N","10 N"], correctIndex:1 },
+    { id:17, topic:"Work & Energy", text:"A car of mass $m$ moves at constant velocity $v$ up a hill inclined at angle $\\theta$ to the horizontal. Neglecting friction, the power delivered by the engine is:", choices:["$mgv\\sin\\theta$","$mgv\\cos\\theta$","$mgv$","$\\frac{1}{2}mv^2\\sin\\theta$","$0$ because velocity is constant"], correctIndex:0 },
+    { id:18, topic:"Work & Energy", text:"A block on a frictionless surface oscillates on a spring between $x = -A$ and $x = +A$. At what position $|x|$ is the kinetic energy exactly three times the potential energy?", choices:["$A/4$","$A/3$","$A/2$","$A\\sqrt{3}/2$","$3A/4$"], correctIndex:2 },
+
+    // === MOMENTUM (Q19-21) ===
+    { id:19, topic:"Momentum", text:"Two ice skaters (masses $M$ and $2M$) push off from each other from rest on frictionless ice. Afterward:", choices:["Both have the same speed","Both have the same kinetic energy","The heavier skater has more momentum","The lighter skater has more momentum","Both have the same magnitude of momentum"], correctIndex:4 },
+    { id:20, topic:"Momentum", text:"A 2 kg object initially at rest is acted upon by a force $F(t) = 12t^2$ N for $0 \\le t \\le 1$ s. The speed at $t = 1$ s is:", choices:["6 m/s","12 m/s","3 m/s","2 m/s","4 m/s"], correctIndex:3 },
+    { id:21, topic:"Momentum", text:"A ball of mass $m$ moving at speed $v$ collides with an identical ball at rest. After the collision, the first ball moves at speed $v/2$ at $60°$ to its original direction. This collision is:", choices:["Inelastic, because kinetic energy is not conserved","Elastic, because momentum is conserved","Perfectly inelastic","Elastic, because kinetic energy is conserved","Cannot be determined without more information"], correctIndex:0 },
+
+    // === ROTATION (Q22-27) ===
+    { id:22, topic:"Rotation", text:"A solid sphere, a hollow sphere, a solid cylinder, and a hollow cylinder (all same mass and radius) are released from rest at the top of an incline and roll without slipping. Which reaches the bottom first?", choices:["Hollow sphere","Solid sphere","Solid cylinder","Hollow cylinder","They all arrive at the same time"], correctIndex:1 },
+    { id:23, topic:"Rotation", text:"A disk of moment of inertia $I$ spins at angular velocity $\\omega$. A second identical disk, initially at rest, is dropped onto the first and they reach a common angular velocity. The fraction of kinetic energy lost is:", choices:["$0$","$1/4$","$1/2$","$3/4$","$1$"], correctIndex:2 },
+    { id:24, topic:"Rotation", text:"A uniform rod of mass $M$ and length $L$ is pivoted at one end and held horizontal. A mass $M/2$ hangs from the other end. When released, the initial angular acceleration is:", choices:["$g/L$","$3g/(2L)$","$3g/L$","$6g/(5L)$","$2g/L$"], correctIndex:3 },
+    { id:25, topic:"Rotation", text:"A thin uniform rod of mass $M$ and length $L$ has moment of inertia $ML^2/12$ about its center. By the parallel axis theorem, its moment of inertia about an axis $L/4$ from one end (i.e., $L/4$ from the center) is:", choices:["$ML^2/12$","$ML^2/6$","$ML^2/3$","$ML^2/4$","$7ML^2/48$"], correctIndex:4 },
+    { id:26, topic:"Rotation", text:"A solid disk of mass 2 kg and radius 1 m rotates at 2 rad/s about its central axis. Its rotational kinetic energy is:", choices:["2 J","4 J","1 J","8 J","0.5 J"], correctIndex:0 },
+    { id:27, topic:"Rotation", text:"A figure skater spinning with arms extended pulls her arms in, halving her moment of inertia. Her rotational kinetic energy:", choices:["Is halved","Stays the same","Doubles","Quadruples","Increases by factor $\\sqrt{2}$"], correctIndex:2 },
+
+    // === OSCILLATIONS & GRAVITATION (Q28-30) ===
+    { id:28, topic:"Oscillations", text:"A mass on a spring oscillates with displacement $x(t) = A\\cos(\\omega t)$. At $t = 0$, the acceleration of the mass is:", choices:["Zero","$-\\omega^2 A$","$\\omega^2 A$","$-\\omega A$","$A$"], correctIndex:1 },
+    { id:29, topic:"Gravitation", text:"A satellite of mass $m$ orbits Earth (mass $M$) in a circular orbit of radius $r$. The total mechanical energy of the satellite is:", choices:["$GMm/r$","$-GMm/r$","$GMm/(2r)$","$-GMm/(2r)$","$0$"], correctIndex:3 },
+    { id:30, topic:"Oscillations", text:"A simple pendulum has period $T$ on Earth's surface. If taken to a planet where $g$ is four times Earth's $g$, the period becomes:", choices:["$4T$","$2T$","$T$","$T/4$","$T/2$"], correctIndex:4 },
+
+    // === CROSS-TOPIC / INTEGRATED (Q31-35) ===
+    { id:31, topic:"Energy + Rotation", text:"A solid sphere ($I = \\frac{2}{5}mr^2$) of mass $m$ rolls without slipping at speed $v$ on a flat surface and then up a rough incline (no slipping). The maximum height reached is:", choices:["$7v^2/(10g)$","$v^2/(2g)$","$v^2/g$","$5v^2/(7g)$","$2v^2/(5g)$"], correctIndex:0 },
+    { id:32, topic:"Momentum + Energy", text:"A 3 kg cart moving at 4 m/s collides with a 1 kg cart at rest. After the collision, the 3 kg cart moves at 3 m/s in the same direction. This collision is:", choices:["Elastic","Perfectly inelastic","Inelastic (kinetic energy is lost but carts separate)","Impossible (violates momentum conservation)","Superelastic (kinetic energy increases)"], correctIndex:2 },
+    { id:33, topic:"Newton + Energy", text:"A block is launched up a rough incline with initial kinetic energy $K$. It slides up, momentarily stops, then slides back to its starting point. When it returns, its kinetic energy is:", choices:["$K$","Less than $K$","Greater than $K$","Zero","Depends on the mass of the block"], correctIndex:1 },
+    { id:34, topic:"Cross-topic", text:"The period of a simple pendulum depends on its length $L$ and gravitational acceleration $g$. By dimensional analysis, the period must be proportional to:", choices:["$L/g$","$\\sqrt{g/L}$","$gL$","$\\sqrt{L/g}$","$L^2/g$"], correctIndex:3 },
+    { id:35, topic:"Oscillations + Gravity", text:"Imagine a frictionless tunnel drilled straight through the center of the Earth (uniform density $\\rho$, radius $R_E$). An object dropped into the tunnel oscillates with simple harmonic motion. The period of oscillation depends on:", choices:["The mass of the object","The depth from which it is dropped","The object's initial speed","The diameter of the tunnel","Only the density and radius of Earth (not the object's mass)"], correctIndex:4 }
 ];
 
 const frqQuestions = [
-    { id:1, title:"FRQ 1: Block-Spring-Incline System", topic:"Energy & Momentum",
-      text:`A block of mass $m = 2.0$ kg is placed against a spring (spring constant $k = 500$ N/m) that is compressed by $d = 0.30$ m on a frictionless horizontal surface. The spring is released, launching the block toward a rough incline that makes an angle $\\theta = 30°$ with the horizontal. The coefficient of kinetic friction on the incline is $\\mu_k = 0.20$.`,
-      parts:[{label:"(a)",prompt:"Determine the speed of the block just as it leaves the spring. (3 pts)"},{label:"(b)",prompt:"Determine the distance the block travels up the incline before coming momentarily to rest. (4 pts)"},{label:"(c)",prompt:"Does the block slide back down the incline? Justify your answer with a calculation. (3 pts)"},{label:"(d)",prompt:"If instead the incline were frictionless but curved (quarter-circle of radius $R$), derive an expression for the normal force on the block at the top of the curve as a function of $m$, $k$, $d$, $R$, and $g$. (5 pts)"}]
+    { id:1, title:"FRQ 1: Atwood Machine on an Incline", topic:"Newton's Laws + Energy",
+      text:`A block of mass $M = 4.0$ kg sits on a rough incline ($\\theta = 37°$, $\\mu_k = 0.25$). It is connected by a light string over a frictionless, massless pulley at the top of the incline to a hanging block of mass $m = 3.0$ kg. The system is released from rest. Use $g = 10$ m/s$^2$, $\\sin 37° = 0.6$, $\\cos 37° = 0.8$.`,
+      parts:[
+          {label:"(a)",prompt:"Draw and label a free-body diagram for EACH block, showing all forces acting on them. (3 pts)"},
+          {label:"(b)",prompt:"Determine the acceleration of the system and the tension in the string. (4 pts)"},
+          {label:"(c)",prompt:"After the hanging block descends 2.0 m, determine the speed of the system using the work-energy theorem. Verify it is consistent with your answer in (b). (3 pts)"},
+          {label:"(d)",prompt:"The hanging block is now removed and replaced by a variable force $F(t) = 20 + 10t$ (in newtons) applied to the string pulling the block UP the incline. Derive an expression for the velocity of the block as a function of time, starting from rest. What is the speed at $t = 2$ s? (5 pts)"}
+      ]
     },
-    { id:2, title:"FRQ 2: Rotating Rod with Attached Mass", topic:"Rotation",
-      text:`A thin uniform rod of mass $M$ and length $L$ is free to rotate about a frictionless pivot at its left end. A small ball of mass $M$ is attached to the right end of the rod. The system is held horizontal and then released from rest.`,
-      parts:[{label:"(a)",prompt:"Calculate the moment of inertia of the system about the pivot point. (2 pts)"},{label:"(b)",prompt:"Determine the angular acceleration of the system immediately after release. (4 pts)"},{label:"(c)",prompt:"Determine the angular velocity of the system when the rod passes through the vertical position. (4 pts)"},{label:"(d)",prompt:"At the instant the rod is vertical, determine the magnitude and direction of the force exerted by the pivot on the rod-ball system. (5 pts)"}]
+    { id:2, title:"FRQ 2: Turntable and Ball Collision", topic:"Rotation + Angular Momentum",
+      text:`A horizontal turntable (uniform disk of mass $M = 8.0$ kg, radius $R = 0.50$ m) rotates freely about a vertical axis through its center. It is initially at rest. A student throws a ball of mass $m = 0.40$ kg horizontally with speed $v_0 = 10$ m/s tangentially at the edge of the turntable. The ball hits the rim and sticks.`,
+      parts:[
+          {label:"(a)",prompt:"Calculate the moment of inertia of the turntable about its central axis. What is the moment of inertia of the ball (treated as a point mass) after it sticks to the rim? (2 pts)"},
+          {label:"(b)",prompt:"Using conservation of angular momentum, determine the angular velocity of the turntable-ball system immediately after the ball sticks. (4 pts)"},
+          {label:"(c)",prompt:"What fraction of the initial kinetic energy is lost in this collision? Where does the lost energy go? (4 pts)"},
+          {label:"(d)",prompt:"Now suppose the ball bounces off the rim instead of sticking, leaving with a speed of 2.0 m/s tangentially in the opposite direction. Determine the angular velocity of the turntable after the bounce. Is more or less kinetic energy lost compared to part (c)? Justify with a calculation. (5 pts)"}
+      ]
     },
-    { id:3, title:"FRQ 3: Oscillating System & Experimental Design", topic:"Oscillations",
-      text:`A block of mass $m$ is attached to two identical springs, each with spring constant $k$, arranged in parallel (both connected between the block and a wall). The block slides on a frictionless surface.`,
-      parts:[{label:"(a)",prompt:"Show that the effective spring constant of the parallel combination is $k_{eff} = 2k$. Derive the period of oscillation. (3 pts)"},{label:"(b)",prompt:"If the block is displaced by $A$ from equilibrium and released, derive an expression for the velocity as a function of position $x$. (3 pts)"},{label:"(c)",prompt:"Now suppose the surface has friction coefficient $\\mu_k$ (kinetic) and the block is released from amplitude $A$. Determine the amplitude after one complete oscillation (one full cycle). State any approximations. (4 pts)"},{label:"(d)",prompt:"Design an experiment to determine the spring constant $k$ using only a ruler, a set of known masses, and a stopwatch. Describe your procedure, state what you would measure, and explain how you would analyze the data (including what graph you would plot) to find $k$. (5 pts)"}]
+    { id:3, title:"FRQ 3: Spring Oscillation — Theory & Experiment", topic:"Oscillations + Calculus",
+      text:`A cart of mass $m$ on a frictionless air track is attached to a horizontal spring of spring constant $k$. The cart is displaced from equilibrium and released.`,
+      parts:[
+          {label:"(a)",prompt:"Starting from Newton's second law ($F = ma$), show that the cart's equation of motion is $\\frac{d^2x}{dt^2} = -\\frac{k}{m}x$. State why $x(t) = A\\cos(\\omega t + \\phi)$ with $\\omega = \\sqrt{k/m}$ is a solution. (3 pts)"},
+          {label:"(b)",prompt:"For $m = 0.50$ kg, $k = 8.0$ N/m, the cart is displaced 0.20 m from equilibrium and released from rest. Write expressions for $x(t)$, $v(t)$, and $a(t)$ with numerical values for all constants. (3 pts)"},
+          {label:"(c)",prompt:"A student measures the maximum speed $v_{max}$ for different amplitudes $A$:\n\n| $A$ (m) | $v_{max}$ (m/s) |\n|---------|----------------|\n| 0.05    | 0.20           |\n| 0.10    | 0.40           |\n| 0.15    | 0.60           |\n| 0.20    | 0.80           |\n| 0.25    | 1.00           |\n\nWhat should the student plot to get a straight line? What is the physical meaning of the slope? Determine $k/m$ from the data. (4 pts)"},
+          {label:"(d)",prompt:"The air track is turned off, adding friction ($\\mu_k$). The amplitude decreases by a constant amount $\\Delta A$ each half-cycle: $\\Delta A = 2\\mu_k mg / k$. If the amplitude decreases from 0.20 m to zero in exactly 10 half-cycles, determine $\\mu_k$. Use $m = 0.50$ kg, $k = 8.0$ N/m, $g = 10$ m/s$^2$. (5 pts)"}
+      ]
     }
 ];
 
 // ============================================
 // STATE
 // ============================================
-let examMode = 'timed'; // 'timed' or 'review'
+let examMode = 'timed';
 let currentSection = 'mc';
 let currentQuestion = 0;
 let answers = new Array(35).fill(null);
-let confidence = new Array(35).fill(0); // 0=unrated, 1=guessing, 2=unsure, 3=confident
+let confidence = new Array(35).fill(0);
 let frqAnswers = [{}, {}, {}];
 let flags = new Array(38).fill(false);
 let timeRemaining = 45 * 60;
@@ -541,7 +534,6 @@ let examStarted = false;
 let sessionSaved = false;
 let studentName = '';
 
-// Google Sheets endpoint (replace with your Apps Script URL)
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzjborhXwwcwyrKdxJV3o8colfXM0AdOsBwDydBAPDEbRz4gmxdtQCfl5eS1hRBAs2ySA/exec';
 
 // ============================================
@@ -579,15 +571,22 @@ function startTimer() {
         updateTimerDisplay();
         if (timeRemaining === 600) document.getElementById('timer').classList.add('warning');
         if (timeRemaining === 300) { document.getElementById('timer').classList.remove('warning'); document.getElementById('timer').classList.add('danger'); }
-        if (timeRemaining <= 0) { clearInterval(timerInterval); submitSection(); }
+        if (timeRemaining <= 0 && !document.getElementById('timer').classList.contains('danger')) { document.getElementById('timer').classList.add('danger'); }
         if (timeRemaining % 30 === 0) saveState();
     }, 1000);
 }
 
 function updateTimerDisplay() {
-    const mins = Math.floor(timeRemaining / 60);
-    const secs = timeRemaining % 60;
-    document.getElementById('timer').textContent = `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+    if (timeRemaining < 0) {
+        const over = Math.abs(timeRemaining);
+        const mins = Math.floor(over / 60);
+        const secs = over % 60;
+        document.getElementById('timer').textContent = `+${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+    } else {
+        const mins = Math.floor(timeRemaining / 60);
+        const secs = timeRemaining % 60;
+        document.getElementById('timer').textContent = `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+    }
 }
 
 function buildNavGrid() {
@@ -614,7 +613,6 @@ function updateNavGrid() {
         else if (currentSection === 'mc' && answers[i] !== null) dot.classList.add('answered');
         else if (currentSection === 'frq' && frqAnswers[i] && Object.values(frqAnswers[i]).some(v => v && v.trim())) dot.classList.add('answered');
     });
-    // Teacher live monitoring: show correct/wrong on nav dots
     if (teacherMode && currentSection === 'mc') {
         dots.forEach((dot, i) => {
             if (answers[i] !== null) {
@@ -643,7 +641,6 @@ function renderQuestion() {
             </div>`;
         }).join('');
 
-        // Confidence row
         const conf = confidence[currentQuestion];
         const confHTML = `<div class="confidence-row">
             <span class="label">Confidence:</span>
@@ -652,7 +649,6 @@ function renderQuestion() {
             <button class="conf-btn ${conf===3?'active-3':''}" onclick="setConfidence(3)">Confident</button>
         </div>`;
 
-        // Review mode explanation
         let explanationHTML = '';
         if (examMode === 'review' && answers[currentQuestion] !== null) {
             const isCorrect = answers[currentQuestion] === q.correctIndex;
@@ -663,7 +659,6 @@ function renderQuestion() {
             </div>`;
         }
 
-        // Teacher live hint (hidden from student via CSS)
         let teacherHintHTML = '';
         if (answers[currentQuestion] !== null) {
             const isCorrect = answers[currentQuestion] === q.correctIndex;
@@ -784,8 +779,6 @@ function submitSection() {
     if (timerInterval) clearInterval(timerInterval);
     const elapsed = Date.now() - currentQuestionStart;
     questionTotalTime[currentQuestion + (currentSection === 'mc' ? 0 : 35)] += elapsed;
-
-    // Ensure state is persisted before section transition
     saveState();
 
     if (currentSection === 'mc') {
@@ -803,7 +796,7 @@ function startFRQ() {
     document.getElementById('section-transition').style.display = 'none';
     document.getElementById('exam-header').style.display = 'flex';
     document.getElementById('exam-body').style.display = 'block';
-    document.getElementById('section-label').textContent = 'Section II: Free Response';
+    document.getElementById('section-label').textContent = 'Section II: Free Response (Calculator Allowed)';
     document.getElementById('timer').className = 'timer';
     if (examMode === 'review') { document.getElementById('timer').textContent = 'REVIEW'; document.getElementById('timer').style.color = 'var(--primary)'; }
     buildNavGrid(); renderQuestion();
@@ -828,18 +821,16 @@ function showResults() {
     const pct = Math.round(score / 35 * 100);
     document.getElementById('score-percent').textContent = `${pct}% — ${getScoreMessage(pct)}`;
 
-    // Topic breakdown
     const topicDiv = document.getElementById('topic-breakdown');
-    const colors = ['#2563eb','#16a34a','#f59e0b','#dc2626','#8b5cf6','#06b6d4'];
+    const colors = ['#2563eb','#16a34a','#f59e0b','#dc2626','#8b5cf6','#06b6d4','#ec4899'];
     let ci = 0, topicHTML = '';
     for (const topic in topicTotals) {
         const p = Math.round(topicScores[topic] / topicTotals[topic] * 100);
-        topicHTML += `<div class="topic-bar"><span class="label">${topic}</span><div class="bar-bg"><div class="bar-fill" style="width:${p}%;background:${colors[ci%6]}"></div></div><span class="percent">${topicScores[topic]}/${topicTotals[topic]}</span></div>`;
+        topicHTML += `<div class="topic-bar"><span class="label">${topic}</span><div class="bar-bg"><div class="bar-fill" style="width:${p}%;background:${colors[ci%7]}"></div></div><span class="percent">${topicScores[topic]}/${topicTotals[topic]}</span></div>`;
         ci++;
     }
     topicDiv.innerHTML = topicHTML;
 
-    // Time analysis
     const timeDiv = document.getElementById('time-analysis');
     const avgTime = questionTotalTime.slice(0,35).reduce((a,b)=>a+b,0)/35;
     let timeHTML = `<div class="item"><span>Avg time per MC question</span><span>${(avgTime/1000).toFixed(1)}s</span></div>`;
@@ -848,7 +839,6 @@ function showResults() {
     sorted.slice(0,5).forEach(({i,t})=>{ timeHTML+=`<div class="item"><span>Q${i+1} (${mcQuestions[i].topic})</span><span>${(t/1000).toFixed(1)}s</span></div>`; });
     timeDiv.innerHTML = timeHTML;
 
-    // Confidence calibration
     const confDiv = document.getElementById('confidence-analysis');
     let confCorrect = [0,0,0], confTotal = [0,0,0];
     mcQuestions.forEach((q,i) => {
@@ -861,21 +851,17 @@ function showResults() {
         const pctC = confTotal[i] > 0 ? Math.round(confCorrect[i]/confTotal[i]*100) : 0;
         confHTML += `<div class="topic-bar"><span class="label">"${l}" (${confTotal[i]})</span><div class="bar-bg"><div class="bar-fill" style="width:${pctC}%;background:${colors[i]}"></div></div><span class="percent">${pctC}%</span></div>`;
     });
-    const rated = confidence.filter(c=>c>0).length;
-    confHTML += `<p style="margin-top:8px;font-size:0.8rem;color:var(--text-secondary);">${rated}/35 questions rated. ${rated<20?'Try to rate every question for better calibration data.':''}</p>`;
     confDiv.innerHTML = confHTML;
 
-    // Flagged
     const flaggedNums = flags.slice(0,35).map((f,i)=>f?i+1:null).filter(Boolean);
     document.getElementById('flagged-summary').textContent = flaggedNums.length > 0
         ? `Flagged: ${flaggedNums.join(', ')}.` : 'No questions flagged.';
 
-    // Error classification
     const errDiv = document.getElementById('error-classification');
     let errHTML = '';
+    const letters = ['A','B','C','D','E'];
     mcQuestions.forEach((q,i) => {
         if (answers[i] !== q.correctIndex) {
-            const letters = ['A','B','C','D','E'];
             const yours = answers[i] !== null ? letters[answers[i]] : '—';
             errHTML += `<div class="error-row">
                 <span class="q-info"><strong>Q${i+1}</strong> (${q.topic}) — chose ${yours}, correct ${letters[q.correctIndex]}</span>
@@ -892,12 +878,10 @@ function showResults() {
     if (!errHTML) errHTML = '<p style="color:var(--success);">Perfect score! No errors to classify.</p>';
     errDiv.innerHTML = errHTML;
 
-    // Detailed review
     const reviewDiv = document.getElementById('detailed-review');
     let revHTML = '<div style="font-size:0.85rem;">';
     mcQuestions.forEach((q,i) => {
         const isCorrect = answers[i] === q.correctIndex;
-        const letters = ['A','B','C','D','E'];
         if (!isCorrect) {
             const yours = answers[i] !== null ? letters[answers[i]] : '—';
             revHTML += `<div style="padding:6px 0;border-bottom:1px solid var(--border);"><span style="color:var(--danger)">&#10007;</span> <strong>Q${i+1}</strong> (${q.topic}): chose ${yours}, correct ${letters[q.correctIndex]}</div>`;
@@ -906,9 +890,8 @@ function showResults() {
     revHTML += '</div>';
     reviewDiv.innerHTML = revHTML;
 
-    // Auto-save session FIRST, then clear temp state
     saveSessionToHistory();
-    localStorage.removeItem('apPhysicsExam4State');
+    localStorage.removeItem('apPhysicsExam5State');
 }
 
 let errorClassifications = {};
@@ -922,11 +905,8 @@ function getScoreMessage(pct) {
     return "Significant review needed";
 }
 
-// ============================================
-// SAVE SESSION TO HISTORY
-// ============================================
 function saveSessionToHistory() {
-    if (sessionSaved) { return; }
+    if (sessionSaved) return;
 
     const topicScores = {};
     mcQuestions.forEach((q, i) => {
@@ -946,6 +926,7 @@ function saveSessionToHistory() {
         date: new Date().toISOString(),
         studentName: studentName,
         type: 'full-exam',
+        examNumber: 5,
         mode: examMode,
         mcScore: answers.reduce((s,a,i) => s + (a === mcQuestions[i].correctIndex ? 1 : 0), 0),
         mcTotal: 35,
@@ -964,7 +945,6 @@ function saveSessionToHistory() {
     history.sessions.push(session);
     localStorage.setItem('apPhysicsHistory', JSON.stringify(history));
 
-    // Send to Google Sheets (silent — localStorage is primary)
     if (SHEET_URL && !SHEET_URL.includes('PASTE_YOUR')) {
         try {
             const form = new FormData();
@@ -974,21 +954,17 @@ function saveSessionToHistory() {
     }
     sessionSaved = true;
 
-    // Update button visual
     const btn = document.getElementById('save-btn');
     if (btn) { btn.textContent = '\u2713 Progress Saved'; btn.disabled = true; btn.style.opacity = '0.8'; }
 }
 
-// ============================================
-// PERSISTENCE (in-exam auto-save)
-// ============================================
 function saveState() {
-    localStorage.setItem('apPhysicsExam4State', JSON.stringify({
+    localStorage.setItem('apPhysicsExam5State', JSON.stringify({
         currentSection, currentQuestion, answers, confidence, frqAnswers, flags, timeRemaining, questionTotalTime, examMode
     }));
 }
 function loadSavedState() {
-    const saved = localStorage.getItem('apPhysicsExam4State');
+    const saved = localStorage.getItem('apPhysicsExam5State');
     if (saved) {
         try {
             const s = JSON.parse(saved);
@@ -1010,7 +986,6 @@ let titleClickTimer = null;
 
 function initTeacherMode() {
     if (teacherMode) document.body.classList.add('teacher-mode');
-
     const title = document.getElementById('app-title');
     if (title) {
         title.addEventListener('click', () => {
@@ -1044,9 +1019,6 @@ function checkPin() {
 
 initTeacherMode();
 
-// ============================================
-// THEME
-// ============================================
 function toggleTheme() {
     if (document.body.getAttribute('data-theme') === 'dark') {
         document.body.removeAttribute('data-theme');

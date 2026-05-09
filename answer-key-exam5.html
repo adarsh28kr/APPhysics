@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam 5 Answer Key — Realistic AP Format</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#f8fafc;--card:#fff;--text:#1e293b;--text2:#64748b;--border:#e2e8f0;--primary:#2563eb;--success:#16a34a;--danger:#dc2626;--warning:#d97706}
+        [data-theme="dark"]{--bg:#1a1a2e;--card:#16213e;--text:#e0e0e0;--text2:#aaa;--border:#333;--primary:#4f8cff}
+        body{font-family:'Georgia',serif;background:var(--bg);color:var(--text);line-height:1.7;padding:20px}
+        .container{max-width:900px;margin:0 auto}
+        h1{font-size:1.6rem;text-align:center;color:var(--primary);margin-bottom:5px}
+        .sub{text-align:center;color:var(--text2);margin-bottom:20px}
+        .nav{text-align:center;font-size:.85rem;margin-bottom:20px}
+        .nav a{color:var(--primary);text-decoration:none;margin:0 8px}
+        .quick{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:20px;font-size:.9rem}
+        .quick strong{color:var(--primary)}
+        .cat-header{background:var(--primary);color:#fff;padding:8px 16px;border-radius:6px;margin:20px 0 12px;font-size:1rem;font-weight:700}
+        .sol{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px}
+        .sol-header{display:flex;justify-content:space-between;flex-wrap:wrap;margin-bottom:8px}
+        .sol-num{font-weight:700;color:var(--primary);font-size:1.05rem}
+        .sol-ans{font-weight:700;color:var(--success);font-size:1.05rem}
+        .q-text{margin-bottom:12px;font-size:.93rem;color:var(--text2);border-left:3px solid var(--border);padding:6px 12px;background:rgba(0,0,0,.02);border-radius:0 6px 6px 0}
+        [data-theme="dark"] .q-text{background:rgba(255,255,255,.03)}
+        .step{margin-bottom:6px;padding:5px 10px;border-left:3px solid var(--primary);font-size:.92rem}
+        .step strong{color:var(--primary)}
+        .fbd{text-align:center;margin:10px 0;padding:8px;background:#f8fafc;border:1px solid var(--border);border-radius:8px}
+        [data-theme="dark"] .fbd{background:#1a1a2e}
+        .fbd svg{max-width:100%;height:auto}
+        .mistake{margin-top:8px;padding:8px 12px;background:rgba(220,38,38,.05);border-left:3px solid var(--danger);border-radius:0 6px 6px 0;font-size:.85rem}
+        .mistake strong{color:var(--danger)}
+        .gotcha{margin-top:8px;padding:8px 12px;background:rgba(139,92,246,.08);border-left:3px solid #8b5cf6;border-radius:0 6px 6px 0;font-size:.85rem}
+        .gotcha strong{color:#7c3aed}
+        .teach{margin-top:8px;padding:8px 12px;background:rgba(37,99,235,.05);border-left:3px solid var(--primary);border-radius:0 6px 6px 0;font-size:.88rem;font-style:italic}
+        .teach strong{color:var(--primary);font-style:normal}
+        .frq-header{background:#7c3aed;color:#fff;padding:10px 16px;border-radius:6px;margin:28px 0 12px;font-size:1.05rem;font-weight:700}
+        .frq-part-label{font-weight:700;color:#7c3aed;margin-top:10px;margin-bottom:4px}
+        .frq-prompt{font-size:.88rem;color:var(--text2);margin-bottom:8px;padding-left:12px;border-left:2px solid #7c3aed}
+        .theme-toggle{position:fixed;bottom:20px;right:20px;padding:10px;border-radius:50%;border:2px solid var(--border);background:var(--card);cursor:pointer;font-size:1.2rem;z-index:100}
+        @media print{.nav,.theme-toggle,#pin-gate{display:none}body{background:#fff}.sol{break-inside:avoid}}
+    </style>
+</head>
+<body>
+    <div id="pin-gate" style="position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;align-items:center;justify-content:center;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:30px;text-align:center;width:280px;">
+            <h3 style="margin-bottom:15px;">Teacher Access Required</h3>
+            <input type="password" id="gate-pin" maxlength="4" inputmode="numeric" style="width:120px;padding:10px;text-align:center;font-size:1.5rem;border:2px solid var(--border);border-radius:8px;letter-spacing:8px;background:var(--bg);color:var(--text);" onkeydown="if(event.key==='Enter')gateCheck()">
+            <div id="gate-err" style="color:#dc2626;font-size:.8rem;margin-top:8px;display:none;">Incorrect PIN</div>
+            <br><button onclick="gateCheck()" style="margin-top:15px;padding:8px 20px;font-size:.9rem;border:none;border-radius:8px;background:#2563eb;color:#fff;cursor:pointer;">Unlock</button>
+        </div>
+    </div>
+    <script>
+    function gateCheck(){if(document.getElementById('gate-pin').value==='2026'){sessionStorage.setItem('apPhysicsTeacher','true');document.getElementById('pin-gate').style.display='none';}else{document.getElementById('gate-err').style.display='block';document.getElementById('gate-pin').value='';}}
+    if(sessionStorage.getItem('apPhysicsTeacher')==='true'){document.getElementById('pin-gate').style.display='none';}
+    </script>
+
+    <div class="container">
+        <h1>Practice Exam 5 &mdash; Answer Key</h1>
+        <p class="sub">Realistic AP Format &bull; 35 MC + 3 FRQ &bull; Complete Solutions</p>
+        <div class="nav"><a href="exam5.html">Back to Exam</a> <a href="index.html">Home</a> <a href="dashboard.html">Dashboard</a></div>
+
+        <div class="quick">
+            <strong>Quick Key:</strong><br>
+            1.C &nbsp; 2.B &nbsp; 3.E &nbsp; 4.A &nbsp; 5.D &nbsp; 6.B &nbsp; 7.E &nbsp; 8.C &nbsp; 9.A &nbsp; 10.D &nbsp; 11.B &nbsp; 12.E<br>
+            13.C &nbsp; 14.A &nbsp; 15.D &nbsp; 16.B &nbsp; 17.A &nbsp; 18.C &nbsp; 19.E &nbsp; 20.D &nbsp; 21.A &nbsp; 22.B &nbsp; 23.C &nbsp; 24.D<br>
+            25.E &nbsp; 26.A &nbsp; 27.C &nbsp; 28.B &nbsp; 29.D &nbsp; 30.E &nbsp; 31.A &nbsp; 32.C &nbsp; 33.B &nbsp; 34.D &nbsp; 35.E
+        </div>
+
+        <!-- KINEMATICS -->
+        <div class="cat-header">Kinematics (Q1-5)</div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q1</span><span class="sol-ans">Answer: (C)</span></div>
+            <div class="q-text">Velocity positive and decreasing for $0 < t < 2$, zero at $t=2$, negative for $t > 2$. At $t=4$, the particle is:</div>
+            <div class="step"><strong>Key idea:</strong> Displacement = area under v-t curve. From $0$ to $2$: positive area (moves right). From $2$ to $4$: negative area (moves left). The positive area (0 to 2) is larger than the negative area (2 to 4) because v was decreasing &mdash; so the particle is still to the RIGHT.</div>
+            <div class="step"><strong>At $t = 4$:</strong> $v < 0$, so it's moving LEFT.</div>
+            <div class="step"><strong>Result:</strong> To the right of start, moving left.</div>
+            <div class="teach"><strong>AP strategy:</strong> This is a classic v-t graph question. Don't compute &mdash; think about areas. The integral of v(t) gives displacement. Positive area = rightward displacement, negative area = leftward. Compare areas geometrically.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q2</span><span class="sol-ans">Answer: (B) $t = 6$ s</span></div>
+            <div class="q-text">$a(t) = 6 - 2t$ m/s$^2$, starts from rest. When does $v = 0$ again?</div>
+            <div class="step"><strong>Integrate:</strong> $v(t) = \int(6 - 2t)\,dt = 6t - t^2 + C$. Since $v(0) = 0$: $C = 0$.</div>
+            <div class="step"><strong>Set $v = 0$:</strong> $6t - t^2 = t(6 - t) = 0 \Rightarrow t = 0$ or $t = 6$ s.</div>
+            <div class="teach"><strong>AP strategy:</strong> Factor before solving. $v(t) = t(6-t)$ immediately shows both roots. Velocity is positive between 0 and 6, peaking at $t = 3$.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q3</span><span class="sol-ans">Answer: (E)</span></div>
+            <div class="q-text">Ball A dropped, Ball B launched horizontally. Which is correct?</div>
+            <div class="step"><strong>Time:</strong> Both have the same vertical motion (initial vertical velocity = 0 for both). Same height $\Rightarrow$ same time.</div>
+            <div class="step"><strong>Speed:</strong> Ball A: $v_A = \sqrt{v_y^2} = v_y$. Ball B: $v_B = \sqrt{v_y^2 + v_0^2} > v_A$.</div>
+            <div class="teach"><strong>AP classic:</strong> Horizontal and vertical motions are independent. This appears on nearly every AP exam. The horizontal velocity doesn't affect the time to fall.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q4</span><span class="sol-ans">Answer: (A) Quadruples</span></div>
+            <div class="q-text">Range $R = v_0^2\sin(2\theta)/g$. If $v_0$ doubles, the range:</div>
+            <div class="step"><strong>Direct:</strong> $R \propto v_0^2$. If $v_0 \to 2v_0$: $R \to 4R$. Range quadruples.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (B) "Doubles" = confused $R \propto v_0$ with $R \propto v_0^2$. Always check the power.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q5</span><span class="sol-ans">Answer: (D) $t = 1$ s and $t = 3$ s</span></div>
+            <div class="q-text">$x(t) = t^3 - 6t^2 + 9t$. Direction changes at:</div>
+            <div class="step"><strong>Differentiate:</strong> $v(t) = 3t^2 - 12t + 9 = 3(t^2 - 4t + 3) = 3(t-1)(t-3)$</div>
+            <div class="step"><strong>$v = 0$ at $t = 1$ and $t = 3$.</strong> Sign changes at both (check: $v(0) = 9 > 0$, $v(2) = -3 < 0$, $v(4) = 9 > 0$).</div>
+            <div class="teach"><strong>AP strategy:</strong> "Changes direction" = $v = 0$ AND sign changes. Always verify the sign change &mdash; $v = 0$ alone could be a momentary stop without reversal.</div>
+        </div>
+
+        <!-- NEWTON'S LAWS -->
+        <div class="cat-header">Newton's Laws (Q6-12)</div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q6</span><span class="sol-ans">Answer: (B) Equal</span></div>
+            <div class="q-text">Truck collides with small car. The force of the truck on the car is:</div>
+            <div class="step"><strong>Newton's 3rd Law:</strong> $F_{\text{truck on car}} = -F_{\text{car on truck}}$. Always equal magnitude, opposite direction.</div>
+            <div class="teach"><strong>AP classic:</strong> The #1 Newton's 3rd law misconception. The forces are ALWAYS equal. The car has a greater acceleration because it has less mass ($a = F/m$), but the forces are the same.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q7</span><span class="sol-ans">Answer: (E) $\tan\theta$</span></div>
+            <div class="q-text">Constant velocity down rough incline. $\mu_k = ?$</div>
+            <div class="step">Constant velocity $\Rightarrow a = 0$: $mg\sin\theta = \mu_k mg\cos\theta$. Cancel $mg$: $\mu_k = \tan\theta$.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q8</span><span class="sol-ans">Answer: (C) Greatest on $3m$, least on $m$</span></div>
+            <div class="q-text">Three blocks ($m$, $2m$, $3m$) pushed by force $F$. Rank net forces.</div>
+            <div class="step"><strong>All have same $a$:</strong> $a = F/(m + 2m + 3m) = F/(6m)$</div>
+            <div class="step"><strong>Net force on each:</strong> $F_m = ma = F/6$, $F_{2m} = 2ma = F/3$, $F_{3m} = 3ma = F/2$.</div>
+            <div class="step"><strong>Rank:</strong> $F_{3m} > F_{2m} > F_m$.</div>
+            <div class="teach"><strong>Key insight:</strong> Same acceleration $\neq$ same net force. $F_{net} = ma$, so the heavier block needs more net force to achieve the same $a$.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q9</span><span class="sol-ans">Answer: (A) Decreases</span></div>
+            <div class="q-text">Atwood machine: add $\Delta m$ to both sides. Acceleration:</div>
+            <div class="step">$a' = \frac{(m_2 - m_1)g}{(m_1 + \Delta m) + (m_2 + \Delta m)} = \frac{(m_2 - m_1)g}{m_1 + m_2 + 2\Delta m}$</div>
+            <div class="step">Numerator unchanged, denominator larger $\Rightarrow$ $a$ decreases.</div>
+            <div class="teach"><strong>Limiting case:</strong> As $\Delta m \to \infty$, $a \to 0$. Adding huge equal masses to both sides makes them nearly balanced. This confirms the answer.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q10</span><span class="sol-ans">Answer: (D) Straight line eastward + falling</span></div>
+            <div class="q-text">Ball on string in horizontal circle. String breaks when ball is at north moving east.</div>
+            <div class="step"><strong>Newton's 1st Law:</strong> No string $\Rightarrow$ no centripetal force. Ball continues with its instantaneous velocity (tangential = eastward) and falls under gravity.</div>
+            <div class="step"><strong>Path:</strong> Straight line east (horizontal) + parabolic fall (vertical). No curve, no spiral.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (B) "Northward" = confusing velocity direction (tangent) with radial direction. The ball moves in the direction it was GOING, not the direction toward/away from center.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q11</span><span class="sol-ans">Answer: (B) 420 N</span></div>
+            <div class="q-text">60 kg person, elevator accelerating down at 3 m/s$^2$. Scale reads:</div>
+            <div class="step">$N = m(g - a) = 60(10 - 3) = 60 \times 7 = 420$ N</div>
+            <div class="teach"><strong>Quick rule:</strong> Accelerating down $\Rightarrow$ feel lighter ($N < mg$). Accelerating up $\Rightarrow$ feel heavier ($N > mg$).</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q12</span><span class="sol-ans">Answer: (E) $mg/b$</span></div>
+            <div class="q-text">Drag $F_d = -bv$. Terminal velocity:</div>
+            <div class="step">At terminal velocity: $a = 0 \Rightarrow mg = bv_t \Rightarrow v_t = mg/b$.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (D) $\sqrt{mg/b}$ = confused with QUADRATIC drag ($mg = cv^2$). For linear drag, $v_t = mg/b$ (no square root).</div>
+        </div>
+
+        <!-- WORK, ENERGY & POWER -->
+        <div class="cat-header">Work, Energy &amp; Power (Q13-18)</div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q13</span><span class="sol-ans">Answer: (C) 9 J</span></div>
+            <div class="q-text">$F(x) = 4x - x^2$. Work from $x = 0$ to $x = 3$:</div>
+            <div class="step">$W = \int_0^3 (4x - x^2)\,dx = \left[2x^2 - \frac{x^3}{3}\right]_0^3 = (18 - 9) - 0 = 9$ J</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q14</span><span class="sol-ans">Answer: (A) $5R/2$</span></div>
+            <div class="q-text">Block enters loop of radius $R$. Minimum launch height $h$:</div>
+            <div class="step"><strong>At top of loop (barely maintains contact):</strong> $N = 0 \Rightarrow mg = mv^2_{top}/R \Rightarrow v^2_{top} = gR$</div>
+            <div class="step"><strong>Energy from $h$ to top of loop (height $= 2R$):</strong> $mgh = mg(2R) + \frac{1}{2}mv^2_{top} = mg(2R) + \frac{1}{2}m(gR)$</div>
+            <div class="step">$h = 2R + R/2 = 5R/2$</div>
+            <div class="teach"><strong>AP classic:</strong> This combines energy conservation with circular motion. The trick is knowing that "barely maintains contact" means $N = 0$ at the top, which gives $v^2 = gR$.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q15</span><span class="sol-ans">Answer: (D) $x = \pm\sqrt{b/(2a)}$</span></div>
+            <div class="q-text">$U(x) = ax^4 - bx^2$. Stable equilibrium at:</div>
+            <div class="step"><strong>Equilibrium:</strong> $F = -dU/dx = -(4ax^3 - 2bx) = 0 \Rightarrow x(4ax^2 - 2b) = 0$</div>
+            <div class="step"><strong>Solutions:</strong> $x = 0$ or $x^2 = b/(2a) \Rightarrow x = \pm\sqrt{b/(2a)}$</div>
+            <div class="step"><strong>Stability test:</strong> $d^2U/dx^2 = 12ax^2 - 2b$. At $x = 0$: $-2b < 0$ (unstable). At $x = \pm\sqrt{b/(2a)}$: $12a \cdot b/(2a) - 2b = 4b > 0$ (stable &#10003;).</div>
+            <div class="teach"><strong>AP strategy:</strong> Equilibrium = $F = 0$ ($dU/dx = 0$). Stable = minimum of $U$ ($d^2U/dx^2 > 0$). Unstable = maximum of $U$ ($d^2U/dx^2 < 0$).</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q16</span><span class="sol-ans">Answer: (B) 40 N</span></div>
+            <div class="q-text">5 kg at 8 m/s, brought to rest over 4 m. Friction force:</div>
+            <div class="step">Work-energy: $-f \cdot d = 0 - \frac{1}{2}mv^2$. $f = \frac{mv^2}{2d} = \frac{5 \times 64}{2 \times 4} = \frac{320}{8} = 40$ N.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q17</span><span class="sol-ans">Answer: (A) $mgv\sin\theta$</span></div>
+            <div class="q-text">Car at constant $v$ up hill angle $\theta$. Power:</div>
+            <div class="step">At constant velocity: engine force = gravity component = $mg\sin\theta$. $P = Fv = mgv\sin\theta$.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (E) "$0$ because constant velocity" is wrong. Constant velocity means zero NET force, but the engine still does work against gravity.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q18</span><span class="sol-ans">Answer: (C) $A/2$</span></div>
+            <div class="q-text">Spring oscillation: KE = 3 PE. Find $|x|$:</div>
+            <div class="step">$KE + PE = E_{total}$. If $KE = 3PE$: $4PE = E = \frac{1}{2}kA^2$. So $PE = \frac{1}{8}kA^2 = \frac{1}{2}kx^2$.</div>
+            <div class="step">$x^2 = A^2/4 \Rightarrow |x| = A/2$.</div>
+        </div>
+
+        <!-- MOMENTUM -->
+        <div class="cat-header">Momentum (Q19-21)</div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q19</span><span class="sol-ans">Answer: (E) Same magnitude of momentum</span></div>
+            <div class="q-text">Two skaters ($M$ and $2M$) push off from rest. Afterward:</div>
+            <div class="step"><strong>Conservation of momentum:</strong> $p_{total} = 0$ (started from rest). So $p_1 = -p_2$. Equal magnitude, opposite direction.</div>
+            <div class="step"><strong>NOT same speed:</strong> $Mv_1 = 2Mv_2 \Rightarrow v_1 = 2v_2$. Light skater goes twice as fast.</div>
+            <div class="step"><strong>NOT same KE:</strong> $KE_1 = \frac{1}{2}Mv_1^2 = \frac{1}{2}M(2v_2)^2 = 2Mv_2^2$. $KE_2 = \frac{1}{2}(2M)v_2^2 = Mv_2^2$. Light skater has double the KE.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q20</span><span class="sol-ans">Answer: (D) 2 m/s</span></div>
+            <div class="q-text">2 kg at rest, $F(t) = 12t^2$ for $0 \le t \le 1$. Speed at $t = 1$:</div>
+            <div class="step">$J = \int_0^1 12t^2\,dt = \left[4t^3\right]_0^1 = 4$ N&middot;s</div>
+            <div class="step">$v = J/m = 4/2 = 2$ m/s</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q21</span><span class="sol-ans">Answer: (A) Inelastic</span></div>
+            <div class="q-text">Ball $m$ at speed $v$ hits identical ball at rest. After: first ball at $v/2$ at 60&deg;. Collision type:</div>
+            <div class="step"><strong>Momentum is ALWAYS conserved</strong> (in all collisions). So "momentum is conserved" doesn't tell you if it's elastic.</div>
+            <div class="step"><strong>Check KE:</strong> Initial $KE = \frac{1}{2}mv^2$. First ball after: $\frac{1}{2}m(v/2)^2 = mv^2/8$. By momentum conservation the second ball also has KE, but the total will be less than $\frac{1}{2}mv^2$. The collision is inelastic.</div>
+            <div class="teach"><strong>AP strategy:</strong> "Elastic" means KE conserved. "Momentum conserved" is true for ALL collisions (no external forces). Don't confuse the two!</div>
+        </div>
+
+        <!-- ROTATION -->
+        <div class="cat-header">Rotation (Q22-27)</div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q22</span><span class="sol-ans">Answer: (B) Solid sphere</span></div>
+            <div class="q-text">Rolling race: solid sphere, hollow sphere, solid cylinder, hollow cylinder.</div>
+            <div class="step"><strong>For rolling without slipping:</strong> $a = g\sin\theta/(1 + I/(mR^2))$. Smaller $I/(mR^2)$ = faster.</div>
+            <div class="step"><strong>$I/(mR^2)$ values:</strong> Solid sphere: $2/5$. Solid cylinder: $1/2$. Hollow sphere: $2/3$. Hollow cylinder: $1$.</div>
+            <div class="step">$2/5 < 1/2 < 2/3 < 1$. Solid sphere wins.</div>
+            <div class="teach"><strong>Memorize the ranking:</strong> Solid sphere > solid cylinder > hollow sphere > hollow cylinder. Objects with mass concentrated near the center roll faster (less "rotational inertia tax").</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q23</span><span class="sol-ans">Answer: (C) $1/2$</span></div>
+            <div class="q-text">Disk ($I$, $\omega$) + identical disk at rest. Fraction of KE lost:</div>
+            <div class="step"><strong>Angular momentum conserved:</strong> $I\omega = 2I\omega_f \Rightarrow \omega_f = \omega/2$</div>
+            <div class="step">$KE_i = \frac{1}{2}I\omega^2$. $KE_f = \frac{1}{2}(2I)(\omega/2)^2 = \frac{1}{4}I\omega^2$.</div>
+            <div class="step">Fraction lost $= (KE_i - KE_f)/KE_i = 1/2$.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q24</span><span class="sol-ans">Answer: (D) $6g/(5L)$</span></div>
+            <div class="q-text">Uniform rod ($M$, $L$) pivoted at one end, mass $M/2$ at other end. Initial $\alpha$:</div>
+            <div class="step"><strong>$I$:</strong> $I_{rod} = ML^2/3$. $I_{mass} = (M/2)L^2 = ML^2/2$. Total $= 5ML^2/6$.</div>
+            <div class="step"><strong>Torque:</strong> $\tau_{rod} = Mg(L/2)$. $\tau_{mass} = (M/2)gL$. Total $= MgL$.</div>
+            <div class="step">$\alpha = \tau/I = MgL/(5ML^2/6) = 6g/(5L)$</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q25</span><span class="sol-ans">Answer: (E) $7ML^2/48$</span></div>
+            <div class="q-text">Rod $I_{cm} = ML^2/12$. Axis at $L/4$ from one end ($= L/4$ from center):</div>
+            <div class="step"><strong>Parallel axis theorem:</strong> $I = I_{cm} + Md^2 = ML^2/12 + M(L/4)^2 = ML^2/12 + ML^2/16$</div>
+            <div class="step">$= \frac{4ML^2 + 3ML^2}{48} = \frac{7ML^2}{48}$</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q26</span><span class="sol-ans">Answer: (A) 2 J</span></div>
+            <div class="q-text">Solid disk, 2 kg, radius 1 m, $\omega = 2$ rad/s. Rotational KE:</div>
+            <div class="step">$I = \frac{1}{2}MR^2 = \frac{1}{2}(2)(1) = 1$ kg&middot;m$^2$. $KE = \frac{1}{2}I\omega^2 = \frac{1}{2}(1)(4) = 2$ J.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q27</span><span class="sol-ans">Answer: (C) Doubles</span></div>
+            <div class="q-text">Skater halves her $I$. KE:</div>
+            <div class="step">$L$ conserved: $I\omega = (I/2)\omega' \Rightarrow \omega' = 2\omega$.</div>
+            <div class="step">$KE' = \frac{1}{2}(I/2)(2\omega)^2 = \frac{1}{2}(I/2)(4\omega^2) = I\omega^2 = 2 \times \frac{1}{2}I\omega^2 = 2KE$.</div>
+            <div class="teach"><strong>Where does the extra energy come from?</strong> The skater does internal work (muscles) to pull her arms in against centripetal "force." This converts chemical energy to rotational KE.</div>
+        </div>
+
+        <!-- OSCILLATIONS & GRAVITATION -->
+        <div class="cat-header">Oscillations &amp; Gravitation (Q28-30)</div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q28</span><span class="sol-ans">Answer: (B) $-\omega^2 A$</span></div>
+            <div class="q-text">$x(t) = A\cos(\omega t)$. Acceleration at $t = 0$:</div>
+            <div class="step">$a(t) = -\omega^2 A\cos(\omega t)$. At $t = 0$: $a = -\omega^2 A\cos(0) = -\omega^2 A$.</div>
+            <div class="step">Maximum magnitude, directed toward equilibrium (negative = restoring).</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q29</span><span class="sol-ans">Answer: (D) $-GMm/(2r)$</span></div>
+            <div class="q-text">Satellite in circular orbit of radius $r$. Total energy:</div>
+            <div class="step">$KE = \frac{1}{2}mv^2$. For circular orbit: $\frac{GMm}{r^2} = \frac{mv^2}{r} \Rightarrow \frac{1}{2}mv^2 = \frac{GMm}{2r}$</div>
+            <div class="step">$E = KE + PE = \frac{GMm}{2r} - \frac{GMm}{r} = -\frac{GMm}{2r}$</div>
+            <div class="teach"><strong>Key result:</strong> For circular orbits, $KE = -E$ and $PE = 2E$. The total energy is always negative (bound orbit) and equals half the potential energy.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q30</span><span class="sol-ans">Answer: (E) $T/2$</span></div>
+            <div class="q-text">Pendulum period $T$. On planet with $g' = 4g$:</div>
+            <div class="step">$T = 2\pi\sqrt{L/g}$. $T' = 2\pi\sqrt{L/(4g)} = \frac{1}{2} \cdot 2\pi\sqrt{L/g} = T/2$.</div>
+        </div>
+
+        <!-- CROSS-TOPIC -->
+        <div class="cat-header">Cross-Topic / Integrated (Q31-35)</div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q31</span><span class="sol-ans">Answer: (A) $7v^2/(10g)$</span></div>
+            <div class="q-text">Solid sphere rolls up incline. Maximum height:</div>
+            <div class="step"><strong>Total KE (translational + rotational):</strong> $\frac{1}{2}mv^2 + \frac{1}{2}I\omega^2 = \frac{1}{2}mv^2 + \frac{1}{2}\left(\frac{2}{5}mr^2\right)\left(\frac{v}{r}\right)^2 = \frac{7}{10}mv^2$</div>
+            <div class="step">Set equal to $mgh$: $h = 7v^2/(10g)$.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (B) $v^2/(2g)$ = forgot rotational KE. This would be correct only for a sliding (non-rolling) object.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q32</span><span class="sol-ans">Answer: (C) Inelastic</span></div>
+            <div class="q-text">3 kg at 4 m/s hits 1 kg at rest. After: 3 kg at 3 m/s.</div>
+            <div class="step"><strong>Momentum:</strong> $3(4) = 3(3) + 1(v_2) \Rightarrow v_2 = 3$ m/s.</div>
+            <div class="step"><strong>KE check:</strong> $KE_i = \frac{1}{2}(3)(16) = 24$ J. $KE_f = \frac{1}{2}(3)(9) + \frac{1}{2}(1)(9) = 13.5 + 4.5 = 18$ J.</div>
+            <div class="step">$24 \neq 18$: KE is NOT conserved, but carts separate. Inelastic (not perfectly inelastic).</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q33</span><span class="sol-ans">Answer: (B) Less than $K$</span></div>
+            <div class="q-text">Block up rough incline and back. Final KE:</div>
+            <div class="step">Friction does negative work BOTH ways (up and down). Total energy lost $= 2\mu_k mgd\cos\theta > 0$.</div>
+            <div class="step">Final $KE = K - W_{friction} < K$.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q34</span><span class="sol-ans">Answer: (D) $\sqrt{L/g}$</span></div>
+            <div class="q-text">Period depends on $L$ and $g$. By dimensional analysis:</div>
+            <div class="step">$[T] = $ s. $[\sqrt{L/g}] = \sqrt{\text{m}/(\text{m/s}^2)} = \sqrt{s^2} = s$ &#10003;</div>
+            <div class="step">All other choices have wrong dimensions.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q35</span><span class="sol-ans">Answer: (E)</span></div>
+            <div class="q-text">Tunnel through Earth. Period depends on:</div>
+            <div class="step"><strong>Inside uniform Earth:</strong> $F = -\frac{4\pi G\rho m}{3}x = -kx$ (SHM). $\omega = \sqrt{4\pi G\rho/3}$.</div>
+            <div class="step">Period depends on $G$ and $\rho$ (Earth's density) only. Independent of object mass, drop depth, or tunnel diameter.</div>
+            <div class="teach"><strong>Fun fact:</strong> The period is $T \approx 84$ min &mdash; the same as a low-Earth orbit! This is not a coincidence; both depend on $\sqrt{R^3/(GM_E)} = \sqrt{3/(4\pi G\rho)}$.</div>
+        </div>
+
+        <!-- FRQ SOLUTIONS -->
+        <div class="frq-header">Section II: Free Response Solutions</div>
+
+        <!-- FRQ 1 -->
+        <div class="sol" style="margin-top:14px;">
+            <div class="sol-header"><span class="sol-num" style="font-size:1.1rem;">FRQ 1: Atwood Machine on an Incline</span><span class="sol-ans">15 points</span></div>
+            <div class="q-text">$M = 4.0$ kg on rough 37&deg; incline ($\mu_k = 0.25$), connected to $m = 3.0$ kg hanging. $g = 10$ m/s$^2$, $\sin 37° = 0.6$, $\cos 37° = 0.8$.</div>
+
+            <div class="frq-part-label">(a) Free-body diagrams (3 pts)</div>
+            <div class="step"><strong>Block $M$ (incline):</strong> Weight $Mg$ (down), Normal $N$ (perpendicular to incline), Tension $T$ (up the incline), Friction $f_k$ (down the incline, opposing upward motion).</div>
+            <div class="step"><strong>Block $m$ (hanging):</strong> Weight $mg$ (down), Tension $T$ (up).</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt each correct FBD (all forces labeled with correct directions), 1 pt for friction direction consistent with motion.</div>
+
+            <div class="frq-part-label">(b) Acceleration and tension (4 pts)</div>
+            <div class="step"><strong>Check: does $m$ fall or does $M$ slide down?</strong> $mg = 30$ N. $Mg\sin 37° = 24$ N. Since $30 > 24$, the hanging block falls and $M$ goes UP the incline.</div>
+            <div class="step"><strong>Friction:</strong> $f_k = \mu_k N = \mu_k Mg\cos 37° = 0.25(4)(10)(0.8) = 8$ N (down the incline, opposing upward motion).</div>
+            <div class="step"><strong>System equation:</strong> $mg - Mg\sin 37° - f_k = (M + m)a$<br>$30 - 24 - 8 = 7a \Rightarrow -2 = 7a$</div>
+            <div class="step"><strong>Wait &mdash;</strong> $a = -2/7 \approx -0.29$ m/s$^2$. Negative means the system doesn't move as assumed! Let's check: if $M$ tries to slide DOWN, friction acts UP the incline. Then: $Mg\sin 37° - mg - f_k = (M+m)a \Rightarrow 24 - 30 - 8 = 7a \Rightarrow -14 = 7a \Rightarrow a = -2$. Still negative.</div>
+            <div class="step"><strong>The system doesn't move!</strong> Static friction holds it. Check: net force without friction = $30 - 24 = 6$ N. Max static friction $\geq f_k$. Since we're told $\mu_k = 0.25$, and typically $\mu_s > \mu_k$, the max static friction is at least 8 N $> 6$ N. So $a = 0$ and $T = mg = 30$ N (or $T = Mg\sin 37° + f_s = 24 + 6 = 30$ N).</div>
+            <div class="step"><strong>Result:</strong> $a = 0$, $T = 30$ N, $f_s = 6$ N.</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt friction force, 1 pt system equation, 1 pt recognizing system may not move (or correctly computing $a$), 1 pt tension.</div>
+
+            <div class="frq-part-label">(c) Speed after 2 m using work-energy (3 pts)</div>
+            <div class="step">Since $a = 0$ from part (b), the system doesn't move, so the speed after any distance is $v = 0$.</div>
+            <div class="step"><strong>Alternatively, if the student found $a > 0$:</strong> $W_{net} = \Delta KE$. $mg(2) - Mg\sin 37°(2) - f_k(2) = \frac{1}{2}(M+m)v^2$. With $a = 0$, all work terms cancel: $v = 0$.</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt work-energy setup, 1 pt correct calculation, 1 pt consistent with part (b).</div>
+
+            <div class="frq-part-label">(d) Variable force $F(t) = 20 + 10t$, derive $v(t)$ (5 pts)</div>
+            <div class="step"><strong>Net force on $M$ up the incline:</strong> $F(t) - Mg\sin 37° - f_k = Ma(t)$<br>$(20 + 10t) - 24 - 8 = 4a(t) \Rightarrow a(t) = (10t - 12)/4$</div>
+            <div class="step"><strong>Note:</strong> For $t < 1.2$ s, $a < 0$. But the block starts from rest and can't move backward (force is up the incline), so $v = 0$ until $F$ overcomes friction + gravity. The block starts moving when $F = Mg\sin 37° + f_k = 32$ N, i.e., $20 + 10t = 32 \Rightarrow t = 1.2$ s.</div>
+            <div class="step"><strong>For $t \geq 1.2$ s:</strong> $v(t) = \int_{1.2}^{t} \frac{10t' - 12}{4}\,dt' = \frac{1}{4}\left[5t'^2 - 12t'\right]_{1.2}^{t}$<br>$= \frac{1}{4}\left[(5t^2 - 12t) - (5(1.44) - 14.4)\right] = \frac{1}{4}\left[5t^2 - 12t - 7.2 + 14.4\right] = \frac{5t^2 - 12t + 7.2}{4}$</div>
+            <div class="step"><strong>At $t = 2$ s:</strong> $v(2) = \frac{5(4) - 12(2) + 7.2}{4} = \frac{20 - 24 + 7.2}{4} = \frac{3.2}{4} = 0.8$ m/s</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt net force equation, 1 pt recognizing threshold time, 1 pt correct integration limits, 1 pt correct $v(t)$, 1 pt numerical answer.</div>
+        </div>
+
+        <!-- FRQ 2 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num" style="font-size:1.1rem;">FRQ 2: Turntable and Ball Collision</span><span class="sol-ans">15 points</span></div>
+            <div class="q-text">Disk $M = 8.0$ kg, $R = 0.50$ m, initially at rest. Ball $m = 0.40$ kg, $v_0 = 10$ m/s thrown tangentially at rim, sticks.</div>
+
+            <div class="frq-part-label">(a) Moments of inertia (2 pts)</div>
+            <div class="step">$I_{disk} = \frac{1}{2}MR^2 = \frac{1}{2}(8)(0.25) = 1.0$ kg&middot;m$^2$</div>
+            <div class="step">$I_{ball} = mR^2 = (0.40)(0.25) = 0.10$ kg&middot;m$^2$</div>
+
+            <div class="frq-part-label">(b) Angular velocity after collision (4 pts)</div>
+            <div class="step"><strong>Angular momentum before:</strong> $L_i = mv_0 R = (0.40)(10)(0.50) = 2.0$ kg&middot;m$^2$/s</div>
+            <div class="step"><strong>After (ball + disk rotate together):</strong> $L_f = (I_{disk} + I_{ball})\omega = 1.10\omega$</div>
+            <div class="step"><strong>Conservation:</strong> $2.0 = 1.10\omega \Rightarrow \omega = 2.0/1.10 \approx 1.82$ rad/s</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt angular momentum of ball, 1 pt total $I$ after, 1 pt conservation equation, 1 pt answer.</div>
+
+            <div class="frq-part-label">(c) Fraction of KE lost (4 pts)</div>
+            <div class="step">$KE_i = \frac{1}{2}mv_0^2 = \frac{1}{2}(0.40)(100) = 20$ J</div>
+            <div class="step">$KE_f = \frac{1}{2}(1.10)(1.82)^2 = \frac{1}{2}(1.10)(3.31) \approx 1.82$ J</div>
+            <div class="step">Fraction lost $= (20 - 1.82)/20 \approx 0.91$ or $91\%$.</div>
+            <div class="step">Lost energy goes to heat, sound, and deformation at the contact point.</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt $KE_i$, 1 pt $KE_f$, 1 pt fraction, 1 pt explaining where energy goes.</div>
+
+            <div class="frq-part-label">(d) Ball bounces off at 2 m/s opposite direction (5 pts)</div>
+            <div class="step"><strong>Angular momentum:</strong> $L_i = mv_0 R = 2.0$ kg&middot;m$^2$/s (same as before).</div>
+            <div class="step"><strong>After bounce:</strong> Ball moves at 2 m/s in opposite tangential direction. $L_{ball,f} = m(-v_{bounce})R = (0.40)(-2)(0.50) = -0.40$ kg&middot;m$^2$/s</div>
+            <div class="step"><strong>Conservation:</strong> $2.0 = I_{disk}\omega + (-0.40) \Rightarrow 1.0\omega = 2.40 \Rightarrow \omega = 2.40$ rad/s</div>
+            <div class="step"><strong>KE comparison:</strong> $KE_f = \frac{1}{2}(1.0)(2.40)^2 + \frac{1}{2}(0.40)(2)^2 = 2.88 + 0.80 = 3.68$ J</div>
+            <div class="step">Fraction lost $= (20 - 3.68)/20 = 0.816$ or $81.6\%$. LESS energy is lost in the bounce compared to sticking (91%).</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt ball's angular momentum after bounce (with correct sign), 1 pt conservation equation, 1 pt $\omega$, 1 pt $KE_f$, 1 pt comparison with justification.</div>
+        </div>
+
+        <!-- FRQ 3 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num" style="font-size:1.1rem;">FRQ 3: Spring Oscillation &mdash; Theory &amp; Experiment</span><span class="sol-ans">15 points</span></div>
+            <div class="q-text">Cart of mass $m$ on frictionless air track, attached to spring with constant $k$.</div>
+
+            <div class="frq-part-label">(a) Derive equation of motion (3 pts)</div>
+            <div class="step"><strong>Newton's 2nd law:</strong> $F = ma \Rightarrow -kx = m\frac{d^2x}{dt^2} \Rightarrow \frac{d^2x}{dt^2} = -\frac{k}{m}x$</div>
+            <div class="step"><strong>Verify solution:</strong> Let $x = A\cos(\omega t + \phi)$. Then $\frac{d^2x}{dt^2} = -\omega^2 A\cos(\omega t + \phi) = -\omega^2 x$.</div>
+            <div class="step">This matches the equation if $\omega^2 = k/m$, i.e., $\omega = \sqrt{k/m}$. &#10003;</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt $F = -kx = ma$, 1 pt rearranging to standard form, 1 pt verifying solution with $\omega = \sqrt{k/m}$.</div>
+
+            <div class="frq-part-label">(b) Write $x(t)$, $v(t)$, $a(t)$ with numbers (3 pts)</div>
+            <div class="step">$\omega = \sqrt{k/m} = \sqrt{8/0.5} = \sqrt{16} = 4$ rad/s. $A = 0.20$ m. Released from rest at max displacement: $\phi = 0$.</div>
+            <div class="step">$x(t) = 0.20\cos(4t)$ m</div>
+            <div class="step">$v(t) = -0.80\sin(4t)$ m/s</div>
+            <div class="step">$a(t) = -3.2\cos(4t)$ m/s$^2$</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt each for correct $x$, $v$, $a$ with correct numerical coefficients.</div>
+
+            <div class="frq-part-label">(c) Graph and $k/m$ from data (4 pts)</div>
+            <div class="step"><strong>Relationship:</strong> $v_{max} = \omega A = A\sqrt{k/m}$. So $v_{max}$ is proportional to $A$.</div>
+            <div class="step"><strong>Plot:</strong> $v_{max}$ (y-axis) vs $A$ (x-axis). This gives a straight line through the origin.</div>
+            <div class="step"><strong>Slope:</strong> $= \omega = \sqrt{k/m}$. From data: slope $= 0.20/0.05 = 4.0$ rad/s.</div>
+            <div class="step"><strong>Therefore:</strong> $k/m = \omega^2 = 16$ s$^{-2}$.</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt identifying $v_{max} = \omega A$, 1 pt correct graph axes, 1 pt slope = $\omega$, 1 pt $k/m = 16$.</div>
+
+            <div class="frq-part-label">(d) Find $\mu_k$ from amplitude decay (5 pts)</div>
+            <div class="step"><strong>Given:</strong> $\Delta A = 2\mu_k mg/k$ per half-cycle. Amplitude goes from 0.20 m to 0 in 10 half-cycles.</div>
+            <div class="step"><strong>Total amplitude lost:</strong> $10 \times \Delta A = 0.20$ m. So $\Delta A = 0.020$ m per half-cycle.</div>
+            <div class="step"><strong>Solve:</strong> $0.020 = \frac{2\mu_k mg}{k} = \frac{2\mu_k (0.50)(10)}{8} = \frac{10\mu_k}{8} = 1.25\mu_k$</div>
+            <div class="step">$\mu_k = 0.020/1.25 = 0.016$</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt $\Delta A$ per half-cycle, 1 pt total amplitude equation, 1 pt substituting values, 1 pt solving for $\mu_k$, 1 pt correct numerical answer.</div>
+        </div>
+
+        <div style="text-align:center;margin:30px 0;color:var(--text2);font-size:.8rem">
+            Practice Exam 5 &mdash; Answer Key &bull; AP Physics C: Mechanics<br>
+            Realistic AP format &bull; 35 MC + 3 FRQ with complete solutions
+        </div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">&#9790;</button>
+    <script>
+    function toggleTheme(){document.body.getAttribute('data-theme')==='dark'?(document.body.removeAttribute('data-theme'),localStorage.setItem('apPhysicsTheme','light')):(document.body.setAttribute('data-theme','dark'),localStorage.setItem('apPhysicsTheme','dark'));}
+    if(localStorage.getItem('apPhysicsTheme')==='dark')document.body.setAttribute('data-theme','dark');
+    document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});});
+    </script>
+</body>
+</html>

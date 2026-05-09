@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam 4 Answer Key — Newton's Laws Retest</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#f8fafc;--card:#fff;--text:#1e293b;--text2:#64748b;--border:#e2e8f0;--primary:#2563eb;--success:#16a34a;--danger:#dc2626;--warning:#d97706}
+        [data-theme="dark"]{--bg:#1a1a2e;--card:#16213e;--text:#e0e0e0;--text2:#aaa;--border:#333;--primary:#4f8cff}
+        body{font-family:'Georgia',serif;background:var(--bg);color:var(--text);line-height:1.7;padding:20px}
+        .container{max-width:900px;margin:0 auto}
+        h1{font-size:1.6rem;text-align:center;color:var(--primary);margin-bottom:5px}
+        .sub{text-align:center;color:var(--text2);margin-bottom:20px}
+        .nav{text-align:center;font-size:.85rem;margin-bottom:20px}
+        .nav a{color:var(--primary);text-decoration:none;margin:0 8px}
+        .quick{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:20px;font-size:.9rem}
+        .quick strong{color:var(--primary)}
+        .cat-header{background:var(--primary);color:#fff;padding:8px 16px;border-radius:6px;margin:20px 0 12px;font-size:1rem;font-weight:700}
+        .sol{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px}
+        .sol-header{display:flex;justify-content:space-between;flex-wrap:wrap;margin-bottom:8px}
+        .sol-num{font-weight:700;color:var(--primary);font-size:1.05rem}
+        .sol-ans{font-weight:700;color:var(--success);font-size:1.05rem}
+        .q-text{margin-bottom:12px;font-size:.93rem;color:var(--text2);border-left:3px solid var(--border);padding:6px 12px;background:rgba(0,0,0,.02);border-radius:0 6px 6px 0}
+        [data-theme="dark"] .q-text{background:rgba(255,255,255,.03)}
+        .step{margin-bottom:6px;padding:5px 10px;border-left:3px solid var(--primary);font-size:.92rem}
+        .step strong{color:var(--primary)}
+        .fbd{text-align:center;margin:10px 0;padding:8px;background:#f8fafc;border:1px solid var(--border);border-radius:8px}
+        [data-theme="dark"] .fbd{background:#1a1a2e}
+        .fbd svg{max-width:100%;height:auto}
+        .mistake{margin-top:8px;padding:8px 12px;background:rgba(220,38,38,.05);border-left:3px solid var(--danger);border-radius:0 6px 6px 0;font-size:.85rem}
+        .mistake strong{color:var(--danger)}
+        .gotcha{margin-top:8px;padding:8px 12px;background:rgba(139,92,246,.08);border-left:3px solid #8b5cf6;border-radius:0 6px 6px 0;font-size:.85rem}
+        .gotcha strong{color:#7c3aed}
+        .teach{margin-top:8px;padding:8px 12px;background:rgba(37,99,235,.05);border-left:3px solid var(--primary);border-radius:0 6px 6px 0;font-size:.88rem;font-style:italic}
+        .teach strong{color:var(--primary);font-style:normal}
+        .frq-header{background:#7c3aed;color:#fff;padding:10px 16px;border-radius:6px;margin:28px 0 12px;font-size:1.05rem;font-weight:700}
+        .frq-part-label{font-weight:700;color:#7c3aed;margin-top:10px;margin-bottom:4px}
+        .frq-prompt{font-size:.88rem;color:var(--text2);margin-bottom:8px;padding-left:12px;border-left:2px solid #7c3aed}
+        .theme-toggle{position:fixed;bottom:20px;right:20px;padding:10px;border-radius:50%;border:2px solid var(--border);background:var(--card);cursor:pointer;font-size:1.2rem;z-index:100}
+        @media print{.nav,.theme-toggle,#pin-gate{display:none}body{background:#fff}.sol{break-inside:avoid}}
+    </style>
+</head>
+<body>
+    <!-- PIN Gate -->
+    <div id="pin-gate" style="position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;align-items:center;justify-content:center;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:30px;text-align:center;width:280px;">
+            <h3 style="margin-bottom:15px;">Teacher Access Required</h3>
+            <input type="password" id="gate-pin" maxlength="4" inputmode="numeric" style="width:120px;padding:10px;text-align:center;font-size:1.5rem;border:2px solid var(--border);border-radius:8px;letter-spacing:8px;background:var(--bg);color:var(--text);" onkeydown="if(event.key==='Enter')gateCheck()">
+            <div id="gate-err" style="color:#dc2626;font-size:.8rem;margin-top:8px;display:none;">Incorrect PIN</div>
+            <br><button onclick="gateCheck()" style="margin-top:15px;padding:8px 20px;font-size:.9rem;border:none;border-radius:8px;background:#2563eb;color:#fff;cursor:pointer;">Unlock</button>
+        </div>
+    </div>
+    <script>
+    function gateCheck(){if(document.getElementById('gate-pin').value==='2026'){sessionStorage.setItem('apPhysicsTeacher','true');document.getElementById('pin-gate').style.display='none';}else{document.getElementById('gate-err').style.display='block';document.getElementById('gate-pin').value='';}}
+    if(sessionStorage.getItem('apPhysicsTeacher')==='true'){document.getElementById('pin-gate').style.display='none';}
+    </script>
+
+    <div class="container">
+        <h1>Newton's Laws Retest — Answer Key</h1>
+        <p class="sub">Exam 4 &bull; 35 MC + 3 FRQ &bull; Complete Solutions with FBDs</p>
+        <div class="nav"><a href="exam4.html">Back to Exam</a> <a href="index.html">Home</a> <a href="dashboard.html">Dashboard</a></div>
+
+        <!-- QUICK ANSWERS -->
+        <div class="quick">
+            <strong>Quick Key:</strong><br>
+            1.A &nbsp; 2.B &nbsp; 3.A &nbsp; 4.A &nbsp; 5.A &nbsp; 6.A &nbsp; 7.A &nbsp; 8.A &nbsp; 9.A &nbsp; 10.A &nbsp; 11.A &nbsp; 12.A<br>
+            13.A &nbsp; 14.A &nbsp; 15.A &nbsp; 16.A &nbsp; 17.A &nbsp; 18.A &nbsp; 19.A &nbsp; 20.A &nbsp; 21.A &nbsp; 22.A &nbsp; 23.A &nbsp; 24.A<br>
+            25.A &nbsp; 26.A &nbsp; 27.A &nbsp; 28.A &nbsp; 29.A &nbsp; 30.A &nbsp; 31.A &nbsp; 32.A &nbsp; 33.A &nbsp; 34.A &nbsp; 35.A
+        </div>
+
+        <!-- ================================================================ -->
+        <!-- CATEGORY A: FLAT SURFACE + FORCES (Q1-5)                        -->
+        <!-- ================================================================ -->
+        <div class="cat-header">Category A: Flat Surface + Forces (Q1-5)</div>
+
+        <!-- Q1 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q1</span><span class="sol-ans">Answer: (A) $2$ m/s$^2$</span></div>
+            <div class="q-text">A 8 kg crate is pushed across a rough floor ($\mu_k = 0.3$) by two horizontal forces: 50 N to the right and 10 N to the left. The acceleration is:</div>
+            <div class="fbd"><svg viewBox="0 0 420 100" width="420"><defs><marker id="a" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="context-stroke"/></marker></defs><rect x="10" y="85" width="400" height="3" fill="#94a3b8"/><rect x="150" y="45" width="70" height="40" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="4"/><text x="185" y="70" text-anchor="middle" font-size="10" fill="#2563eb" font-weight="bold">8 kg</text><line x1="220" y1="65" x2="310" y2="65" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="270" y="57" font-size="10" fill="#16a34a" font-weight="bold">50 N &rarr;</text><line x1="150" y1="65" x2="110" y2="65" stroke="#dc2626" stroke-width="3" marker-end="url(#a)"/><text x="112" y="57" font-size="10" fill="#dc2626" font-weight="bold">&larr; 10 N</text><line x1="150" y1="58" x2="100" y2="58" stroke="#d97706" stroke-width="2" marker-end="url(#a)"/><text x="105" y="48" font-size="9" fill="#d97706">&larr; f_k = 24 N</text><line x1="185" y1="45" x2="185" y2="15" stroke="#8b5cf6" stroke-width="2" marker-end="url(#a)"/><text x="195" y="18" font-size="9" fill="#8b5cf6">N = 80 N</text><line x1="185" y1="85" x2="185" y2="100" stroke="#dc2626" stroke-width="2"/><text x="195" y="100" font-size="9" fill="#dc2626">mg = 80 N</text></svg></div>
+            <div class="step"><strong>Step 1 &mdash; Normal force:</strong> Flat surface, no vertical applied forces: $N = mg = 8 \times 10 = 80$ N</div>
+            <div class="step"><strong>Step 2 &mdash; Friction:</strong> $f_k = \mu_k N = 0.3 \times 80 = 24$ N (opposing motion, leftward)</div>
+            <div class="step"><strong>Step 3 &mdash; Net force:</strong> $F_{net} = 50 - 10 - 24 = 16$ N (rightward)</div>
+            <div class="step"><strong>Step 4 &mdash; Acceleration:</strong> $a = F_{net}/m = 16/8 = 2$ m/s$^2$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> Always compute friction FIRST. Write $f_k = \mu_k mg$ as your very first line. Then list ALL horizontal forces with signs. Students who rush skip friction and get $a = (50-10)/8 = 5$ m/s$^2$ &mdash; that's choice (B), the classic trap.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> Three horizontal forces, not two! You must subtract BOTH the opposing 10 N force AND the 24 N friction from the 50 N. Missing any one gives a wrong answer.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (B) 5 = forgot friction entirely $(40/8)$. (C) 3 = forgot the 10 N opposing force $(50-24)/8$. (E) 7.5 = forgot both friction and the 10 N force somehow.</div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q2</span><span class="sol-ans">Answer: (B) $30$ N</span></div>
+            <div class="q-text">A 10 kg box on a rough floor ($\mu_s = 0.4$, $\mu_k = 0.2$) is pushed with 30 N horizontally. The friction force on the box is:</div>
+            <div class="fbd"><svg viewBox="0 0 420 100" width="420"><rect x="10" y="85" width="400" height="3" fill="#94a3b8"/><rect x="150" y="45" width="70" height="40" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="4"/><text x="185" y="70" text-anchor="middle" font-size="10" fill="#2563eb" font-weight="bold">10 kg</text><line x1="220" y1="65" x2="290" y2="65" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="255" y="57" font-size="10" fill="#16a34a">30 N &rarr;</text><line x1="150" y1="65" x2="100" y2="65" stroke="#d97706" stroke-width="3" marker-end="url(#a)"/><text x="103" y="57" font-size="10" fill="#d97706">&larr; f_s = 30 N</text><text x="260" y="25" font-size="9" fill="#64748b">Max f_s = 0.4 &times; 100 = 40 N</text><text x="260" y="40" font-size="9" fill="#64748b">30 &lt; 40 &rarr; doesn't move!</text><text x="260" y="55" font-size="9" fill="#16a34a" font-weight="bold">f_s = F_applied = 30 N</text></svg></div>
+            <div class="step"><strong>Step 1 &mdash; Check: does it move?</strong> Max static friction = $\mu_s mg = 0.4 \times 10 \times 10 = 40$ N</div>
+            <div class="step"><strong>Step 2 &mdash; Compare:</strong> Applied force $= 30$ N $< 40$ N (max static). The box does NOT move.</div>
+            <div class="step"><strong>Step 3 &mdash; Static friction:</strong> Since the box is stationary, static friction exactly matches the applied force: $f_s = 30$ N</div>
+            <div class="teach"><strong>Teacher's approach:</strong> This is the #1 friction trap on AP exams. ALWAYS check "does it move?" BEFORE computing acceleration. Step 1: compute max static friction. Step 2: compare to applied force. If applied $<$ max static, the block is stationary and $f_s = $ applied force. Only if applied $>$ max static do you switch to kinetic friction $\mu_k$.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> Static friction is NOT always $\mu_s N$. That formula gives the MAXIMUM. If the block isn't on the verge of sliding, $f_s < \mu_s N$. Static friction is whatever it needs to be to prevent motion, up to its maximum.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (A) 20 N = used kinetic friction $\mu_k mg = 0.2 \times 100$ even though the block isn't moving. (C) 40 N = used max static friction &mdash; that's the max, not the actual value. (D) 0 N = forgot friction exists.</div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q3</span><span class="sol-ans">Answer: (A) $2.5$ m/s$^2$</span></div>
+            <div class="q-text">A 4 kg object on a frictionless surface has two forces: $F_1 = 20$ N at 30&deg; above horizontal (right) and $F_2 = 7.32$ N horizontally to the left. The horizontal acceleration is:</div>
+            <div class="fbd"><svg viewBox="0 0 420 110" width="420"><rect x="10" y="90" width="400" height="3" fill="#94a3b8"/><rect x="160" y="55" width="55" height="35" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="4"/><text x="188" y="77" text-anchor="middle" font-size="10" fill="#2563eb" font-weight="bold">4 kg</text><line x1="215" y1="65" x2="285" y2="30" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="270" y="22" font-size="10" fill="#16a34a" font-weight="bold">F&#8321; = 20 N</text><text x="235" y="55" font-size="9" fill="#64748b">30&deg;</text><line x1="160" y1="72" x2="90" y2="72" stroke="#dc2626" stroke-width="3" marker-end="url(#a)"/><text x="95" y="65" font-size="10" fill="#dc2626">&larr; F&#8322; = 7.32 N</text><line x1="215" y1="65" x2="285" y2="65" stroke="#16a34a" stroke-width="1" stroke-dasharray="4"/><text x="300" y="50" font-size="9" fill="#64748b">F&#8321;x = 20cos30&deg; = 17.32 N</text><text x="300" y="65" font-size="9" fill="#64748b">F&#8321;y = 20sin30&deg; = 10 N</text><text x="300" y="82" font-size="9" fill="#1e293b" font-weight="bold">Net x = 17.32 &minus; 7.32 = 10 N</text><text x="300" y="97" font-size="9" fill="#16a34a" font-weight="bold">a = 10/4 = 2.5 m/s&sup2;</text></svg></div>
+            <div class="step"><strong>Step 1 &mdash; Decompose $F_1$:</strong> $F_{1x} = 20\cos 30° = 20 \times 0.866 = 17.32$ N (right). $F_{1y} = 20\sin 30° = 10$ N (up).</div>
+            <div class="step"><strong>Step 2 &mdash; Net horizontal:</strong> $F_{net,x} = 17.32 - 7.32 = 10$ N (right)</div>
+            <div class="step"><strong>Step 3 &mdash; Acceleration:</strong> $a_x = F_{net,x}/m = 10/4 = 2.5$ m/s$^2$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> When a force is at an angle, ALWAYS decompose it BEFORE doing anything else. Write $F_x = F\cos\theta$ and $F_y = F\sin\theta$ as separate lines. Then add ALL x-components. Notice the numbers are designed so $17.32 - 7.32 = 10$ N &mdash; clean arithmetic confirms your decomposition is correct.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> Don't use the full 20 N in the horizontal equation! Only the horizontal component $20\cos 30° = 17.32$ N contributes to horizontal acceleration. Using $20 - 7.32 = 12.68$, then $a = 3.17$ would give choice (D) &mdash; wrong.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (D) 3.17 = used full 20 N instead of horizontal component. (E) 5 = used only $F_1$ with no decomposition: $20/4$. (B) 1.83 = subtracted $F_2$ from $F_{1y}$ instead of $F_{1x}$.</div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q4</span><span class="sol-ans">Answer: (A) No &mdash; max friction 24 N > weight 20 N</span></div>
+            <div class="q-text">A block is pushed against a vertical wall by a horizontal force of 80 N. The block weighs 20 N. If $\mu_s = 0.3$, does the block slide?</div>
+            <div class="fbd"><svg viewBox="0 0 380 130" width="380"><rect x="268" y="5" width="10" height="120" fill="#94a3b8"/><rect x="200" y="35" width="68" height="50" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="4"/><text x="234" y="65" text-anchor="middle" font-size="9" fill="#2563eb" font-weight="bold">Block</text><line x1="190" y1="60" x2="125" y2="60" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="110" y="55" font-size="10" fill="#16a34a">&larr; 80 N</text><line x1="234" y1="85" x2="234" y2="120" stroke="#dc2626" stroke-width="3" marker-end="url(#a)"/><text x="245" y="115" font-size="10" fill="#dc2626">W = 20 N &darr;</text><line x1="268" y1="60" x2="300" y2="60" stroke="#8b5cf6" stroke-width="3" marker-end="url(#a)"/><text x="303" y="55" font-size="10" fill="#8b5cf6">N = 80 N</text><line x1="234" y1="35" x2="234" y2="10" stroke="#d97706" stroke-width="3" marker-end="url(#a)"/><text x="245" y="15" font-size="10" fill="#d97706">f_s &uarr;</text><text x="10" y="105" font-size="9" fill="#16a34a" font-weight="bold">Max f_s = &mu;_s N = 0.3 &times; 80 = 24 N</text><text x="10" y="120" font-size="9" fill="#16a34a" font-weight="bold">Weight = 20 N &lt; 24 N &rarr; HOLDS!</text></svg></div>
+            <div class="step"><strong>Step 1 &mdash; Normal force:</strong> Wall pushes back horizontally: $N = 80$ N (horizontal, from wall)</div>
+            <div class="step"><strong>Step 2 &mdash; Max static friction:</strong> $f_{s,max} = \mu_s N = 0.3 \times 80 = 24$ N (vertical, upward)</div>
+            <div class="step"><strong>Step 3 &mdash; Compare:</strong> Weight $= 20$ N (down). Since $24 > 20$, friction CAN support the block. It does NOT slide.</div>
+            <div class="teach"><strong>Teacher's approach:</strong> Wall problems flip everything. On a floor: N is vertical, friction is horizontal. On a WALL: N is horizontal, friction is vertical. The question is: can vertical friction support the weight? If $\mu_s N \geq mg$, the block stays. This is a favorite AP conceptual question.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> Choice (B) says "max friction 24 N < weight 80 N." That compares friction to the APPLIED force (80 N), not the weight (20 N). The applied force is balanced by the normal force, not by friction. Friction only needs to balance the weight.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (B) = confused applied force (80 N) with weight (20 N). (C) = "normal force exceeds weight" is irrelevant since N is horizontal. (D) = guessing without computing.</div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q5</span><span class="sol-ans">Answer: (A) $0.3$</span></div>
+            <div class="q-text">A force vs. acceleration graph for an object on a rough surface is linear with slope 5 kg and x-intercept at $F = 15$ N. The coefficient of kinetic friction is ($g = 10$ m/s$^2$):</div>
+            <div class="step"><strong>Step 1 &mdash; Equation from graph:</strong> $F = ma + f_k$. This is linear in $a$ with slope $= m = 5$ kg.</div>
+            <div class="step"><strong>Step 2 &mdash; x-intercept:</strong> At $a = 0$: $F = f_k = 15$ N. This means friction force is 15 N.</div>
+            <div class="step"><strong>Step 3 &mdash; Solve:</strong> $f_k = \mu_k mg \Rightarrow 15 = \mu_k \times 5 \times 10 \Rightarrow \mu_k = 0.3$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> The F-vs-a graph is a straight line. Its slope gives the mass, and the y-intercept (or x-intercept depending on which axis is which) gives the friction force. This is a classic AP lab-style question &mdash; linearize the physics, extract parameters from the graph.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> Make sure you know which axis is which. If $F$ is on the horizontal axis and $a$ on the vertical, the slope is $1/m$ and the x-intercept gives $f_k$. Here the slope IS given as 5 kg (so $m = 5$) and the x-intercept is $F = 15$ N.</div>
+        </div>
+
+        <!-- ================================================================ -->
+        <!-- CATEGORY B: INCLINES (Q6-12)                                    -->
+        <!-- ================================================================ -->
+        <div class="cat-header">Category B: Inclines (Q6-12)</div>
+
+        <!-- Q6 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q6</span><span class="sol-ans">Answer: (A) $6$ m/s$^2$</span></div>
+            <div class="q-text">A 5 kg block on a frictionless 37&deg; incline ($\sin 37° = 0.6$, $\cos 37° = 0.8$) has acceleration:</div>
+            <div class="fbd"><svg viewBox="0 0 380 130" width="380"><polygon points="30,120 250,120 250,40" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/><text x="245" y="85" font-size="9" fill="#64748b">37&deg;</text><rect x="125" y="55" width="40" height="28" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="3" transform="rotate(-20 145 69)"/><text x="145" y="73" text-anchor="middle" font-size="9" fill="#2563eb" font-weight="bold">5 kg</text><line x1="145" y1="82" x2="145" y2="120" stroke="#dc2626" stroke-width="2" marker-end="url(#a)"/><text x="155" y="115" font-size="9" fill="#dc2626">mg = 50 N</text><text x="270" y="45" font-size="9" fill="#1e293b">a = g sin37&deg;</text><text x="270" y="60" font-size="9" fill="#1e293b">= 10 &times; 0.6</text><text x="270" y="75" font-size="9" fill="#16a34a" font-weight="bold">= 6 m/s&sup2;</text><text x="270" y="95" font-size="9" fill="#64748b">Frictionless: only mg + N</text><text x="270" y="108" font-size="9" fill="#64748b">Mass cancels out!</text></svg></div>
+            <div class="step"><strong>Step 1 &mdash; Forces:</strong> Only $mg$ (down) and $N$ (perpendicular to incline). No friction.</div>
+            <div class="step"><strong>Step 2 &mdash; Along incline:</strong> $mg\sin 37° = ma$</div>
+            <div class="step"><strong>Step 3 &mdash; Solve:</strong> $a = g\sin 37° = 10 \times 0.6 = 6$ m/s$^2$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> The formula $a = g\sin\theta$ should be instant recall for any frictionless incline. Quick sanity checks: (1) At $\theta = 0°$: $a = 0$ &#10003; (flat surface). (2) At $\theta = 90°$: $a = g$ &#10003; (free fall). (3) Mass doesn't matter &#10003;.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (B) 8 = $g\cos 37°$. Students mix up sin and cos on inclines. The component ALONG the incline is $g\sin\theta$, not $\cos$. Memory trick: at $\theta = 90°$, "along" = straight down = $g$, and $\sin 90° = 1$ &#10003;.</div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q7</span><span class="sol-ans">Answer: (A) $1/\sqrt{3} \approx 0.577$</span></div>
+            <div class="q-text">A block slides DOWN a 30&deg; rough incline at constant velocity. The coefficient of kinetic friction is:</div>
+            <div class="step"><strong>Step 1 &mdash; Key phrase:</strong> "Constant velocity" means $a = 0$, so net force $= 0$.</div>
+            <div class="step"><strong>Step 2 &mdash; Along incline:</strong> $mg\sin 30° = \mu_k mg\cos 30°$ (gravity component down = friction up)</div>
+            <div class="step"><strong>Step 3 &mdash; Cancel $mg$:</strong> $\mu_k = \frac{\sin 30°}{\cos 30°} = \tan 30° = \frac{1}{\sqrt{3}} \approx 0.577$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> Memorize this golden result: $\mu_k = \tan\theta$ when sliding at constant velocity. It appears on AP exams almost every year. This is also how you experimentally measure $\mu_k$ &mdash; tilt a board until the block slides at constant speed, then $\mu_k = \tan\theta$.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> "Constant velocity" does NOT mean the block is stationary. It means it's MOVING but not accelerating ($a = 0$). Also, mass cancels completely &mdash; $\mu_k$ depends only on the angle.</div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q8</span><span class="sol-ans">Answer: (A) $12.5$ m/s$^2$</span></div>
+            <div class="q-text">A 4 kg block is PUSHED down a frictionless 30&deg; incline by a force of 30 N applied parallel to the incline. The acceleration is:</div>
+            <div class="step"><strong>Step 1 &mdash; Forces along incline (down = +):</strong> Gravity component $= mg\sin 30° = 4(10)(0.5) = 20$ N. Applied force $= 30$ N (also down).</div>
+            <div class="step"><strong>Step 2 &mdash; Both forces point SAME direction:</strong> $F_{net} = 20 + 30 = 50$ N</div>
+            <div class="step"><strong>Step 3 &mdash; Acceleration:</strong> $a = 50/4 = 12.5$ m/s$^2$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> The key word is "PUSHED DOWN." Both gravity's component and the applied force point in the same direction (down the incline). They ADD. Always ask: "Do these forces point the same way or opposite?" If pushed UP, you'd subtract instead.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> If you subtract instead of add, you'd get $(30-20)/4 = 2.5$ &mdash; choice (E). This would only be correct if the force pushed the block UP the incline against gravity.</div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q9</span><span class="sol-ans">Answer: (A) $90$ N</span></div>
+            <div class="q-text">Two blocks ($m_1 = 3$ kg, $m_2 = 6$ kg) are in contact on a 30&deg; frictionless incline. A force $F = 135$ N pushes $m_1$ up the incline. The contact force between the blocks is:</div>
+            <div class="fbd"><svg viewBox="0 0 420 130" width="420"><polygon points="30,120 300,120 300,35" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/><rect x="120" y="58" width="35" height="25" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="3" transform="rotate(-18 138 70)"/><text x="138" y="74" text-anchor="middle" font-size="8" fill="#2563eb">3 kg</text><rect x="160" y="48" width="45" height="30" fill="#fef3c7" stroke="#d97706" stroke-width="2" rx="3" transform="rotate(-18 183 63)"/><text x="183" y="67" text-anchor="middle" font-size="8" fill="#d97706">6 kg</text><line x1="105" y1="70" x2="55" y2="52" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="40" y="48" font-size="9" fill="#16a34a">F=135 N</text><text x="310" y="40" font-size="9" fill="#1e293b" font-weight="bold">System: a = 10 m/s&sup2;</text><text x="310" y="57" font-size="9" fill="#64748b">135 &minus; 9(10)(0.5) = 9a</text><text x="310" y="72" font-size="9" fill="#64748b">135 &minus; 45 = 9a &rarr; a = 10</text><text x="310" y="92" font-size="9" fill="#16a34a" font-weight="bold">m&#8322; alone: C = 90 N</text><text x="310" y="107" font-size="9" fill="#64748b">C &minus; 6(10)(0.5) = 6(10)</text></svg></div>
+            <div class="step"><strong>Step 1 &mdash; System (both blocks together):</strong> $F - (m_1+m_2)g\sin 30° = (m_1+m_2)a$<br>$135 - 9(10)(0.5) = 9a \Rightarrow 135 - 45 = 9a \Rightarrow a = 10$ m/s$^2$</div>
+            <div class="step"><strong>Step 2 &mdash; Isolate $m_2$:</strong> $C - m_2 g\sin 30° = m_2 a$<br>$C = m_2(a + g\sin 30°) = 6(10 + 5) = 90$ N</div>
+            <div class="teach"><strong>Teacher's approach:</strong> For contact force problems: (1) treat the whole system to find $a$, then (2) isolate ONE block to find the contact force. Always isolate the block that does NOT have the external force &mdash; it has fewer forces and simpler math.</div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q10</span><span class="sol-ans">Answer: (A) $0.095$ m</span></div>
+            <div class="q-text">A 3 kg block on a 53&deg; incline ($\sin 53° = 0.8$, $\cos 53° = 0.6$) is attached to a spring ($k = 300$ N/m) parallel to the surface. If $\mu_s = 0.25$, the max spring compression before the block slides up is:</div>
+            <div class="step"><strong>Step 1 &mdash; At threshold (about to slide UP):</strong> Spring pushes up the incline. Gravity pulls down. Friction acts DOWN (opposing impending upward motion).</div>
+            <div class="step"><strong>Step 2 &mdash; Balance:</strong> $kx = mg\sin 53° + \mu_s mg\cos 53°$</div>
+            <div class="step"><strong>Step 3 &mdash; Plug in:</strong> $300x = 3(10)(0.8) + 0.25 \times 3(10)(0.6) = 24 + 4.5 = 28.5$ N</div>
+            <div class="step"><strong>Step 4 &mdash; Solve:</strong> $x = 28.5/300 = 0.095$ m</div>
+            <div class="teach"><strong>Teacher's approach:</strong> When the block is about to slide UP, friction acts DOWN the incline (opposing impending motion). So gravity and friction both resist the spring force. This means the spring needs a LARGER compression to start motion than it would on a frictionless incline.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> If the block were about to slide DOWN instead, friction would act UP the incline, and the equation would be $kx = mg\sin\theta - \mu_s mg\cos\theta$. Direction of impending motion determines friction direction!</div>
+        </div>
+
+        <!-- Q11 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q11</span><span class="sol-ans">Answer: (A) $0.51$</span></div>
+            <div class="q-text">A block on a rough incline begins to slide when the angle reaches $27°$. The coefficient of static friction is approximately:</div>
+            <div class="step"><strong>Step 1 &mdash; At the verge of sliding:</strong> $mg\sin\theta = \mu_s mg\cos\theta$</div>
+            <div class="step"><strong>Step 2 &mdash; Solve:</strong> $\mu_s = \tan 27° \approx 0.5095 \approx 0.51$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> This is the experimental method for measuring $\mu_s$: tilt a board until the block JUST starts to slide. At that critical angle, $\mu_s = \tan\theta_{critical}$. Same formula as Q7, but with static friction and the angle of impending motion.</div>
+        </div>
+
+        <!-- Q12 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q12</span><span class="sol-ans">Answer: (A) $0$ N</span></div>
+            <div class="q-text">A 3 kg block on a rough 37&deg; incline ($\mu_k = 0.15$) is connected by a string to a 2 kg block further up the same incline. Both slide down together. The tension is:</div>
+            <div class="fbd"><svg viewBox="0 0 400 120" width="400"><polygon points="30,110 270,110 270,30" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/><rect x="95" y="60" width="32" height="22" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="2" transform="rotate(-20 111 71)"/><text x="111" y="75" text-anchor="middle" font-size="8" fill="#2563eb">3 kg</text><rect x="155" y="47" width="32" height="22" fill="#fef3c7" stroke="#d97706" stroke-width="2" rx="2" transform="rotate(-20 171 58)"/><text x="171" y="62" text-anchor="middle" font-size="8" fill="#d97706">2 kg</text><line x1="127" y1="67" x2="155" y2="55" stroke="#1e293b" stroke-width="2"/><text x="135" y="55" font-size="8" fill="#1e293b">T</text><text x="280" y="35" font-size="9" fill="#1e293b" font-weight="bold">T = 0 !</text><text x="280" y="52" font-size="9" fill="#64748b">Each block alone:</text><text x="280" y="65" font-size="9" fill="#64748b">a = g(sin37&deg; &minus; &mu;_k cos37&deg;)</text><text x="280" y="78" font-size="9" fill="#64748b">= 10(0.6 &minus; 0.15&times;0.8)</text><text x="280" y="91" font-size="9" fill="#64748b">= 10(0.6 &minus; 0.12) = 4.8 m/s&sup2;</text><text x="280" y="106" font-size="9" fill="#16a34a" font-weight="bold">Same for both &rarr; T = 0</text></svg></div>
+            <div class="step"><strong>Step 1 &mdash; Each block independently:</strong> $a = g(\sin 37° - \mu_k \cos 37°) = 10(0.6 - 0.15 \times 0.8) = 10(0.48) = 4.8$ m/s$^2$</div>
+            <div class="step"><strong>Step 2 &mdash; Key insight:</strong> Mass cancels! Both blocks have the SAME acceleration regardless of mass (same $\mu_k$, same $\theta$).</div>
+            <div class="step"><strong>Step 3:</strong> Since both accelerate identically, the string is slack. $T = 0$.</div>
+            <div class="teach"><strong>Teacher's approach:</strong> This is one of the best conceptual questions. Students see "connected by a string" and assume $T > 0$. But if both blocks have the same individual acceleration, they don't pull on each other. Think: two friends running at the same speed holding a rope &mdash; no tension!</div>
+            <div class="gotcha"><strong>Gotcha:</strong> This ONLY works because both blocks share the same $\mu_k$ AND the same $\theta$. If one block had different friction, $T \neq 0$. The mass cancellation ($a$ independent of $m$ on an incline with friction) is the key insight.</div>
+        </div>
+
+        <!-- ================================================================ -->
+        <!-- CATEGORY C: CONNECTED SYSTEMS (Q13-18)                          -->
+        <!-- ================================================================ -->
+        <div class="cat-header">Category C: Connected Systems (Q13-18)</div>
+
+        <!-- Q13 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q13</span><span class="sol-ans">Answer: (A) $1.25$ m/s$^2$</span></div>
+            <div class="q-text">A modified Atwood: 8 kg on frictionless table, 5 kg hanging right, 3 kg hanging left. The acceleration is:</div>
+            <div class="fbd"><svg viewBox="0 0 420 120" width="420"><rect x="120" y="30" width="180" height="6" fill="#94a3b8"/><rect x="175" y="10" width="55" height="20" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="3"/><text x="203" y="24" text-anchor="middle" font-size="9" fill="#2563eb" font-weight="bold">8 kg</text><rect x="310" y="40" width="30" height="25" fill="#fef3c7" stroke="#d97706" stroke-width="2" rx="3"/><text x="325" y="57" text-anchor="middle" font-size="8" fill="#d97706">5 kg</text><rect x="80" y="40" width="30" height="25" fill="#e0e7ff" stroke="#6366f1" stroke-width="2" rx="3"/><text x="95" y="57" text-anchor="middle" font-size="8" fill="#6366f1">3 kg</text><line x1="230" y1="20" x2="310" y2="20" stroke="#1e293b" stroke-width="2"/><line x1="310" y1="20" x2="310" y2="40" stroke="#1e293b" stroke-width="2"/><line x1="175" y1="20" x2="110" y2="20" stroke="#1e293b" stroke-width="2"/><line x1="110" y1="20" x2="110" y2="40" stroke="#1e293b" stroke-width="2"/><line x1="325" y1="65" x2="325" y2="90" stroke="#dc2626" stroke-width="2" marker-end="url(#a)"/><text x="335" y="88" font-size="8" fill="#dc2626">5g</text><line x1="95" y1="65" x2="95" y2="90" stroke="#6366f1" stroke-width="2" marker-end="url(#a)"/><text x="75" y="88" font-size="8" fill="#6366f1">3g</text><text x="140" y="85" font-size="9" fill="#1e293b">Net = (5&minus;3)g = 20 N</text><text x="140" y="100" font-size="9" fill="#1e293b">Total mass = 16 kg</text><text x="140" y="115" font-size="9" fill="#16a34a" font-weight="bold">a = 20/16 = 1.25 m/s&sup2;</text></svg></div>
+            <div class="step"><strong>Step 1 &mdash; Net driving force:</strong> $(m_{right} - m_{left})g = (5 - 3)(10) = 20$ N</div>
+            <div class="step"><strong>Step 2 &mdash; Total mass:</strong> $m_{total} = 8 + 5 + 3 = 16$ kg (ALL masses accelerate together)</div>
+            <div class="step"><strong>Step 3:</strong> $a = 20/16 = 1.25$ m/s$^2$ (toward the heavier hanging mass)</div>
+            <div class="teach"><strong>Teacher's approach:</strong> For modified Atwood machines: Net force = difference in hanging weights. Total mass = ALL masses (including the one on the table). The table mass doesn't contribute to the driving force, but it DOES add inertia.</div>
+        </div>
+
+        <!-- Q14 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q14</span><span class="sol-ans">Answer: (A) $2.5$ m/s$^2$</span></div>
+            <div class="q-text">Two blocks ($m_1 = 2$ kg and $m_2 = 6$ kg) on opposite 30&deg; frictionless inclines, connected over the top. The acceleration is:</div>
+            <div class="step"><strong>Step 1 &mdash; Forces along string direction:</strong> $m_2$ pulls with $m_2 g\sin 30° = 6(10)(0.5) = 30$ N. $m_1$ pulls with $m_1 g\sin 30° = 2(10)(0.5) = 10$ N.</div>
+            <div class="step"><strong>Step 2 &mdash; Net force:</strong> $30 - 10 = 20$ N (toward $m_2$'s side)</div>
+            <div class="step"><strong>Step 3 &mdash; Total mass:</strong> $m_1 + m_2 = 8$ kg</div>
+            <div class="step"><strong>Step 4:</strong> $a = 20/8 = 2.5$ m/s$^2$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> Double incline = two blocks pulling against each other via gravity components. The heavier block ($m_2 = 6$ kg) wins. Net force = difference in $mg\sin\theta$ values. Since both angles are 30&deg;, it simplifies to $(m_2 - m_1)g\sin 30°$.</div>
+        </div>
+
+        <!-- Q15 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q15</span><span class="sol-ans">Answer: (A) $6.4$ m/s$^2$</span></div>
+            <div class="q-text">A 3 kg block on a rough table ($\mu_k = 0.2$) is connected over a pulley to a 7 kg hanging block. The acceleration is:</div>
+            <div class="fbd"><svg viewBox="0 0 420 110" width="420"><rect x="60" y="40" width="200" height="6" fill="#94a3b8"/><rect x="120" y="18" width="50" height="22" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="3"/><text x="145" y="33" text-anchor="middle" font-size="9" fill="#2563eb" font-weight="bold">3 kg</text><line x1="170" y1="29" x2="270" y2="29" stroke="#1e293b" stroke-width="2"/><line x1="270" y1="29" x2="270" y2="50" stroke="#1e293b" stroke-width="2"/><rect x="255" y="50" width="30" height="22" fill="#fef3c7" stroke="#d97706" stroke-width="2" rx="3"/><text x="270" y="65" text-anchor="middle" font-size="9" fill="#d97706" font-weight="bold">7 kg</text><line x1="270" y1="72" x2="270" y2="98" stroke="#dc2626" stroke-width="2" marker-end="url(#a)"/><text x="280" y="95" font-size="9" fill="#dc2626">70 N</text><line x1="120" y1="29" x2="85" y2="29" stroke="#d97706" stroke-width="2" marker-end="url(#a)"/><text x="80" y="22" font-size="9" fill="#d97706">&larr; f_k = 6 N</text><text x="60" y="70" font-size="9" fill="#1e293b">Net = 70 &minus; 6 = 64 N</text><text x="60" y="85" font-size="9" fill="#1e293b">Total mass = 10 kg</text><text x="60" y="100" font-size="9" fill="#16a34a" font-weight="bold">a = 64/10 = 6.4 m/s&sup2;</text></svg></div>
+            <div class="step"><strong>Step 1 &mdash; Friction on table block:</strong> $f_k = \mu_k m_1 g = 0.2 \times 3 \times 10 = 6$ N</div>
+            <div class="step"><strong>Step 2 &mdash; Net driving force:</strong> $m_2 g - f_k = 70 - 6 = 64$ N</div>
+            <div class="step"><strong>Step 3 &mdash; Total mass:</strong> $m_1 + m_2 = 10$ kg</div>
+            <div class="step"><strong>Step 4:</strong> $a = 64/10 = 6.4$ m/s$^2$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> This is a standard Atwood + friction. The hanging block provides the driving force ($m_2 g$), friction on the table block resists. Both blocks share the same acceleration and the same string tension. The system approach gives $a$ in one step.</div>
+        </div>
+
+        <!-- Q16 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q16</span><span class="sol-ans">Answer: (A) $25.2$ N</span></div>
+            <div class="q-text">In Q15, the tension in the string is:</div>
+            <div class="step"><strong>Step 1 &mdash; Isolate the hanging block:</strong> $m_2 g - T = m_2 a$</div>
+            <div class="step"><strong>Step 2 &mdash; Solve:</strong> $T = m_2(g - a) = 7(10 - 6.4) = 7(3.6) = 25.2$ N</div>
+            <div class="step"><strong>Check:</strong> $T < m_2 g = 70$ N &#10003; (hanging block accelerates downward, so $T$ must be less than its weight)</div>
+            <div class="teach"><strong>Teacher's approach:</strong> To find tension, isolate ONE block after finding $a$. Pick the hanging block: $T = m_2(g - a)$. Or verify with the table block: $T - f_k = m_1 a \Rightarrow T = m_1 a + f_k = 3(6.4) + 6 = 25.2$ &#10003;. Both approaches must give the same $T$.</div>
+        </div>
+
+        <!-- Q17 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q17</span><span class="sol-ans">Answer: (A) $30$ N</span></div>
+            <div class="q-text">A 3 kg hanging block and a 5 kg block on a frictionless 37&deg; incline ($\sin 37° = 0.6$) are connected over a pulley. The system is in equilibrium. The tension is:</div>
+            <div class="step"><strong>Step 1 &mdash; Equilibrium check:</strong> Hanging: $T = m_{hang}g = 3(10) = 30$ N. Incline: $T = m_{incline}g\sin 37° = 5(10)(0.6) = 30$ N. &#10003; They match!</div>
+            <div class="step"><strong>Step 2:</strong> Since the system is in equilibrium ($a = 0$), $T = 30$ N.</div>
+            <div class="teach"><strong>Teacher's approach:</strong> In equilibrium, the tension equals BOTH the hanging weight AND the incline gravity component. The fact that $3g = 5g\sin 37°$ (i.e., $30 = 30$) confirms equilibrium. If these weren't equal, the system wouldn't be in equilibrium.</div>
+        </div>
+
+        <!-- Q18 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q18</span><span class="sol-ans">Answer: (A) $3g/5$</span></div>
+            <div class="q-text">In an Atwood machine, if $m_2 = 4m_1$, the acceleration is:</div>
+            <div class="step"><strong>Step 1 &mdash; Atwood formula:</strong> $a = \frac{m_2 - m_1}{m_1 + m_2}g$</div>
+            <div class="step"><strong>Step 2 &mdash; Substitute $m_2 = 4m_1$:</strong> $a = \frac{4m_1 - m_1}{m_1 + 4m_1}g = \frac{3m_1}{5m_1}g = \frac{3g}{5}$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> The Atwood formula $a = \frac{(m_2-m_1)}{(m_1+m_2)}g$ is worth memorizing. Notice: if $m_2 \gg m_1$, $a \to g$ (free fall). If $m_1 = m_2$, $a = 0$ (balanced). The formula always gives sensible limits.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (D) $3g/4$ = only divided by the heavier mass, not the total. (B) $g/2$ = used $m_2 = 2m_1$ instead of $4m_1$.</div>
+        </div>
+
+        <!-- ================================================================ -->
+        <!-- CATEGORY D: CIRCULAR + NEWTON (Q19-23)                          -->
+        <!-- ================================================================ -->
+        <div class="cat-header">Category D: Circular Motion + Newton (Q19-23)</div>
+
+        <!-- Q19 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q19</span><span class="sol-ans">Answer: (A) $\sqrt{10}$ m/s</span></div>
+            <div class="q-text">A 2 kg ball on a 0.5 m string swings in a vertical circle. At the bottom, the tension is 60 N. The speed at the bottom is:</div>
+            <div class="fbd"><svg viewBox="0 0 320 120" width="320"><circle cx="160" cy="80" r="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text x="160" y="84" text-anchor="middle" font-size="8" fill="#2563eb" font-weight="bold">2 kg</text><line x1="160" y1="66" x2="160" y2="25" stroke="#d97706" stroke-width="3" marker-end="url(#a)"/><text x="170" y="30" font-size="10" fill="#d97706">T = 60 N &uarr;</text><line x1="160" y1="94" x2="160" y2="118" stroke="#dc2626" stroke-width="3" marker-end="url(#a)"/><text x="170" y="115" font-size="10" fill="#dc2626">mg = 20 N &darr;</text><text x="10" y="25" font-size="9" fill="#64748b">At BOTTOM, center is UP</text><text x="10" y="40" font-size="9" fill="#1e293b">T &minus; mg = mv&sup2;/r</text><text x="10" y="55" font-size="9" fill="#1e293b">60 &minus; 20 = 2v&sup2;/0.5</text><text x="10" y="70" font-size="9" fill="#1e293b">40 = 4v&sup2;</text><text x="10" y="85" font-size="9" fill="#16a34a" font-weight="bold">v = &radic;10 m/s</text></svg></div>
+            <div class="step"><strong>Step 1 &mdash; At the bottom:</strong> Center of circle is UP. Tension points toward center (up). Weight points away from center (down).</div>
+            <div class="step"><strong>Step 2 &mdash; Newton toward center:</strong> $T - mg = \frac{mv^2}{r}$</div>
+            <div class="step"><strong>Step 3 &mdash; Solve:</strong> $60 - 2(10) = \frac{2v^2}{0.5} \Rightarrow 40 = 4v^2 \Rightarrow v^2 = 10 \Rightarrow v = \sqrt{10}$ m/s</div>
+            <div class="teach"><strong>Teacher's approach:</strong> For vertical circles, always ask: "Where is the center?" At the BOTTOM, center is UP. $T$ points UP (toward center, positive), $mg$ points DOWN (away, negative). So $T - mg = mv^2/r$. At the TOP: both point toward center, so $T + mg = mv^2/r$.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (B) $\sqrt{20}$ = forgot that $r = 0.5$, using $r = 1$ instead. Always check the radius!</div>
+        </div>
+
+        <!-- Q20 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q20</span><span class="sol-ans">Answer: (A) $0.5$</span></div>
+            <div class="q-text">A car drives at 20 m/s on a flat circular track of radius 80 m. The minimum $\mu_s$ to prevent sliding is:</div>
+            <div class="step"><strong>Step 1 &mdash; Friction provides centripetal force:</strong> $\mu_s mg = \frac{mv^2}{r}$</div>
+            <div class="step"><strong>Step 2 &mdash; Cancel $m$:</strong> $\mu_s = \frac{v^2}{rg} = \frac{400}{80 \times 10} = \frac{400}{800} = 0.5$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> On a flat (unbanked) curve, friction is the only force providing centripetal acceleration. The formula $\mu_s = v^2/(rg)$ gives the minimum friction needed. If the road is wet and $\mu_s$ drops below this value, the car skids outward.</div>
+        </div>
+
+        <!-- Q21 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q21</span><span class="sol-ans">Answer: (A) Decreases by factor $\sqrt{2}$</span></div>
+            <div class="q-text">A satellite orbits Earth at radius $r$. If the orbit radius doubles to $2r$, the orbital speed:</div>
+            <div class="step"><strong>Step 1 &mdash; Orbital speed formula:</strong> $\frac{GMm}{r^2} = \frac{mv^2}{r} \Rightarrow v = \sqrt{\frac{GM}{r}}$</div>
+            <div class="step"><strong>Step 2 &mdash; At $2r$:</strong> $v' = \sqrt{\frac{GM}{2r}} = \frac{v}{\sqrt{2}}$</div>
+            <div class="step"><strong>Step 3:</strong> Speed decreases by factor $\sqrt{2}$ (farther orbits are slower)</div>
+            <div class="teach"><strong>Teacher's approach:</strong> Key insight: farther orbits are SLOWER. This seems counterintuitive but makes physical sense &mdash; gravity is weaker at larger radii, so less centripetal force means less speed needed. $v \propto 1/\sqrt{r}$.</div>
+        </div>
+
+        <!-- Q22 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q22</span><span class="sol-ans">Answer: (A) $5$ rad/s</span></div>
+            <div class="q-text">A coin on a turntable at $r = 0.2$ m from center. If $\mu_s = 0.5$, the maximum angular velocity before it slides is:</div>
+            <div class="step"><strong>Step 1 &mdash; Friction provides centripetal force:</strong> $\mu_s mg = m\omega^2 r$</div>
+            <div class="step"><strong>Step 2 &mdash; Cancel $m$, solve for $\omega$:</strong> $\omega^2 = \frac{\mu_s g}{r} = \frac{0.5 \times 10}{0.2} = 25$</div>
+            <div class="step"><strong>Step 3:</strong> $\omega = 5$ rad/s</div>
+            <div class="teach"><strong>Teacher's approach:</strong> For rotating platforms, use $\omega$ (not $v$) since it's uniform across the turntable. Note: coins farther from center slide first ($\omega_{max} \propto 1/\sqrt{r}$).</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (B) $\sqrt{25} = 5$ &mdash; same answer, just written differently. (C) $\sqrt{50}$ would result from using $\mu_s = 1.0$ or $r = 0.1$.</div>
+        </div>
+
+        <!-- Q23 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q23</span><span class="sol-ans">Answer: (A) $2mg$</span></div>
+            <div class="q-text">A pendulum bob (mass $m$, length $L$) is released from 60&deg; from vertical. The tension at the bottom is:</div>
+            <div class="fbd"><svg viewBox="0 0 350 130" width="350"><circle cx="175" cy="10" r="4" fill="#64748b"/><line x1="175" y1="14" x2="175" y2="90" stroke="#1e293b" stroke-width="1.5"/><circle cx="175" cy="100" r="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text x="175" y="104" text-anchor="middle" font-size="8" fill="#2563eb" font-weight="bold">m</text><line x1="175" y1="14" x2="115" y2="55" stroke="#1e293b" stroke-width="1" stroke-dasharray="4"/><circle cx="110" cy="60" r="6" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/><text x="140" y="30" font-size="9" fill="#64748b">60&deg;</text><text x="60" y="60" font-size="8" fill="#6366f1">start</text><line x1="175" y1="90" x2="175" y2="55" stroke="#d97706" stroke-width="3" marker-end="url(#a)"/><text x="185" y="60" font-size="9" fill="#d97706">T &uarr;</text><line x1="175" y1="110" x2="175" y2="128" stroke="#dc2626" stroke-width="2" marker-end="url(#a)"/><text x="185" y="128" font-size="9" fill="#dc2626">mg</text><text x="230" y="30" font-size="9" fill="#64748b">h = L(1&minus;cos60&deg;) = L/2</text><text x="230" y="47" font-size="9" fill="#1e293b">Energy: mgh = &frac12;mv&sup2;</text><text x="230" y="62" font-size="9" fill="#1e293b">v&sup2; = 2g(L/2) = gL</text><text x="230" y="80" font-size="9" fill="#1e293b">At bottom: T &minus; mg = mv&sup2;/L</text><text x="230" y="95" font-size="9" fill="#1e293b">T = mg + m(gL)/L = 2mg</text><text x="230" y="112" font-size="9" fill="#16a34a" font-weight="bold">T = 2mg</text></svg></div>
+            <div class="step"><strong>Step 1 &mdash; Energy conservation:</strong> Height drop: $h = L(1 - \cos 60°) = L(1 - 0.5) = L/2$<br>$mgh = \frac{1}{2}mv^2 \Rightarrow v^2 = 2g(L/2) = gL$</div>
+            <div class="step"><strong>Step 2 &mdash; At the bottom (center is UP):</strong> $T - mg = \frac{mv^2}{L} = \frac{m(gL)}{L} = mg$</div>
+            <div class="step"><strong>Step 3:</strong> $T = mg + mg = 2mg$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> This combines energy AND Newton's Laws &mdash; the AP's favorite combination. Always use energy to find speed, THEN Newton for forces. General formula for pendulum released from angle $\theta_0$: $T_{bottom} = mg(3 - 2\cos\theta_0)$. At $60°$: $T = mg(3 - 1) = 2mg$ &#10003;. At $90°$ (horizontal): $T = 3mg$.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (B) $3mg$ = released from 90&deg; (horizontal), not 60&deg;. (C) $mg$ = forgot the centripetal term entirely.</div>
+        </div>
+
+        <!-- ================================================================ -->
+        <!-- CATEGORY E: CALCULUS-BASED (Q24-29)                             -->
+        <!-- ================================================================ -->
+        <div class="cat-header">Category E: Calculus-Based Newton (Q24-29)</div>
+
+        <!-- Q24 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q24</span><span class="sol-ans">Answer: (A) $2$ m/s</span></div>
+            <div class="q-text">A 4 kg object has force $F(t) = 12\sin(3t)$ N from $t = 0$ to $t = \pi/3$ s. Starting from rest, the final speed is:</div>
+            <div class="step"><strong>Step 1 &mdash; Impulse:</strong> $J = \int_0^{\pi/3} 12\sin(3t)\,dt$</div>
+            <div class="step"><strong>Step 2 &mdash; Integrate:</strong> $= 12\left[-\frac{\cos(3t)}{3}\right]_0^{\pi/3} = -4[\cos(\pi) - \cos(0)] = -4[-1 - 1] = 8$ N&middot;s</div>
+            <div class="step"><strong>Step 3 &mdash; Impulse-momentum:</strong> $J = mv \Rightarrow v = J/m = 8/4 = 2$ m/s</div>
+            <div class="teach"><strong>Teacher's approach:</strong> When force is a function of time, use the impulse-momentum theorem: $\int F\,dt = \Delta p$. The integral of $\sin$ gives $-\cos$. Watch the limits carefully &mdash; $\cos(\pi) = -1$ is where students make sign errors.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> Don't forget the $1/3$ from the chain rule when integrating $\sin(3t)$. $\int\sin(3t)\,dt = -\cos(3t)/3$, not $-\cos(3t)$.</div>
+        </div>
+
+        <!-- Q25 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q25</span><span class="sol-ans">Answer: (A) $5(1 - e^{-2t})$ m/s</span></div>
+            <div class="q-text">A 5 kg object with drag $F = -10v$ falls under gravity. The velocity as a function of time is:</div>
+            <div class="step"><strong>Step 1 &mdash; Newton's 2nd law:</strong> $m\frac{dv}{dt} = mg - bv \Rightarrow 5\frac{dv}{dt} = 50 - 10v$</div>
+            <div class="step"><strong>Step 2 &mdash; Terminal velocity:</strong> Set $dv/dt = 0$: $v_t = mg/b = 50/10 = 5$ m/s</div>
+            <div class="step"><strong>Step 3 &mdash; Separate variables:</strong> $\frac{dv}{50 - 10v} = \frac{dt}{5}$</div>
+            <div class="step"><strong>Step 4 &mdash; Integrate:</strong> $-\frac{1}{10}\ln(50 - 10v) = \frac{t}{5} + C$. With $v(0) = 0$: $v(t) = 5(1 - e^{-2t})$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> For linear drag problems, the answer is ALWAYS $v(t) = v_{terminal}(1 - e^{-t/\tau})$ where $\tau = m/b$ is the time constant. Here $v_t = 5$ m/s and $\tau = 5/10 = 0.5$ s, so $1/\tau = 2$. This gives $v = 5(1 - e^{-2t})$ immediately.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (B) $5e^{-2t}$ = exponential DECAY, not growth. That would mean the object starts at 5 m/s and decelerates &mdash; opposite of falling from rest. (C) has the wrong time constant.</div>
+        </div>
+
+        <!-- Q26 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q26</span><span class="sol-ans">Answer: (A) $10$ m/s</span></div>
+            <div class="q-text">A 0.5 kg particle falls with quadratic drag $F_{drag} = -0.05v^2$ N. The terminal velocity is:</div>
+            <div class="step"><strong>Step 1 &mdash; At terminal velocity, $a = 0$:</strong> $mg = 0.05v_t^2$</div>
+            <div class="step"><strong>Step 2:</strong> $0.5 \times 10 = 0.05v_t^2 \Rightarrow 5 = 0.05v_t^2 \Rightarrow v_t^2 = 100$</div>
+            <div class="step"><strong>Step 3:</strong> $v_t = 10$ m/s</div>
+            <div class="teach"><strong>Teacher's approach:</strong> Terminal velocity is always found by setting net force $= 0$. For quadratic drag: $v_t = \sqrt{mg/c}$. For linear drag: $v_t = mg/b$. Know both forms.</div>
+        </div>
+
+        <!-- Q27 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q27</span><span class="sol-ans">Answer: (A) $2\pi/3$ s</span></div>
+            <div class="q-text">A 2 kg mass on a spring with $k = 18$ N/m. The period of oscillation is:</div>
+            <div class="step"><strong>Step 1 &mdash; Period formula:</strong> $T = 2\pi\sqrt{m/k}$</div>
+            <div class="step"><strong>Step 2:</strong> $T = 2\pi\sqrt{2/18} = 2\pi\sqrt{1/9} = 2\pi \times \frac{1}{3} = \frac{2\pi}{3}$ s</div>
+            <div class="teach"><strong>Teacher's approach:</strong> This is a direct formula application. $\omega = \sqrt{k/m} = \sqrt{9} = 3$ rad/s. Then $T = 2\pi/\omega = 2\pi/3$ s. Know that heavier masses oscillate slower (larger $T$), stiffer springs oscillate faster (smaller $T$).</div>
+        </div>
+
+        <!-- Q28 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q28</span><span class="sol-ans">Answer: (A) $24$ N</span></div>
+            <div class="q-text">Water flows onto a stationary plate at rate 3 kg/s with horizontal velocity 8 m/s. The force on the plate is:</div>
+            <div class="step"><strong>Step 1 &mdash; Newton's 2nd law (momentum form):</strong> $F = \frac{dp}{dt} = \frac{dm}{dt} \times v$</div>
+            <div class="step"><strong>Step 2:</strong> $F = 3 \times 8 = 24$ N</div>
+            <div class="teach"><strong>Teacher's approach:</strong> When mass is flowing continuously, use $F = \dot{m}v$ where $\dot{m} = dm/dt$ is the mass flow rate. Each second, 3 kg of water arrives with velocity 8 m/s and is stopped (momentum goes to zero). The plate must absorb that momentum: $\Delta p/\Delta t = 3 \times 8 = 24$ N.</div>
+        </div>
+
+        <!-- Q29 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q29</span><span class="sol-ans">Answer: (A) $10$ N</span></div>
+            <div class="q-text">A 5 kg object has $a(t) = 6 - 2t$ m/s$^2$. The net force at $t = 2$ s is:</div>
+            <div class="step"><strong>Step 1:</strong> $a(2) = 6 - 2(2) = 6 - 4 = 2$ m/s$^2$</div>
+            <div class="step"><strong>Step 2:</strong> $F = ma = 5 \times 2 = 10$ N</div>
+            <div class="teach"><strong>Teacher's approach:</strong> Even though $a(t)$ is time-dependent, $F = ma$ still applies at each instant. Just plug in the specific time, get $a$, multiply by $m$. This is Newton's 2nd law &mdash; it's always instantaneous.</div>
+        </div>
+
+        <!-- ================================================================ -->
+        <!-- CATEGORY F: ADVANCED (Q30-35)                                   -->
+        <!-- ================================================================ -->
+        <div class="cat-header">Category F: Advanced / Conceptual (Q30-35)</div>
+
+        <!-- Q30 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q30</span><span class="sol-ans">Answer: (A) $500$ N</span></div>
+            <div class="q-text">A tug-of-war team pulls with 500 N on a rope. The other team also pulls with 500 N. The tension in the rope is:</div>
+            <div class="fbd"><svg viewBox="0 0 420 60" width="420"><line x1="50" y1="30" x2="370" y2="30" stroke="#d97706" stroke-width="4"/><line x1="370" y1="30" x2="400" y2="30" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="385" y="20" font-size="9" fill="#16a34a">500 N &rarr;</text><line x1="50" y1="30" x2="20" y2="30" stroke="#dc2626" stroke-width="3" marker-end="url(#a)"/><text x="10" y="20" font-size="9" fill="#dc2626">&larr; 500 N</text><text x="170" y="25" font-size="10" fill="#d97706" font-weight="bold">T = 500 N</text><text x="120" y="52" font-size="9" fill="#64748b">Tension = force applied by EITHER side, not the sum</text></svg></div>
+            <div class="step"><strong>Key concept:</strong> Tension in a rope is the force transmitted through it, which equals the force applied by EITHER end.</div>
+            <div class="step"><strong>Analogy:</strong> Hang a 500 N weight from a rope attached to a ceiling. The ceiling pulls up 500 N, the weight pulls down 500 N. Tension = 500 N, not 1000 N.</div>
+            <div class="step"><strong>Result:</strong> $T = 500$ N</div>
+            <div class="teach"><strong>Teacher's approach:</strong> This is the classic Newton's 3rd law conceptual question. Think of it this way: cut the rope at any point and ask "what force holds the two halves together?" It's 500 N. The rope doesn't "add" forces from both sides. Each side pulls with 500 N, and the rope transmits 500 N.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (B) 1000 N is the most common wrong answer. Students think "500 from each side = 1000 total." But that's not how tension works. If that logic were correct, a 500 N weight hanging from a ceiling would create 1000 N of tension &mdash; absurd!</div>
+        </div>
+
+        <!-- Q31 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q31</span><span class="sol-ans">Answer: (A) $\sqrt{gR}$</span></div>
+            <div class="q-text">A car goes over a hill of radius $R$ at speed $v$. The driver feels weightless. The speed must be:</div>
+            <div class="step"><strong>Step 1 &mdash; Weightless:</strong> Normal force $= 0$ (the seat doesn't push up on the driver)</div>
+            <div class="step"><strong>Step 2 &mdash; At the top of the hill (center is DOWN):</strong> $mg - N = \frac{mv^2}{R}$</div>
+            <div class="step"><strong>Step 3 &mdash; Set $N = 0$:</strong> $mg = \frac{mv^2}{R} \Rightarrow v = \sqrt{gR}$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> "Weightless" in physics means normal force $= 0$. It doesn't mean gravity is gone &mdash; gravity is still providing the centripetal force! This is the same condition as orbital motion. At the hill top, gravity alone provides all the centripetal force needed.</div>
+        </div>
+
+        <!-- Q32 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q32</span><span class="sol-ans">Answer: (A) $\frac{40}{\cos 45° + 0.4\sin 45°}$ N</span></div>
+            <div class="q-text">A box on a rough flat surface ($\mu_s = 0.4$) has a rope pulling at 45&deg; above horizontal. The tension needed to START moving the box (mass 10 kg) is:</div>
+            <div class="fbd"><svg viewBox="0 0 420 110" width="420"><rect x="10" y="85" width="400" height="3" fill="#94a3b8"/><rect x="140" y="50" width="70" height="35" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="4"/><text x="175" y="72" text-anchor="middle" font-size="9" fill="#2563eb" font-weight="bold">10 kg</text><line x1="210" y1="60" x2="280" y2="20" stroke="#16a34a" stroke-width="3" marker-end="url(#a)"/><text x="265" y="14" font-size="10" fill="#16a34a" font-weight="bold">T</text><text x="225" y="45" font-size="9" fill="#64748b">45&deg;</text><line x1="140" y1="70" x2="85" y2="70" stroke="#d97706" stroke-width="2" marker-end="url(#a)"/><text x="80" y="63" font-size="9" fill="#d97706">&larr; f_s</text><text x="10" y="15" font-size="9" fill="#1e293b">Horizontal: Tcos45&deg; = &mu;_s N</text><text x="10" y="30" font-size="9" fill="#1e293b">Vertical: N + Tsin45&deg; = mg</text><text x="10" y="45" font-size="9" fill="#1e293b">N = mg &minus; Tsin45&deg;</text></svg></div>
+            <div class="step"><strong>Step 1 &mdash; Vertical equilibrium:</strong> $N + T\sin 45° = mg \Rightarrow N = mg - T\sin 45°$</div>
+            <div class="step"><strong>Step 2 &mdash; Horizontal (on verge):</strong> $T\cos 45° = \mu_s N = \mu_s(mg - T\sin 45°)$</div>
+            <div class="step"><strong>Step 3 &mdash; Solve for $T$:</strong> $T\cos 45° + \mu_s T\sin 45° = \mu_s mg$<br>$T(\cos 45° + 0.4\sin 45°) = 0.4 \times 100 = 40$<br>$T = \frac{40}{\cos 45° + 0.4\sin 45°}$</div>
+            <div class="teach"><strong>Teacher's approach:</strong> When a force pulls at an angle above horizontal, it does TWO things: (1) pulls the object forward (horizontal component), (2) lifts the object slightly (reducing the normal force). A reduced normal force means less friction. This is why pulling at an angle requires LESS force than pulling horizontally! The optimal angle to minimize $T$ is $\theta = \arctan(\mu_s)$.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (B) 40 N = assumed $T = \mu_s mg$ without accounting for the reduced normal force. (C) $40/\cos 45°$ = forgot that the upward component of $T$ reduces $N$.</div>
+        </div>
+
+        <!-- Q33 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q33</span><span class="sol-ans">Answer: (A) $3.6$ kg</span></div>
+            <div class="q-text">Block A ($6$ kg) is on a 37&deg; frictionless incline, connected to hanging Block B. Equilibrium requires $m_B =$:</div>
+            <div class="step"><strong>Step 1 &mdash; Equilibrium:</strong> Weight of B = incline component of A: $m_B g = m_A g\sin 37°$</div>
+            <div class="step"><strong>Step 2:</strong> $m_B = m_A \sin 37° = 6 \times 0.6 = 3.6$ kg</div>
+            <div class="teach"><strong>Teacher's approach:</strong> In equilibrium, the hanging block's weight must exactly balance the gravity component pulling Block A down the incline. Since the incline "dilutes" gravity by $\sin\theta$, the hanging mass is always less than the incline mass (for $\theta < 90°$).</div>
+        </div>
+
+        <!-- Q34 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q34</span><span class="sol-ans">Answer: (A) $Ft$ (force &times; time)</span></div>
+            <div class="q-text">Which expression has the SAME units as momentum (kg&middot;m/s)?</div>
+            <div class="step"><strong>Step 1 &mdash; Check each:</strong></div>
+            <div class="step">$(A)$ $Ft$: $[\text{N} \cdot \text{s}] = [\text{kg}\cdot\text{m/s}^2 \cdot \text{s}] = \text{kg}\cdot\text{m/s}$ &#10003; &mdash; this is impulse!</div>
+            <div class="step">$(B)$ $Fv$: $[\text{N} \cdot \text{m/s}] = \text{kg}\cdot\text{m}^2/\text{s}^3 = $ watts &#10007;</div>
+            <div class="step">$(C)$ $mv^2$: $[\text{kg}\cdot\text{m}^2/\text{s}^2] = $ joules &#10007;</div>
+            <div class="step">$(D)$ $ma$: $[\text{kg}\cdot\text{m/s}^2] = $ newtons &#10007;</div>
+            <div class="step">$(E)$ $Fd$: $[\text{N}\cdot\text{m}] = $ joules &#10007;</div>
+            <div class="teach"><strong>Teacher's approach:</strong> This is the impulse-momentum theorem: $J = F\Delta t = \Delta p$. Impulse has the same units as momentum. This is one of the most important dimensional analysis results to memorize. Also: $Fv = $ power, $Fd = $ work, $ma = $ force.</div>
+        </div>
+
+        <!-- Q35 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num">Q35</span><span class="sol-ans">Answer: (A) $25\sqrt{3}$ N</span></div>
+            <div class="q-text">A 5 kg lamp hangs from two ropes: one at 30&deg; from vertical and one at 60&deg; from vertical. The tension in the rope at 30&deg; from vertical is:</div>
+            <div class="fbd"><svg viewBox="0 0 380 140" width="380"><rect x="5" y="0" width="8" height="10" fill="#94a3b8"/><rect x="367" y="0" width="8" height="10" fill="#94a3b8"/><line x1="13" y1="5" x2="190" y2="100" stroke="#d97706" stroke-width="2"/><line x1="375" y1="5" x2="190" y2="100" stroke="#16a34a" stroke-width="2"/><circle cx="190" cy="110" r="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text x="190" y="114" text-anchor="middle" font-size="8" fill="#2563eb" font-weight="bold">5 kg</text><line x1="190" y1="122" x2="190" y2="138" stroke="#dc2626" stroke-width="2" marker-end="url(#a)"/><text x="200" y="138" font-size="9" fill="#dc2626">50 N</text><line x1="190" y1="100" x2="190" y2="50" stroke="#64748b" stroke-width="1" stroke-dasharray="3"/><text x="120" y="55" font-size="9" fill="#d97706">T&#8321; (30&deg; from vert)</text><text x="240" y="55" font-size="9" fill="#16a34a">T&#8322; (60&deg; from vert)</text><text x="175" y="72" font-size="8" fill="#64748b">30&deg;</text><text x="200" y="72" font-size="8" fill="#64748b">60&deg;</text></svg></div>
+            <div class="step"><strong>Step 1 &mdash; Horizontal equilibrium:</strong> $T_1\sin 30° = T_2\sin 60°$<br>$T_2 = T_1 \cdot \frac{\sin 30°}{\sin 60°} = T_1 \cdot \frac{0.5}{\sqrt{3}/2} = \frac{T_1}{\sqrt{3}}$</div>
+            <div class="step"><strong>Step 2 &mdash; Vertical equilibrium:</strong> $T_1\cos 30° + T_2\cos 60° = mg = 50$<br>$T_1 \cdot \frac{\sqrt{3}}{2} + \frac{T_1}{\sqrt{3}} \cdot \frac{1}{2} = 50$</div>
+            <div class="step"><strong>Step 3 &mdash; Simplify:</strong> $T_1\left(\frac{\sqrt{3}}{2} + \frac{1}{2\sqrt{3}}\right) = T_1\left(\frac{3}{2\sqrt{3}} + \frac{1}{2\sqrt{3}}\right) = T_1 \cdot \frac{4}{2\sqrt{3}} = \frac{2T_1}{\sqrt{3}} = 50$</div>
+            <div class="step"><strong>Step 4:</strong> $T_1 = \frac{50\sqrt{3}}{2} = 25\sqrt{3} \approx 43.3$ N</div>
+            <div class="teach"><strong>Teacher's approach:</strong> For two-rope problems: (1) Set up horizontal and vertical equilibrium. (2) Use the horizontal equation to express $T_2$ in terms of $T_1$. (3) Substitute into the vertical equation and solve. The rope closer to vertical (30&deg; from vertical) carries MORE weight &mdash; this makes physical sense since it's more "upright."</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (B) 25 N = assumed each rope carries half the weight. Wrong! The ropes are at different angles, so they carry different loads. (D) $50/\sqrt{3}$ = computed $T_2$ (the other rope) instead of $T_1$.</div>
+        </div>
+
+        <!-- ================================================================ -->
+        <!-- FREE RESPONSE QUESTIONS                                         -->
+        <!-- ================================================================ -->
+        <div class="frq-header">Section II: Free Response Solutions</div>
+
+        <!-- FRQ 1 -->
+        <div class="sol" style="margin-top:14px;">
+            <div class="sol-header"><span class="sol-num" style="font-size:1.1rem;">FRQ 1: Block-Spring-Incline System</span><span class="sol-ans">15 points</span></div>
+            <div class="q-text">A block of mass $m = 2.0$ kg is placed against a spring (spring constant $k = 500$ N/m) that is compressed by $d = 0.30$ m on a frictionless horizontal surface. The spring is released, launching the block toward a rough incline that makes an angle $\theta = 30°$ with the horizontal. The coefficient of kinetic friction on the incline is $\mu_k = 0.20$.</div>
+            <div class="fbd"><svg viewBox="0 0 420 120" width="420"><rect x="10" y="95" width="200" height="3" fill="#94a3b8"/><polygon points="210,98 380,98 380,30" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/><text x="375" y="70" font-size="9" fill="#64748b">30&deg;</text><line x1="20" y1="70" x2="20" y2="95" stroke="#16a34a" stroke-width="3"/><line x1="20" y1="82" x2="35" y2="82" stroke="#16a34a" stroke-width="2"/><line x1="25" y1="75" x2="35" y2="75" stroke="#16a34a" stroke-width="2"/><line x1="25" y1="89" x2="35" y2="89" stroke="#16a34a" stroke-width="2"/><rect x="35" y="72" width="25" height="23" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="2"/><text x="48" y="87" text-anchor="middle" font-size="7" fill="#2563eb">2 kg</text><line x1="60" y1="82" x2="90" y2="82" stroke="#d97706" stroke-width="2" marker-end="url(#a)"/><text x="75" y="72" font-size="8" fill="#d97706">v</text><text x="130" y="60" font-size="9" fill="#64748b">frictionless</text><text x="290" y="55" font-size="9" fill="#d97706">&mu;_k = 0.20</text><text x="210" y="115" font-size="8" fill="#1e293b">d = 0.30 m, k = 500 N/m</text></svg></div>
+
+            <div class="frq-part-label">(a) Speed leaving the spring (3 pts)</div>
+            <div class="frq-prompt">Determine the speed of the block just as it leaves the spring.</div>
+            <div class="step"><strong>Energy conservation (horizontal, frictionless):</strong> $\frac{1}{2}kd^2 = \frac{1}{2}mv^2$</div>
+            <div class="step"><strong>Solve:</strong> $v = d\sqrt{\frac{k}{m}} = 0.30\sqrt{\frac{500}{2}} = 0.30\sqrt{250} = 0.30 \times 5\sqrt{10}$</div>
+            <div class="step"><strong>Result:</strong> $v \approx 4.74$ m/s</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt energy equation, 1 pt correct substitution, 1 pt answer with units</div>
+
+            <div class="frq-part-label">(b) Distance up the incline (4 pts)</div>
+            <div class="frq-prompt">Determine the distance the block travels up the incline before coming momentarily to rest.</div>
+            <div class="step"><strong>Energy conservation with friction:</strong> $\frac{1}{2}mv^2 = mgs\sin\theta + \mu_k mg\cos\theta \cdot s$</div>
+            <div class="step"><strong>Factor:</strong> $\frac{1}{2}mv^2 = mgs(\sin\theta + \mu_k\cos\theta)$</div>
+            <div class="step"><strong>Solve:</strong> $s = \frac{v^2}{2g(\sin\theta + \mu_k\cos\theta)} = \frac{22.5}{2(10)(0.5 + 0.2 \times 0.866)}$</div>
+            <div class="step"><strong>Compute:</strong> $= \frac{22.5}{20(0.5 + 0.1732)} = \frac{22.5}{13.46} \approx 1.67$ m</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt energy equation with friction, 1 pt correct friction force, 1 pt algebra, 1 pt answer</div>
+
+            <div class="frq-part-label">(c) Does the block slide back down? (3 pts)</div>
+            <div class="frq-prompt">Does the block slide back down the incline? Justify your answer with a calculation.</div>
+            <div class="step"><strong>At rest on incline, compare forces along incline:</strong></div>
+            <div class="step"><strong>Gravity component (down):</strong> $mg\sin 30° = 2(10)(0.5) = 10$ N</div>
+            <div class="step"><strong>Max static friction (up, opposing slide down):</strong> Using $\mu_k$ as lower bound: $\mu_k mg\cos 30° = 0.2(2)(10)(0.866) = 3.46$ N</div>
+            <div class="step"><strong>Since $10 > 3.46$:</strong> Gravity component exceeds friction. YES, the block slides back down.</div>
+            <div class="step"><strong>Equivalently:</strong> $\tan 30° = 0.577 > \mu_k = 0.2$, so the incline is too steep for friction to hold the block.</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt identifying forces, 1 pt correct comparison, 1 pt conclusion with justification</div>
+
+            <div class="frq-part-label">(d) Normal force at top of frictionless quarter-circle (5 pts)</div>
+            <div class="frq-prompt">If instead the incline were frictionless but curved (quarter-circle of radius $R$), derive an expression for the normal force on the block at the top of the curve as a function of $m$, $k$, $d$, $R$, and $g$.</div>
+            <div class="step"><strong>Energy conservation to height $R$:</strong> $\frac{1}{2}kd^2 = mgR + \frac{1}{2}mv_{top}^2$</div>
+            <div class="step"><strong>Solve for $v_{top}^2$:</strong> $v_{top}^2 = \frac{kd^2}{m} - 2gR$</div>
+            <div class="step"><strong>At the top of the quarter-circle (centripetal direction = downward toward center):</strong> $mg - N = \frac{mv_{top}^2}{R}$</div>
+            <div class="step"><strong>Solve for $N$:</strong> $N = mg - \frac{mv_{top}^2}{R} = mg - \frac{m}{R}\left(\frac{kd^2}{m} - 2gR\right)$</div>
+            <div class="step"><strong>Simplify:</strong> $$N = mg - \frac{kd^2}{R} + 2mg = 3mg - \frac{kd^2}{R}$$</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt energy equation, 1 pt solving for $v^2$, 1 pt centripetal equation, 1 pt substitution, 1 pt clean final expression</div>
+            <div class="teach"><strong>Note:</strong> If $kd^2/R > 3mg$, then $N < 0$, meaning the block would leave the track. The block stays on if $R \geq kd^2/(3mg)$.</div>
+        </div>
+
+        <!-- FRQ 2 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num" style="font-size:1.1rem;">FRQ 2: Rotating Rod with Attached Mass</span><span class="sol-ans">15 points</span></div>
+            <div class="q-text">A thin uniform rod of mass $M$ and length $L$ is free to rotate about a frictionless pivot at its left end. A small ball of mass $M$ is attached to the right end of the rod. The system is held horizontal and then released from rest.</div>
+            <div class="fbd"><svg viewBox="0 0 420 90" width="420"><circle cx="40" cy="40" r="6" fill="#64748b" stroke="#1e293b" stroke-width="2"/><text x="40" y="20" text-anchor="middle" font-size="9" fill="#64748b">pivot</text><line x1="46" y1="40" x2="330" y2="40" stroke="#2563eb" stroke-width="6" stroke-linecap="round"/><text x="188" y="35" text-anchor="middle" font-size="9" fill="#2563eb" font-weight="bold">Rod: M, L</text><circle cx="330" cy="40" r="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="330" y="44" text-anchor="middle" font-size="8" fill="#d97706" font-weight="bold">M</text><line x1="188" y1="46" x2="188" y2="70" stroke="#dc2626" stroke-width="2" marker-end="url(#a)"/><text x="198" y="68" font-size="8" fill="#dc2626">Mg</text><line x1="330" y1="50" x2="330" y2="78" stroke="#dc2626" stroke-width="2" marker-end="url(#a)"/><text x="340" y="76" font-size="8" fill="#dc2626">Mg</text><line x1="46" y1="52" x2="188" y2="52" stroke="#64748b" stroke-width="1" stroke-dasharray="3"/><text x="117" y="62" font-size="8" fill="#64748b">L/2</text><line x1="46" y1="56" x2="330" y2="56" stroke="#64748b" stroke-width="1" stroke-dasharray="3"/><text x="188" y="68" font-size="8" fill="#64748b">L</text></svg></div>
+
+            <div class="frq-part-label">(a) Moment of inertia about the pivot (2 pts)</div>
+            <div class="frq-prompt">Calculate the moment of inertia of the system about the pivot point.</div>
+            <div class="step"><strong>Rod about one end:</strong> $I_{rod} = \frac{1}{3}ML^2$</div>
+            <div class="step"><strong>Ball (point mass at distance $L$):</strong> $I_{ball} = ML^2$</div>
+            <div class="step"><strong>Total:</strong> $I = \frac{1}{3}ML^2 + ML^2 = \frac{4}{3}ML^2$</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt each term, or 2 pts for correct total</div>
+
+            <div class="frq-part-label">(b) Angular acceleration immediately after release (4 pts)</div>
+            <div class="frq-prompt">Determine the angular acceleration of the system immediately after release.</div>
+            <div class="step"><strong>Torque about pivot (horizontal position):</strong> $\tau = Mg\frac{L}{2} + MgL = \frac{3MgL}{2}$</div>
+            <div class="step"><strong>Newton's 2nd law for rotation:</strong> $\tau = I\alpha$</div>
+            <div class="step"><strong>Solve:</strong> $\alpha = \frac{\tau}{I} = \frac{3MgL/2}{4ML^2/3} = \frac{3MgL}{2} \times \frac{3}{4ML^2} = \frac{9g}{8L}$</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt torque from rod, 1 pt torque from ball, 1 pt $\tau = I\alpha$, 1 pt answer</div>
+
+            <div class="frq-part-label">(c) Angular velocity when vertical (4 pts)</div>
+            <div class="frq-prompt">Determine the angular velocity of the system when the rod passes through the vertical position.</div>
+            <div class="step"><strong>Energy conservation:</strong> Both centers of mass drop by their distance from pivot.</div>
+            <div class="step"><strong>Height drop:</strong> Rod CM drops $L/2$. Ball drops $L$.</div>
+            <div class="step"><strong>Energy equation:</strong> $Mg\frac{L}{2} + MgL = \frac{1}{2}I\omega^2$<br>$\frac{3MgL}{2} = \frac{1}{2} \cdot \frac{4ML^2}{3} \cdot \omega^2 = \frac{2ML^2}{3}\omega^2$</div>
+            <div class="step"><strong>Solve:</strong> $\omega^2 = \frac{3 \times 3MgL}{2 \times 2ML^2} = \frac{9g}{4L}$<br>$\omega = \frac{3}{2}\sqrt{\frac{g}{L}}$</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt energy conservation setup, 1 pt correct height drops, 1 pt using $I$ from part (a), 1 pt answer</div>
+
+            <div class="frq-part-label">(d) Pivot force when vertical (5 pts)</div>
+            <div class="frq-prompt">At the instant the rod is vertical, determine the magnitude and direction of the force exerted by the pivot on the rod-ball system.</div>
+            <div class="step"><strong>Step 1 &mdash; Angular acceleration when vertical:</strong> When vertical, all weight acts along the rod (through the pivot line). Net torque $= 0$, so $\alpha = 0$. Only centripetal acceleration matters.</div>
+            <div class="step"><strong>Step 2 &mdash; Center of mass location:</strong> $r_{cm} = \frac{M(L/2) + ML}{2M} = \frac{3L}{4}$</div>
+            <div class="step"><strong>Step 3 &mdash; Centripetal acceleration of CM (upward, toward pivot):</strong> $a_{cm} = \omega^2 r_{cm} = \frac{9g}{4L} \cdot \frac{3L}{4} = \frac{27g}{16}$</div>
+            <div class="step"><strong>Step 4 &mdash; Newton's 2nd law (upward positive):</strong> $F_{pivot} - 2Mg = 2M \cdot a_{cm}$<br>$F_{pivot} = 2Mg + 2M \cdot \frac{27g}{16} = 2Mg + \frac{27Mg}{8}$<br>$F_{pivot} = \frac{16Mg + 27Mg}{8} = \frac{43Mg}{8}$</div>
+            <div class="step"><strong>Direction: Upward</strong> (toward the pivot, which is at the top when the rod hangs vertically)</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt $\alpha = 0$ at vertical, 1 pt CM location, 1 pt centripetal acceleration, 1 pt Newton's 2nd law, 1 pt magnitude + direction</div>
+        </div>
+
+        <!-- FRQ 3 -->
+        <div class="sol">
+            <div class="sol-header"><span class="sol-num" style="font-size:1.1rem;">FRQ 3: Oscillating System &amp; Experimental Design</span><span class="sol-ans">15 points</span></div>
+            <div class="q-text">A block of mass $m$ is attached to two identical springs, each with spring constant $k$, arranged in parallel (both connected between the block and a wall). The block slides on a frictionless surface.</div>
+            <div class="fbd"><svg viewBox="0 0 420 70" width="420"><rect x="10" y="10" width="8" height="50" fill="#94a3b8"/><path d="M18,25 l10,5 l10,-10 l10,10 l10,-10 l10,10 l10,-10 l10,10 l10,-5" stroke="#d97706" stroke-width="2" fill="none"/><path d="M18,45 l10,5 l10,-10 l10,10 l10,-10 l10,10 l10,-10 l10,10 l10,-5" stroke="#d97706" stroke-width="2" fill="none"/><rect x="98" y="15" width="40" height="40" fill="#dbeafe" stroke="#2563eb" stroke-width="2" rx="4"/><text x="118" y="40" text-anchor="middle" font-size="9" fill="#2563eb" font-weight="bold">m</text><text x="58" y="18" font-size="8" fill="#d97706">k</text><text x="58" y="60" font-size="8" fill="#d97706">k</text><line x1="138" y1="35" x2="175" y2="35" stroke="#16a34a" stroke-width="2" marker-end="url(#a)"/><text x="150" y="28" font-size="8" fill="#16a34a">x</text><rect x="10" y="60" width="180" height="3" fill="#94a3b8"/><text x="210" y="25" font-size="9" fill="#64748b">Two springs in parallel</text><text x="210" y="40" font-size="9" fill="#1e293b">Each exerts kx &rarr; total = 2kx</text><text x="210" y="55" font-size="9" fill="#16a34a" font-weight="bold">k_eff = 2k</text></svg></div>
+
+            <div class="frq-part-label">(a) Effective spring constant and period (3 pts)</div>
+            <div class="frq-prompt">Show that the effective spring constant of the parallel combination is $k_{eff} = 2k$. Derive the period of oscillation.</div>
+            <div class="step"><strong>Parallel springs:</strong> When displaced by $x$, EACH spring exerts force $kx$ in the restoring direction.</div>
+            <div class="step"><strong>Total restoring force:</strong> $F = kx + kx = 2kx$. Therefore $k_{eff} = 2k$.</div>
+            <div class="step"><strong>Period:</strong> $T = 2\pi\sqrt{\frac{m}{k_{eff}}} = 2\pi\sqrt{\frac{m}{2k}}$</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt showing each spring exerts $kx$, 1 pt $k_{eff} = 2k$, 1 pt period formula</div>
+
+            <div class="frq-part-label">(b) Velocity as function of position (3 pts)</div>
+            <div class="frq-prompt">If the block is displaced by $A$ from equilibrium and released, derive an expression for the velocity as a function of position $x$.</div>
+            <div class="step"><strong>Energy conservation:</strong> $\frac{1}{2}k_{eff}A^2 = \frac{1}{2}k_{eff}x^2 + \frac{1}{2}mv^2$</div>
+            <div class="step"><strong>Solve for $v$:</strong> $v^2 = \frac{k_{eff}}{m}(A^2 - x^2) = \frac{2k}{m}(A^2 - x^2)$</div>
+            <div class="step"><strong>Result:</strong> $$v = \sqrt{\frac{2k}{m}}\sqrt{A^2 - x^2}$$</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt energy equation, 1 pt algebra, 1 pt final expression</div>
+
+            <div class="frq-part-label">(c) Amplitude after one cycle with friction (4 pts)</div>
+            <div class="frq-prompt">Now suppose the surface has friction coefficient $\mu_k$ (kinetic) and the block is released from amplitude $A$. Determine the amplitude after one complete oscillation (one full cycle). State any approximations.</div>
+            <div class="step"><strong>Approximation:</strong> Assume friction is small and amplitude changes slowly (so the path is approximately sinusoidal).</div>
+            <div class="step"><strong>Distance traveled in one full cycle:</strong> $\approx 4A$ (right to equilibrium, to $-A$, back to equilibrium, back to $+A'$)</div>
+            <div class="step"><strong>Energy lost to friction:</strong> $\Delta E = \mu_k mg \times 4A$</div>
+            <div class="step"><strong>Energy equation:</strong> $\frac{1}{2}k_{eff}A^2 - \frac{1}{2}k_{eff}A'^2 = \mu_k mg \cdot 4A$<br>$k(A^2 - A'^2) = 4\mu_k mgA$<br>$k(A + A')(A - A') = 4\mu_k mgA$</div>
+            <div class="step"><strong>With small friction ($A' \approx A$):</strong> $A + A' \approx 2A$, so:<br>$2kA(A - A') \approx 4\mu_k mgA$<br>$A - A' = \frac{2\mu_k mg}{k}$</div>
+            <div class="step"><strong>Result:</strong> $$A' = A - \frac{2\mu_k mg}{k}$$</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt distance = 4A, 1 pt energy lost to friction, 1 pt energy balance equation, 1 pt result with stated approximation</div>
+
+            <div class="frq-part-label">(d) Experimental design (5 pts)</div>
+            <div class="frq-prompt">Design an experiment to determine the spring constant $k$ using only a ruler, a set of known masses, and a stopwatch. Describe your procedure, state what you would measure, and explain how you would analyze the data.</div>
+            <div class="step"><strong>Procedure:</strong><br>1. Attach both springs in parallel to a wall and connect them to a block on a smooth surface.<br>2. Place a known mass $m$ on the block.<br>3. Displace the block a small distance from equilibrium and release.<br>4. Use the stopwatch to time $N$ complete oscillations (e.g., $N = 10$).<br>5. Compute the period: $T = \text{total time}/N$.<br>6. Repeat for 5+ different masses.</div>
+            <div class="step"><strong>Measurements:</strong> Mass $m$ (known), total time for $N$ oscillations (stopwatch), number of oscillations $N$.</div>
+            <div class="step"><strong>Analysis:</strong> From $T = 2\pi\sqrt{m/(2k)}$, squaring gives: $T^2 = \frac{2\pi^2}{k}m$</div>
+            <div class="step"><strong>Graph:</strong> Plot $T^2$ (y-axis) vs. $m$ (x-axis). The result is a straight line through the origin with slope $= 2\pi^2/k$.</div>
+            <div class="step"><strong>Extract $k$:</strong> $k = \frac{2\pi^2}{\text{slope}}$</div>
+            <div class="step" style="border-left-color:var(--success);"><strong>Scoring:</strong> 1 pt clear procedure, 1 pt identifying measurements, 1 pt linearized equation, 1 pt correct graph (axes labeled), 1 pt extracting $k$ from slope</div>
+            <div class="teach"><strong>Alternative method (static):</strong> Hang the spring vertically. Add known masses $m$ one at a time. Measure the extension $x$ with the ruler. Plot $F = mg$ vs $x$. Slope $= k_{eff} = 2k$, so $k = \text{slope}/2$. This is simpler but doesn't use the stopwatch.</div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align:center;margin:30px 0;color:var(--text2);font-size:.8rem">
+            Newton's Laws Retest &mdash; Exam 4 Answer Key &bull; AP Physics C: Mechanics<br>
+            35 MC + 3 FRQ with complete solutions, FBDs, and scoring rubrics
+        </div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">&#9790;</button>
+    <script>
+    function toggleTheme(){document.body.getAttribute('data-theme')==='dark'?(document.body.removeAttribute('data-theme'),localStorage.setItem('apPhysicsTheme','light')):(document.body.setAttribute('data-theme','dark'),localStorage.setItem('apPhysicsTheme','dark'));}
+    if(localStorage.getItem('apPhysicsTheme')==='dark')document.body.setAttribute('data-theme','dark');
+    document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});});
+    </script>
+</body>
+</html>
