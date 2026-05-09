@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AP Physics C: Mechanics - Practice Exam</title>
+    <title>AP Physics C: Mechanics - Newton's Laws Retest</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -293,7 +293,7 @@
     <!-- Start Screen -->
     <div id="start-screen" class="container">
         <h1 id="app-title" style="cursor:default;">AP Physics C: Mechanics</h1>
-        <p class="subtitle">Practice Examination</p>
+        <p class="subtitle">Newton's Laws Retest — Same Concepts, New Numbers</p>
         <div class="exam-info">
             <h3>Exam Structure</h3>
             <ul>
@@ -317,11 +317,7 @@
                 style="padding:12px 20px;font-size:1rem;border:2px solid var(--border);border-radius:8px;text-align:center;width:280px;background:var(--bg);color:var(--text);">
             <button class="btn btn-primary" onclick="startExam('timed')">Start Timed Exam</button>
             <a href="learn.html" class="btn btn-secondary" style="font-size:0.9rem;text-decoration:none;text-align:center;">Learn & Practice (with explanations)</a>
-            <a href="fbd.html" class="btn btn-secondary" style="font-size:0.9rem;text-decoration:none;text-align:center;">FBD Practice (40 exercises)</a>
-            <a href="exam2.html" class="btn btn-secondary" style="font-size:0.9rem;text-decoration:none;text-align:center;">Practice Exam 2</a>
-            <a href="exam3.html" class="btn btn-secondary" style="font-size:0.9rem;text-decoration:none;text-align:center;">Practice Exam 3</a>
-            <a href="exam4.html" class="btn btn-secondary" style="font-size:0.9rem;text-decoration:none;text-align:center;">Newton Retest (Exam 4)</a>
-            <a href="cheatsheet.html" class="btn btn-secondary" style="font-size:0.9rem;text-decoration:none;text-align:center;">Wall Poster / Cheatsheet</a>
+            <a href="fbd.html" class="btn btn-secondary" style="font-size:0.9rem;text-decoration:none;text-align:center;">FBD Practice (20 exercises)</a>
             <button class="btn btn-secondary teacher-only" onclick="startExam('review')" style="font-size:0.9rem;">Review Mode (untimed, with answers)</button>
         </div>
         <div class="teacher-only" style="margin-top:20px;gap:10px;">
@@ -447,7 +443,7 @@
         <div class="action-links teacher-only">
             <button class="btn btn-success" id="save-btn" disabled style="opacity:0.8;">&#10003; Progress Saved</button>
             <a href="dashboard.html" class="btn btn-primary" style="color:white;">View Dashboard</a>
-            <a href="answer-key.html" class="btn btn-secondary">Full Answer Key</a>
+            <a href="answer-key-exam2.html" class="btn btn-secondary">Full Answer Key</a>
         </div>
     </div>
 
@@ -468,47 +464,47 @@
 // QUESTION DATA
 // ============================================
 const mcQuestions = [
-    // --- KINEMATICS (Q1-6) ---
-    { id:1, topic:"Kinematics", text:"A particle moves along the x-axis with velocity given by $v(t) = 4t - t^2$ m/s, where $t$ is in seconds. What is the displacement of the particle from $t = 0$ to $t = 6$ s?", choices:["$0$ m","$12$ m","$-12$ m","$36$ m","$24$ m"], correctIndex:0 },
-    { id:2, topic:"Kinematics", text:"A ball is thrown vertically upward with initial speed $v_0$. The ball reaches a maximum height $H$. At what height is the speed of the ball equal to $v_0/2$?", choices:["$H/4$","$H/2$","$3H/4$","$3H/2$","$H/\\sqrt{2}$"], correctIndex:2 },
-    { id:3, topic:"Kinematics", text:"A projectile is launched at angle $\\theta$ above the horizontal with speed $v_0$. The acceleration of the projectile at the highest point of its trajectory is:", choices:["$0$","$g\\sin\\theta$, directed along the velocity","$g$, directed downward","$g\\cos\\theta$, directed downward","$v_0^2/R$, directed toward the center of curvature"], correctIndex:2 },
-    { id:4, topic:"Kinematics", text:"The position of a particle is given by $x(t) = t^3 - 9t^2 + 24t$ meters. At what time(s) is the particle momentarily at rest?", choices:["$t = 2$ s only","$t = 4$ s only","$t = 2$ s and $t = 4$ s","$t = 1$ s and $t = 4$ s","$t = 0$ and $t = 2$ s"], correctIndex:2 },
-    { id:5, topic:"Kinematics", text:"Two objects are dropped from the same height. Object A is dropped from rest; Object B is thrown horizontally with speed $v$. Neglecting air resistance, which statement is correct?", choices:["A hits the ground first because it travels a shorter path","B hits the ground first because it has greater initial speed","They hit the ground at the same time","B hits the ground later because horizontal motion delays the fall","The answer depends on the value of $v$"], correctIndex:2 },
-    { id:6, topic:"Kinematics", text:"A car accelerates from rest with acceleration $a(t) = 6 - 2t$ m/s$^2$. What is the maximum velocity achieved by the car?", choices:["$3$ m/s","$6$ m/s","$9$ m/s","$12$ m/s","$18$ m/s"], correctIndex:2 },
-    // --- NEWTON'S LAWS (Q7-12) ---
-    { id:7, topic:"Newton's Laws", text:"A block of mass $m$ is on a frictionless inclined plane of angle $\\theta$. A horizontal force $F$ is applied to the block. What value of $F$ keeps the block in static equilibrium on the incline?", choices:["$mg\\sin\\theta$","$mg\\cos\\theta$","$mg\\tan\\theta$","$mg/\\sin\\theta$","$mg/\\cos\\theta$"], correctIndex:2 },
-    { id:8, topic:"Newton's Laws", text:"A 5 kg block rests on a 10 kg block which rests on a frictionless surface. The coefficient of static friction between the blocks is 0.4. What is the maximum horizontal force that can be applied to the 10 kg block so that the 5 kg block does not slide?", choices:["$20$ N","$30$ N","$40$ N","$60$ N","$90$ N"], correctIndex:3 },
-    { id:9, topic:"Newton's Laws", text:"An elevator of mass $M$ accelerates upward at $a = g/4$. The tension in the cable supporting the elevator is:", choices:["$Mg/4$","$3Mg/4$","$Mg$","$5Mg/4$","$2Mg$"], correctIndex:3 },
-    { id:10, topic:"Newton's Laws", text:"A particle of mass $m$ moves in one dimension subject to force $F(x) = -kx + bx^3$ where $k$ and $b$ are positive constants. The equilibrium positions are at:", choices:["$x = 0$ only","$x = 0$ and $x = \\pm\\sqrt{k/b}$","$x = \\pm\\sqrt{k/b}$ only","$x = 0$ and $x = k/b$","$x = \\pm\\sqrt{b/k}$"], correctIndex:1 },
-    { id:11, topic:"Newton's Laws", text:"A conical pendulum has a bob of mass $m$ on a string of length $L$ making angle $\\theta$ with the vertical. The period of revolution is:", choices:["$2\\pi\\sqrt{L/g}$","$2\\pi\\sqrt{L\\cos\\theta/g}$","$2\\pi\\sqrt{L\\sin\\theta/g}$","$2\\pi\\sqrt{L/(g\\cos\\theta)}$","$2\\pi\\sqrt{L\\tan\\theta/g}$"], correctIndex:1 },
-    { id:12, topic:"Newton's Laws", text:"A block slides down a rough incline with angle $\\theta$ and kinetic friction coefficient $\\mu_k$. The magnitude of the block's acceleration is:", choices:["$g(\\sin\\theta + \\mu_k\\cos\\theta)$","$g(\\sin\\theta - \\mu_k\\cos\\theta)$","$g\\sin\\theta$","$g(\\cos\\theta - \\mu_k\\sin\\theta)$","$\\mu_k g\\cos\\theta$"], correctIndex:1 },
-    // --- WORK, ENERGY, POWER (Q13-18) ---
-    { id:13, topic:"Work & Energy", text:"A force $F(x) = 3x^2 - 2x$ N acts on a particle moving along the x-axis. The work done by this force as the particle moves from $x = 1$ m to $x = 3$ m is:", choices:["$16$ J","$18$ J","$20$ J","$22$ J","$24$ J"], correctIndex:1 },
-    { id:14, topic:"Work & Energy", text:"A block of mass $m$ slides along a frictionless track from height $h$ and enters a rough horizontal section of length $d$ with coefficient of kinetic friction $\\mu_k$. After passing through the rough section, the block's speed is:", choices:["$\\sqrt{2gh - \\mu_k gd}$","$\\sqrt{2gh - 2\\mu_k gd}$","$\\sqrt{2g(h - \\mu_k d)}$","$\\sqrt{2gh} - \\mu_k gd$","$\\sqrt{2gh - \\mu_k g d^2}$"], correctIndex:2 },
-    { id:15, topic:"Work & Energy", text:"The potential energy of a particle is given by $U(x) = 4x^2 - x^4$ (in SI units). The positions of stable equilibrium are at:", choices:["$x = 0$ only","$x = \\pm\\sqrt{2}$","$x = 0$ and $x = \\pm\\sqrt{2}$","$x = \\pm 2$","There are no positions of stable equilibrium"], correctIndex:0 },
-    { id:16, topic:"Work & Energy", text:"A spring with force constant $k$ is compressed a distance $d$ and launches a ball of mass $m$ vertically. The maximum height reached by the ball above the launch point is:", choices:["$kd/(2mg)$","$kd^2/(mg)$","$kd^2/(2mg)$","$2kd^2/(mg)$","$kd^2/(2mg) - d$"], correctIndex:2 },
-    { id:17, topic:"Work & Energy", text:"A motor lifts a 200 kg crate at a constant speed of 3 m/s. The power output of the motor is approximately:", choices:["$600$ W","$1200$ W","$3000$ W","$6000$ W","$9000$ W"], correctIndex:3 },
-    { id:18, topic:"Work & Energy", text:"A variable force acts on a 2 kg object moving along the x-axis. The force-displacement graph shows a triangle with $F = 10$ N at $x = 0$ decreasing linearly to $F = 0$ at $x = 4$ m. If the object starts from rest, its speed at $x = 4$ m is:", choices:["$\\sqrt{10}$ m/s","$\\sqrt{20}$ m/s","$2\\sqrt{5}$ m/s","$4\\sqrt{5}$ m/s","$10$ m/s"], correctIndex:1 },
-    // --- MOMENTUM (Q19-24) ---
-    { id:19, topic:"Momentum", text:"A 2 kg ball moving at 5 m/s collides head-on with a 3 kg ball at rest. If the collision is perfectly elastic, the speed of the 2 kg ball after the collision is:", choices:["$1$ m/s in the original direction","$1$ m/s in the opposite direction","$2$ m/s in the original direction","$2$ m/s in the opposite direction","$0$ m/s"], correctIndex:1 },
-    { id:20, topic:"Momentum", text:"A firecracker at rest explodes into three pieces. Two pieces have equal mass $m$ and fly off perpendicular to each other, each with speed $v$. The mass of the third piece is $3m$. What is the speed of the third piece?", choices:["$v/3$","$v\\sqrt{2}/3$","$v/\\sqrt{3}$","$2v/3$","$v\\sqrt{2}$"], correctIndex:1 },
-    { id:21, topic:"Momentum", text:"A ball of mass $m$ moving with speed $v$ hits a wall at angle $\\theta$ from the normal and bounces off at the same angle with the same speed. The magnitude of the impulse delivered to the ball is:", choices:["$mv$","$2mv$","$2mv\\cos\\theta$","$2mv\\sin\\theta$","$mv\\cos\\theta$"], correctIndex:2 },
-    { id:22, topic:"Momentum", text:"A rocket of initial mass $M_0$ expels gas at a constant rate $dm/dt = R$ with exhaust velocity $v_e$ relative to the rocket. Neglecting gravity, the velocity of the rocket when its mass is $M_0/2$ is:", choices:["$v_e/2$","$v_e\\ln 2$","$2v_e$","$v_e(1 - \\ln 2)$","$v_e e^{1/2}$"], correctIndex:1 },
-    { id:23, topic:"Momentum", text:"The center of mass of a uniform solid hemisphere of radius $R$ is located at a distance from the flat face of:", choices:["$R/2$","$R/3$","$3R/8$","$3R/4$","$R/4$"], correctIndex:2 },
-    { id:24, topic:"Momentum", text:"A 1 kg object moving at 10 m/s collides with a 2 kg object moving at 4 m/s in the same direction. After the perfectly inelastic collision, their common velocity is:", choices:["$4$ m/s","$5$ m/s","$6$ m/s","$7$ m/s","$8$ m/s"], correctIndex:2 },
-    // --- ROTATION (Q25-30) ---
-    { id:25, topic:"Rotation", text:"A uniform solid disk of mass $M$ and radius $R$ rolls without slipping down an incline of angle $\\theta$. The acceleration of the center of mass is:", choices:["$g\\sin\\theta$","$g\\sin\\theta/2$","$(2/3)g\\sin\\theta$","$(3/5)g\\sin\\theta$","$(5/7)g\\sin\\theta$"], correctIndex:2 },
-    { id:26, topic:"Rotation", text:"A thin rod of mass $M$ and length $L$ is pivoted about one end and released from a horizontal position. The angular velocity when the rod is vertical is:", choices:["$\\sqrt{g/L}$","$\\sqrt{2g/L}$","$\\sqrt{3g/L}$","$\\sqrt{6g/L}$","$\\sqrt{3g/(2L)}$"], correctIndex:2 },
-    { id:27, topic:"Rotation", text:"A uniform solid sphere and a hollow spherical shell, both of mass $M$ and radius $R$, roll without slipping down an incline. At the bottom:", choices:["The solid sphere arrives first and has greater speed","The hollow shell arrives first and has greater speed","They arrive at the same time with the same speed","The solid sphere arrives first but they have the same speed","They arrive at the same time but the solid sphere has greater speed"], correctIndex:0 },
-    { id:28, topic:"Rotation", text:"A figure skater pulls her arms inward, reducing her moment of inertia from $I$ to $I/3$. If her initial angular velocity was $\\omega_0$, her rotational kinetic energy:", choices:["Remains the same","Increases by a factor of 3","Increases by a factor of 9","Decreases by a factor of 3","Increases by a factor of $\\sqrt{3}$"], correctIndex:1 },
-    { id:29, topic:"Rotation", text:"A disk of moment of inertia $I$ rotates with angular velocity $\\omega$. A second identical disk, initially at rest, is dropped onto the first. They reach a common angular velocity due to friction. What fraction of the initial kinetic energy is lost?", choices:["$1/4$","$1/3$","$1/2$","$2/3$","$3/4$"], correctIndex:2 },
-    { id:30, topic:"Rotation", text:"A torque $\\tau(t) = \\tau_0 e^{-t/T}$ is applied to a wheel of moment of inertia $I$ initially at rest. The angular velocity as $t \\to \\infty$ is:", choices:["$\\tau_0 T / I$","$\\tau_0 / (IT)$","$\\tau_0 e / I$","$\\tau_0 / (Ie)$","$\\tau_0 T^2 / I$"], correctIndex:0 },
-    // --- OSCILLATIONS & GRAVITATION (Q31-35) ---
-    { id:31, topic:"Oscillations & Gravitation", text:"A mass $m$ on a spring with constant $k$ oscillates with amplitude $A$. The speed of the mass when it is at displacement $x = A/2$ from equilibrium is:", choices:["$\\sqrt{k/m} \\cdot A/2$","$\\sqrt{3kA^2/(4m)}$","$\\sqrt{kA^2/(2m)}$","$\\sqrt{k/m} \\cdot A$","$\\sqrt{kA^2/(4m)}$"], correctIndex:1 },
-    { id:32, topic:"Oscillations & Gravitation", text:"A simple pendulum has period $T$ on Earth's surface. If taken to a planet with twice the mass and twice the radius of Earth, the period would be:", choices:["$T/2$","$T/\\sqrt{2}$","$T$","$T\\sqrt{2}$","$2T$"], correctIndex:3 },
-    { id:33, topic:"Oscillations & Gravitation", text:"A satellite orbits Earth in a circular orbit of radius $r$. The satellite's speed is increased by a factor of $\\sqrt{2}$. The satellite will:", choices:["Move to a circular orbit of radius $2r$","Move to an elliptical orbit with semi-major axis $2r$","Escape Earth's gravitational field","Spiral inward toward Earth","Move to a circular orbit of radius $4r$"], correctIndex:2 },
-    { id:34, topic:"Oscillations & Gravitation", text:"A physical pendulum consists of a uniform rod of mass $m$ and length $L$ pivoted at one end. The period of small oscillations is:", choices:["$2\\pi\\sqrt{L/g}$","$2\\pi\\sqrt{L/(2g)}$","$2\\pi\\sqrt{2L/(3g)}$","$2\\pi\\sqrt{L/(3g)}$","$2\\pi\\sqrt{3L/(2g)}$"], correctIndex:2 },
-    { id:35, topic:"Oscillations & Gravitation", text:"Two masses $m_1$ and $m_2$ are connected by a spring of constant $k$ on a frictionless surface. The frequency of oscillation of the system is:", choices:["$\\frac{1}{2\\pi}\\sqrt{\\frac{k}{m_1 + m_2}}$","$\\frac{1}{2\\pi}\\sqrt{\\frac{k(m_1 + m_2)}{m_1 m_2}}$","$\\frac{1}{2\\pi}\\sqrt{\\frac{k}{m_1 m_2/(m_1+m_2)}}$","$\\frac{1}{2\\pi}\\sqrt{\\frac{k}{m_1}} + \\frac{1}{2\\pi}\\sqrt{\\frac{k}{m_2}}$","$\\frac{1}{2\\pi}\\sqrt{\\frac{2k}{m_1 + m_2}}$"], correctIndex:1 }
+    // === CATEGORY A: FLAT SURFACE + FORCES (Q1-5) — Same concepts, different numbers ===
+    { id:1, topic:"Newton's Laws", text:"A 8 kg crate is pushed across a rough floor ($\\mu_k = 0.3$) by two horizontal forces: 50 N to the right and 10 N to the left. The acceleration is:", choices:["$2$ m/s$^2$","$5$ m/s$^2$","$3$ m/s$^2$","$0$ (doesn't move)","$7.5$ m/s$^2$"], correctIndex:0 },
+    { id:2, topic:"Newton's Laws", text:"A 10 kg box on a rough floor ($\\mu_s = 0.4$, $\\mu_k = 0.2$) is pushed with 30 N horizontally. The friction force on the box is:", choices:["$20$ N","$30$ N","$40$ N","$0$ N","$10$ N"], correctIndex:1 },
+    { id:3, topic:"Newton's Laws", text:"A 4 kg object on a frictionless surface has two forces: $F_1 = 20$ N at 30° above horizontal (right) and $F_2 = 7.32$ N horizontally to the left. The horizontal acceleration is:", choices:["$2.5$ m/s$^2$","$1.83$ m/s$^2$","$4.33$ m/s$^2$","$3.17$ m/s$^2$","$5$ m/s$^2$"], correctIndex:0 },
+    { id:4, topic:"Newton's Laws", text:"A block is pushed against a vertical wall by a horizontal force of 80 N. The block weighs 20 N. If $\\mu_s = 0.3$, does the block slide?", choices:["No — max friction is 24 N > weight 20 N","Yes — max friction is 24 N < weight 80 N","No — normal force exceeds weight","Yes — the block always slides","Cannot determine"], correctIndex:0 },
+    { id:5, topic:"Newton's Laws", text:"A force vs. acceleration graph for an object on a rough surface is linear with slope 5 kg and x-intercept at $F = 15$ N. The coefficient of kinetic friction is ($g = 10$ m/s$^2$):", choices:["$0.3$","$0.4$","$0.5$","$0.25$","$0.6$"], correctIndex:0 },
+    // === CATEGORY B: INCLINES (Q6-12) ===
+    { id:6, topic:"Newton's Laws", text:"A 5 kg block on a frictionless 37° incline ($\\sin 37° = 0.6$, $\\cos 37° = 0.8$) has acceleration:", choices:["$6$ m/s$^2$","$8$ m/s$^2$","$4$ m/s$^2$","$10$ m/s$^2$","$5$ m/s$^2$"], correctIndex:0 },
+    { id:7, topic:"Newton's Laws", text:"A block slides DOWN a 30° rough incline at constant velocity. The coefficient of kinetic friction is:", choices:["$1/\\sqrt{3} \\approx 0.577$","$0.5$","$1.0$","$\\sqrt{3}$","$0.3$"], correctIndex:0 },
+    { id:8, topic:"Newton's Laws", text:"A 4 kg block is PUSHED down a frictionless 30° incline by a force of 30 N applied parallel to the incline. The acceleration is:", choices:["$12.5$ m/s$^2$","$5$ m/s$^2$","$7.5$ m/s$^2$","$10$ m/s$^2$","$2.5$ m/s$^2$"], correctIndex:0 },
+    { id:9, topic:"Newton's Laws", text:"Two blocks ($m_1 = 3$ kg, $m_2 = 6$ kg) are in contact on a 30° frictionless incline. A force $F = 135$ N pushes $m_1$ up the incline. The contact force between the blocks is:", choices:["$90$ N","$45$ N","$60$ N","$30$ N","$135$ N"], correctIndex:0 },
+    { id:10, topic:"Newton's Laws", text:"A 3 kg block on a 53° incline ($\\sin 53° = 0.8$, $\\cos 53° = 0.6$) is attached to a spring ($k = 300$ N/m) parallel to the surface. If $\\mu_s = 0.25$, the max spring compression before the block slides up is:", choices:["$0.095$ m","$0.080$ m","$0.12$ m","$0.065$ m","$0.050$ m"], correctIndex:0 },
+    { id:11, topic:"Newton's Laws", text:"A block on a rough incline begins to slide when the angle reaches $27°$. The coefficient of static friction is approximately:", choices:["$0.51$","$0.47$","$0.27$","$0.60$","$0.87$"], correctIndex:0 },
+    { id:12, topic:"Newton's Laws", text:"A 3 kg block on a rough 37° incline ($\\mu_k = 0.15$) is connected by a string to a 2 kg block further up the same incline. Both slide down together. The tension is:", choices:["$0$ N","$2$ N","$5$ N","$3$ N","$1$ N"], correctIndex:0 },
+    // === CATEGORY C: CONNECTED SYSTEMS (Q13-18) ===
+    { id:13, topic:"Newton's Laws", text:"A modified Atwood: 8 kg on frictionless table, 5 kg hanging right, 3 kg hanging left. The acceleration is:", choices:["$1.25$ m/s$^2$","$2.5$ m/s$^2$","$3.13$ m/s$^2$","$5$ m/s$^2$","$0.63$ m/s$^2$"], correctIndex:0 },
+    { id:14, topic:"Newton's Laws", text:"Two blocks ($m_1 = 2$ kg and $m_2 = 6$ kg) on opposite 30° frictionless inclines, connected over the top. The acceleration is:", choices:["$2.5$ m/s$^2$","$0$ (balanced)","$1.25$ m/s$^2$","$5$ m/s$^2$","$3.75$ m/s$^2$"], correctIndex:0 },
+    { id:15, topic:"Newton's Laws", text:"A 3 kg block on a rough table ($\\mu_k = 0.2$) is connected over a pulley to a 7 kg hanging block. The acceleration is:", choices:["$6.4$ m/s$^2$","$7$ m/s$^2$","$5$ m/s$^2$","$4$ m/s$^2$","$3.4$ m/s$^2$"], correctIndex:0 },
+    { id:16, topic:"Newton's Laws", text:"In Q15, the tension in the string is:", choices:["$25.2$ N","$70$ N","$30$ N","$42$ N","$35$ N"], correctIndex:0 },
+    { id:17, topic:"Newton's Laws", text:"A 3 kg hanging block and a 5 kg block on a frictionless 37° incline ($\\sin 37° = 0.6$) are connected over a pulley. The system is in equilibrium. The tension is:", choices:["$30$ N","$33$ N","$25$ N","$50$ N","$18$ N"], correctIndex:0 },
+    { id:18, topic:"Newton's Laws", text:"In an Atwood machine, if $m_2 = 4m_1$, the acceleration is:", choices:["$3g/5$","$g/2$","$g/4$","$3g/4$","$4g/5$"], correctIndex:0 },
+    // === CATEGORY D: CIRCULAR + NEWTON (Q19-23) ===
+    { id:19, topic:"Newton's Laws", text:"A 2 kg ball on a 0.5 m string swings in a vertical circle. At the bottom, the tension is 60 N. The speed at the bottom is:", choices:["$\\sqrt{10}$ m/s","$\\sqrt{20}$ m/s","$\\sqrt{5}$ m/s","$5$ m/s","$\\sqrt{40}$ m/s"], correctIndex:0 },
+    { id:20, topic:"Newton's Laws", text:"A car drives at 20 m/s on a flat circular track of radius 80 m. The minimum $\\mu_s$ to prevent sliding is:", choices:["$0.5$","$0.25$","$1.0$","$0.4$","$2.0$"], correctIndex:0 },
+    { id:21, topic:"Newton's Laws", text:"A satellite orbits Earth at radius $r$. The gravitational force provides the centripetal force. If the orbit radius doubles to $2r$, the orbital speed:", choices:["Decreases by factor $\\sqrt{2}$","Halves","Stays the same","Doubles","Increases by $\\sqrt{2}$"], correctIndex:0 },
+    { id:22, topic:"Newton's Laws", text:"A coin on a turntable at $r = 0.2$ m from center. If $\\mu_s = 0.5$, the maximum angular velocity before it slides is:", choices:["$5$ rad/s","$\\sqrt{25}$ rad/s","$\\sqrt{50}$ rad/s","$10$ rad/s","$2.5$ rad/s"], correctIndex:0 },
+    { id:23, topic:"Newton's Laws", text:"A pendulum bob (mass $m$, length $L$) is released from 60° from vertical. The tension at the bottom is:", choices:["$2mg$","$3mg$","$mg$","$1.5mg$","$2.5mg$"], correctIndex:0 },
+    // === CATEGORY E: CALCULUS-BASED (Q24-29) ===
+    { id:24, topic:"Newton's Laws", text:"A 4 kg object has force $F(t) = 12\\sin(3t)$ N from $t = 0$ to $t = \\pi/3$ s. Starting from rest, the final speed is:", choices:["$2$ m/s","$1$ m/s","$3$ m/s","$4$ m/s","$6$ m/s"], correctIndex:0 },
+    { id:25, topic:"Newton's Laws", text:"A 5 kg object with drag $F = -10v$ falls under gravity. The velocity as a function of time is:", choices:["$5(1 - e^{-2t})$ m/s","$5e^{-2t}$ m/s","$50(1 - e^{-t/5})$ m/s","$10(1 - e^{-t})$ m/s","$5t$ m/s"], correctIndex:0 },
+    { id:26, topic:"Newton's Laws", text:"A 0.5 kg particle falls with quadratic drag $F_{drag} = -0.05v^2$ N. The terminal velocity is:", choices:["$10$ m/s","$5$ m/s","$100$ m/s","$\\sqrt{50}$ m/s","$20$ m/s"], correctIndex:0 },
+    { id:27, topic:"Newton's Laws", text:"A 2 kg mass on a spring with $k = 18$ N/m. The period of oscillation is:", choices:["$2\\pi/3$ s","$\\pi/3$ s","$2\\pi$ s","$\\pi$ s","$3\\pi$ s"], correctIndex:0 },
+    { id:28, topic:"Newton's Laws", text:"Water flows onto a stationary plate at rate 3 kg/s with horizontal velocity 8 m/s. The force on the plate is:", choices:["$24$ N","$8$ N","$3$ N","$11$ N","$48$ N"], correctIndex:0 },
+    { id:29, topic:"Newton's Laws", text:"A 5 kg object has $a(t) = 6 - 2t$ m/s$^2$. The net force at $t = 2$ s is:", choices:["$10$ N","$20$ N","$30$ N","$0$ N","$5$ N"], correctIndex:0 },
+    // === CATEGORY F: ADVANCED (Q30-35) ===
+    { id:30, topic:"Newton's Laws", text:"A tug-of-war team pulls with 500 N on a rope. The other team also pulls with 500 N. The tension in the rope is:", choices:["$500$ N","$1000$ N","$0$ N","$250$ N","$750$ N"], correctIndex:0 },
+    { id:31, topic:"Newton's Laws", text:"A car goes over a hill of radius $R$ at speed $v$. The driver feels weightless. The speed must be:", choices:["$\\sqrt{gR}$","$\\sqrt{2gR}$","$gR$","$\\sqrt{gR/2}$","$0$"], correctIndex:0 },
+    { id:32, topic:"Newton's Laws", text:"A box on a rough flat surface ($\\mu_s = 0.4$) has a rope pulling at 45° above horizontal. The tension needed to START moving the box (mass 10 kg) is:", choices:["$\\frac{40}{\\cos 45° + 0.4\\sin 45°}$ N","$40$ N","$40/\\cos 45°$ N","$\\mu_s mg$ N","$100$ N"], correctIndex:0 },
+    { id:33, topic:"Newton's Laws", text:"Block A ($6$ kg) is on a 37° frictionless incline, connected to hanging Block B. Equilibrium requires $m_B =$:", choices:["$3.6$ kg","$6$ kg","$4.8$ kg","$2$ kg","$5$ kg"], correctIndex:0 },
+    { id:34, topic:"Newton's Laws", text:"Which expression has the SAME units as momentum (kg·m/s)?", choices:["$Ft$ (force × time)","$Fv$ (force × velocity)","$mv^2$ (mass × velocity²)","$ma$ (mass × acceleration)","$Fd$ (force × distance)"], correctIndex:0 },
+    { id:35, topic:"Newton's Laws", text:"A 5 kg lamp hangs from two ropes: one at 30° from vertical and one at 60° from vertical. The tension in the rope at 30° from vertical is:", choices:["$25\\sqrt{3}$ N","$25$ N","$50$ N","$50/\\sqrt{3}$ N","$50\\sqrt{3}$ N"], correctIndex:0 }
 ];
 
 const frqQuestions = [
@@ -911,7 +907,7 @@ function showResults() {
 
     // Auto-save session FIRST, then clear temp state
     saveSessionToHistory();
-    localStorage.removeItem('apPhysicsExamState');
+    localStorage.removeItem('apPhysicsExam4State');
 }
 
 let errorClassifications = {};
@@ -986,12 +982,12 @@ function saveSessionToHistory() {
 // PERSISTENCE (in-exam auto-save)
 // ============================================
 function saveState() {
-    localStorage.setItem('apPhysicsExamState', JSON.stringify({
+    localStorage.setItem('apPhysicsExam4State', JSON.stringify({
         currentSection, currentQuestion, answers, confidence, frqAnswers, flags, timeRemaining, questionTotalTime, examMode
     }));
 }
 function loadSavedState() {
-    const saved = localStorage.getItem('apPhysicsExamState');
+    const saved = localStorage.getItem('apPhysicsExam4State');
     if (saved) {
         try {
             const s = JSON.parse(saved);
