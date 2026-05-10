@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Physics C: Mechanics — Exam Day Speed Sheet</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',-apple-system,sans-serif;background:#fff;color:#1e293b;line-height:1.35;font-size:11px}
+        .page{max-width:820px;margin:0 auto;padding:6px 10px}
+        .hdr{background:linear-gradient(135deg,#0f172a,#1e40af);color:#fff;padding:8px 14px;border-radius:8px;text-align:center;margin-bottom:6px}
+        .hdr h1{font-size:1.3rem;letter-spacing:1px;margin-bottom:2px}
+        .hdr .sub{font-size:.7rem;opacity:.7}
+        .g{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+        .full{grid-column:1/-1}
+        .sec{border:1.5px solid;border-radius:6px;padding:5px 7px;break-inside:avoid}
+        .sec h2{font-size:.72rem;padding:1px 7px;border-radius:3px;color:#fff;display:inline-block;margin-bottom:3px;letter-spacing:.3px}
+        .b1{border-color:#2563eb}.b1 h2{background:#2563eb}
+        .b2{border-color:#7c3aed}.b2 h2{background:#7c3aed}
+        .b3{border-color:#16a34a}.b3 h2{background:#16a34a}
+        .b4{border-color:#d97706}.b4 h2{background:#d97706}
+        .b5{border-color:#dc2626}.b5 h2{background:#dc2626}
+        .b6{border-color:#0891b2}.b6 h2{background:#0891b2}
+        .b7{border-color:#be185d}.b7 h2{background:#be185d}
+        .f{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:4px;padding:2px 6px;margin:2px 0;text-align:center;font-size:.78rem}
+        .f2{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+        .f3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px}
+        .trap{background:#fef2f2;border-left:3px solid #dc2626;padding:2px 6px;margin:2px 0;font-size:.73rem;border-radius:0 4px 4px 0}
+        .trap b{color:#dc2626}
+        .tip{background:#eff6ff;border-left:3px solid #2563eb;padding:2px 6px;margin:2px 0;font-size:.73rem;border-radius:0 4px 4px 0}
+        .tip b{color:#2563eb}
+        .gold{background:#1e293b;color:#fbbf24;padding:2px 7px;border-radius:4px;font-size:.73rem;font-weight:700;margin:2px 0;text-align:center}
+        .tbl{width:100%;border-collapse:collapse;font-size:.73rem;margin:3px 0}
+        .tbl th,.tbl td{border:1px solid #e2e8f0;padding:2px 5px;text-align:center}
+        .tbl th{background:#f8fafc;font-weight:700;color:#64748b;font-size:.68rem}
+        .tbl td:first-child{text-align:left;font-weight:600}
+        .alert{background:#dc2626;color:#fff;padding:5px 8px;border-radius:6px;margin:3px 0}
+        .alert h3{font-size:.8rem;margin-bottom:3px}
+        .alert ul{margin-left:14px;font-size:.73rem;line-height:1.5}
+        .see{font-size:.73rem;line-height:1.5}
+        .see span{font-weight:700;color:#2563eb}
+        .see em{font-weight:700;color:#16a34a;font-style:normal}
+        .mini{font-size:.65rem;color:#94a3b8}
+        @media print{
+            body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+            .no-print{display:none}
+            .page{padding:0;max-width:100%}
+            .sec{break-inside:avoid}
+        }
+    </style>
+</head>
+<body>
+<div class="no-print" style="text-align:center;padding:6px">
+    <button onclick="window.print()" style="padding:6px 20px;border:none;border-radius:6px;background:#1e40af;color:#fff;cursor:pointer;font-size:.85rem;font-weight:600">Print Speed Sheet</button>
+</div>
+
+<div class="page">
+
+<div class="hdr">
+    <h1>EXAM DAY SPEED SHEET</h1>
+    <div class="sub">AP Physics C: Mechanics &bull; Every formula. Every shortcut. Every trap. &bull; Personalized for Aadwik</div>
+</div>
+
+<!-- ==================== STRATEGY ==================== -->
+<div class="sec b1 full" style="background:#eff6ff">
+    <h2>EXAM STRATEGY</h2>
+    <div style="display:flex;gap:8px;font-size:.75rem;flex-wrap:wrap">
+        <div style="flex:1;min-width:150px"><b>Timing:</b> 35 MC in 45 min = <b>77s/question</b>. Stuck at 90s? <b>Flag &rarr; Move on.</b></div>
+        <div style="flex:1;min-width:150px"><b>Method pick:</b> "Find speed/height" &rarr; <b>Energy</b>. "Find force/accel" &rarr; <b>F=ma</b>. "Find time" &rarr; <b>Kinematics</b>.</div>
+        <div style="flex:1;min-width:150px"><b>When stuck:</b> Check units of answers. Eliminate impossible ones. Plug in extreme values (m&rarr;0, &theta;&rarr;90&deg;).</div>
+    </div>
+</div>
+
+<div class="g">
+
+<!-- ==================== KINEMATICS ==================== -->
+<div class="sec b1">
+    <h2>1. KINEMATICS</h2>
+    <div class="f3">
+        <div class="f">$v = v_0 + at$</div>
+        <div class="f">$x = v_0t + \tfrac{1}{2}at^2$</div>
+        <div class="f">$v^2 = v_0^2 + 2a\Delta x$</div>
+    </div>
+    <div class="f2">
+        <div class="f">$v = \frac{dx}{dt}$, $a = \frac{dv}{dt}$</div>
+        <div class="f">$\Delta x = \int v\,dt$, $\Delta v = \int a\,dt$</div>
+    </div>
+    <div class="gold">Projectile: $a_x = 0$ always. $a_y = -g$ always. Horizontal &amp; vertical are INDEPENDENT.</div>
+    <div class="see">
+        <span>See v-t graph &rarr;</span> <em>slope = a</em>, <em>area = &Delta;x</em><br>
+        <span>See "when does it stop?" &rarr;</span> <em>set v(t) = 0, solve for t</em><br>
+        <span>See "when does it turn around?" &rarr;</span> <em>v = 0 AND a changes sign</em>
+    </div>
+</div>
+
+<!-- ==================== NEWTON'S LAWS ==================== -->
+<div class="sec b2">
+    <h2>2. NEWTON'S LAWS</h2>
+    <div class="f">$\vec{F}_{net} = m\vec{a}$ &mdash; apply separately: $\Sigma F_x = ma_x$, $\Sigma F_y = ma_y$</div>
+    <div class="see">
+        <span>Elevator UP (or accel up):</span> <em>Scale = m(g+a)</em> &mdash; feels heavier<br>
+        <span>Elevator DOWN (or accel down):</span> <em>Scale = m(g&minus;a)</em> &mdash; feels lighter<br>
+        <span>Weightless:</span> <em>a = g (freefall)</em><br>
+        <span>Incline (friction):</span> <em>a = g(sin&theta; &minus; &mu;cos&theta;)</em><br>
+        <span>Constant v on incline:</span> <em>&mu;<sub>k</sub> = tan&theta;</em><br>
+        <span>Atwood machine:</span> <em>a = (m<sub>2</sub>&minus;m<sub>1</sub>)g / (m<sub>1</sub>+m<sub>2</sub>)</em>
+    </div>
+    <div class="f2">
+        <div class="f">$F_c = \frac{mv^2}{r}$ toward center</div>
+        <div class="f">$v_{top} = \sqrt{gR}$ (weightless)</div>
+    </div>
+    <div class="f2">
+        <div class="f">Linear drag: $v_t = mg/b$</div>
+        <div class="f">Quad drag: $v_t = \sqrt{mg/b}$</div>
+    </div>
+    <div class="trap"><b>TRAP:</b> Linear drag terminal v = mg/b &mdash; NO square root! Only quadratic drag has &radic;.</div>
+</div>
+
+<!-- ==================== WORK, ENERGY, POWER ==================== -->
+<div class="sec b3">
+    <h2>3. WORK, ENERGY &amp; POWER</h2>
+    <div class="f3">
+        <div class="f">$KE = \tfrac{1}{2}mv^2$</div>
+        <div class="f">$U_g = mgh$</div>
+        <div class="f">$U_s = \tfrac{1}{2}kx^2$</div>
+    </div>
+    <div class="f2">
+        <div class="f">$W = \int \vec{F} \cdot d\vec{r}$</div>
+        <div class="f">$W_{net} = \Delta KE$</div>
+    </div>
+    <div class="f2">
+        <div class="f">$P = \frac{dW}{dt} = \vec{F} \cdot \vec{v}$</div>
+        <div class="f">$F(x) = -\frac{dU}{dx}$</div>
+    </div>
+    <div class="gold">Equilibrium: $F = -dU/dx = 0$. Stable if $d^2U/dx^2 > 0$ (valley). Unstable if $< 0$ (hill).</div>
+    <div class="see">
+        <span>Loop-the-loop min h:</span> <em>h = 5R/2</em> (set N=0 at top, then energy)<br>
+        <span>Constant v up hill:</span> <em>P = mgv sin&theta;</em> (NOT zero!)<br>
+        <span>Spring launches block:</span> <em>&frac12;kx&sup2; = &frac12;mv&sup2; + mgh + &mu;mgd</em>
+    </div>
+    <div class="trap"><b>TRAP:</b> Constant velocity &ne; zero power. Engine must overcome gravity/friction.</div>
+    <div class="trap"><b>TRAP:</b> Friction removes energy <b>BOTH</b> ways. Up the incline AND back down = 2&times; energy loss.</div>
+</div>
+
+<!-- ==================== MOMENTUM ==================== -->
+<div class="sec b4">
+    <h2>4. MOMENTUM &amp; COLLISIONS</h2>
+    <div class="f2">
+        <div class="f">$\vec{p} = m\vec{v}$</div>
+        <div class="f">$\vec{J} = \int \vec{F}\,dt = \Delta\vec{p}$</div>
+    </div>
+    <div class="gold">Momentum is ALWAYS conserved in collisions. Check KE to classify type.</div>
+    <table class="tbl">
+        <tr><th>Type</th><th>Momentum</th><th>KE</th><th>Objects</th></tr>
+        <tr><td>Elastic</td><td>Conserved</td><td>Conserved</td><td>Separate</td></tr>
+        <tr><td>Inelastic</td><td>Conserved</td><td>LOST</td><td>Separate</td></tr>
+        <tr><td>Perfectly Inelastic</td><td>Conserved</td><td>MAX loss</td><td>Stick together</td></tr>
+    </table>
+    <div class="see">
+        <span>1D elastic (target at rest):</span> <em>v<sub>1</sub>' = (m<sub>1</sub>&minus;m<sub>2</sub>)v/(m<sub>1</sub>+m<sub>2</sub>)</em>, <em>v<sub>2</sub>' = 2m<sub>1</sub>v/(m<sub>1</sub>+m<sub>2</sub>)</em><br>
+        <span>Equal masses elastic:</span> <em>they swap velocities</em><br>
+        <span>Explosion from rest:</span> <em>&Sigma;p = 0 &rarr; m<sub>1</sub>v<sub>1</sub> + m<sub>2</sub>v<sub>2</sub> = 0</em><br>
+        <span>Rocket equation:</span> <em>v = v<sub>e</sub> ln(M<sub>0</sub>/M)</em>
+    </div>
+    <div class="f">$x_{cm} = \frac{\sum m_i x_i}{\sum m_i}$ &nbsp;&nbsp; $\vec{v}_{cm} = \frac{\sum m_i \vec{v}_i}{\sum m_i}$</div>
+    <div class="trap"><b>TRAP:</b> "Momentum conserved" does NOT mean elastic. ALWAYS compute KE before &amp; after to check.</div>
+</div>
+
+<!-- ==================== ROTATION ==================== -->
+<div class="sec b5 full" style="border-width:3px">
+    <h2 style="font-size:.82rem">5. ROTATION &mdash; PRIORITY TOPIC (Your 33%)</h2>
+    <div class="g" style="gap:5px">
+        <div>
+            <div class="gold" style="margin-top:0">Moment of Inertia Table &mdash; MEMORIZE</div>
+            <table class="tbl">
+                <tr><th>Shape</th><th>Axis</th><th>I</th><th>I/(mr&sup2;)</th></tr>
+                <tr><td>Point mass</td><td>at r</td><td>$mr^2$</td><td>1</td></tr>
+                <tr><td>Hollow cylinder/ring</td><td>center</td><td>$mr^2$</td><td>1</td></tr>
+                <tr><td>Hollow sphere</td><td>center</td><td>$\tfrac{2}{3}mr^2$</td><td>2/3</td></tr>
+                <tr><td style="color:#dc2626;font-weight:800">Solid disk/cylinder</td><td>center</td><td style="color:#dc2626;font-weight:800">$\tfrac{1}{2}mr^2$</td><td>1/2</td></tr>
+                <tr><td>Solid sphere</td><td>center</td><td>$\tfrac{2}{5}mr^2$</td><td>2/5</td></tr>
+                <tr><td>Rod</td><td>center</td><td>$\tfrac{1}{12}mL^2$</td><td>&mdash;</td></tr>
+                <tr><td>Rod</td><td>end</td><td>$\tfrac{1}{3}mL^2$</td><td>&mdash;</td></tr>
+            </table>
+            <div class="f">Parallel axis: $I = I_{cm} + md^2$</div>
+            <div class="trap"><b>TRAP:</b> Disk I = <b>&frac12;</b>mr&sup2;, NOT mr&sup2;! You lost Q26 to this.</div>
+        </div>
+        <div>
+            <div class="gold" style="margin-top:0">Rotation Formulas</div>
+            <div class="f3" style="font-size:.72rem">
+                <div class="f">$\tau = I\alpha$</div>
+                <div class="f">$L = I\omega$</div>
+                <div class="f">$KE = \tfrac{1}{2}I\omega^2$</div>
+            </div>
+            <div class="f2">
+                <div class="f">$\tau = r \times F = rF\sin\theta$</div>
+                <div class="f">$\omega = d\theta/dt$, $\alpha = d\omega/dt$</div>
+            </div>
+            <div class="gold">Rolling Without Slipping: $v = r\omega$, $a = r\alpha$</div>
+            <div class="f">Total KE$_{roll}$ $= \tfrac{1}{2}mv^2 + \tfrac{1}{2}I\omega^2 = \tfrac{1}{2}mv^2\!\left(1 + \frac{I}{mr^2}\right)$</div>
+            <div class="f">$a_{roll} = \frac{g\sin\theta}{1 + I/(mr^2)}$</div>
+            <div class="tip"><b>Rolling race:</b> Lower I/(mr&sup2;) = <b>faster</b>. Order: solid sphere (2/5) &gt; solid cyl (1/2) &gt; hollow sphere (2/3) &gt; ring (1).</div>
+            <table class="tbl">
+                <tr><th>Object</th><th>Height from rolling</th></tr>
+                <tr><td>Solid sphere</td><td>$h = 7v^2/(10g)$</td></tr>
+                <tr><td>Solid cylinder</td><td>$h = 3v^2/(4g)$</td></tr>
+                <tr><td>Hollow sphere</td><td>$h = 5v^2/(6g)$</td></tr>
+                <tr><td>Ring/hollow cyl</td><td>$h = v^2/g$</td></tr>
+            </table>
+            <div class="gold">$L$ conserved (no ext. torque): $I_1\omega_1 = I_2\omega_2$</div>
+            <div class="see">
+                <span>Skater pulls arms in (I halves):</span> <em>&omega; doubles, KE = L&sup2;/(2I) DOUBLES</em><br>
+                <span>Disk dropped on disk:</span> <em>&omega; halves, KE halves (50% lost)</em>
+            </div>
+            <div class="trap"><b>TRAP:</b> L conserved &ne; KE conserved. KE = L&sup2;/(2I) — changes when I changes!</div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== OSCILLATIONS ==================== -->
+<div class="sec b6">
+    <h2>6. OSCILLATIONS</h2>
+    <div class="f2">
+        <div class="f">$x(t) = A\cos(\omega t + \phi)$</div>
+        <div class="f">$\omega = \sqrt{k/m}$, $T = 2\pi/\omega$</div>
+    </div>
+    <div class="f3">
+        <div class="f">$v_{max} = A\omega$</div>
+        <div class="f">$a_{max} = A\omega^2$</div>
+        <div class="f">$v = \omega\sqrt{A^2 - x^2}$</div>
+    </div>
+    <div class="f2">
+        <div class="f">Pendulum: $T = 2\pi\sqrt{L/g}$</div>
+        <div class="f">Physical: $T = 2\pi\sqrt{I/(mgd)}$</div>
+    </div>
+    <div class="see">
+        <span>At x = 0:</span> <em>max speed, all KE, zero PE</em><br>
+        <span>At x = &plusmn;A:</span> <em>v = 0, all PE, zero KE</em><br>
+        <span>KE = 3&times;PE:</span> <em>at |x| = A/2</em> (since KE+PE = &frac12;kA&sup2;)<br>
+        <span>Different planet (g changes):</span> <em>T scales as 1/&radic;g</em>. g&times;4 &rarr; T halves.
+    </div>
+</div>
+
+<!-- ==================== GRAVITATION ==================== -->
+<div class="sec b7">
+    <h2>7. GRAVITATION</h2>
+    <div class="f2">
+        <div class="f">$F = \frac{GMm}{r^2}$</div>
+        <div class="f">$g = \frac{GM}{r^2}$</div>
+    </div>
+    <div class="f2">
+        <div class="f">$v_{orbit} = \sqrt{GM/r}$</div>
+        <div class="f">$v_{esc} = \sqrt{2GM/r} = \sqrt{2}\,v_{orbit}$</div>
+    </div>
+    <div class="gold">Orbital Energy: $E = -\frac{GMm}{2r}$ &lt; 0 &nbsp;&nbsp; $KE = \frac{GMm}{2r}$ &nbsp;&nbsp; $PE = -\frac{GMm}{r}$</div>
+    <div class="see">
+        <span>Kepler's 3rd:</span> <em>T&sup2; &prop; r&sup3;</em><br>
+        <span>Speed &times; &radic;2:</span> <em>escape (E = 0)</em><br>
+        <span>Higher orbit:</span> <em>slower speed, longer period, MORE total energy (less negative)</em>
+    </div>
+    <div class="trap"><b>TRAP:</b> Total energy is NEGATIVE for bound orbits. E = &minus;GMm/(2r). More negative = more tightly bound.</div>
+</div>
+
+<!-- ==================== CROSS-TOPIC ==================== -->
+<div class="sec b4 full">
+    <h2>8. CROSS-TOPIC PATTERNS &mdash; "See This, Do This"</h2>
+    <div class="g" style="gap:4px">
+        <div class="see">
+            <span>Block slides, enters loop:</span> <em>Energy conservation. At top: N + mg = mv&sup2;/R. Min h: set N = 0.</em><br>
+            <span>Rolling object up incline:</span> <em>&frac12;mv&sup2;(1 + I/mr&sup2;) = mgh. Use correct I!</em><br>
+            <span>Collision then projectile:</span> <em>Step 1: momentum (find v after). Step 2: projectile (find range/time).</em><br>
+            <span>Bullet embeds in block+spring:</span> <em>Step 1: momentum (find v). Step 2: energy (&frac12;mv&sup2; = &frac12;kx&sup2;).</em>
+        </div>
+        <div class="see">
+            <span>Friction up AND back down:</span> <em>W<sub>friction</sub> = &mu;mg &times; total distance (both ways!).</em><br>
+            <span>Ball thrown tangent to turntable:</span> <em>Angular momentum: L = mvr = I&omega;</em><br>
+            <span>"Is collision elastic?":</span> <em>Compute KE<sub>before</sub> and KE<sub>after</sub>. Same? Elastic. Less? Inelastic.</em><br>
+            <span>Dimensional analysis:</span> <em>Build answer from given quantities. Check units match.</em>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== FRQ TIPS ==================== -->
+<div class="sec b1">
+    <h2>9. FRQ SPEED TIPS</h2>
+    <div class="see" style="line-height:1.6">
+        <b>15 min/question.</b> Don't get stuck on one part.<br>
+        &bull; <b>FBD = free points.</b> Draw it. Label every force.<br>
+        &bull; <b>"Derive"</b> = keep symbolic. Plug in numbers last.<br>
+        &bull; <b>Stuck on (c)?</b> Use the answer from (b) even if you didn't get (b).<br>
+        &bull; <b>Show units.</b> Show every step. Partial credit is real.<br>
+        &bull; <b>Verify:</b> Check dimensions. Check limiting cases.
+    </div>
+</div>
+
+<!-- ==================== RED ALERT ==================== -->
+<div class="sec b5" style="border:none;padding:0">
+    <div class="alert">
+        <h3>YOUR PERSONAL TRAPS &mdash; Check Before Submitting</h3>
+        <ul>
+            <li>Elevator DOWN &rarr; scale = m(g<b>&minus;</b>a), NOT m(g+a)</li>
+            <li>Terminal velocity (linear drag): v = mg/b &mdash; <b>NO</b> square root</li>
+            <li>Constant v on a hill: P = mgv sin&theta; &ne; 0</li>
+            <li>Disk I = <b>&frac12;</b>mr&sup2;, not mr&sup2;</li>
+            <li>Skater pulls arms: KE <b>DOUBLES</b> (not halves). KE = L&sup2;/(2I)</li>
+            <li>Collision: ALWAYS check KE to classify elastic vs inelastic</li>
+            <li>Friction removes energy <b>both</b> directions</li>
+            <li>Orbital energy is <b>negative</b>: E = &minus;GMm/(2r)</li>
+            <li>Rolling height: use &frac12;mv&sup2;(1 + I/mr&sup2;) = mgh, not just &frac12;mv&sup2;</li>
+        </ul>
+    </div>
+</div>
+
+</div><!-- grid -->
+
+<!-- ==================== QUICK-CALC REFERENCE ==================== -->
+<div class="sec b6 full" style="margin-top:5px">
+    <h2>QUICK-CALC: Common Values You'll See</h2>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;font-size:.73rem">
+        <div><b>sin 30&deg;</b> = 0.5</div>
+        <div><b>cos 30&deg;</b> = &radic;3/2 &asymp; 0.866</div>
+        <div><b>tan 30&deg;</b> = 1/&radic;3 &asymp; 0.577</div>
+        <div><b>sin 37&deg;</b> = 0.6</div>
+        <div><b>cos 37&deg;</b> = 0.8</div>
+        <div><b>sin 45&deg;</b> = &radic;2/2 &asymp; 0.707</div>
+        <div><b>sin 53&deg;</b> = 0.8</div>
+        <div><b>cos 53&deg;</b> = 0.6</div>
+        <div><b>sin 60&deg;</b> = &radic;3/2</div>
+        <div><b>g</b> = 9.8 or 10 m/s&sup2;</div>
+        <div><b>&radic;2</b> &asymp; 1.414</div>
+        <div><b>&radic;3</b> &asymp; 1.732</div>
+    </div>
+</div>
+
+<div style="text-align:center;margin:6px 0;font-size:.6rem;color:#94a3b8">
+    AP Physics C: Mechanics &mdash; Exam Day Speed Sheet &bull; Personalized for Aadwik &bull; May 2026<br>
+    "Energy for speed/height. F=ma for force/accel. Momentum for collisions. Always check signs."
+</div>
+
+</div><!-- page -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});
+});
+</script>
+</body>
+</html>

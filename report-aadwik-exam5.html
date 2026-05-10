@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Physics C: Mechanics — Aadwik Exam 5 Performance Report</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',-apple-system,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6}
+        .container{max-width:960px;margin:0 auto;padding:30px 20px}
+        @media print{body{background:#fff;font-size:10pt}.container{padding:0;max-width:100%}.page-break{page-break-before:always}.no-print{display:none}canvas{max-height:220px!important}}
+        .report-header{text-align:center;padding:35px 20px;background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;border-radius:16px;margin-bottom:30px}
+        .report-header h1{font-size:1.8rem;margin-bottom:4px}
+        .report-header .sub{opacity:.8;font-size:.95rem}
+        .report-header .date{margin-top:12px;font-size:.8rem;opacity:.6}
+        .heroes{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin:25px 0}
+        .hero{text-align:center;min-width:100px}
+        .hero .v{font-size:2.6rem;font-weight:800;line-height:1}
+        .hero .l{font-size:.78rem;color:#64748b;margin-top:4px}
+        h2{font-size:1.2rem;color:#1e3a5f;margin:30px 0 12px;padding-bottom:6px;border-bottom:2px solid #2563eb}
+        .card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:22px;margin-bottom:18px}
+        .card h3{font-size:.95rem;color:#2563eb;margin-bottom:10px}
+        .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+        @media(max-width:700px){.grid2{grid-template-columns:1fr}}
+        table{width:100%;border-collapse:collapse;font-size:.84rem}
+        th,td{padding:7px 10px;text-align:left;border-bottom:1px solid #e2e8f0}
+        th{font-weight:600;color:#64748b;font-size:.76rem;text-transform:uppercase;background:#f8fafc}
+        .cg{color:#16a34a;font-weight:700}.cr{color:#dc2626;font-weight:700}
+        .badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:.72rem;font-weight:600}
+        .b-r{background:#fee2e2;color:#991b1b}.b-y{background:#fef3c7;color:#92400e}.b-g{background:#dcfce7;color:#166534}.b-b{background:#dbeafe;color:#1e40af}
+        canvas{display:block;max-width:100%}
+        .bar-row{display:flex;align-items:center;margin-bottom:6px}
+        .bar-label{width:150px;font-size:.85rem;font-weight:500}
+        .bar-bg{flex:1;height:22px;background:#e2e8f0;border-radius:11px;overflow:hidden;margin:0 10px}
+        .bar-fill{height:100%;border-radius:11px}
+        .bar-val{width:55px;font-size:.83rem;font-weight:700;text-align:right}
+        .stat-row{display:flex;gap:15px;flex-wrap:wrap;margin:10px 0}
+        .stat-box{flex:1;min-width:120px;text-align:center;padding:14px;border-radius:10px;background:#f1f5f9}
+        .stat-box .sv{font-size:1.6rem;font-weight:800}.stat-box .sl{font-size:.75rem;color:#64748b}
+        .print-bar{text-align:center;margin-bottom:20px}
+        .print-bar button{padding:10px 30px;font-size:1rem;border:none;border-radius:8px;background:#2563eb;color:#fff;cursor:pointer;font-weight:600}
+        .flag-icon{color:#d97706;font-weight:700}
+        .insight{padding:12px 16px;border-left:4px solid #2563eb;background:#eff6ff;border-radius:0 8px 8px 0;margin:10px 0;font-size:.88rem}
+        .insight.warn{border-left-color:#d97706;background:#fffbeb}
+        .insight.danger{border-left-color:#dc2626;background:#fef2f2}
+        .insight.good{border-left-color:#16a34a;background:#f0fdf4}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="print-bar no-print"><button onclick="window.print()">Print / Save as PDF</button></div>
+
+    <div class="report-header">
+        <h1>Aadwik — AP Physics C: Mechanics</h1>
+        <div class="sub">Practice Exam 5 (Realistic AP Format) — Performance Report</div>
+        <div class="date">Exam: May 10, 2026 &bull; Timed (45 min) &bull; 35 Multiple Choice Questions</div>
+    </div>
+
+    <!-- SCORE HEROES -->
+    <div class="heroes">
+        <div class="hero"><div class="v" style="color:#d97706">21<span style="font-size:1.3rem;color:#94a3b8">/35</span></div><div class="l">Actual Score</div></div>
+        <div class="hero"><div class="v" style="color:#d97706">60%</div><div class="l">Percentage</div></div>
+        <div class="hero"><div class="v" style="color:#16a34a">29<span style="font-size:1.3rem;color:#94a3b8">/35</span></div><div class="l">Potential Score*</div></div>
+        <div class="hero"><div class="v" style="color:#16a34a">83%</div><div class="l">Potential %</div></div>
+        <div class="hero"><div class="v" style="color:#2563eb">46:16</div><div class="l">Time Used</div></div>
+        <div class="hero"><div class="v" style="color:#94a3b8">0</div><div class="l">Flagged</div></div>
+    </div>
+    <p style="text-align:center;font-size:.78rem;color:#94a3b8;margin-top:-10px">*Potential = actual + 8 questions lost to application/conceptual errors (not knowledge gaps). Fixing these alone = AP 5.</p>
+
+    <!-- TOPIC MASTERY -->
+    <h2>Topic Mastery</h2>
+    <div class="card">
+        <h3>Core Topics</h3>
+        <div class="bar-row"><span class="bar-label">Kinematics</span><div class="bar-bg"><div class="bar-fill" style="width:100%;background:#16a34a"></div></div><span class="bar-val" style="color:#16a34a">5/5 (100%)</span></div>
+        <div class="bar-row"><span class="bar-label">Newton's Laws</span><div class="bar-bg"><div class="bar-fill" style="width:71%;background:#16a34a"></div></div><span class="bar-val" style="color:#16a34a">5/7 (71%)</span></div>
+        <div class="bar-row"><span class="bar-label">Work & Energy</span><div class="bar-bg"><div class="bar-fill" style="width:67%;background:#d97706"></div></div><span class="bar-val" style="color:#d97706">4/6 (67%)</span></div>
+        <div class="bar-row"><span class="bar-label">Momentum</span><div class="bar-bg"><div class="bar-fill" style="width:67%;background:#d97706"></div></div><span class="bar-val" style="color:#d97706">2/3 (67%)</span></div>
+        <div class="bar-row"><span class="bar-label">Rotation</span><div class="bar-bg"><div class="bar-fill" style="width:33%;background:#dc2626"></div></div><span class="bar-val" style="color:#dc2626">2/6 (33%)</span></div>
+        <div class="bar-row"><span class="bar-label">Oscillations</span><div class="bar-bg"><div class="bar-fill" style="width:100%;background:#16a34a"></div></div><span class="bar-val" style="color:#16a34a">2/2 (100%)</span></div>
+        <div class="bar-row"><span class="bar-label">Gravitation</span><div class="bar-bg"><div class="bar-fill" style="width:0%;background:#dc2626"></div></div><span class="bar-val" style="color:#dc2626">0/1 (0%)</span></div>
+        <h3 style="margin-top:18px">Cross-Topic / Integrated Questions</h3>
+        <div class="bar-row"><span class="bar-label">Energy + Rotation</span><div class="bar-bg"><div class="bar-fill" style="width:0%;background:#dc2626"></div></div><span class="bar-val" style="color:#dc2626">0/1</span></div>
+        <div class="bar-row"><span class="bar-label">Momentum + Energy</span><div class="bar-bg"><div class="bar-fill" style="width:0%;background:#dc2626"></div></div><span class="bar-val" style="color:#dc2626">0/1</span></div>
+        <div class="bar-row"><span class="bar-label">Newton + Energy</span><div class="bar-bg"><div class="bar-fill" style="width:0%;background:#dc2626"></div></div><span class="bar-val" style="color:#dc2626">0/1</span></div>
+        <div class="bar-row"><span class="bar-label">Cross-topic</span><div class="bar-bg"><div class="bar-fill" style="width:100%;background:#16a34a"></div></div><span class="bar-val" style="color:#16a34a">1/1</span></div>
+        <div class="bar-row"><span class="bar-label">Osc + Gravity</span><div class="bar-bg"><div class="bar-fill" style="width:0%;background:#dc2626"></div></div><span class="bar-val" style="color:#dc2626">0/1</span></div>
+    </div>
+    <div class="insight good">Kinematics and Oscillations are fully mastered (100%). Strong Newton's Laws foundation (71%).</div>
+    <div class="insight danger">Rotation is the critical weakness (2/6 = 33%). All 4 cross-topic questions involving rotation or gravitation were wrong.</div>
+
+    <!-- TIME PER QUESTION CHART -->
+    <h2>Time Per Question (seconds) — Correct vs Wrong</h2>
+    <div class="card"><canvas id="timeChart" height="260"></canvas></div>
+
+    <!-- TIME BY TOPIC -->
+    <h2>Average Time by Topic</h2>
+    <div class="grid2">
+        <div class="card"><canvas id="topicTimeChart" height="220"></canvas></div>
+        <div class="card"><canvas id="correctWrongTimeChart" height="220"></canvas></div>
+    </div>
+
+    <!-- CONFIDENCE VS ACCURACY -->
+    <h2>Confidence Calibration</h2>
+    <div class="grid2">
+        <div class="card"><canvas id="confChart" height="220"></canvas></div>
+        <div class="card">
+            <h3>Confidence Stats</h3>
+            <div class="stat-row">
+                <div class="stat-box"><div class="sv" style="color:#d97706">56%</div><div class="sl">"Guessing" accuracy<br>9 questions, 5 correct</div></div>
+                <div class="stat-box"><div class="sv" style="color:#dc2626">43%</div><div class="sl">"Unsure" accuracy<br>14 questions, 6 correct</div></div>
+                <div class="stat-box"><div class="sv" style="color:#16a34a">80%</div><div class="sl">"Confident" accuracy<br>10 questions, 8 correct</div></div>
+            </div>
+            <p style="margin-top:10px;font-size:.83rem;color:#64748b">2 questions unrated (Q7, Q8 — both correct).</p>
+            <p style="margin-top:6px;font-size:.83rem;color:#dc2626;font-weight:600">Confident but wrong: Q11 (elevator scale), Q26 (disk rotational KE)</p>
+        </div>
+    </div>
+    <div class="insight warn">Your "Guessing" accuracy (56%) is higher than "Unsure" (43%) — you may be second-guessing yourself on questions where your instinct is correct. Trust your physics intuition more on uncertain questions.</div>
+
+    <!-- TIME PROGRESSION -->
+    <h2>Time Progression Through Exam</h2>
+    <div class="card"><canvas id="progressionChart" height="220"></canvas></div>
+
+    <!-- FLAGGED ANALYSIS (none flagged) -->
+    <h2>Flagged Questions</h2>
+    <div class="card">
+        <p style="font-size:.9rem;color:#64748b">No questions were flagged during this exam. Consider using the flag feature to mark uncertain questions — it helps identify areas for review and builds metacognitive awareness.</p>
+    </div>
+
+    <!-- ERROR BREAKDOWN -->
+    <h2>Error Classification</h2>
+    <div class="grid2">
+        <div class="card"><canvas id="errorPieChart" height="200"></canvas></div>
+        <div class="card">
+            <h3>Breakdown (14 wrong answers)</h3>
+            <div class="bar-row"><span class="bar-label">Knowledge Gap</span><div class="bar-bg"><div class="bar-fill" style="width:43%;background:#dc2626"></div></div><span class="bar-val">6 (43%)</span></div>
+            <div class="bar-row"><span class="bar-label">Application Error</span><div class="bar-bg"><div class="bar-fill" style="width:57%;background:#d97706"></div></div><span class="bar-val">8 (57%)</span></div>
+            <p style="margin-top:10px;font-size:.83rem;color:#64748b">Application errors include: sign/direction errors (2), formula mix-ups (3), conceptual misapplication (3). Fixing these alone yields the potential score of 29/35 (83%).</p>
+        </div>
+    </div>
+
+    <!-- KNOWLEDGE GAPS -->
+    <div class="card">
+        <h3>Knowledge Gaps (6 questions) — Concepts to learn</h3>
+        <table>
+            <tr><th>Q</th><th>Topic</th><th>Gap</th><th>What to Learn</th></tr>
+            <tr><td>Q22</td><td>Rotation</td><td>Which object rolls fastest down incline</td><td>Lower I/mr&sup2; ratio = faster roll. Solid sphere (2/5) beats hollow sphere (2/3), solid cylinder (1/2), hollow cylinder (1).</td></tr>
+            <tr><td>Q24</td><td>Rotation</td><td>Angular acceleration of rod+mass system</td><td>&tau; = I&alpha;. I_total = ML&sup2;/3 + (M/2)L&sup2;. Torque = (M)(L/2)g + (M/2)(L)g. Solve for &alpha;.</td></tr>
+            <tr><td>Q26</td><td>Rotation</td><td>Rotational KE of a solid disk</td><td>KE = &frac12;I&omega;&sup2;. For disk: I = &frac12;mr&sup2;. So KE = &frac14;mr&sup2;&omega;&sup2; = &frac14;(2)(1)&sup2;(2)&sup2; = 2 J, not 4 J.</td></tr>
+            <tr><td>Q29</td><td>Gravitation</td><td>Total energy of orbiting satellite</td><td>E_total = -GMm/(2r). It is NEGATIVE for bound orbits. KE = GMm/(2r), PE = -GMm/r.</td></tr>
+            <tr><td>Q31</td><td>Energy+Rot</td><td>Rolling sphere max height on incline</td><td>Total KE = &frac12;mv&sup2; + &frac12;I&omega;&sup2; = &frac12;mv&sup2; + &frac12;(&frac25;mr&sup2;)(v/r)&sup2; = 7mv&sup2;/10. Set = mgh &rarr; h = 7v&sup2;/(10g).</td></tr>
+            <tr><td>Q35</td><td>Osc+Grav</td><td>SHM in tunnel through Earth</td><td>Period depends only on Earth's density/radius (T = 2&pi;&radic;(R/g)). Independent of object mass, drop point, or tunnel diameter.</td></tr>
+        </table>
+    </div>
+    <div class="insight danger">4 of 6 knowledge gaps involve rotation or rotational energy. This is the #1 topic to study before the AP exam.</div>
+
+    <!-- APPLICATION ERRORS -->
+    <div class="card">
+        <h3>Application Errors (8 questions) — Knew the approach, lost points</h3>
+        <table>
+            <tr><th>Q</th><th>Topic</th><th>Error</th><th>Type</th></tr>
+            <tr><td>Q11</td><td>Newton</td><td>Elevator accelerating DOWN: scale = m(g-a) = 60(10-3) = 420 N, not m(g+a) = 780 N</td><td>Sign error</td></tr>
+            <tr><td>Q12</td><td>Newton</td><td>Terminal velocity: set mg = bv, so v = mg/b. No square root. Chose &radic;(mg/b) instead.</td><td>Formula mix-up</td></tr>
+            <tr><td>Q14</td><td>Energy</td><td>Loop min height: need v&sup2;/R = g at top &rarr; mgh = mg(2R) + &frac12;mgR &rarr; h = 5R/2, not just R.</td><td>Conceptual</td></tr>
+            <tr><td>Q17</td><td>Energy</td><td>Constant v ≠ zero power. Engine must overcome gravity component: P = Fv = mgv sin&theta;.</td><td>Conceptual</td></tr>
+            <tr><td>Q21</td><td>Momentum</td><td>Must check KE conservation, not just momentum. Momentum is ALWAYS conserved in collisions.</td><td>Conceptual</td></tr>
+            <tr><td>Q27</td><td>Rotation</td><td>Skater halves I &rarr; L = I&omega; conserved &rarr; &omega; doubles &rarr; KE = L&sup2;/(2I) doubles, not halves.</td><td>Formula mix-up</td></tr>
+            <tr><td>Q32</td><td>Mom+Energy</td><td>Check: KE_before = &frac12;(3)(16) = 24 J. KE_after = &frac12;(3)(9) + &frac12;(1)(9) = 18 J. KE lost &rarr; inelastic.</td><td>Formula mix-up</td></tr>
+            <tr><td>Q33</td><td>Newton+Energy</td><td>Friction does negative work going up AND coming down. Total energy is less when it returns.</td><td>Sign error</td></tr>
+        </table>
+    </div>
+
+    <!-- AP SCORE PROJECTION -->
+    <h2>Score Projection</h2>
+    <div class="card">
+        <table>
+            <tr><th>Scenario</th><th>MC Score</th><th>Percentage</th><th>Est. AP Score</th></tr>
+            <tr><td>Actual</td><td>21/35</td><td>60%</td><td><span class="badge b-y">3-4</span></td></tr>
+            <tr style="background:#f0fdf4"><td><strong>Fix application errors only</strong></td><td><strong>29/35</strong></td><td><strong>83%</strong></td><td><span class="badge b-g"><strong>5</strong></span></td></tr>
+            <tr><td>Fix all errors</td><td>35/35</td><td>100%</td><td><span class="badge b-g">5</span></td></tr>
+        </table>
+    </div>
+    <div class="insight good">A score of 5 is achievable by fixing application errors alone — no new concepts needed for 8 of 14 wrong answers. The key is careful execution: check signs, verify formulas, and always test whether KE is conserved in collisions.</div>
+
+    <!-- STRENGTHS & STUDY PLAN -->
+    <h2>Strengths & Study Recommendations</h2>
+    <div class="grid2">
+        <div class="card">
+            <h3 style="color:#16a34a">Strengths</h3>
+            <ul style="font-size:.88rem;margin-left:18px;line-height:1.8">
+                <li><strong>Perfect Kinematics</strong> — 5/5, all topics mastered</li>
+                <li><strong>First 10 questions perfect</strong> — strong start, good pacing</li>
+                <li><strong>Oscillations mastered</strong> — 2/2</li>
+                <li><strong>Good Newton's Laws</strong> — 5/7 (71%)</li>
+                <li><strong>All 35 questions answered</strong> — no blanks</li>
+                <li><strong>Good confidence calibration</strong> — 80% when confident</li>
+                <li><strong>Strong instincts</strong> — 56% even on "guessing" questions</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3 style="color:#dc2626">Priority Study Areas</h3>
+            <ol style="font-size:.88rem;margin-left:18px;line-height:1.8">
+                <li><strong>Rotation (33%)</strong> — Moments of inertia, rolling without slipping, I = &frac12;mr&sup2; vs mr&sup2;, angular momentum conservation &amp; KE</li>
+                <li><strong>Cross-topic integration (1/5)</strong> — Practice problems combining rotation + energy, momentum + energy</li>
+                <li><strong>Gravitational PE/orbits</strong> — E = -GMm/(2r), escape velocity, bound vs unbound orbits</li>
+                <li><strong>Sign discipline</strong> — Always draw FBD, pick coordinate system, check +/- for acceleration direction</li>
+                <li><strong>Collision analysis</strong> — Always check KE before/after to classify elastic vs inelastic</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- COMPLETE QUESTION LOG -->
+    <div class="page-break"></div>
+    <h2>Complete Question Log</h2>
+    <div class="card" style="overflow-x:auto">
+        <table>
+            <thead><tr><th>#</th><th>Topic</th><th>Student</th><th>Correct</th><th>Result</th><th>Confidence</th><th>Time</th><th>Error Type</th></tr></thead>
+            <tbody id="qlog"></tbody>
+        </table>
+    </div>
+
+    <!-- ANSWER DISTRIBUTION -->
+    <h2>Additional Analytics</h2>
+    <div class="grid2">
+        <div class="card"><h3>Answer Letter Distribution</h3><canvas id="ansDistChart" height="200"></canvas></div>
+        <div class="card"><h3>Time vs Question Block (Fatigue Check)</h3><canvas id="fatigueChart" height="200"></canvas></div>
+    </div>
+
+    <!-- EXAM COMPARISON -->
+    <h2>Progress: Exam 1 vs Exam 5</h2>
+    <div class="card">
+        <table>
+            <tr><th></th><th>Exam 1 (May 4)</th><th>Exam 5 (May 10)</th><th>Change</th></tr>
+            <tr><td>Score</td><td>11/35 (31%)</td><td>21/35 (60%)</td><td class="cg">+10 questions (+29%)</td></tr>
+            <tr><td>Kinematics</td><td>3/6 (50%)</td><td>5/5 (100%)</td><td class="cg">+50%</td></tr>
+            <tr><td>Newton's Laws</td><td>1/6 (17%)</td><td>5/7 (71%)</td><td class="cg">+54%</td></tr>
+            <tr><td>Work & Energy</td><td>2/6 (33%)</td><td>4/6 (67%)</td><td class="cg">+34%</td></tr>
+            <tr><td>Momentum</td><td>1/6 (17%)</td><td>2/3 (67%)</td><td class="cg">+50%</td></tr>
+            <tr><td>Rotation</td><td>3/6 (50%)</td><td>2/6 (33%)</td><td class="cr">-17%</td></tr>
+            <tr><td>Osc & Grav</td><td>1/5 (20%)</td><td>2/3 (67%)</td><td class="cg">+47%</td></tr>
+            <tr><td>Time Used</td><td>42:30</td><td>46:16</td><td style="color:#64748b">+3:46</td></tr>
+        </table>
+    </div>
+    <div class="insight good">Massive improvement: +10 questions (+29 percentage points) in 6 days. Every topic improved except Rotation, which dropped from 50% to 33% — likely due to harder questions on Exam 5.</div>
+
+    <div style="text-align:center;margin:30px 0 15px;padding:15px;color:#94a3b8;font-size:.75rem">
+        AP Physics C: Mechanics — Exam 5 Performance Report &bull; Aadwik &bull; May 10, 2026<br>
+        Practice exam for preparation purposes only. Not affiliated with the College Board.
+    </div>
+</div>
+
+<script>
+// ============================================
+// DATA
+// ============================================
+const answers =    [2,1,4,0,3,1,4,2,0,3,0,3,2,2,3,1,4,2,4,3,1,4,2,1,4,1,0,1,2,4,3,0,0,3,2];
+const correct =    [2,1,4,0,3,1,4,2,0,3,1,4,2,0,3,1,0,2,4,3,0,1,2,3,4,0,2,1,3,4,0,2,1,3,4];
+const confidence = [2,3,3,3,3,3,0,0,2,2,3,1,3,1,1,1,2,1,3,2,2,2,1,2,1,3,2,2,1,2,1,2,2,3,2];
+const times =      [115503,67963,31116,86096,40200,26982,180343,106330,95030,46132,93430,96813,35531,90280,65363,150945,162311,61350,26999,53532,44133,112146,91312,107530,141521,92169,30621,69489,87336,39623,32392,56378,47915,23932,167202];
+const flags =      [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
+const topics =     ['Kinematics','Kinematics','Kinematics','Kinematics','Kinematics','Newton\'s Laws','Newton\'s Laws','Newton\'s Laws','Newton\'s Laws','Newton\'s Laws','Newton\'s Laws','Newton\'s Laws','Work & Energy','Work & Energy','Work & Energy','Work & Energy','Work & Energy','Work & Energy','Momentum','Momentum','Momentum','Rotation','Rotation','Rotation','Rotation','Rotation','Rotation','Oscillations','Gravitation','Oscillations','Energy+Rot','Mom+Energy','Newton+Energy','Cross-topic','Osc+Gravity'];
+const errorTypes = [null,null,null,null,null,null,null,null,null,null,'Application',  'Knowledge',null,'Application',null,null,'Application',null,null,null,'Application','Knowledge',null,'Knowledge',null,'Knowledge','Application',null,'Knowledge',null,'Knowledge','Application','Application',null,'Knowledge'];
+const letters = ['A','B','C','D','E'];
+const isCorrect = answers.map((a,i) => a === correct[i]);
+const timeSec = times.map(t => Math.round(t/1000));
+
+// ============================================
+// QUESTION LOG TABLE
+// ============================================
+const confLabels = ['—','Guessing','Unsure','Confident'];
+let logHTML = '';
+for (let i = 0; i < 35; i++) {
+    const cls = isCorrect[i] ? 'cg' : 'cr';
+    const res = isCorrect[i] ? 'Correct' : 'Wrong';
+    const errCell = isCorrect[i] ? '—' : (errorTypes[i] || '—');
+    logHTML += '<tr><td>'+(i+1)+'</td><td>'+topics[i]+'</td><td>'+letters[answers[i]]+'</td><td>'+letters[correct[i]]+'</td><td class="'+cls+'">'+res+'</td><td>'+confLabels[confidence[i]]+'</td><td>'+timeSec[i]+'s</td><td>'+errCell+'</td></tr>';
+}
+document.getElementById('qlog').innerHTML = logHTML;
+
+// ============================================
+// CHART HELPERS
+// ============================================
+function getCtx(id) {
+    const c = document.getElementById(id);
+    const r = c.parentElement.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    const cw = Math.floor(r.width - 44);
+    const ch = parseInt(c.getAttribute('height'));
+    c.style.width = cw + 'px';
+    c.style.height = ch + 'px';
+    c.width = Math.floor(cw * dpr);
+    c.height = Math.floor(ch * dpr);
+    const ctx = c.getContext('2d');
+    ctx.scale(dpr, dpr);
+    ctx.canvas._w = cw;
+    ctx.canvas._h = ch;
+    return ctx;
+}
+
+// ============================================
+// CHART 1: Time per question bar chart
+// ============================================
+(function() {
+    const ctx = getCtx('timeChart');
+    const w = ctx.canvas._w, h = ctx.canvas._h;
+    const pad = {t:20,r:15,b:30,l:40};
+    const pw = w-pad.l-pad.r, ph = h-pad.t-pad.b;
+    const maxT = Math.max(...timeSec);
+    const barW = pw/35 - 2;
+
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    for (let v = 0; v <= maxT; v += 30) {
+        const y = pad.t + ph - (v/maxT)*ph;
+        ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(w-pad.r,y); ctx.stroke();
+        ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'right';
+        ctx.fillText(v+'s', pad.l-4, y+3);
+    }
+
+    const avg = Math.round(timeSec.reduce((a,b)=>a+b,0)/35);
+    const avgY = pad.t + ph - (avg/maxT)*ph;
+    ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 1.5; ctx.setLineDash([5,3]);
+    ctx.beginPath(); ctx.moveTo(pad.l,avgY); ctx.lineTo(w-pad.r,avgY); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#2563eb'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('avg '+avg+'s', w-pad.r+2, avgY+3);
+
+    for (let i = 0; i < 35; i++) {
+        const x = pad.l + (i/35)*pw + 1;
+        const bh = (timeSec[i]/maxT)*ph;
+        const y = pad.t + ph - bh;
+        ctx.fillStyle = isCorrect[i] ? '#16a34a' : '#dc2626';
+        ctx.fillRect(x, y, barW, bh);
+        ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(i+1, x+barW/2, h-pad.b+12);
+    }
+    ctx.fillStyle = '#16a34a'; ctx.fillRect(pad.l, 4, 10, 10);
+    ctx.fillStyle = '#1e293b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Correct', pad.l+14, 13);
+    ctx.fillStyle = '#dc2626'; ctx.fillRect(pad.l+65, 4, 10, 10);
+    ctx.fillStyle = '#1e293b'; ctx.fillText('Wrong', pad.l+79, 13);
+})();
+
+// ============================================
+// CHART 2: Average time by topic
+// ============================================
+(function() {
+    const ctx = getCtx('topicTimeChart');
+    const w = ctx.canvas._w, h = ctx.canvas._h;
+    const pad = {t:15,r:10,b:60,l:45};
+    const topicNames = ['Kin','Newton','Energy','Mom','Rot','Osc/Grav','Cross'];
+    const topicRanges = [[0,5],[5,12],[12,18],[18,21],[21,27],[27,30],[30,35]];
+
+    const avgs = topicRanges.map(function(r) {
+        const sl = timeSec.slice(r[0],r[1]);
+        return Math.round(sl.reduce(function(a,b){return a+b},0)/sl.length);
+    });
+    const maxV = Math.max.apply(null, avgs);
+    const pw = w-pad.l-pad.r, ph = h-pad.t-pad.b;
+    const barW = pw/7 - 8;
+
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    for (let v = 0; v <= maxV+10; v += 20) {
+        const y = pad.t + ph - (v/(maxV+10))*ph;
+        ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(w-pad.r,y); ctx.stroke();
+        ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'right';
+        ctx.fillText(v+'s', pad.l-4, y+3);
+    }
+
+    const colors = ['#2563eb','#7c3aed','#d97706','#dc2626','#0891b2','#16a34a','#64748b'];
+    avgs.forEach(function(v,i) {
+        const x = pad.l + (i/7)*pw + 4;
+        const bh = (v/(maxV+10))*ph;
+        ctx.fillStyle = colors[i];
+        ctx.fillRect(x, pad.t+ph-bh, barW, bh);
+        ctx.fillStyle = '#1e293b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(v+'s', x+barW/2, pad.t+ph-bh-5);
+        ctx.save(); ctx.translate(x+barW/2, h-pad.b+10); ctx.rotate(-0.5);
+        ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+        ctx.fillText(topicNames[i], 0, 0); ctx.restore();
+    });
+    ctx.font = '11px sans-serif'; ctx.fillStyle = '#1e293b'; ctx.textAlign = 'center';
+    ctx.fillText('Avg. Seconds per Question by Topic', w/2, 12);
+})();
+
+// ============================================
+// CHART 3: Correct vs Wrong time comparison
+// ============================================
+(function() {
+    const ctx = getCtx('correctWrongTimeChart');
+    const w = ctx.canvas._w, h = ctx.canvas._h;
+
+    const correctTimes = timeSec.filter(function(_,i){return isCorrect[i]});
+    const wrongTimes = timeSec.filter(function(_,i){return !isCorrect[i]});
+    const avgC = Math.round(correctTimes.reduce(function(a,b){return a+b},0)/correctTimes.length);
+    const avgW = Math.round(wrongTimes.reduce(function(a,b){return a+b},0)/wrongTimes.length);
+    const sortedC = correctTimes.slice().sort(function(a,b){return a-b});
+    const sortedW = wrongTimes.slice().sort(function(a,b){return a-b});
+    const medC = sortedC[Math.floor(sortedC.length/2)];
+    const medW = sortedW[Math.floor(sortedW.length/2)];
+    const maxC = Math.max.apply(null, correctTimes);
+    const maxW = Math.max.apply(null, wrongTimes);
+    const minC = Math.min.apply(null, correctTimes);
+    const minW = Math.min.apply(null, wrongTimes);
+
+    ctx.font = '11px sans-serif'; ctx.fillStyle = '#1e293b'; ctx.textAlign = 'center';
+    ctx.fillText('Time Spent: Correct vs Wrong', w/2, 15);
+
+    const data = [
+        ['', 'Correct (21)', 'Wrong (14)'],
+        ['Average', avgC+'s', avgW+'s'],
+        ['Median', medC+'s', medW+'s'],
+        ['Min', minC+'s', minW+'s'],
+        ['Max', maxC+'s', maxW+'s'],
+        ['Total', Math.round(correctTimes.reduce(function(a,b){return a+b},0)/60)+'m', Math.round(wrongTimes.reduce(function(a,b){return a+b},0)/60)+'m']
+    ];
+    const startX = (w - 250)/2;
+    data.forEach(function(row, ri) {
+        const y = 40 + ri * 28;
+        row.forEach(function(cell, ci) {
+            ctx.font = ri === 0 ? 'bold 11px sans-serif' : '11px sans-serif';
+            ctx.fillStyle = ri === 0 ? '#64748b' : (ci === 1 ? '#16a34a' : ci === 2 ? '#dc2626' : '#1e293b');
+            ctx.textAlign = ci === 0 ? 'left' : 'center';
+            ctx.fillText(cell, startX + (ci === 0 ? 0 : 70 + (ci-1)*90 + 45), y);
+        });
+        if (ri > 0) {
+            ctx.strokeStyle = '#e2e8f0'; ctx.beginPath();
+            ctx.moveTo(startX, y+8); ctx.lineTo(startX+250, y+8); ctx.stroke();
+        }
+    });
+})();
+
+// ============================================
+// CHART 4: Confidence vs Accuracy
+// ============================================
+(function() {
+    const ctx = getCtx('confChart');
+    const w = ctx.canvas._w, h = ctx.canvas._h;
+    const pad = {t:25,r:15,b:35,l:45};
+    const pw = w-pad.l-pad.r, ph = h-pad.t-pad.b;
+
+    const buckets = [
+        {label:'Guessing', total:0, correct:0},
+        {label:'Unsure', total:0, correct:0},
+        {label:'Confident', total:0, correct:0}
+    ];
+    for (let i = 0; i < 35; i++) {
+        if (confidence[i] > 0) {
+            buckets[confidence[i]-1].total++;
+            if (isCorrect[i]) buckets[confidence[i]-1].correct++;
+        }
+    }
+
+    const barW = pw/3 - 20;
+    const colors = [['#fecaca','#dc2626'],['#fde68a','#d97706'],['#bbf7d0','#16a34a']];
+
+    ctx.font = '11px sans-serif'; ctx.fillStyle = '#1e293b'; ctx.textAlign = 'center';
+    ctx.fillText('Questions & Accuracy by Confidence Level', w/2, 14);
+
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    const maxN = 16;
+    for (let v = 0; v <= maxN; v += 4) {
+        const y = pad.t + ph - (v/maxN)*ph;
+        ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(w-pad.r,y); ctx.stroke();
+        ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'right';
+        ctx.fillText(v, pad.l-4, y+3);
+    }
+
+    buckets.forEach(function(b, i) {
+        const x = pad.l + (i/3)*pw + 10;
+        const bh1 = (b.total/maxN)*ph;
+        ctx.fillStyle = colors[i][0];
+        ctx.fillRect(x, pad.t+ph-bh1, barW, bh1);
+        const bh2 = (b.correct/maxN)*ph;
+        ctx.fillStyle = colors[i][1];
+        ctx.fillRect(x, pad.t+ph-bh2, barW, bh2);
+        ctx.fillStyle = '#1e293b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(b.label, x+barW/2, h-pad.b+14);
+        const pct = b.total > 0 ? Math.round(b.correct/b.total*100) : 0;
+        ctx.fillText(b.correct+'/'+b.total+' ('+pct+'%)', x+barW/2, pad.t+ph-bh1-5);
+    });
+    ctx.fillStyle = '#94a3b8'; ctx.fillRect(w-120, pad.t, 10, 10);
+    ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Total Qs', w-107, pad.t+9);
+    ctx.fillStyle = '#2563eb'; ctx.fillRect(w-120, pad.t+14, 10, 10);
+    ctx.fillText('Correct', w-107, pad.t+23);
+})();
+
+// ============================================
+// CHART 5: Time progression (rolling avg)
+// ============================================
+(function() {
+    const ctx = getCtx('progressionChart');
+    const w = ctx.canvas._w, h = ctx.canvas._h;
+    const pad = {t:20,r:15,b:30,l:45};
+    const pw = w-pad.l-pad.r, ph = h-pad.t-pad.b;
+    const maxT = Math.max.apply(null, timeSec);
+
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    for (let v = 0; v <= maxT; v += 30) {
+        const y = pad.t + ph - (v/maxT)*ph;
+        ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(w-pad.r,y); ctx.stroke();
+        ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'right';
+        ctx.fillText(v+'s', pad.l-4, y+3);
+    }
+
+    for (let i = 0; i < 35; i++) {
+        const x = pad.l + (i/(34))*pw;
+        const y = pad.t + ph - (timeSec[i]/maxT)*ph;
+        ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI*2);
+        ctx.fillStyle = isCorrect[i] ? '#16a34a' : '#dc2626';
+        ctx.fill();
+    }
+
+    ctx.beginPath(); ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2.5;
+    for (let i = 0; i < 35; i++) {
+        const start = Math.max(0, i-2), end = Math.min(35, i+3);
+        const avg = timeSec.slice(start, end).reduce(function(a,b){return a+b},0) / (end-start);
+        const x = pad.l + (i/34)*pw;
+        const y = pad.t + ph - (avg/maxT)*ph;
+        if (i === 0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+
+    ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.setLineDash([3,3]);
+    [5,12,18,21,27,30].forEach(function(i) {
+        const x = pad.l + (i/34)*pw;
+        ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, pad.t+ph); ctx.stroke();
+    });
+    ctx.setLineDash([]);
+
+    const tl = ['Kin','Newton','Energy','Mom','Rot','O/G','Cross'];
+    const tp = [2.5,8.5,15,19.5,24,28.5,32.5];
+    ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    tp.forEach(function(p,i) { ctx.fillText(tl[i], pad.l+(p/34)*pw, h-pad.b+14); });
+
+    ctx.fillStyle = '#1e293b'; ctx.font = '11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Blue line = 5-question rolling average', pad.l, 14);
+})();
+
+// ============================================
+// CHART 6: Error pie chart
+// ============================================
+(function() {
+    const ctx = getCtx('errorPieChart');
+    const w = ctx.canvas._w, h = ctx.canvas._h;
+    const cx = w/2, cy = h/2 + 5, r = Math.min(w,h)/2 - 25;
+
+    const slices = [{v:6,c:'#dc2626',l:'Knowledge Gap (6)'},{v:8,c:'#d97706',l:'Application Error (8)'}];
+    const total = 14;
+    let angle = -Math.PI/2;
+    slices.forEach(function(s) {
+        const sweep = (s.v/total)*Math.PI*2;
+        ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,r,angle,angle+sweep); ctx.closePath();
+        ctx.fillStyle = s.c; ctx.fill();
+        const mid = angle + sweep/2;
+        const lx = cx + Math.cos(mid)*(r*0.65);
+        const ly = cy + Math.sin(mid)*(r*0.65);
+        ctx.fillStyle = '#fff'; ctx.font = 'bold 13px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(s.v, lx, ly+5);
+        angle += sweep;
+    });
+    ctx.font = '10px sans-serif';
+    slices.forEach(function(s,i) {
+        ctx.fillStyle = s.c; ctx.fillRect(10, 8+i*16, 10, 10);
+        ctx.fillStyle = '#1e293b'; ctx.textAlign = 'left';
+        ctx.fillText(s.l, 24, 17+i*16);
+    });
+})();
+
+// ============================================
+// CHART 7: Answer distribution
+// ============================================
+(function() {
+    const ctx = getCtx('ansDistChart');
+    const w = ctx.canvas._w, h = ctx.canvas._h;
+    const pad = {t:15,r:10,b:30,l:35};
+    const pw = w-pad.l-pad.r, ph = h-pad.t-pad.b;
+
+    const studentDist = [0,0,0,0,0];
+    const correctDist = [0,0,0,0,0];
+    answers.forEach(function(a) { studentDist[a]++; });
+    correct.forEach(function(a) { correctDist[a]++; });
+    const maxN = Math.max.apply(null, studentDist.concat(correctDist));
+
+    const groupW = pw/5;
+    const barW = groupW/2 - 4;
+
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    for (let v = 0; v <= maxN+2; v += 3) {
+        const y = pad.t + ph - (v/(maxN+2))*ph;
+        ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(w-pad.r,y); ctx.stroke();
+    }
+
+    for (let i = 0; i < 5; i++) {
+        const x = pad.l + i*groupW;
+        const bh1 = (studentDist[i]/(maxN+2))*ph;
+        ctx.fillStyle = '#60a5fa';
+        ctx.fillRect(x+4, pad.t+ph-bh1, barW, bh1);
+        const bh2 = (correctDist[i]/(maxN+2))*ph;
+        ctx.fillStyle = '#f97316';
+        ctx.fillRect(x+barW+6, pad.t+ph-bh2, barW, bh2);
+        ctx.fillStyle = '#1e293b'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(letters[i], x+groupW/2, h-pad.b+14);
+    }
+    ctx.fillStyle = '#60a5fa'; ctx.fillRect(pad.l, 3, 10, 10);
+    ctx.fillStyle = '#1e293b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Student chose', pad.l+14, 12);
+    ctx.fillStyle = '#f97316'; ctx.fillRect(pad.l+90, 3, 10, 10);
+    ctx.fillText('Correct answer', pad.l+104, 12);
+})();
+
+// ============================================
+// CHART 8: Fatigue check
+// ============================================
+(function() {
+    const ctx = getCtx('fatigueChart');
+    const w = ctx.canvas._w, h = ctx.canvas._h;
+    const pad = {t:20,r:15,b:30,l:45};
+    const pw = w-pad.l-pad.r, ph = h-pad.t-pad.b;
+
+    const blocks = [];
+    for (let i = 0; i < 35; i += 5) {
+        const sl = timeSec.slice(i, Math.min(i+5, 35));
+        blocks.push(Math.round(sl.reduce(function(a,b){return a+b},0)/sl.length));
+    }
+    const maxB = Math.max.apply(null, blocks);
+    const barW = pw/blocks.length - 6;
+
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    for (let v = 0; v <= maxB+10; v += 20) {
+        const y = pad.t + ph - (v/(maxB+10))*ph;
+        ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(w-pad.r,y); ctx.stroke();
+        ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'right';
+        ctx.fillText(v+'s', pad.l-4, y+3);
+    }
+
+    const blockColors = ['#2563eb','#7c3aed','#d97706','#dc2626','#0891b2','#16a34a','#64748b'];
+    blocks.forEach(function(v,i) {
+        const x = pad.l + (i/blocks.length)*pw + 3;
+        const bh = (v/(maxB+10))*ph;
+        ctx.fillStyle = blockColors[i % blockColors.length];
+        ctx.fillRect(x, pad.t+ph-bh, barW, bh);
+        ctx.fillStyle = '#1e293b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(v+'s', x+barW/2, pad.t+ph-bh-5);
+        const label = 'Q'+(i*5+1)+'-'+Math.min(i*5+5,35);
+        ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif';
+        ctx.fillText(label, x+barW/2, h-pad.b+12);
+    });
+    ctx.fillStyle = '#1e293b'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Avg Time per 5-Question Block (fatigue/difficulty trend)', w/2, 14);
+})();
+</script>
+</body>
+</html>
