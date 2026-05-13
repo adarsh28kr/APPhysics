@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work &amp; Energy — AP Refresher</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',-apple-system,sans-serif;background:#fff;color:#1e293b;line-height:1.5;font-size:14px}
+        .page{max-width:860px;margin:0 auto;padding:16px 20px}
+        .hdr{background:linear-gradient(135deg,#0f172a,#16a34a);color:#fff;padding:14px 20px;border-radius:10px;text-align:center;margin-bottom:16px}
+        .hdr h1{font-size:1.5rem;letter-spacing:1px;margin-bottom:2px}
+        .hdr .sub{font-size:.8rem;opacity:.75}
+        .nav-links{margin-bottom:14px;font-size:.85rem}
+        .nav-links a{color:#2563eb;text-decoration:none;margin-right:14px}
+        .core{background:#f0fdf4;border:2px solid #16a34a;border-radius:8px;padding:12px 18px;text-align:center;margin-bottom:16px;font-size:1.1rem}
+        .core .label{font-size:.75rem;color:#16a34a;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+        .type{border:2px solid;border-radius:10px;padding:16px 20px;margin-bottom:14px;break-inside:avoid}
+        .type h2{font-size:1rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+        .type h2 .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;color:#fff;font-size:.8rem;font-weight:700}
+        .t1{border-color:#16a34a} .t1 .num{background:#16a34a}
+        .t2{border-color:#7c3aed} .t2 .num{background:#7c3aed}
+        .t3{border-color:#2563eb} .t3 .num{background:#2563eb}
+        .t4{border-color:#d97706} .t4 .num{background:#d97706}
+        .t5{border-color:#0891b2} .t5 .num{background:#0891b2}
+        .t6{border-color:#dc2626} .t6 .num{background:#dc2626}
+        .t7{border-color:#be185d} .t7 .num{background:#be185d}
+        .t8{border-color:#64748b} .t8 .num{background:#64748b}
+        .t9{border-color:#059669} .t9 .num{background:#059669}
+        .t10{border-color:#9333ea} .t10 .num{background:#9333ea}
+        .t11{border-color:#ea580c} .t11 .num{background:#ea580c}
+        .t12{border-color:#4f46e5} .t12 .num{background:#4f46e5}
+        .setup{background:#f8fafc;border-radius:6px;padding:8px 12px;margin:8px 0;font-size:.9rem;color:#64748b}
+        .setup b{color:#1e293b}
+        .eq{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:6px 12px;margin:6px 0;text-align:center;font-size:1rem}
+        .eq2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+        .eq2 .eq{margin:0}
+        .eq3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+        .eq3 .eq{margin:0}
+        .insight{background:#eff6ff;border-left:3px solid #2563eb;padding:6px 12px;margin:6px 0;font-size:.88rem;border-radius:0 6px 6px 0}
+        .insight b{color:#2563eb}
+        .trap{background:#fef2f2;border-left:3px solid #dc2626;padding:6px 12px;margin:6px 0;font-size:.88rem;border-radius:0 6px 6px 0}
+        .trap b{color:#dc2626}
+        .ap-asks{background:#faf5ff;border-left:3px solid #7c3aed;padding:6px 12px;margin:6px 0;font-size:.88rem;border-radius:0 6px 6px 0}
+        .ap-asks b{color:#7c3aed}
+        .gold{background:#1e293b;color:#fbbf24;padding:6px 12px;border-radius:6px;font-size:.9rem;font-weight:700;margin:10px 0;text-align:center}
+        .method{background:#f8fafc;border:2px solid #2563eb;border-radius:8px;padding:14px 18px;margin:16px 0}
+        .method h3{color:#2563eb;margin-bottom:8px;font-size:1rem}
+        .method ol,.method ul{margin-left:20px;font-size:.92rem}
+        .method ol li,.method ul li{margin-bottom:4px}
+        @media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:11px}.no-print{display:none}.page{padding:0;max-width:100%}.type{break-inside:avoid;padding:10px 14px;margin-bottom:8px}}
+        @media(max-width:600px){.eq2,.eq3{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div class="no-print nav-links" style="max-width:860px;margin:10px auto 0;padding:0 20px;">
+    <a href="index.html">Home</a>
+    <a href="refresher-circular-motion.html">Circular Motion</a>
+    <a href="refresher-momentum.html">Momentum</a>
+    <a href="question-bank.html">Question Bank</a>
+</div>
+
+<div class="page">
+
+<div class="hdr">
+    <h1>WORK &amp; ENERGY REFRESHER</h1>
+    <div class="sub">AP Physics C: Mechanics &bull; 12 Topic Areas &bull; Formulas, Intuition &amp; AP Tips</div>
+</div>
+
+<div class="core">
+    <div class="label">The Big Idea</div>
+    $W_{net} = \Delta KE$ &nbsp;&nbsp;&bull;&nbsp;&nbsp; $KE_i + U_i + W_{nc} = KE_f + U_f$
+    <div style="font-size:.82rem;color:#64748b;margin-top:4px;">Energy can't be created or destroyed &mdash; only transferred between forms. Work is the mechanism of transfer.</div>
+</div>
+
+<!-- 1 -->
+<div class="type t1">
+    <h2><span class="num">1</span> Work by a Constant Force</h2>
+    <div class="eq">$W = Fd\cos\theta$</div>
+    <div class="setup"><b>$\theta$</b> is the angle between the force vector and the displacement vector.</div>
+    <div class="eq3">
+        <div class="eq">$\theta = 0°$<br>$W = Fd$<br><span style="font-size:.8rem;color:#16a34a;">Force along motion</span></div>
+        <div class="eq">$\theta = 90°$<br>$W = 0$<br><span style="font-size:.8rem;color:#d97706;">Force perpendicular</span></div>
+        <div class="eq">$\theta = 180°$<br>$W = -Fd$<br><span style="font-size:.8rem;color:#dc2626;">Force opposes motion</span></div>
+    </div>
+    <div class="insight"><b>Normal force and gravity do zero work</b> when an object moves horizontally (both are perpendicular to displacement, $\theta = 90°$).</div>
+    <div class="trap"><b>$\theta$ is NOT the incline angle.</b> It's the angle between $\vec{F}$ and $\vec{d}$. Draw both vectors and measure between them.</div>
+</div>
+
+<!-- 2 -->
+<div class="type t2">
+    <h2><span class="num">2</span> Work by a Variable Force</h2>
+    <div class="eq">$W = \int_{x_1}^{x_2} F(x)\,dx$</div>
+    <div class="insight"><b>Graphically:</b> Work = area under the $F$-$x$ graph. Positive area above the axis, negative below.</div>
+    <div class="setup"><b>Spring example:</b> $W_{spring} = \int_0^x (-kx)\,dx = -\frac{1}{2}kx^2$ (spring does negative work when stretched).</div>
+    <div class="ap-asks"><b>AP asks:</b> "$F(x) = 6x^2$ N. Find the work from $x = 1$ to $x = 3$ m."</div>
+</div>
+
+<!-- 3 -->
+<div class="type t3">
+    <h2><span class="num">3</span> Work-Energy Theorem</h2>
+    <div class="gold">The NET work done on an object equals its change in kinetic energy.</div>
+    <div class="eq">$W_{net} = \Delta KE = \frac{1}{2}mv_f^2 - \frac{1}{2}mv_i^2$</div>
+    <div class="insight"><b>This is the most powerful equation in mechanics.</b> It works even when forces are variable, paths are curved, or acceleration isn't constant. Net work = individual works added up.</div>
+    <div class="ap-asks"><b>AP asks:</b> "100 J of net work is done on a 2 kg object at rest. Find its final speed."</div>
+</div>
+
+<!-- 4 -->
+<div class="type t4">
+    <h2><span class="num">4</span> Kinetic Energy</h2>
+    <div class="eq">$KE = \frac{1}{2}mv^2$</div>
+    <div class="setup"><b>Always positive.</b> Depends on speed squared &mdash; double the speed = 4&times; the KE. Triple = 9&times;.</div>
+    <div class="insight"><b>Stopping distance:</b> A car at $2v$ needs $4\times$ the stopping distance (because it has $4\times$ the KE to dissipate).</div>
+</div>
+
+<!-- 5 -->
+<div class="type t5">
+    <h2><span class="num">5</span> Gravitational Potential Energy</h2>
+    <div class="eq2">
+        <div class="eq"><b>Near surface:</b><br>$U_g = mgh$<br><span style="font-size:.8rem;color:#64748b;">$h$ measured from chosen reference</span></div>
+        <div class="eq"><b>General (planets/orbits):</b><br>$U_g = -\dfrac{GMm}{r}$<br><span style="font-size:.8rem;color:#64748b;">Always negative, zero at $r = \infty$</span></div>
+    </div>
+    <div class="trap"><b>$h$ is relative.</b> You choose where $h = 0$. Pick the most convenient reference point (usually the lowest point in the problem).</div>
+    <div class="insight"><b>Why the minus sign?</b> In the general formula, objects bound by gravity have negative total energy. You must add energy to escape (reach $U = 0$ at infinity).</div>
+</div>
+
+<!-- 6 -->
+<div class="type t6">
+    <h2><span class="num">6</span> Spring / Elastic PE</h2>
+    <div class="eq">$U_s = \frac{1}{2}kx^2$</div>
+    <div class="setup"><b>$x$</b> is measured from the natural (unstretched) length. Compressed or stretched both give positive PE.</div>
+    <div class="insight"><b>Spring launch:</b> $\frac{1}{2}kx^2 = \frac{1}{2}mv^2$ &rarr; $v = x\sqrt{k/m}$. All spring PE converts to KE when the object leaves the spring.</div>
+    <div class="trap"><b>Don't forget to square $x$!</b> Compressing twice as far stores 4&times; the energy.</div>
+</div>
+
+<!-- 7 -->
+<div class="type t7">
+    <h2><span class="num">7</span> Conservation of Energy</h2>
+    <div class="gold">$KE_i + U_i + W_{nc} = KE_f + U_f$</div>
+    <div class="setup"><b>If no friction/air resistance</b> ($W_{nc} = 0$): total mechanical energy is conserved.</div>
+    <div class="eq">$\frac{1}{2}mv_i^2 + mgh_i = \frac{1}{2}mv_f^2 + mgh_f$</div>
+    <div class="insight"><b>When to use energy vs. forces:</b> "Find speed at some height" &rarr; energy. "Find acceleration or force" &rarr; $F = ma$. "Find time" &rarr; kinematics.</div>
+    <div class="ap-asks"><b>AP asks:</b> "A ball is released from height $h$ and slides down a frictionless track. Find its speed at the bottom."</div>
+</div>
+
+<!-- 8 -->
+<div class="type t8">
+    <h2><span class="num">8</span> Non-Conservative Work (Friction)</h2>
+    <div class="eq">$W_{friction} = -f_k \cdot d = -\mu_k mg \cdot d$</div>
+    <div class="setup"><b>Friction always does negative work</b> (opposes motion). It removes mechanical energy from the system, converting it to heat.</div>
+    <div class="eq">$\frac{1}{2}mv_i^2 + mgh_i - f_k d = \frac{1}{2}mv_f^2 + mgh_f$</div>
+    <div class="insight"><b>Energy budget approach:</b> Start with initial energy, subtract friction losses, the remainder becomes final KE + PE. Track each term step by step.</div>
+    <div class="ap-asks"><b>AP asks:</b> "Block slides down rough incline, then along rough floor, then up a frictionless ramp. Find max height."</div>
+</div>
+
+<!-- 9 -->
+<div class="type t9">
+    <h2><span class="num">9</span> Power</h2>
+    <div class="eq2">
+        <div class="eq"><b>Average:</b> $P_{avg} = \dfrac{W}{t} = \dfrac{\Delta E}{t}$</div>
+        <div class="eq"><b>Instantaneous:</b> $P = \dfrac{dW}{dt} = \vec{F} \cdot \vec{v} = Fv\cos\theta$</div>
+    </div>
+    <div class="setup"><b>Units:</b> Watts (W) = Joules/second. &nbsp; 1 horsepower = 746 W.</div>
+    <div class="insight"><b>Constant velocity up a hill:</b> Engine force balances gravity + friction. $P = F_{engine} \cdot v$. This is the most common AP power problem.</div>
+    <div class="ap-asks"><b>AP asks:</b> "A car drives at constant $v$ up a hill. Find the power output."</div>
+</div>
+
+<!-- 10 -->
+<div class="type t10">
+    <h2><span class="num">10</span> Potential Energy Curves</h2>
+    <div class="gold">$F(x) = -\dfrac{dU}{dx}$</div>
+    <div class="setup"><b>Given $U(x)$, find force:</b> Take the negative derivative. Force points from high $U$ to low $U$ (downhill on the PE curve).</div>
+    <div class="insight"><b>Reading a $U(x)$ graph:</b><br>
+        &bull; <b>Equilibrium:</b> where slope $= 0$ ($F = 0$)<br>
+        &bull; <b>Turning points:</b> where $U(x) = E_{total}$ (KE = 0, particle reverses)<br>
+        &bull; <b>Allowed region:</b> where $U(x) \le E_{total}$ (KE can't be negative)<br>
+        &bull; <b>Max KE:</b> where $U$ is minimum (all energy is kinetic)
+    </div>
+    <div class="ap-asks"><b>AP asks:</b> "Given $U(x)$ graph with total energy $E$, identify turning points and the region where the particle is trapped."</div>
+</div>
+
+<!-- 11 -->
+<div class="type t11">
+    <h2><span class="num">11</span> Stability Analysis</h2>
+    <div class="eq2">
+        <div class="eq">$\dfrac{d^2U}{dx^2} > 0$ &rarr; <b style="color:#16a34a;">Stable</b><br><span style="font-size:.8rem;color:#64748b;">Local minimum (valley)</span></div>
+        <div class="eq">$\dfrac{d^2U}{dx^2} < 0$ &rarr; <b style="color:#dc2626;">Unstable</b><br><span style="font-size:.8rem;color:#64748b;">Local maximum (hilltop)</span></div>
+    </div>
+    <div class="insight"><b>Physical intuition:</b> A ball in a valley (stable) returns when nudged. A ball on a hilltop (unstable) rolls away when nudged. A ball on a flat surface (neutral) stays wherever you put it.</div>
+    <div class="trap"><b>Don't confuse min/max of $U$ with stable/unstable!</b> Minimum of $U$ = stable. Maximum of $U$ = unstable. (Think: ball rolls to lowest energy.)</div>
+</div>
+
+<!-- 12 -->
+<div class="type t12">
+    <h2><span class="num">12</span> Conservative vs Non-Conservative Forces</h2>
+    <div class="eq2">
+        <div class="eq"><b style="color:#16a34a;">Conservative</b><br>Gravity, spring, electrostatic<br>Work is path-independent<br>Has a PE function<br>$W_{loop} = 0$</div>
+        <div class="eq"><b style="color:#dc2626;">Non-Conservative</b><br>Friction, air resistance, applied force<br>Work depends on path<br>No PE function<br>$W_{loop} \neq 0$</div>
+    </div>
+    <div class="insight"><b>Test for conservative:</b> Does the work depend on the path taken? If the work from A to B is the same regardless of the route, it's conservative. Friction fails this &mdash; longer path = more work.</div>
+</div>
+
+<!-- DECISION TREE -->
+<div class="method">
+    <h3>When to Use Energy Methods</h3>
+    <ul>
+        <li><b>"Find speed at some position"</b> &rarr; Energy conservation</li>
+        <li><b>"Find height / distance"</b> &rarr; Energy conservation</li>
+        <li><b>"How far does it slide before stopping?"</b> &rarr; Energy with friction</li>
+        <li><b>"Find force at a position"</b> &rarr; $F = -dU/dx$ or Newton's laws</li>
+        <li><b>"Find time"</b> &rarr; NOT energy &mdash; use kinematics</li>
+        <li><b>"Find acceleration"</b> &rarr; NOT energy &mdash; use $F = ma$</li>
+        <li><b>"Find power"</b> &rarr; $P = Fv$ or $P = dW/dt$</li>
+    </ul>
+</div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    renderMathInElement(document.body, {
+        delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]
+    });
+});
+</script>
+</body>
+</html>

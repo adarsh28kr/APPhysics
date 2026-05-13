@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momentum &amp; Impulse — AP Refresher</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',-apple-system,sans-serif;background:#fff;color:#1e293b;line-height:1.5;font-size:14px}
+        .page{max-width:860px;margin:0 auto;padding:16px 20px}
+        .hdr{background:linear-gradient(135deg,#0f172a,#d97706);color:#fff;padding:14px 20px;border-radius:10px;text-align:center;margin-bottom:16px}
+        .hdr h1{font-size:1.5rem;letter-spacing:1px;margin-bottom:2px}
+        .hdr .sub{font-size:.8rem;opacity:.75}
+        .nav-links{margin-bottom:14px;font-size:.85rem}
+        .nav-links a{color:#2563eb;text-decoration:none;margin-right:14px}
+        .core{background:#f0fdf4;border:2px solid #16a34a;border-radius:8px;padding:12px 18px;text-align:center;margin-bottom:16px;font-size:1.1rem}
+        .core .label{font-size:.75rem;color:#16a34a;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+        .type{border:2px solid;border-radius:10px;padding:16px 20px;margin-bottom:14px;break-inside:avoid}
+        .type h2{font-size:1rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+        .type h2 .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;color:#fff;font-size:.8rem;font-weight:700}
+        .t1{border-color:#d97706} .t1 .num{background:#d97706}
+        .t2{border-color:#7c3aed} .t2 .num{background:#7c3aed}
+        .t3{border-color:#2563eb} .t3 .num{background:#2563eb}
+        .t4{border-color:#16a34a} .t4 .num{background:#16a34a}
+        .t5{border-color:#dc2626} .t5 .num{background:#dc2626}
+        .t6{border-color:#0891b2} .t6 .num{background:#0891b2}
+        .t7{border-color:#be185d} .t7 .num{background:#be185d}
+        .t8{border-color:#64748b} .t8 .num{background:#64748b}
+        .t9{border-color:#059669} .t9 .num{background:#059669}
+        .t10{border-color:#9333ea} .t10 .num{background:#9333ea}
+        .setup{background:#f8fafc;border-radius:6px;padding:8px 12px;margin:8px 0;font-size:.9rem;color:#64748b}
+        .setup b{color:#1e293b}
+        .eq{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:6px 12px;margin:6px 0;text-align:center;font-size:1rem}
+        .eq2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+        .eq2 .eq{margin:0}
+        .eq3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+        .eq3 .eq{margin:0}
+        .insight{background:#eff6ff;border-left:3px solid #2563eb;padding:6px 12px;margin:6px 0;font-size:.88rem;border-radius:0 6px 6px 0}
+        .insight b{color:#2563eb}
+        .trap{background:#fef2f2;border-left:3px solid #dc2626;padding:6px 12px;margin:6px 0;font-size:.88rem;border-radius:0 6px 6px 0}
+        .trap b{color:#dc2626}
+        .ap-asks{background:#faf5ff;border-left:3px solid #7c3aed;padding:6px 12px;margin:6px 0;font-size:.88rem;border-radius:0 6px 6px 0}
+        .ap-asks b{color:#7c3aed}
+        .gold{background:#1e293b;color:#fbbf24;padding:6px 12px;border-radius:6px;font-size:.9rem;font-weight:700;margin:10px 0;text-align:center}
+        .method{background:#f8fafc;border:2px solid #2563eb;border-radius:8px;padding:14px 18px;margin:16px 0}
+        .method h3{color:#2563eb;margin-bottom:8px;font-size:1rem}
+        .method ol{margin-left:20px;font-size:.92rem}
+        .method ol li{margin-bottom:4px}
+        .tbl{width:100%;border-collapse:collapse;font-size:.88rem;margin:8px 0}
+        .tbl th,.tbl td{border:1px solid #e2e8f0;padding:6px 10px;text-align:center}
+        .tbl th{background:#f8fafc;font-weight:700;color:#64748b;font-size:.8rem}
+        .tbl td:first-child{text-align:left;font-weight:600}
+        @media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:11px}.no-print{display:none}.page{padding:0;max-width:100%}.type{break-inside:avoid;padding:10px 14px;margin-bottom:8px}}
+        @media(max-width:600px){.eq2,.eq3{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<div class="no-print nav-links" style="max-width:860px;margin:10px auto 0;padding:0 20px;">
+    <a href="index.html">Home</a>
+    <a href="refresher-circular-motion.html">Circular Motion</a>
+    <a href="refresher-work-energy.html">Work &amp; Energy</a>
+    <a href="question-bank.html">Question Bank</a>
+</div>
+
+<div class="page">
+
+<div class="hdr">
+    <h1>MOMENTUM &amp; IMPULSE REFRESHER</h1>
+    <div class="sub">AP Physics C: Mechanics &bull; 10 Topic Areas &bull; Formulas, Intuition &amp; AP Tips</div>
+</div>
+
+<div class="core">
+    <div class="label">The Big Idea</div>
+    $\vec{p} = m\vec{v}$ &nbsp;&nbsp;&bull;&nbsp;&nbsp; $\vec{F}_{net} = \dfrac{d\vec{p}}{dt}$
+    <div style="font-size:.82rem;color:#64748b;margin-top:4px;">Momentum is "mass in motion." Force is the rate of change of momentum. If no external force acts, momentum is conserved.</div>
+</div>
+
+<!-- 1 -->
+<div class="type t1">
+    <h2><span class="num">1</span> Impulse-Momentum Theorem</h2>
+    <div class="setup"><b>Core idea:</b> Impulse = change in momentum. A force applied over time changes an object's momentum.</div>
+    <div class="eq">$J = \Delta p = F \cdot \Delta t = mv_f - mv_i$</div>
+    <div class="insight"><b>Intuition:</b> A small force for a long time has the same impulse as a large force for a short time. That's why airbags work &mdash; they increase $\Delta t$ to reduce $F$.</div>
+    <div class="trap"><b>Signs matter!</b> If a ball bounces back, $\Delta p = m(-v_f) - m(v_i)$. Don't subtract magnitudes &mdash; use signs. A ball reversing direction has $\Delta p = m(v_f + v_i)$ in magnitude.</div>
+    <div class="ap-asks"><b>AP asks:</b> "Find the impulse" or "Find the average force during a collision"</div>
+</div>
+
+<!-- 2 -->
+<div class="type t2">
+    <h2><span class="num">2</span> Impulse with Variable Force</h2>
+    <div class="setup"><b>When force changes with time</b>, you can't just multiply $F \times \Delta t$. You must integrate.</div>
+    <div class="eq">$J = \int_{t_1}^{t_2} F(t)\,dt = \Delta p$</div>
+    <div class="insight"><b>Graphically:</b> Impulse = area under the $F$-$t$ graph. Triangles, rectangles, or curves &mdash; find the area.</div>
+    <div class="ap-asks"><b>AP asks:</b> "Given $F(t) = 12t - 3t^2$, find the velocity at $t = 4$ s"</div>
+</div>
+
+<!-- 3 -->
+<div class="type t3">
+    <h2><span class="num">3</span> Conservation of Momentum</h2>
+    <div class="gold">If no external force acts on the system: &nbsp; $\vec{p}_i = \vec{p}_f$</div>
+    <div class="setup"><b>When to use:</b> Collisions, explosions, any interaction between objects where external forces are zero (or negligible during the event).</div>
+    <div class="eq">$m_1 v_{1i} + m_2 v_{2i} = m_1 v_{1f} + m_2 v_{2f}$</div>
+    <div class="insight"><b>Key skill:</b> Choose your SYSTEM wisely. Internal forces (the objects hitting each other) don't change total momentum. Only external forces (friction with ground, gravity) can &mdash; but during a brief collision, these are usually negligible.</div>
+    <div class="trap"><b>Momentum is a vector!</b> In 2D, conserve $p_x$ and $p_y$ separately.</div>
+</div>
+
+<!-- 4 -->
+<div class="type t4">
+    <h2><span class="num">4</span> Elastic Collisions (1D)</h2>
+    <div class="setup"><b>Definition:</b> Both momentum AND kinetic energy are conserved.</div>
+    <div class="eq2">
+        <div class="eq">$m_1 v_{1i} + m_2 v_{2i} = m_1 v_{1f} + m_2 v_{2f}$</div>
+        <div class="eq">$\frac{1}{2}m_1 v_{1i}^2 + \frac{1}{2}m_2 v_{2i}^2 = \frac{1}{2}m_1 v_{1f}^2 + \frac{1}{2}m_2 v_{2f}^2$</div>
+    </div>
+    <div style="font-size:.9rem;margin:8px 0;"><b>When target is at rest</b> ($v_{2i} = 0$):</div>
+    <div class="eq2">
+        <div class="eq">$v_{1f} = \dfrac{m_1 - m_2}{m_1 + m_2}\,v_{1i}$</div>
+        <div class="eq">$v_{2f} = \dfrac{2m_1}{m_1 + m_2}\,v_{1i}$</div>
+    </div>
+    <div class="gold">Special case: Equal masses ($m_1 = m_2$) &rarr; velocities SWAP. Moving ball stops, stationary ball takes its velocity.</div>
+    <div class="insight"><b>Heavy hits light:</b> heavy barely slows, light flies off fast. <b>Light hits heavy:</b> light bounces back, heavy barely moves.</div>
+</div>
+
+<!-- 5 -->
+<div class="type t5">
+    <h2><span class="num">5</span> Inelastic Collisions</h2>
+    <div class="setup"><b>Perfectly inelastic:</b> Objects stick together. Maximum KE loss. Momentum still conserved.</div>
+    <div class="eq">$m_1 v_{1i} + m_2 v_{2i} = (m_1 + m_2)\,v_f$</div>
+    <div class="eq">$v_f = \dfrac{m_1 v_{1i} + m_2 v_{2i}}{m_1 + m_2}$</div>
+    <div class="insight"><b>How to tell if a collision is elastic:</b> Check if KE is conserved. Calculate $KE_{before}$ and $KE_{after}$. If equal = elastic. If $KE$ decreased = inelastic.</div>
+    <div class="trap"><b>Energy is NOT conserved</b> in inelastic collisions (KE is lost to heat/deformation). But <b>momentum IS always conserved</b> in all collisions.</div>
+</div>
+
+<!-- 6 -->
+<div class="type t6">
+    <h2><span class="num">6</span> 2D Collisions</h2>
+    <div class="setup"><b>Key idea:</b> Momentum is a vector. Conserve each component independently.</div>
+    <div class="eq2">
+        <div class="eq"><b>x:</b> $m_1 v_{1x,i} + m_2 v_{2x,i} = m_1 v_{1x,f} + m_2 v_{2x,f}$</div>
+        <div class="eq"><b>y:</b> $m_1 v_{1y,i} + m_2 v_{2y,i} = m_1 v_{1y,f} + m_2 v_{2y,f}$</div>
+    </div>
+    <div class="insight"><b>Equal-mass elastic 2D:</b> The two balls always separate at $90°$ to each other. If ball 1 scatters at angle $\alpha$, ball 2 goes at $90° - \alpha$.</div>
+    <div class="ap-asks"><b>AP asks:</b> "Ball A deflects at 30&deg;. Find the y-component of Ball B's velocity."</div>
+</div>
+
+<!-- 7 -->
+<div class="type t7">
+    <h2><span class="num">7</span> Explosions</h2>
+    <div class="setup"><b>Reverse of perfectly inelastic.</b> Object starts as one piece, breaks apart. Total momentum before = 0 (if at rest).</div>
+    <div class="eq">$0 = m_1 v_1 + m_2 v_2$ &nbsp;&rarr;&nbsp; $m_1 v_1 = -m_2 v_2$</div>
+    <div class="insight"><b>The pieces have equal and opposite momenta.</b> The lighter piece moves faster. $KE$ increases (energy comes from internal source: spring, chemical, etc.).</div>
+    <div class="ap-asks"><b>AP asks:</b> "A 5 kg object explodes into 2 kg and 3 kg pieces. If the 2 kg piece moves at 15 m/s east, find the speed of the 3 kg piece."</div>
+</div>
+
+<!-- 8 -->
+<div class="type t8">
+    <h2><span class="num">8</span> Center of Mass (Position)</h2>
+    <div class="eq">$x_{cm} = \dfrac{m_1 x_1 + m_2 x_2 + \cdots}{m_1 + m_2 + \cdots} = \dfrac{\sum m_i x_i}{M}$</div>
+    <div class="insight"><b>Intuition:</b> The center of mass is the "balance point." It's closer to the heavier object. For equal masses, it's exactly in the middle.</div>
+    <div class="setup"><b>For continuous objects:</b> $x_{cm} = \frac{1}{M}\int x\,dm$</div>
+    <div class="ap-asks"><b>AP asks:</b> "Three particles at positions $x_1, x_2, x_3$ with masses $m_1, m_2, m_3$. Find $x_{cm}$."</div>
+</div>
+
+<!-- 9 -->
+<div class="type t9">
+    <h2><span class="num">9</span> Center of Mass Motion</h2>
+    <div class="eq2">
+        <div class="eq">$v_{cm} = \dfrac{p_{total}}{M_{total}}$</div>
+        <div class="eq">$F_{ext} = M_{total}\,a_{cm}$</div>
+    </div>
+    <div class="gold">If $F_{ext} = 0$: the center of mass moves at constant velocity (or stays put), no matter what the pieces do.</div>
+    <div class="insight"><b>Powerful shortcut:</b> Two skaters push off each other on ice. CM doesn't move. An object explodes in midair. CM follows the same parabolic path as if no explosion happened.</div>
+</div>
+
+<!-- 10 -->
+<div class="type t10">
+    <h2><span class="num">10</span> Ballistic Pendulum</h2>
+    <div class="setup"><b>Classic 2-step problem:</b> Bullet embeds in block (collision), then block swings up (pendulum).</div>
+    <div class="eq2">
+        <div class="eq"><b>Step 1 (Collision):</b> $m v_0 = (m + M)v$<br><span style="font-size:.8rem;color:#64748b;">Use momentum (KE NOT conserved)</span></div>
+        <div class="eq"><b>Step 2 (Swing):</b> $\frac{1}{2}(m+M)v^2 = (m+M)gh$<br><span style="font-size:.8rem;color:#64748b;">Use energy (momentum NOT useful)</span></div>
+    </div>
+    <div class="trap"><b>Never mix the two steps!</b> Don't use energy through the collision (KE is lost). Don't use momentum through the swing (external force: gravity). Each step has its own conservation law.</div>
+    <div class="ap-asks"><b>AP asks:</b> "A 10 g bullet embeds in a 2 kg block. The block swings up 0.05 m. Find the bullet's speed."</div>
+</div>
+
+<!-- DECISION TREE -->
+<div class="method">
+    <h3>Which Conservation Law Do I Use?</h3>
+    <div style="font-size:.9rem;">
+        <b>Collision happening?</b> &rarr; Use <b>momentum</b> ($p_i = p_f$)<br>
+        <b>Object moving up/down after collision?</b> &rarr; Use <b>energy</b> ($KE \leftrightarrow PE$)<br>
+        <b>Is the collision elastic?</b> &rarr; You can use BOTH momentum and energy simultaneously<br>
+        <b>Is it perfectly inelastic?</b> &rarr; Momentum only (KE is lost)<br>
+        <b>Explosion?</b> &rarr; Momentum (KE increases from internal energy)
+    </div>
+</div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    renderMathInElement(document.body, {
+        delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]
+    });
+});
+</script>
+</body>
+</html>
