@@ -81,6 +81,117 @@
     <div style="font-size:.82rem;color:#64748b;margin-top:4px;">This is NOT a new force. It's just $F = ma$ with $a = v^2/r$ pointed inward.</div>
 </div>
 
+<!-- ========== FBD DIAGRAMS + THINKING FRAMEWORK ========== -->
+<div style="border:2px solid #dc2626;border-radius:10px;padding:18px 20px;margin-bottom:16px;">
+    <h2 style="color:#dc2626;margin-bottom:4px;font-size:1.1rem;">How to Think About Vertical Circles (Step by Step)</h2>
+    <p style="color:#64748b;font-size:.85rem;margin-bottom:14px;">Master this and you can solve ANY circular motion problem.</p>
+
+    <!-- TWO FBDs SIDE BY SIDE -->
+    <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
+
+        <!-- FBD: BOTTOM -->
+        <div style="text-align:center;">
+            <div style="font-weight:700;color:#2563eb;margin-bottom:6px;font-size:.85rem;">AT THE BOTTOM</div>
+            <svg width="220" height="240" viewBox="0 0 220 240" style="background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;">
+                <!-- Circle (loop) -->
+                <circle cx="110" cy="120" r="70" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6,4"/>
+                <!-- Center dot -->
+                <circle cx="110" cy="120" r="3" fill="#94a3b8"/>
+                <text x="124" y="118" font-size="10" fill="#94a3b8" font-family="sans-serif">center</text>
+                <!-- Object at bottom -->
+                <circle cx="110" cy="190" r="10" fill="#2563eb"/>
+                <!-- N arrow (UP, long, toward center) -->
+                <line x1="110" y1="178" x2="110" y2="118" stroke="#16a34a" stroke-width="3" marker-end="url(#arrowG)"/>
+                <text x="120" y="145" font-size="14" fill="#16a34a" font-weight="bold" font-family="sans-serif">N</text>
+                <!-- mg arrow (DOWN, shorter, away from center) -->
+                <line x1="110" y1="202" x2="110" y2="238" stroke="#dc2626" stroke-width="3" marker-end="url(#arrowR)"/>
+                <text x="120" y="228" font-size="14" fill="#dc2626" font-weight="bold" font-family="sans-serif">mg</text>
+                <!-- Velocity arrow (horizontal, tangent) -->
+                <line x1="122" y1="190" x2="170" y2="190" stroke="#7c3aed" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrowP)"/>
+                <text x="142" y="184" font-size="11" fill="#7c3aed" font-family="sans-serif" font-style="italic">v</text>
+                <!-- "Center is UP" label -->
+                <text x="110" y="22" font-size="11" fill="#2563eb" font-weight="bold" text-anchor="middle" font-family="sans-serif">CENTER IS UP ↑</text>
+                <!-- Arrow definitions -->
+                <defs>
+                    <marker id="arrowG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/></marker>
+                    <marker id="arrowR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/></marker>
+                    <marker id="arrowP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7c3aed"/></marker>
+                </defs>
+            </svg>
+            <div class="eq" style="margin-top:6px;font-size:.92rem;">$N - mg = \dfrac{mv^2}{r}$</div>
+            <div style="font-size:.8rem;color:#16a34a;font-weight:600;">N is BIG (you feel heavy)</div>
+        </div>
+
+        <!-- FBD: TOP -->
+        <div style="text-align:center;">
+            <div style="font-weight:700;color:#dc2626;margin-bottom:6px;font-size:.85rem;">AT THE TOP</div>
+            <svg width="220" height="240" viewBox="0 0 220 240" style="background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;">
+                <!-- Circle (loop) -->
+                <circle cx="110" cy="120" r="70" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6,4"/>
+                <!-- Center dot -->
+                <circle cx="110" cy="120" r="3" fill="#94a3b8"/>
+                <text x="124" y="118" font-size="10" fill="#94a3b8" font-family="sans-serif">center</text>
+                <!-- Object at top -->
+                <circle cx="110" cy="50" r="10" fill="#dc2626"/>
+                <!-- N arrow (DOWN, short, toward center) -->
+                <line x1="110" y1="62" x2="110" y2="92" stroke="#16a34a" stroke-width="3" marker-end="url(#arrowG2)"/>
+                <text x="120" y="82" font-size="14" fill="#16a34a" font-weight="bold" font-family="sans-serif">N</text>
+                <!-- mg arrow (DOWN, longer, also toward center) -->
+                <line x1="96" y1="62" x2="96" y2="110" stroke="#dc2626" stroke-width="3" marker-end="url(#arrowR2)"/>
+                <text x="72" y="92" font-size="14" fill="#dc2626" font-weight="bold" font-family="sans-serif">mg</text>
+                <!-- Velocity arrow (horizontal left, tangent) -->
+                <line x1="98" y1="50" x2="50" y2="50" stroke="#7c3aed" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrowP2)"/>
+                <text x="62" y="44" font-size="11" fill="#7c3aed" font-family="sans-serif" font-style="italic">v</text>
+                <!-- "Center is DOWN" label -->
+                <text x="110" y="228" font-size="11" fill="#dc2626" font-weight="bold" text-anchor="middle" font-family="sans-serif">CENTER IS DOWN ↓</text>
+                <!-- BOTH arrows point same direction callout -->
+                <text x="160" y="76" font-size="9" fill="#64748b" font-family="sans-serif">Both forces</text>
+                <text x="160" y="88" font-size="9" fill="#64748b" font-family="sans-serif">point DOWN</text>
+                <text x="160" y="100" font-size="9" fill="#64748b" font-family="sans-serif">(toward center)</text>
+                <!-- Arrow definitions -->
+                <defs>
+                    <marker id="arrowG2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/></marker>
+                    <marker id="arrowR2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/></marker>
+                    <marker id="arrowP2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7c3aed"/></marker>
+                </defs>
+            </svg>
+            <div class="eq" style="margin-top:6px;font-size:.92rem;">$mg + N = \dfrac{mv^2}{r}$</div>
+            <div style="font-size:.8rem;color:#dc2626;font-weight:600;">N is SMALL (you feel light)</div>
+        </div>
+    </div>
+
+    <!-- KEY INSIGHT -->
+    <div class="gold">At the top: both $mg$ and $N$ point the SAME direction (toward center). At the bottom: they point OPPOSITE directions.</div>
+
+    <!-- 5-STEP THINKING FRAMEWORK -->
+    <div class="method" style="margin-top:14px;margin-bottom:0;">
+        <h3>5-Step Framework (Works for ANY Circular Motion Problem)</h3>
+        <ol>
+            <li><b>Where is the object on the circle?</b> &mdash; Top, bottom, side? This determines the geometry.</li>
+            <li><b>Where is the center?</b> &mdash; Point from the object toward the center. This is your positive direction.</li>
+            <li><b>Draw ALL real forces</b> &mdash; Only gravity ($mg$), normal ($N$), tension ($T$), friction ($f$). <span style="color:#dc2626;font-weight:600;">NEVER draw "centripetal force"</span> &mdash; it's not a real force.</li>
+            <li><b>Assign signs</b> &mdash; Forces pointing toward center = <span style="color:#16a34a;font-weight:600;">positive</span>. Forces pointing away = <span style="color:#dc2626;font-weight:600;">negative</span>.</li>
+            <li><b>Write the equation &amp; solve</b> &mdash; $\sum F_{\text{toward center}} = \dfrac{mv^2}{r}$ &nbsp; (the right side is ALWAYS positive)</li>
+        </ol>
+    </div>
+
+    <!-- WORKED EXAMPLE -->
+    <div style="background:#faf5ff;border:1px solid #d8b4fe;border-radius:8px;padding:12px 16px;margin-top:14px;">
+        <div style="font-weight:700;color:#7c3aed;margin-bottom:6px;">Worked Example: Ball at the top of a loop</div>
+        <div style="font-size:.9rem;margin-bottom:8px;"><b>Problem:</b> A 0.5 kg ball moves in a vertical loop of radius 2 m. At the top, its speed is 5 m/s. Find the normal force. ($g = 10$ m/s$^2$)</div>
+        <div style="font-size:.9rem;color:#64748b;">
+            <b>Step 1:</b> Object is at the <b>top</b>.<br>
+            <b>Step 2:</b> Center is <b>below</b> the object (downward).<br>
+            <b>Step 3:</b> Forces: $mg = 5$ N (down) and $N$ (down, surface pushes inward).<br>
+            <b>Step 4:</b> Both point toward center (down) &rarr; both positive.<br>
+            <b>Step 5:</b> $mg + N = mv^2/r$ &rarr; $5 + N = 0.5(25)/2 = 6.25$ &rarr; $N = 1.25$ N
+        </div>
+    </div>
+
+    <!-- MINIMUM SPEED -->
+    <div class="trap" style="margin-top:10px;"><b>What if N = 0?</b> That's the minimum speed to stay on the track. Set $N = 0$: &nbsp; $mg = mv^2_{min}/r$ &rarr; $v_{min} = \sqrt{gr}$. Any slower and the ball falls away from the loop.</div>
+</div>
+
 <!-- TYPE 1 -->
 <div class="type t1">
     <h2><span class="num">1</span> Car on Flat Curve</h2>
