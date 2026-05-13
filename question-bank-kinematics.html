@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Physics C — Kinematics Question Bank</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #f5f5f5; --card: #ffffff; --text: #1a1a1a;
+            --text-secondary: #555; --border: #ddd; --primary: #2563eb;
+            --success: #16a34a; --danger: #dc2626; --warning: #f59e0b;
+            --unanswered: #e5e7eb; --answered: #2563eb; --flagged: #f59e0b;
+        }
+        [data-theme="dark"] {
+            --bg: #1a1a2e; --card: #16213e; --text: #e0e0e0;
+            --text-secondary: #aaa; --border: #333; --primary: #4f8cff;
+            --unanswered: #2a2a4a; --answered: #4f8cff;
+        }
+        body { font-family: 'Georgia', serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        h1 { font-size: 1.8rem; margin-bottom: 5px; }
+        .subtitle { color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem; }
+        .nav-links { margin-bottom: 20px; font-size: 0.85rem; }
+        .nav-links a { color: var(--primary); text-decoration: none; margin-right: 15px; }
+        .setup-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 30px; margin-bottom: 20px; }
+        .setup-card h2 { font-size: 1.2rem; margin-bottom: 15px; color: var(--primary); }
+        .topic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        @media (max-width: 500px) { .topic-grid { grid-template-columns: 1fr; } }
+        .topic-option { padding: 14px 16px; border: 2px solid var(--border); border-radius: 8px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 10px; }
+        .topic-option:hover { border-color: var(--primary); }
+        .topic-option.selected { border-color: var(--primary); background: rgba(37,99,235,0.1); }
+        .topic-option input { margin: 0; }
+        .topic-count { font-size: 0.8rem; color: var(--text-secondary); margin-left: auto; }
+        .topic-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .btn { padding: 12px 30px; font-size: 1rem; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-secondary { background: transparent; border: 2px solid var(--border); color: var(--text); padding: 10px 20px; font-size: 0.9rem; }
+        .quiz-layout { display: grid; grid-template-columns: 1fr 200px; gap: 20px; margin-top: 20px; }
+        @media (max-width: 768px) { .quiz-layout { grid-template-columns: 1fr; } .nav-panel { display: none; } }
+        .question-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 30px; min-height: 400px; }
+        .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 8px; }
+        .q-header .progress { font-size: 0.85rem; color: var(--text-secondary); }
+        .topic-tag { font-size: 0.75rem; padding: 3px 10px; border-radius: 10px; font-weight: 600; }
+        .diff-badge { font-size: 0.7rem; padding: 2px 8px; border-radius: 8px; font-weight: 600; }
+        .diff-1 { background: rgba(22,163,74,0.1); color: var(--success); }
+        .diff-2 { background: rgba(245,158,11,0.1); color: var(--warning); }
+        .diff-3 { background: rgba(220,38,38,0.1); color: var(--danger); }
+        .question-text { font-size: 1.1rem; margin-bottom: 25px; line-height: 1.8; }
+        .choices { list-style: none; }
+        .choice { display: flex; align-items: flex-start; padding: 12px 16px; margin-bottom: 8px; border: 2px solid var(--border); border-radius: 8px; cursor: pointer; transition: all 0.15s; }
+        .choice:hover { border-color: var(--primary); background: rgba(37,99,235,0.05); }
+        .choice.selected { border-color: var(--primary); background: rgba(37,99,235,0.1); }
+        .choice.correct { border-color: var(--success); background: rgba(22,163,74,0.1); }
+        .choice.wrong { border-color: var(--danger); background: rgba(220,38,38,0.05); }
+        .choice.locked { pointer-events: none; }
+        .choice-letter { font-weight: bold; margin-right: 12px; min-width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--unanswered); font-size: 0.85rem; }
+        .choice.selected .choice-letter { background: var(--primary); color: white; }
+        .choice.correct .choice-letter { background: var(--success); color: white; }
+        .choice.wrong .choice-letter { background: var(--danger); color: white; }
+        .choice-text { flex: 1; }
+        .question-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border); }
+        .flag-btn { display: flex; align-items: center; gap: 6px; padding: 8px 14px; border: 2px solid var(--border); border-radius: 6px; background: transparent; color: var(--text); cursor: pointer; font-size: 0.9rem; }
+        .flag-btn.flagged { border-color: var(--flagged); color: var(--flagged); }
+        .nav-buttons { display: flex; gap: 10px; }
+        .nav-buttons .btn { padding: 10px 20px; font-size: 0.9rem; }
+        .nav-panel { position: sticky; top: 20px; }
+        .nav-panel h4 { margin-bottom: 10px; font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+        .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+        .nav-dot { width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; cursor: pointer; border: 2px solid var(--border); background: var(--unanswered); color: var(--text); transition: all 0.15s; }
+        .nav-dot:hover { transform: scale(1.1); }
+        .nav-dot.answered { background: var(--answered); color: white; border-color: var(--answered); }
+        .nav-dot.flagged { background: var(--flagged); color: white; border-color: var(--flagged); }
+        .nav-dot.current { box-shadow: 0 0 0 3px var(--primary); }
+        .nav-dot.correct-dot { background: var(--success); color: white; border-color: var(--success); }
+        .nav-dot.wrong-dot { background: var(--danger); color: white; border-color: var(--danger); }
+        .nav-legend { margin-top: 15px; font-size: 0.75rem; color: var(--text-secondary); }
+        .nav-legend div { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+        .submit-section { margin-top: 15px; }
+        .results-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 30px; margin-bottom: 20px; }
+        .results-card h2 { margin-bottom: 15px; text-align: center; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; border: 8px solid var(--primary); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 20px auto; }
+        .score-circle .score { font-size: 2.5rem; font-weight: bold; }
+        .score-circle .total { font-size: 0.9rem; color: var(--text-secondary); }
+        .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        @media (max-width: 600px) { .results-grid { grid-template-columns: 1fr; } }
+        .result-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+        .result-card h4 { margin-bottom: 12px; color: var(--primary); }
+        .topic-bar { display: flex; align-items: center; margin-bottom: 8px; font-size: 0.85rem; }
+        .topic-bar .label { width: 140px; }
+        .topic-bar .bar-bg { flex: 1; height: 20px; background: var(--unanswered); border-radius: 10px; overflow: hidden; margin: 0 10px; }
+        .topic-bar .bar-fill { height: 100%; border-radius: 10px; transition: width 0.5s; }
+        .topic-bar .percent { width: 50px; text-align: right; font-weight: bold; }
+        .review-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 14px; }
+        .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 6px; }
+        .review-result { font-weight: 700; font-size: 0.9rem; }
+        .review-result.correct { color: var(--success); }
+        .review-result.wrong { color: var(--danger); }
+        .step { margin-bottom: 6px; padding: 5px 10px; border-left: 3px solid var(--primary); font-size: 0.92rem; }
+        .step strong { color: var(--primary); }
+        .teach { margin-top: 8px; padding: 8px 12px; background: rgba(37,99,235,0.05); border-left: 3px solid var(--primary); border-radius: 0 6px 6px 0; font-size: 0.88rem; font-style: italic; }
+        .teach strong { color: var(--primary); font-style: normal; }
+        .gotcha { margin-top: 8px; padding: 8px 12px; background: rgba(139,92,246,0.08); border-left: 3px solid #8b5cf6; border-radius: 0 6px 6px 0; font-size: 0.85rem; }
+        .gotcha strong { color: #7c3aed; }
+        [data-theme="dark"] .teach { background: rgba(79,140,255,0.1); }
+        [data-theme="dark"] .gotcha { background: rgba(139,92,246,0.15); }
+        .theme-toggle { position: fixed; bottom: 20px; right: 20px; padding: 10px; border-radius: 50%; border: 2px solid var(--border); background: var(--card); cursor: pointer; font-size: 1.2rem; z-index: 200; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="question-bank.html">Other Topics</a>
+            <a href="dashboard.html">Dashboard</a>
+        </div>
+
+        <div id="setup-screen">
+            <h1>Kinematics Question Bank</h1>
+            <p class="subtitle">30 AP-level questions &mdash; 2-hour revision covering all kinematics problem types</p>
+            <div class="setup-card">
+                <h2>Select Problem Types</h2>
+                <div class="topic-grid" id="topic-grid"></div>
+                <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:15px;">Leave all unchecked to practice everything.</p>
+                <button class="btn btn-primary" onclick="startQuiz()">Start Practice</button>
+            </div>
+        </div>
+
+        <div id="quiz-screen" style="display:none;">
+            <div class="quiz-layout">
+                <div id="question-area"></div>
+                <div class="nav-panel">
+                    <h4>Questions</h4>
+                    <div class="nav-grid" id="nav-grid"></div>
+                    <div class="nav-legend">
+                        <div><span class="legend-dot" style="background:var(--unanswered);border:1px solid var(--border);"></span> Unanswered</div>
+                        <div><span class="legend-dot" style="background:var(--answered);"></span> Answered</div>
+                        <div><span class="legend-dot" style="background:var(--flagged);"></span> Flagged</div>
+                    </div>
+                    <div class="submit-section">
+                        <button class="btn btn-primary" style="width:100%;margin-top:10px;" onclick="submitQuiz()">Submit All</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="results-screen" style="display:none;"></div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">&#9790;</button>
+
+<script>
+// =============================================
+// KINEMATICS QUESTION DATA — 30 questions
+// =============================================
+const allQuestions = [
+
+// ─────────── GRAPHS (4) ───────────
+{id:1, topic:"Graphs", subtopic:"v-t slope", difficulty:1,
+ text:"A car's velocity-time graph is a straight line from $v = 20$ m/s at $t = 0$ to $v = 0$ at $t = 5$ s. The car's acceleration is:",
+ choices:["$4$ m/s$^2$","$-4$ m/s$^2$","$-100$ m/s$^2$","$0$ m/s$^2$","$20$ m/s$^2$"],
+ correctIndex:1,
+ explanation:"Acceleration = slope of v-t graph = $\\Delta v / \\Delta t = (0 - 20)/5 = -4$ m/s$^2$. The negative sign means deceleration.",
+ teach:"On a v-t graph: slope = acceleration, area under curve = displacement. These two readings are the most tested concepts.",
+ gotcha:"Don't drop the sign. Negative slope = negative acceleration (slowing down if v is positive)."},
+
+{id:2, topic:"Graphs", subtopic:"v-t area", difficulty:1,
+ text:"A particle's v-t graph shows $v = 6$ m/s from $t = 0$ to $t = 3$ s, then $v = -2$ m/s from $t = 3$ to $t = 6$ s. The displacement from $t = 0$ to $t = 6$ s is:",
+ choices:["$24$ m","$12$ m","$18$ m","$6$ m","$0$ m"],
+ correctIndex:1,
+ explanation:"Displacement = area = $6(3) + (-2)(3) = 18 - 6 = 12$ m. Positive areas add, negative areas subtract.",
+ teach:"Displacement uses signed areas. Distance uses absolute areas: $|18| + |-6| = 24$ m."},
+
+{id:3, topic:"Graphs", subtopic:"a-t to v-t", difficulty:2,
+ text:"A particle starts from rest. Its acceleration-time graph shows $a = 3$ m/s$^2$ from $t = 0$ to $t = 4$ s, then $a = 0$ from $t = 4$ to $t = 8$ s. The velocity at $t = 8$ s is:",
+ choices:["$0$ m/s","$6$ m/s","$12$ m/s","$24$ m/s","$48$ m/s"],
+ correctIndex:2,
+ explanation:"$\\Delta v$ = area under a-t graph. From 0 to 4 s: $\\Delta v = 3(4) = 12$ m/s. From 4 to 8 s: $\\Delta v = 0(4) = 0$. Since $v_0 = 0$: $v(8) = 12$ m/s.",
+ teach:"Area under a-t graph = change in velocity. Area under v-t graph = displacement. Keep the hierarchy straight."},
+
+{id:4, topic:"Graphs", subtopic:"Piecewise v-t", difficulty:3,
+ text:"A particle's velocity is $v(t) = 4t$ m/s for $0 \\le t \\le 3$ s and $v(t) = 24 - 4t$ m/s for $3 < t \\le 6$ s. The total distance traveled from $t = 0$ to $t = 6$ s is:",
+ choices:["$0$ m","$18$ m","$36$ m","$27$ m","$9$ m"],
+ correctIndex:2,
+ explanation:"From $0$ to $3$: $d_1 = \\int_0^3 4t\\,dt = [2t^2]_0^3 = 18$ m. From $3$ to $6$: $v = 24 - 4t = 0$ at $t = 6$. $v > 0$ throughout (at $t=3$, $v=12$; at $t=6$, $v=0$). $d_2 = \\int_3^6 (24-4t)\\,dt = [24t - 2t^2]_3^6 = (144-72)-(72-18) = 72-54 = 18$ m. Total distance $= 18 + 18 = 36$ m.",
+ teach:"For piecewise functions, integrate each piece separately. Check if velocity changes sign — if so, split further and use absolute values for distance."},
+
+// ─────────── CALCULUS (5) ───────────
+{id:5, topic:"Calculus", subtopic:"Differentiate x(t)", difficulty:1,
+ text:"A particle's position is $x(t) = 4t^3 - 6t^2 + 2t$ m. Its velocity at $t = 2$ s is:",
+ choices:["$10$ m/s","$18$ m/s","$26$ m/s","$30$ m/s","$14$ m/s"],
+ correctIndex:2,
+ explanation:"$v = dx/dt = 12t^2 - 12t + 2$. At $t = 2$: $v = 12(4) - 12(2) + 2 = 48 - 24 + 2 = 26$ m/s.",
+ teach:"Velocity is the first derivative of position. Acceleration is the second derivative. Always differentiate, never divide $x/t$."},
+
+{id:6, topic:"Calculus", subtopic:"Integrate a(t)", difficulty:1,
+ text:"A particle has acceleration $a(t) = 6t$ m/s$^2$ and starts from rest at the origin. Its position at $t = 2$ s is:",
+ choices:["$4$ m","$6$ m","$8$ m","$12$ m","$24$ m"],
+ correctIndex:2,
+ explanation:"$v = \\int 6t\\,dt = 3t^2 + C$. Since $v(0) = 0$: $C = 0$. $x = \\int 3t^2\\,dt = t^3 + C'$. Since $x(0) = 0$: $C' = 0$. At $t = 2$: $x = 8$ m.",
+ teach:"When integrating, always apply initial conditions to find the constants. IC are given as 'starts from rest' ($v_0 = 0$) and 'at the origin' ($x_0 = 0$)."},
+
+{id:7, topic:"Calculus", subtopic:"Max velocity from x(t)", difficulty:2,
+ text:"A particle moves along $x(t) = -t^3 + 6t^2 + 9t$ m for $t \\ge 0$. The maximum velocity occurs at:",
+ choices:["$t = 0$","$t = 1$ s","$t = 2$ s","$t = 3$ s","$t = 4$ s"],
+ correctIndex:2,
+ explanation:"$v = dx/dt = -3t^2 + 12t + 9$. Maximum velocity when $dv/dt = 0$: $a = -6t + 12 = 0 \\Rightarrow t = 2$ s. Check: $d^2v/dt^2 = -6 < 0$, confirming a maximum.",
+ teach:"Maximum velocity occurs when acceleration = 0 (and changes from positive to negative). Set $a(t) = 0$ and verify with the second derivative test."},
+
+{id:8, topic:"Calculus", subtopic:"Non-constant acceleration integration", difficulty:2,
+ text:"A particle starts at $x = 5$ m with $v_0 = 3$ m/s. Its acceleration is $a(t) = 4 - 2t$ m/s$^2$. The velocity when the acceleration is zero is:",
+ choices:["$3$ m/s","$5$ m/s","$7$ m/s","$9$ m/s","$11$ m/s"],
+ correctIndex:2,
+ explanation:"$a = 0$ when $4 - 2t = 0 \\Rightarrow t = 2$ s. $v = v_0 + \\int_0^2 (4 - 2t)\\,dt = 3 + [4t - t^2]_0^2 = 3 + (8 - 4) = 7$ m/s.",
+ teach:"First find WHEN the condition holds, then evaluate the kinematic quantity at that time."},
+
+{id:9, topic:"Calculus", subtopic:"Position from v(t) with sign change", difficulty:3,
+ text:"A particle has velocity $v(t) = t^2 - 4t + 3$ m/s and starts at $x = 0$. Its position at $t = 4$ s is:",
+ choices:["$4/3$ m","$0$ m","$16/3$ m","$4$ m","$8/3$ m"],
+ correctIndex:0,
+ explanation:"$x = \\int_0^4 (t^2 - 4t + 3)\\,dt = [\\frac{t^3}{3} - 2t^2 + 3t]_0^4 = \\frac{64}{3} - 32 + 12 = \\frac{64}{3} - 20 = \\frac{64 - 60}{3} = \\frac{4}{3}$ m.",
+ teach:"For displacement, integrate directly (signs cancel naturally). For distance, you'd need to find where $v = 0$ and split the integral.",
+ gotcha:"$v = (t-1)(t-3) = 0$ at $t = 1$ and $t = 3$. The particle reverses twice. Displacement $\\neq$ distance here."},
+
+// ─────────── PROJECTILE (5) ───────────
+{id:10, topic:"Projectile", subtopic:"Max height", difficulty:1,
+ text:"A ball is launched at $60°$ above the horizontal with speed $40$ m/s. The maximum height reached is ($g = 10$ m/s$^2$):",
+ choices:["$20$ m","$40$ m","$60$ m","$80$ m","$30$ m"],
+ correctIndex:2,
+ explanation:"$v_{0y} = 40\\sin 60° = 40(\\sqrt{3}/2) = 20\\sqrt{3}$ m/s. $h = v_{0y}^2/(2g) = (20\\sqrt{3})^2/20 = 1200/20 = 60$ m.",
+ teach:"At maximum height, $v_y = 0$. Use $v_y^2 = v_{0y}^2 - 2gh$ with $v_y = 0$ to get $h = v_{0y}^2/(2g)$."},
+
+{id:11, topic:"Projectile", subtopic:"Time of flight", difficulty:1,
+ text:"A ball is kicked from ground level at $30°$ with speed $20$ m/s. The total time in the air is ($g = 10$ m/s$^2$):",
+ choices:["$1$ s","$2$ s","$3$ s","$4$ s","$\\sqrt{3}$ s"],
+ correctIndex:1,
+ explanation:"$v_{0y} = 20\\sin 30° = 10$ m/s. Time to peak: $t_{up} = v_{0y}/g = 10/10 = 1$ s. Total time $= 2t_{up} = 2$ s (by symmetry, for level ground).",
+ teach:"For projectiles landing at the same height they started: total time $= 2v_{0y}/g$. This symmetry only works for same-height launch and landing."},
+
+{id:12, topic:"Projectile", subtopic:"Range", difficulty:2,
+ text:"A projectile is launched at $45°$ with speed $v_0$ from ground level. If the launch angle is changed to $30°$ (same $v_0$), the range changes by a factor of:",
+ choices:["$\\sqrt{3}/2$","$1/2$","$2/\\sqrt{3}$","$\\sqrt{3}$","$3/4$"],
+ correctIndex:0,
+ explanation:"$R = v_0^2 \\sin 2\\theta / g$. At $45°$: $R_1 = v_0^2 \\sin 90°/g = v_0^2/g$. At $30°$: $R_2 = v_0^2 \\sin 60°/g = v_0^2 \\sqrt{3}/(2g)$. Ratio: $R_2/R_1 = \\sqrt{3}/2 \\approx 0.866$.",
+ teach:"Range formula: $R = v_0^2 \\sin 2\\theta / g$. Maximum range at $45°$. Complementary angles ($30°$ and $60°$) give the same range.",
+ gotcha:"$30°$ and $60°$ give the SAME range (since $\\sin 60° = \\sin 120°$). But $30°$ vs $45°$ does NOT — $\\sin 60° < \\sin 90°$."},
+
+{id:13, topic:"Projectile", subtopic:"From height (cliff)", difficulty:2,
+ text:"A stone is thrown horizontally at $15$ m/s from a $45$ m cliff. The time to hit the ground and horizontal distance are ($g = 10$ m/s$^2$):",
+ choices:["$3$ s, $45$ m","$3$ s, $30$ m","$4.5$ s, $67.5$ m","$9$ s, $135$ m","$2$ s, $30$ m"],
+ correctIndex:0,
+ explanation:"Vertical: $h = \\frac{1}{2}gt^2 \\Rightarrow t = \\sqrt{2h/g} = \\sqrt{2(45)/10} = \\sqrt{9} = 3$ s. Horizontal: $x = v_{0x} t = 15(3) = 45$ m.",
+ teach:"For horizontal launch from height: vertical motion is pure free fall ($v_{0y} = 0$). Horizontal motion is constant velocity. They are independent."},
+
+{id:14, topic:"Projectile", subtopic:"Landing speed", difficulty:3,
+ text:"A ball is thrown from ground level at $53°$ with speed $25$ m/s. Its speed when it hits the ground is ($g = 10$ m/s$^2$, ignore air resistance):",
+ choices:["$0$ m/s","$15$ m/s","$20$ m/s","$25$ m/s","$30$ m/s"],
+ correctIndex:3,
+ explanation:"By energy conservation (or symmetry): the ball returns to the same height with the same speed. $v_f = v_0 = 25$ m/s. The velocity components reverse vertically but the magnitude is unchanged.",
+ teach:"For same-height landing: final speed = initial speed. This is true by energy conservation ($\\Delta h = 0 \\Rightarrow \\Delta KE = 0$). No calculation needed!",
+ gotcha:"Many students try to compute components. The shortcut: same height = same speed."},
+
+// ─────────── DISTANCE vs DISPLACEMENT (3) ───────────
+{id:15, topic:"Dist vs Disp", subtopic:"Basic reversal", difficulty:1,
+ text:"A car drives $8$ km east, then $3$ km west. The displacement and distance are:",
+ choices:["$5$ km east, $5$ km","$5$ km east, $11$ km","$11$ km east, $11$ km","$5$ km west, $11$ km","$5$ km east, $8$ km"],
+ correctIndex:1,
+ explanation:"Displacement = $8 - 3 = 5$ km east (net change in position). Distance = $8 + 3 = 11$ km (total path length).",
+ teach:"Displacement is a vector (net change). Distance is a scalar (total path). Displacement $\\le$ distance always."},
+
+{id:16, topic:"Dist vs Disp", subtopic:"Calculus distance with reversal", difficulty:2,
+ text:"A particle has velocity $v(t) = 6 - 4t$ m/s. The total distance traveled from $t = 0$ to $t = 3$ s is:",
+ choices:["$0$ m","$3$ m","$6$ m","$4.5$ m","$7.5$ m"],
+ correctIndex:4,
+ explanation:"$v = 0$ at $t = 1.5$ s (reversal). Distance $= |\\int_0^{1.5}(6-4t)\\,dt| + |\\int_{1.5}^{3}(6-4t)\\,dt| = |4.5| + |-4.5| = 9$ m.",
+ teach:"For distance: find where $v = 0$ (direction reversal), split the integral, take absolute values of each piece, then add."},
+
+{id:17, topic:"Dist vs Disp", subtopic:"Displacement zero", difficulty:2,
+ text:"A ball is thrown straight up at $20$ m/s and caught at the same height. The displacement and distance are ($g = 10$ m/s$^2$):",
+ choices:["$0$ m, $0$ m","$0$ m, $20$ m","$0$ m, $40$ m","$20$ m, $40$ m","$40$ m, $40$ m"],
+ correctIndex:2,
+ explanation:"Displacement = $0$ (returns to start). Max height $= v_0^2/(2g) = 400/20 = 20$ m. Distance = up $20$ m + down $20$ m $= 40$ m.",
+ teach:"Returning to the starting point always means displacement = 0, but distance = twice the max height."},
+
+// ─────────── TURNING POINTS (3) ───────────
+{id:18, topic:"Turning Points", subtopic:"Polynomial roots", difficulty:2,
+ text:"A particle moves along $x(t) = t^3 - 9t^2 + 24t$ m for $t \\ge 0$. It momentarily stops at:",
+ choices:["$t = 2$ and $t = 4$ s","$t = 3$ and $t = 8$ s","$t = 0$ and $t = 6$ s","$t = 2$ only","$t = 4$ only"],
+ correctIndex:0,
+ explanation:"$v = dx/dt = 3t^2 - 18t + 24 = 3(t^2 - 6t + 8) = 3(t-2)(t-4)$. Setting $v = 0$: $t = 2$ s and $t = 4$ s.",
+ teach:"'Momentarily stops' means $v = 0$. Factor the velocity polynomial to find the times. Always verify the roots are in the valid domain ($t \\ge 0$)."},
+
+{id:19, topic:"Turning Points", subtopic:"Direction change verification", difficulty:2,
+ text:"For $x(t) = t^4 - 4t^2$ m, the particle changes direction at:",
+ choices:["$t = 0$ only","$t = \\pm\\sqrt{2}$ only","$t = 0, \\pm\\sqrt{2}$","$t = \\pm 2$","It never changes direction for $t > 0$"],
+ correctIndex:1,
+ explanation:"$v = 4t^3 - 8t = 4t(t^2 - 2)$. $v = 0$ at $t = 0$ and $t = \\pm\\sqrt{2}$. Check sign changes: $v(0.5) = -3.5 < 0$ and $v(2) = 16 > 0$, so $v$ changes sign at $t = \\sqrt{2}$. At $t = 0$, $v$ is negative on both sides so no direction change there. For $t < 0$: $v(-0.5) = 3.5 > 0$ and $v(-2) = -16 < 0$, so $v$ changes sign at $t = -\\sqrt{2}$. Direction changes at $t = \\pm\\sqrt{2}$ only.",
+ teach:"$v = 0$ is necessary but not sufficient for a direction change. Check that $v$ actually changes sign across the root. A double root (like $t = 0$ in $v = 4t(t^2-2)$) may not be a direction change.",
+ gotcha:"At $t = 0$, $v = 0$ but $v$ is negative on both sides (just before and just after), so the particle doesn't reverse — it just pauses."},
+
+{id:20, topic:"Turning Points", subtopic:"Acceleration at turning point", difficulty:3,
+ text:"A particle has $x(t) = 2t^3 - 12t^2 + 18t + 5$ m. At the instant the particle first changes direction, its acceleration is:",
+ choices:["$0$ m/s$^2$","$-6$ m/s$^2$","$-12$ m/s$^2$","$6$ m/s$^2$","$12$ m/s$^2$"],
+ correctIndex:2,
+ explanation:"$v = 6t^2 - 24t + 18 = 6(t^2 - 4t + 3) = 6(t-1)(t-3)$. First stop: $t = 1$ s. $a = 12t - 24$. At $t = 1$: $a = 12 - 24 = -12$ m/s$^2$.",
+ teach:"At a turning point, $v = 0$ but $a \\neq 0$ (otherwise the particle would stay stopped). The acceleration tells you which way the particle starts moving after stopping."},
+
+// ─────────── FREE FALL (4) ───────────
+{id:21, topic:"Free Fall", subtopic:"Dropped object", difficulty:1,
+ text:"A rock is dropped from a $125$ m tall building. It hits the ground after ($g = 10$ m/s$^2$):",
+ choices:["$2.5$ s","$3.5$ s","$5$ s","$12.5$ s","$25$ s"],
+ correctIndex:2,
+ explanation:"$h = \\frac{1}{2}gt^2 \\Rightarrow t = \\sqrt{2h/g} = \\sqrt{2(125)/10} = \\sqrt{25} = 5$ s.",
+ teach:"For a dropped object: $v_0 = 0$, so $h = \\frac{1}{2}gt^2$. Solve for $t$: $t = \\sqrt{2h/g}$."},
+
+{id:22, topic:"Free Fall", subtopic:"Thrown upward", difficulty:1,
+ text:"A ball is thrown straight up at $30$ m/s. The time to reach the highest point is ($g = 10$ m/s$^2$):",
+ choices:["$1$ s","$1.5$ s","$3$ s","$6$ s","$9$ s"],
+ correctIndex:2,
+ explanation:"At the top, $v = 0$. $v = v_0 - gt \\Rightarrow 0 = 30 - 10t \\Rightarrow t = 3$ s.",
+ teach:"At maximum height: $v = 0$. The time to peak $= v_0/g$. The ball spends equal time going up and coming down."},
+
+{id:23, topic:"Free Fall", subtopic:"Two objects meeting", difficulty:2,
+ text:"Ball A is dropped from $80$ m. At the same instant, Ball B is thrown upward from the ground at $20$ m/s. They meet at time ($g = 10$ m/s$^2$):",
+ choices:["$1$ s","$2$ s","$3$ s","$4$ s","$8$ s"],
+ correctIndex:3,
+ explanation:"A: $y_A = 80 - \\frac{1}{2}(10)t^2 = 80 - 5t^2$. B: $y_B = 20t - 5t^2$. They meet when $y_A = y_B$: $80 - 5t^2 = 20t - 5t^2$. $80 = 20t \\Rightarrow t = 4$ s.",
+ teach:"When two objects meet, set their position equations equal. Often the $\\frac{1}{2}gt^2$ terms cancel, leaving a simple linear equation.",
+ gotcha:"The $-5t^2$ cancels on both sides! This always happens when both are in the same gravitational field. You're left with a linear equation."},
+
+{id:24, topic:"Free Fall", subtopic:"Ratio of distances", difficulty:3,
+ text:"A ball is dropped from rest. The ratio of the distance fallen in the 3rd second to the distance fallen in the 1st second is:",
+ choices:["$3$","$5$","$9$","$1/3$","$3/2$"],
+ correctIndex:1,
+ explanation:"Distance in $n$-th second: $d_n = \\frac{1}{2}g(2n-1)$. Ratio: $d_3/d_1 = (2 \\cdot 3 - 1)/(2 \\cdot 1 - 1) = 5/1 = 5$. Alternatively: total distance in 3 s = $\\frac{1}{2}g(9)$, in 2 s = $\\frac{1}{2}g(4)$. Distance during 3rd second $= \\frac{1}{2}g(9-4) = \\frac{5g}{2}$. Distance during 1st second $= \\frac{1}{2}g(1) = \\frac{g}{2}$. Ratio $= 5$.",
+ teach:"Distance in the $n$-th second is proportional to $(2n-1)$. Sequence: 1, 3, 5, 7, ... (odd numbers). This is Galileo's result."},
+
+// ─────────── RELATIVE MOTION (3) ───────────
+{id:25, topic:"Relative Motion", subtopic:"River crossing time", difficulty:2,
+ text:"A boat can travel at $5$ m/s in still water. It crosses a $100$ m wide river flowing at $3$ m/s. If the boat aims straight across (perpendicular to current), the time to cross is:",
+ choices:["$20$ s","$25$ s","$12.5$ s","$33$ s","$16.7$ s"],
+ correctIndex:0,
+ explanation:"The boat's perpendicular velocity component is $5$ m/s (it aims straight across). Time $= 100/5 = 20$ s. The current affects the downstream drift but not the crossing time.",
+ teach:"Crossing time depends only on the perpendicular velocity component. The current pushes downstream but doesn't slow the crossing.",
+ gotcha:"Students often use $\\sqrt{5^2 - 3^2} = 4$ m/s — that's for aiming upstream to go straight across. Here the boat aims perpendicular, so use the full 5 m/s."},
+
+{id:26, topic:"Relative Motion", subtopic:"Closing speed", difficulty:2,
+ text:"Car A moves east at $30$ m/s and Car B moves west at $20$ m/s on the same road. The velocity of Car B relative to Car A is:",
+ choices:["$10$ m/s east","$10$ m/s west","$50$ m/s west","$50$ m/s east","$25$ m/s west"],
+ correctIndex:2,
+ explanation:"$\\vec{v}_{B/A} = \\vec{v}_B - \\vec{v}_A = (-20) - (30) = -50$ m/s $= 50$ m/s west. They approach each other at $50$ m/s.",
+ teach:"Relative velocity: $v_{B/A} = v_B - v_A$. For objects moving toward each other, the relative speed is the SUM of their speeds."},
+
+{id:27, topic:"Relative Motion", subtopic:"Rain and umbrella", difficulty:3,
+ text:"Rain falls vertically at $5$ m/s. A person runs horizontally at $5$ m/s. The angle at which the rain appears to fall (from vertical) to the runner is:",
+ choices:["$30°$","$45°$","$60°$","$90°$","$37°$"],
+ correctIndex:1,
+ explanation:"Relative to the runner, rain has horizontal component $5$ m/s (backward) and vertical component $5$ m/s (down). $\\tan\\theta = 5/5 = 1 \\Rightarrow \\theta = 45°$ from vertical.",
+ teach:"In the runner's frame, rain gains a horizontal component equal to the runner's speed. The apparent angle is $\\tan^{-1}(v_{runner}/v_{rain})$."},
+
+// ─────────── SCALING / PROPORTIONAL (3) ───────────
+{id:28, topic:"Scaling", subtopic:"Range proportionality", difficulty:1,
+ text:"A projectile launched at $45°$ has range $R$. If the initial speed is doubled (same angle), the new range is:",
+ choices:["$R$","$2R$","$4R$","$R/2$","$\\sqrt{2}R$"],
+ correctIndex:2,
+ explanation:"$R = v_0^2 \\sin 2\\theta / g$. Since $R \\propto v_0^2$: doubling $v_0$ gives $R' = (2v_0)^2 \\sin 90°/g = 4v_0^2/g = 4R$.",
+ teach:"Range scales as $v_0^2$. Double the speed = 4× the range. Triple = 9×. This proportional reasoning saves time on the AP."},
+
+{id:29, topic:"Scaling", subtopic:"Time scaling", difficulty:2,
+ text:"Two balls are dropped from heights $h$ and $4h$. The ratio of their times to hit the ground ($t_1/t_2$) is:",
+ choices:["$1/4$","$1/2$","$1/\\sqrt{2}$","$2$","$4$"],
+ correctIndex:1,
+ explanation:"$t = \\sqrt{2h/g}$, so $t \\propto \\sqrt{h}$. $t_1/t_2 = \\sqrt{h}/\\sqrt{4h} = 1/\\sqrt{4} = 1/2$.",
+ teach:"For free fall from rest: $t \\propto \\sqrt{h}$, $v \\propto \\sqrt{h}$. These square-root relationships are essential for proportional reasoning."},
+
+{id:30, topic:"Scaling", subtopic:"Dimensional analysis", difficulty:3,
+ text:"The range of a projectile depends on $v_0$, $g$, and $\\theta$. By dimensional analysis, the range must be proportional to:",
+ choices:["$v_0/g$","$v_0^2/g$","$v_0 g$","$v_0^2 g$","$g/v_0^2$"],
+ correctIndex:1,
+ explanation:"$[R] = $ m. $[v_0^2/g] = (\\text{m/s})^2/(\\text{m/s}^2) = \\text{m}^2/\\text{s}^2 \\cdot \\text{s}^2/\\text{m} = \\text{m}$. Only $v_0^2/g$ has dimensions of length. ($\\theta$ is dimensionless.)",
+ teach:"Dimensional analysis: when you can't remember a formula, check which combination of given quantities has the right units. This is a free point on the AP.",
+ gotcha:"$v_0/g$ has dimensions of time (m/s ÷ m/s² = s), not length. Always check dimensions!"}
+];
+
+// Fix Q16: distance should be 9 m, not 7.5
+allQuestions[15].choices = ["$0$ m","$3$ m","$6$ m","$9$ m","$4.5$ m"];
+allQuestions[15].correctIndex = 3;
+allQuestions[15].explanation = "$v = 0$ at $t = 1.5$ s. Distance $= |\\int_0^{1.5}(6-4t)\\,dt| + |\\int_{1.5}^{3}(6-4t)\\,dt| = |[6t-2t^2]_0^{1.5}| + |[6t-2t^2]_{1.5}^3| = |4.5| + |-4.5| = 4.5 + 4.5 = 9$ m.";
+
+// =============================================
+// STATE & TOPIC META
+// =============================================
+const topicMeta = {
+    "Graphs":        { color: "#2563eb", count: 4 },
+    "Calculus":      { color: "#7c3aed", count: 5 },
+    "Projectile":    { color: "#16a34a", count: 5 },
+    "Dist vs Disp":  { color: "#d97706", count: 3 },
+    "Turning Points":{ color: "#dc2626", count: 3 },
+    "Free Fall":     { color: "#0891b2", count: 4 },
+    "Relative Motion":{ color: "#be185d", count: 3 },
+    "Scaling":       { color: "#64748b", count: 3 }
+};
+const topicNames = Object.keys(topicMeta);
+let selectedTopics = [];
+let quizQs = [];
+let currentQ = 0;
+let userAnswers = [];
+let userFlags = [];
+let submitted = false;
+
+// =============================================
+// SETUP
+// =============================================
+function initSetup() {
+    const grid = document.getElementById('topic-grid');
+    grid.innerHTML = topicNames.map(t => {
+        const m = topicMeta[t];
+        return `<div class="topic-option" onclick="toggleTopic('${t}', this)">
+            <input type="checkbox">
+            <span class="topic-dot" style="background:${m.color};"></span>
+            <span>${t}</span>
+            <span class="topic-count">${m.count} Qs</span>
+        </div>`;
+    }).join('');
+}
+
+function toggleTopic(topic, el) {
+    const idx = selectedTopics.indexOf(topic);
+    if (idx >= 0) { selectedTopics.splice(idx, 1); el.classList.remove('selected'); }
+    else { selectedTopics.push(topic); el.classList.add('selected'); }
+    el.querySelector('input').checked = selectedTopics.includes(topic);
+}
+
+function startQuiz() {
+    if (selectedTopics.length === 0) selectedTopics = [...topicNames];
+    quizQs = allQuestions.filter(q => selectedTopics.includes(q.topic));
+    const topicOrder = {};
+    topicNames.forEach((t, i) => topicOrder[t] = i);
+    quizQs.sort((a, b) => topicOrder[a.topic] - topicOrder[b.topic] || a.difficulty - b.difficulty);
+
+    userAnswers = new Array(quizQs.length).fill(null);
+    userFlags = new Array(quizQs.length).fill(false);
+    currentQ = 0;
+    submitted = false;
+
+    document.getElementById('setup-screen').style.display = 'none';
+    document.getElementById('quiz-screen').style.display = 'block';
+    renderQuestion();
+    renderNav();
+}
+
+// =============================================
+// QUESTION RENDERING
+// =============================================
+function renderQuestion() {
+    const q = quizQs[currentQ];
+    const letters = ['A','B','C','D','E'];
+    const diffLabel = ['','Easy','Medium','Hard'][q.difficulty];
+    const topicColor = topicMeta[q.topic].color;
+
+    let choicesHTML = q.choices.map((c, i) => {
+        let cls = '';
+        if (submitted) {
+            cls = 'locked ';
+            if (i === q.correctIndex) cls += 'correct';
+            else if (i === userAnswers[currentQ] && i !== q.correctIndex) cls += 'wrong';
+        } else if (userAnswers[currentQ] === i) {
+            cls = 'selected';
+        }
+        return `<div class="choice ${cls}" onclick="selectAnswer(${i})">
+            <span class="choice-letter">${letters[i]}</span>
+            <span class="choice-text">${c}</span>
+        </div>`;
+    }).join('');
+
+    let feedbackHTML = '';
+    if (submitted) {
+        const isCorrect = userAnswers[currentQ] === q.correctIndex;
+        const unanswered = userAnswers[currentQ] === null;
+        let header;
+        if (unanswered) header = `<strong style="color:var(--danger);">Not answered. Correct: (${letters[q.correctIndex]})</strong>`;
+        else if (isCorrect) header = `<strong style="color:var(--success);">Correct!</strong>`;
+        else header = `<strong style="color:var(--danger);">Incorrect. The answer is (${letters[q.correctIndex]}).</strong>`;
+
+        feedbackHTML = `<div style="margin-top:15px;padding:15px;border-radius:8px;border:2px solid ${isCorrect && !unanswered ? 'var(--success)' : 'var(--danger)'};background:${isCorrect && !unanswered ? 'rgba(22,163,74,0.05)' : 'rgba(220,38,38,0.05)'};">
+            ${header}
+            <div class="step" style="margin-top:10px;">${q.explanation}</div>
+            ${q.teach ? `<div class="teach"><strong>AP strategy:</strong> ${q.teach}</div>` : ''}
+            ${q.gotcha ? `<div class="gotcha"><strong>Common trap:</strong> ${q.gotcha}</div>` : ''}
+        </div>`;
+    }
+
+    document.getElementById('question-area').innerHTML = `
+        <div class="question-card">
+            <div class="q-header">
+                <span class="progress">Question ${currentQ + 1} of ${quizQs.length}</span>
+                <span>
+                    <span class="topic-tag" style="background:${topicColor}20;color:${topicColor};">${q.topic}</span>
+                    <span class="diff-badge diff-${q.difficulty}">${diffLabel}</span>
+                </span>
+            </div>
+            <div class="question-text">${q.text}</div>
+            <div class="choices">${choicesHTML}</div>
+            ${feedbackHTML}
+            <div class="question-controls">
+                <button class="flag-btn ${userFlags[currentQ] ? 'flagged' : ''}" onclick="toggleFlag()">
+                    ${userFlags[currentQ] ? '&#9873; Flagged' : '&#9872; Flag'}
+                </button>
+                <div class="nav-buttons">
+                    ${currentQ > 0 ? '<button class="btn btn-secondary" onclick="goTo(currentQ-1)">&larr; Prev</button>' : ''}
+                    ${currentQ < quizQs.length - 1 ? '<button class="btn btn-primary" onclick="goTo(currentQ+1)">Next &rarr;</button>' : ''}
+                </div>
+            </div>
+        </div>`;
+
+    renderMathInElement(document.getElementById('question-area'), {
+        delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]
+    });
+}
+
+function selectAnswer(i) {
+    if (submitted) return;
+    userAnswers[currentQ] = (userAnswers[currentQ] === i) ? null : i;
+    renderQuestion();
+    renderNav();
+}
+
+function toggleFlag() {
+    userFlags[currentQ] = !userFlags[currentQ];
+    renderQuestion();
+    renderNav();
+}
+
+function goTo(idx) {
+    currentQ = idx;
+    renderQuestion();
+    renderNav();
+    window.scrollTo(0, 0);
+}
+
+// =============================================
+// NAV GRID
+// =============================================
+function renderNav() {
+    const grid = document.getElementById('nav-grid');
+    grid.innerHTML = quizQs.map((q, i) => {
+        let cls = '';
+        if (submitted) {
+            if (userAnswers[i] === q.correctIndex) cls = 'correct-dot';
+            else cls = 'wrong-dot';
+        } else {
+            if (userFlags[i]) cls = 'flagged';
+            else if (userAnswers[i] !== null) cls = 'answered';
+        }
+        if (i === currentQ) cls += ' current';
+        return `<div class="nav-dot ${cls}" onclick="goTo(${i})">${i + 1}</div>`;
+    }).join('');
+}
+
+// =============================================
+// SUBMIT & RESULTS
+// =============================================
+function submitQuiz() {
+    const unanswered = userAnswers.filter(a => a === null).length;
+    if (unanswered > 0 && !confirm(`You have ${unanswered} unanswered question${unanswered > 1 ? 's' : ''}. Submit anyway?`)) return;
+    submitted = true;
+    renderQuestion();
+    renderNav();
+    showResults();
+}
+
+function showResults() {
+    let correct = 0;
+    const topicResults = {};
+    const diffResults = {1:{c:0,t:0}, 2:{c:0,t:0}, 3:{c:0,t:0}};
+
+    quizQs.forEach((q, i) => {
+        const isRight = userAnswers[i] === q.correctIndex;
+        if (isRight) correct++;
+        if (!topicResults[q.topic]) topicResults[q.topic] = {correct:0, total:0};
+        topicResults[q.topic].total++;
+        if (isRight) topicResults[q.topic].correct++;
+        diffResults[q.difficulty].t++;
+        if (isRight) diffResults[q.difficulty].c++;
+    });
+
+    const pct = Math.round(correct / quizQs.length * 100);
+
+    let topicBarsHTML = '';
+    for (const t of topicNames) {
+        if (!topicResults[t]) continue;
+        const r = topicResults[t];
+        const p = Math.round(r.correct / r.total * 100);
+        const color = topicMeta[t].color;
+        topicBarsHTML += `<div class="topic-bar">
+            <span class="label">${t}</span>
+            <span class="bar-bg"><span class="bar-fill" style="width:${p}%;background:${color};"></span></span>
+            <span class="percent">${r.correct}/${r.total}</span>
+        </div>`;
+    }
+
+    const diffLabels = {1:'Easy', 2:'Medium', 3:'Hard'};
+    const diffColors = {1:'var(--success)', 2:'var(--warning)', 3:'var(--danger)'};
+    let diffBarsHTML = '';
+    for (const d of [1,2,3]) {
+        if (diffResults[d].t === 0) continue;
+        const p = Math.round(diffResults[d].c / diffResults[d].t * 100);
+        diffBarsHTML += `<div class="topic-bar">
+            <span class="label">${diffLabels[d]}</span>
+            <span class="bar-bg"><span class="bar-fill" style="width:${p}%;background:${diffColors[d]};"></span></span>
+            <span class="percent">${diffResults[d].c}/${diffResults[d].t}</span>
+        </div>`;
+    }
+
+    const letters = ['A','B','C','D','E'];
+    let missedHTML = '';
+    quizQs.forEach((q, i) => {
+        if (userAnswers[i] === q.correctIndex) return;
+        const yourAns = userAnswers[i] !== null ? `(${letters[userAnswers[i]]})` : 'No answer';
+        missedHTML += `<div class="review-card">
+            <div class="review-header">
+                <span><strong>Q${i+1}</strong> &mdash; ${q.topic} &mdash; <span class="diff-badge diff-${q.difficulty}">${diffLabels[q.difficulty]}</span></span>
+                <span class="review-result wrong">Your: ${yourAns} &nbsp; Correct: (${letters[q.correctIndex]})</span>
+            </div>
+            <div class="question-text" style="font-size:0.95rem;">${q.text}</div>
+            <div class="step">${q.explanation}</div>
+            ${q.teach ? `<div class="teach"><strong>AP strategy:</strong> ${q.teach}</div>` : ''}
+            ${q.gotcha ? `<div class="gotcha"><strong>Common trap:</strong> ${q.gotcha}</div>` : ''}
+        </div>`;
+    });
+
+    const div = document.getElementById('results-screen');
+    div.style.display = 'block';
+    div.innerHTML = `
+        <div class="results-card">
+            <h2>Results</h2>
+            <div class="score-circle">
+                <span class="score">${correct}/${quizQs.length}</span>
+                <span class="total">${pct}%</span>
+            </div>
+        </div>
+        <div class="results-grid">
+            <div class="result-card"><h4>By Problem Type</h4>${topicBarsHTML}</div>
+            <div class="result-card"><h4>By Difficulty</h4>${diffBarsHTML}</div>
+        </div>
+        ${missedHTML ? `<h3 style="margin:20px 0 10px;">Missed Questions (${quizQs.length - correct})</h3>${missedHTML}` : '<p style="text-align:center;color:var(--success);font-size:1.2rem;font-weight:600;margin:20px 0;">Perfect score!</p>'}
+        <div style="text-align:center;margin:30px 0;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            ${missedHTML ? '<button class="btn btn-primary" onclick="retryMissed()">Retry Missed</button>' : ''}
+            <button class="btn btn-secondary" onclick="restartAll()">New Practice</button>
+            <a href="dashboard.html" class="btn btn-secondary" style="text-decoration:none;">Dashboard</a>
+        </div>`;
+
+    renderMathInElement(div, {
+        delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]
+    });
+
+    window.scrollTo(0, 0);
+    saveToHistory(correct, topicResults);
+}
+
+function retryMissed() {
+    const missed = quizQs.filter((q, i) => userAnswers[i] !== q.correctIndex);
+    quizQs = missed;
+    userAnswers = new Array(quizQs.length).fill(null);
+    userFlags = new Array(quizQs.length).fill(false);
+    currentQ = 0;
+    submitted = false;
+    document.getElementById('results-screen').style.display = 'none';
+    document.getElementById('results-screen').innerHTML = '';
+    renderQuestion();
+    renderNav();
+    window.scrollTo(0, 0);
+}
+
+function restartAll() {
+    selectedTopics = [];
+    submitted = false;
+    document.getElementById('quiz-screen').style.display = 'none';
+    document.getElementById('results-screen').style.display = 'none';
+    document.getElementById('results-screen').innerHTML = '';
+    document.getElementById('setup-screen').style.display = 'block';
+    initSetup();
+}
+
+// =============================================
+// SAVE TO HISTORY
+// =============================================
+function saveToHistory(correct, topicResults) {
+    const session = {
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2,6),
+        date: new Date().toISOString(),
+        type: 'question-bank-kinematics',
+        mode: 'untimed',
+        mcScore: correct,
+        mcTotal: quizQs.length,
+        answers: [...userAnswers],
+        confidence: [],
+        timePerQuestion: [],
+        totalTime: 0,
+        flags: [...userFlags],
+        errorTypes: {},
+        frqResponses: [],
+        frqScores: [],
+        topicScores: topicResults,
+        drillTopics: [...selectedTopics]
+    };
+    try {
+        const history = JSON.parse(localStorage.getItem('apPhysicsHistory') || '{"sessions":[],"errorJournal":[],"studyLog":[]}');
+        history.sessions.push(session);
+        localStorage.setItem('apPhysicsHistory', JSON.stringify(history));
+    } catch(e) {}
+}
+
+// =============================================
+// THEME
+// =============================================
+function toggleTheme() {
+    if (document.body.getAttribute('data-theme') === 'dark') {
+        document.body.removeAttribute('data-theme');
+        localStorage.setItem('apPhysicsTheme', 'light');
+    } else {
+        document.body.setAttribute('data-theme', 'dark');
+        localStorage.setItem('apPhysicsTheme', 'dark');
+    }
+}
+if (localStorage.getItem('apPhysicsTheme') === 'dark') document.body.setAttribute('data-theme', 'dark');
+
+initSetup();
+</script>
+</body>
+</html>
