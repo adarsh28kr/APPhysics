@@ -163,6 +163,76 @@
     <!-- KEY INSIGHT -->
     <div class="gold">At the top: both $mg$ and $N$ point the SAME direction (toward center). At the bottom: they point OPPOSITE directions.</div>
 
+    <!-- WHY N POINTS TOWARD CENTER -->
+    <div style="background:#eff6ff;border:2px solid #2563eb;border-radius:8px;padding:14px 18px;margin-top:14px;">
+        <div style="font-weight:700;color:#2563eb;margin-bottom:8px;font-size:.95rem;">"Wait — shouldn't N push AWAY from the surface?"</div>
+        <div style="font-size:.9rem;margin-bottom:10px;">Yes! And it does. The key is <b>where the surface is</b>:</div>
+
+        <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:10px;">
+            <!-- Bottom diagram with track shown -->
+            <div style="text-align:center;">
+                <div style="font-size:.8rem;color:#64748b;font-weight:600;margin-bottom:4px;">Bottom of loop</div>
+                <svg width="180" height="140" viewBox="0 0 180 140" style="background:#f8fafc;border-radius:6px;border:1px solid #e2e8f0;">
+                    <!-- Track (thick arc on outside, bottom portion) -->
+                    <path d="M 30 70 A 60 60 0 0 1 150 70" fill="none" stroke="#94a3b8" stroke-width="10" stroke-linecap="round"/>
+                    <!-- Inner edge of track -->
+                    <path d="M 35 70 A 55 55 0 0 1 145 70" fill="none" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3,3"/>
+                    <!-- Label: track surface -->
+                    <text x="90" y="90" font-size="8" fill="#94a3b8" text-anchor="middle" font-family="sans-serif">track (surface below)</text>
+                    <!-- Object sitting ON track -->
+                    <circle cx="90" cy="60" r="8" fill="#2563eb"/>
+                    <!-- N arrow UP -->
+                    <line x1="90" y1="50" x2="90" y2="18" stroke="#16a34a" stroke-width="2.5" marker-end="url(#aNg)"/>
+                    <text x="98" y="30" font-size="11" fill="#16a34a" font-weight="bold" font-family="sans-serif">N</text>
+                    <!-- Annotation: perpendicular to surface -->
+                    <text x="118" y="26" font-size="8" fill="#16a34a" font-family="sans-serif">⊥ to surface</text>
+                    <text x="118" y="36" font-size="8" fill="#16a34a" font-family="sans-serif">= toward center</text>
+                    <!-- mg arrow DOWN -->
+                    <line x1="90" y1="70" x2="90" y2="100" stroke="#dc2626" stroke-width="2.5" marker-end="url(#aNr)"/>
+                    <text x="98" y="96" font-size="11" fill="#dc2626" font-weight="bold" font-family="sans-serif">mg</text>
+                    <!-- Center label -->
+                    <text x="90" y="12" font-size="8" fill="#64748b" text-anchor="middle" font-family="sans-serif">↑ center</text>
+                    <defs>
+                        <marker id="aNg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/></marker>
+                        <marker id="aNr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/></marker>
+                    </defs>
+                </svg>
+            </div>
+
+            <!-- Top diagram with track shown -->
+            <div style="text-align:center;">
+                <div style="font-size:.8rem;color:#64748b;font-weight:600;margin-bottom:4px;">Top of loop</div>
+                <svg width="180" height="140" viewBox="0 0 180 140" style="background:#f8fafc;border-radius:6px;border:1px solid #e2e8f0;">
+                    <!-- Track (thick arc on outside, top portion) -->
+                    <path d="M 30 70 A 60 60 0 0 0 150 70" fill="none" stroke="#94a3b8" stroke-width="10" stroke-linecap="round"/>
+                    <!-- Inner edge of track -->
+                    <path d="M 35 70 A 55 55 0 0 0 145 70" fill="none" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3,3"/>
+                    <!-- Label: track surface -->
+                    <text x="90" y="52" font-size="8" fill="#94a3b8" text-anchor="middle" font-family="sans-serif">track (surface above)</text>
+                    <!-- Object hanging BELOW track -->
+                    <circle cx="90" cy="80" r="8" fill="#dc2626"/>
+                    <!-- N arrow DOWN -->
+                    <line x1="90" y1="90" x2="90" y2="115" stroke="#16a34a" stroke-width="2.5" marker-end="url(#aNg2)"/>
+                    <text x="98" y="112" font-size="11" fill="#16a34a" font-weight="bold" font-family="sans-serif">N</text>
+                    <!-- Annotation -->
+                    <text x="118" y="108" font-size="8" fill="#16a34a" font-family="sans-serif">⊥ to surface</text>
+                    <text x="118" y="118" font-size="8" fill="#16a34a" font-family="sans-serif">= toward center</text>
+                    <!-- mg arrow DOWN -->
+                    <line x1="78" y1="90" x2="78" y2="115" stroke="#dc2626" stroke-width="2.5" marker-end="url(#aNr2)"/>
+                    <text x="60" y="112" font-size="11" fill="#dc2626" font-weight="bold" font-family="sans-serif">mg</text>
+                    <!-- Center label -->
+                    <text x="90" y="135" font-size="8" fill="#64748b" text-anchor="middle" font-family="sans-serif">↓ center</text>
+                    <defs>
+                        <marker id="aNg2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/></marker>
+                        <marker id="aNr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/></marker>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+        <div class="insight" style="margin:8px 0 0;"><b>The track is on the OUTSIDE of the loop.</b> The object rides on the inside. So "perpendicular to surface, pushing away from surface" always points INWARD (toward center). Normal force obeys its usual rule — the geometry of the loop is what makes it point toward center.</div>
+    </div>
+
     <!-- 5-STEP THINKING FRAMEWORK -->
     <div class="method" style="margin-top:14px;margin-bottom:0;">
         <h3>5-Step Framework (Works for ANY Circular Motion Problem)</h3>
