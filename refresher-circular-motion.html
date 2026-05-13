@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular Motion — AP Refresher</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',-apple-system,sans-serif;background:#fff;color:#1e293b;line-height:1.5;font-size:14px}
+        .page{max-width:860px;margin:0 auto;padding:16px 20px}
+        .hdr{background:linear-gradient(135deg,#0f172a,#7c3aed);color:#fff;padding:14px 20px;border-radius:10px;text-align:center;margin-bottom:16px}
+        .hdr h1{font-size:1.5rem;letter-spacing:1px;margin-bottom:2px}
+        .hdr .sub{font-size:.8rem;opacity:.75}
+        .nav-links{margin-bottom:14px;font-size:.85rem}
+        .nav-links a{color:#2563eb;text-decoration:none;margin-right:14px}
+        .core{background:#f0fdf4;border:2px solid #16a34a;border-radius:8px;padding:12px 18px;text-align:center;margin-bottom:16px;font-size:1.1rem}
+        .core .label{font-size:.75rem;color:#16a34a;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+        .type{border:2px solid;border-radius:10px;padding:16px 20px;margin-bottom:14px;break-inside:avoid}
+        .type h2{font-size:1rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+        .type h2 .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;color:#fff;font-size:.8rem;font-weight:700}
+        .t1{border-color:#2563eb} .t1 .num{background:#2563eb}
+        .t2{border-color:#7c3aed} .t2 .num{background:#7c3aed}
+        .t3{border-color:#dc2626} .t3 .num{background:#dc2626}
+        .t4{border-color:#d97706} .t4 .num{background:#d97706}
+        .t5{border-color:#be185d} .t5 .num{background:#be185d}
+        .t6{border-color:#0891b2} .t6 .num{background:#0891b2}
+        .setup{background:#f8fafc;border-radius:6px;padding:8px 12px;margin:8px 0;font-size:.9rem;color:#64748b}
+        .setup b{color:#1e293b}
+        .eq{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:6px 12px;margin:6px 0;text-align:center;font-size:1rem}
+        .eq2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+        .eq2 .eq{margin:0}
+        .insight{background:#eff6ff;border-left:3px solid #2563eb;padding:6px 12px;margin:6px 0;font-size:.88rem;border-radius:0 6px 6px 0}
+        .insight b{color:#2563eb}
+        .trap{background:#fef2f2;border-left:3px solid #dc2626;padding:6px 12px;margin:6px 0;font-size:.88rem;border-radius:0 6px 6px 0}
+        .trap b{color:#dc2626}
+        .ap-asks{background:#faf5ff;border-left:3px solid #7c3aed;padding:6px 12px;margin:6px 0;font-size:.88rem;border-radius:0 6px 6px 0}
+        .ap-asks b{color:#7c3aed}
+        .gold{background:#1e293b;color:#fbbf24;padding:6px 12px;border-radius:6px;font-size:.9rem;font-weight:700;margin:10px 0;text-align:center}
+        .method{background:#f8fafc;border:2px solid #2563eb;border-radius:8px;padding:14px 18px;margin:16px 0}
+        .method h3{color:#2563eb;margin-bottom:8px;font-size:1rem}
+        .method ol{margin-left:20px;font-size:.92rem}
+        .method ol li{margin-bottom:4px}
+        .gotcha-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.88rem}
+        .gotcha-table th,.gotcha-table td{border:1px solid #e2e8f0;padding:8px 10px;text-align:left}
+        .gotcha-table th{background:#fef2f2;color:#dc2626;font-size:.8rem;text-transform:uppercase;letter-spacing:.5px}
+        .gotcha-table td:first-child{color:#dc2626;font-weight:600}
+        .gotcha-table td:last-child{color:#16a34a;font-weight:500}
+        @media print{
+            body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:11px}
+            .no-print{display:none}
+            .page{padding:0;max-width:100%}
+            .type{break-inside:avoid;padding:10px 14px;margin-bottom:8px}
+        }
+        @media(max-width:600px){
+            .eq2{grid-template-columns:1fr}
+        }
+    </style>
+</head>
+<body>
+<div class="no-print nav-links" style="max-width:860px;margin:10px auto 0;padding:0 20px;">
+    <a href="index.html">Home</a>
+    <a href="speedsheet.html">Speed Sheet</a>
+    <a href="question-bank.html">Question Bank</a>
+    <a href="question-bank-kinematics.html">Kinematics Bank</a>
+</div>
+
+<div class="page">
+
+<div class="hdr">
+    <h1>CIRCULAR MOTION REFRESHER</h1>
+    <div class="sub">AP Physics C: Mechanics &bull; All 6 Problem Types &bull; With AP Strategy Tips</div>
+</div>
+
+<!-- CORE EQUATION -->
+<div class="core">
+    <div class="label">The One Equation That Rules Them All</div>
+    $\displaystyle \sum F_{\text{toward center}} = \frac{mv^2}{r} = m\omega^2 r$
+    <div style="font-size:.82rem;color:#64748b;margin-top:4px;">This is NOT a new force. It's just $F = ma$ with $a = v^2/r$ pointed inward.</div>
+</div>
+
+<!-- TYPE 1 -->
+<div class="type t1">
+    <h2><span class="num">1</span> Car on Flat Curve</h2>
+    <div class="setup"><b>Setup:</b> Car turns on flat road. Friction provides the centripetal force.</div>
+    <div class="eq">$f_s = \dfrac{mv^2}{r}$</div>
+    <div class="eq"><b>Max speed before sliding:</b> &nbsp; $\mu_s mg = \dfrac{mv^2_{max}}{r}$ &nbsp;&rarr;&nbsp; $v_{max} = \sqrt{\mu_s g r}$</div>
+    <div class="ap-asks"><b>AP asks:</b> "What's the max speed?" or "What's the minimum $\mu$?"</div>
+</div>
+
+<!-- TYPE 2 -->
+<div class="type t2">
+    <h2><span class="num">2</span> Banked Curve (No Friction)</h2>
+    <div class="setup"><b>Setup:</b> Road tilted at angle $\theta$, designed so no friction is needed.</div>
+    <div style="font-size:.9rem;margin:6px 0;">The normal force has two components:</div>
+    <div class="eq2">
+        <div class="eq">$N\cos\theta = mg$ <span style="font-size:.8rem;color:#64748b;">(vertical balance)</span></div>
+        <div class="eq">$N\sin\theta = \dfrac{mv^2}{r}$ <span style="font-size:.8rem;color:#64748b;">(centripetal)</span></div>
+    </div>
+    <div class="eq">$\tan\theta = \dfrac{v^2}{rg}$</div>
+    <div class="ap-asks"><b>AP asks:</b> "At what angle is no friction needed?" or "What's the design speed?"</div>
+</div>
+
+<!-- TYPE 3 -->
+<div class="type t3">
+    <h2><span class="num">3</span> Vertical Circle &mdash; Top and Bottom <span style="font-size:.7rem;background:#dc2626;color:#fff;padding:1px 8px;border-radius:10px;margin-left:6px;">HIGHEST FREQUENCY</span></h2>
+
+    <div class="setup"><b>At the BOTTOM</b> (ball on string, car in valley): $N$ points up (toward center), $mg$ points down (away)</div>
+    <div class="eq">$N - mg = \dfrac{mv^2}{r}$ &nbsp;&rarr;&nbsp; $N = mg + \dfrac{mv^2}{r}$</div>
+    <div class="insight"><b>You feel heavier</b> &mdash; $N > mg$</div>
+
+    <div class="setup" style="margin-top:10px;"><b>At the TOP</b> (ball on string, car over hill): Both $N$ and $mg$ point down (toward center)</div>
+    <div class="eq">$mg + N = \dfrac{mv^2}{r}$ &nbsp;&rarr;&nbsp; $N = \dfrac{mv^2}{r} - mg$</div>
+    <div class="insight"><b>You feel lighter</b> &mdash; $N < mg$</div>
+
+    <div class="gold">Critical speed at the top (when $N = 0$, about to lose contact): &nbsp; $v_{min} = \sqrt{gr}$</div>
+    <div class="ap-asks"><b>AP loves:</b> "Find minimum speed at the top of the loop" or "Find the normal force at the bottom"</div>
+</div>
+
+<!-- TYPE 4 -->
+<div class="type t4">
+    <h2><span class="num">4</span> Conical Pendulum</h2>
+    <div class="setup"><b>Setup:</b> Mass on string swings in a horizontal circle, string makes angle $\theta$ with vertical.</div>
+    <div class="eq2">
+        <div class="eq">$T\cos\theta = mg$ <span style="font-size:.8rem;color:#64748b;">(vertical)</span></div>
+        <div class="eq">$T\sin\theta = \dfrac{mv^2}{r}$ <span style="font-size:.8rem;color:#64748b;">(centripetal)</span></div>
+    </div>
+    <div style="font-size:.9rem;margin:6px 0;">Where $r = L\sin\theta$ &nbsp;($L$ = string length)</div>
+    <div class="eq2">
+        <div class="eq">$\tan\theta = \dfrac{v^2}{rg}$</div>
+        <div class="eq">$T = \dfrac{mg}{\cos\theta}$</div>
+    </div>
+    <div class="eq"><b>Period:</b> &nbsp; $T_{\text{period}} = 2\pi\sqrt{\dfrac{L\cos\theta}{g}}$</div>
+    <div class="ap-asks"><b>AP asks:</b> "Find the tension" or "Find the period" or "What happens if speed increases?" ($\theta$ increases, string gets more horizontal)</div>
+</div>
+
+<!-- TYPE 5 -->
+<div class="type t5">
+    <h2><span class="num">5</span> Satellite / Gravitational Orbit</h2>
+    <div class="setup"><b>Setup:</b> Gravity provides the centripetal force.</div>
+    <div class="eq">$\dfrac{GMm}{r^2} = \dfrac{mv^2}{r}$</div>
+    <div class="eq2">
+        <div class="eq">$v_{\text{orbit}} = \sqrt{\dfrac{GM}{r}}$</div>
+        <div class="eq">$T = 2\pi\sqrt{\dfrac{r^3}{GM}}$</div>
+    </div>
+    <div class="insight"><b>Key insights:</b> Higher orbit &rarr; slower speed (counterintuitive). Speed doesn't depend on satellite mass. $T^2 \propto r^3$ (Kepler's 3rd law).</div>
+    <div class="ap-asks"><b>AP asks:</b> "If radius doubles, how does period change?" &rarr; $T' = T \cdot 2\sqrt{2}$</div>
+</div>
+
+<!-- TYPE 6 -->
+<div class="type t6">
+    <h2><span class="num">6</span> Object on Rotating Platform</h2>
+    <div class="setup"><b>Setup:</b> Mass sits on a turntable/disk, friction keeps it in place.</div>
+    <div class="eq">$f_s = m\omega^2 r$</div>
+    <div class="eq"><b>Max radius:</b> &nbsp; $\mu_s mg = m\omega^2 r_{max}$ &nbsp;&rarr;&nbsp; $r_{max} = \dfrac{\mu_s g}{\omega^2}$</div>
+    <div class="ap-asks"><b>AP asks:</b> "How far from center can the object sit without sliding?"</div>
+</div>
+
+<!-- UNIVERSAL METHOD -->
+<div class="method">
+    <h3>The Universal Method (Every Problem)</h3>
+    <ol>
+        <li><b>Draw FBD</b> &mdash; real forces only (gravity, normal, tension, friction)</li>
+        <li><b>Set up axes</b> &mdash; one axis points toward the center</li>
+        <li><b>Write:</b> &nbsp; $\sum F_{\text{toward center}} = mv^2/r$</li>
+        <li><b>Solve</b> for the unknown</li>
+    </ol>
+</div>
+
+<!-- GOTCHAS TABLE -->
+<h3 style="color:#dc2626;margin:16px 0 8px;">Critical Gotchas</h3>
+<table class="gotcha-table">
+    <tr><th style="width:45%;">Common Trap</th><th>Correct Thinking</th></tr>
+    <tr><td>"Centripetal force" is a separate force</td><td>No &mdash; it's the NET inward force from real forces</td></tr>
+    <tr><td>"Centrifugal force" pushes outward</td><td>Not in an inertial frame &mdash; objects just want to go straight</td></tr>
+    <tr><td>$N = mg$ always</td><td>Not in circular motion &mdash; $N$ depends on position and speed</td></tr>
+    <tr><td>Faster = flies outward</td><td>Faster = needs MORE inward force; if unavailable, goes straight (tangent)</td></tr>
+    <tr><td>At the top, only gravity acts</td><td>Only true at minimum speed ($N = 0$). Otherwise $N + mg = mv^2/r$</td></tr>
+</table>
+
+</div><!-- end .page -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left:'$$',right:'$$',display:true},
+            {left:'$',right:'$',display:false}
+        ]
+    });
+});
+</script>
+</body>
+</html>
