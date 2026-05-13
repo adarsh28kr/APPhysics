@@ -269,6 +269,143 @@
     <div class="eq">$f_s = \dfrac{mv^2}{r}$</div>
     <div class="eq"><b>Max speed before sliding:</b> &nbsp; $\mu_s mg = \dfrac{mv^2_{max}}{r}$ &nbsp;&rarr;&nbsp; $v_{max} = \sqrt{\mu_s g r}$</div>
     <div class="ap-asks"><b>AP asks:</b> "What's the max speed?" or "What's the minimum $\mu$?"</div>
+
+    <!-- INTUITIVE EXPLAINER -->
+    <div style="background:#eff6ff;border:2px solid #2563eb;border-radius:8px;padding:16px 18px;margin-top:12px;">
+        <div style="font-weight:700;color:#2563eb;margin-bottom:10px;font-size:.95rem;">Building the Intuition (from scratch)</div>
+
+        <!-- STEP 1: Newton's 1st Law -->
+        <div style="margin-bottom:14px;">
+            <div style="font-weight:700;color:#1e293b;margin-bottom:6px;">Step 1: What does a car WANT to do?</div>
+            <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+                <svg width="200" height="150" viewBox="0 0 200 150" style="background:#f8fafc;border-radius:6px;border:1px solid #e2e8f0;flex-shrink:0;">
+                    <!-- Bird's eye view label -->
+                    <text x="100" y="14" font-size="9" fill="#94a3b8" text-anchor="middle" font-family="sans-serif">BIRD'S EYE VIEW (looking down)</text>
+                    <!-- Curved road -->
+                    <path d="M 20 130 Q 20 40 110 40 Q 190 40 190 130" fill="none" stroke="#cbd5e1" stroke-width="30" stroke-linecap="round" opacity="0.4"/>
+                    <path d="M 20 130 Q 20 40 110 40 Q 190 40 190 130" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,4"/>
+                    <!-- Car on the curve -->
+                    <rect x="95" y="34" width="16" height="10" rx="2" fill="#2563eb"/>
+                    <!-- Arrow: where car WANTS to go (straight, tangent) -->
+                    <line x1="112" y1="39" x2="170" y2="39" stroke="#dc2626" stroke-width="2.5" marker-end="url(#fcR)"/>
+                    <text x="142" y="32" font-size="9" fill="#dc2626" font-weight="bold" font-family="sans-serif">wants to go</text>
+                    <text x="142" y="54" font-size="9" fill="#dc2626" font-family="sans-serif">STRAIGHT!</text>
+                    <defs><marker id="fcR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/></marker></defs>
+                </svg>
+                <div style="font-size:.9rem;flex:1;min-width:180px;">
+                    <b>Newton's 1st Law:</b> An object in motion stays in a straight line unless a force acts on it.<br><br>
+                    The car is moving forward. It <b>naturally wants to keep going straight</b>. Without any sideways force, it would fly off the curve in a straight line (tangent).
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 2: What force turns the car? -->
+        <div style="margin-bottom:14px;">
+            <div style="font-weight:700;color:#1e293b;margin-bottom:6px;">Step 2: What force pulls the car into the curve?</div>
+            <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+                <svg width="200" height="150" viewBox="0 0 200 150" style="background:#f8fafc;border-radius:6px;border:1px solid #e2e8f0;flex-shrink:0;">
+                    <!-- Bird's eye view -->
+                    <text x="100" y="14" font-size="9" fill="#94a3b8" text-anchor="middle" font-family="sans-serif">BIRD'S EYE VIEW</text>
+                    <!-- Curved road -->
+                    <path d="M 20 130 Q 20 40 110 40 Q 190 40 190 130" fill="none" stroke="#cbd5e1" stroke-width="30" stroke-linecap="round" opacity="0.4"/>
+                    <!-- Center of curve -->
+                    <circle cx="105" cy="90" r="3" fill="#94a3b8"/>
+                    <text x="115" y="95" font-size="8" fill="#94a3b8" font-family="sans-serif">center of</text>
+                    <text x="115" y="104" font-size="8" fill="#94a3b8" font-family="sans-serif">curve</text>
+                    <!-- Car -->
+                    <rect x="95" y="34" width="16" height="10" rx="2" fill="#2563eb"/>
+                    <!-- Friction arrow: toward center -->
+                    <line x1="103" y1="46" x2="103" y2="80" stroke="#16a34a" stroke-width="3" marker-end="url(#fcG)"/>
+                    <text x="112" y="68" font-size="10" fill="#16a34a" font-weight="bold" font-family="sans-serif">friction</text>
+                    <!-- Tangent velocity -->
+                    <line x1="112" y1="39" x2="150" y2="39" stroke="#7c3aed" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#fcP)"/>
+                    <text x="128" y="32" font-size="9" fill="#7c3aed" font-family="sans-serif" font-style="italic">v</text>
+                    <defs>
+                        <marker id="fcG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/></marker>
+                        <marker id="fcP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7c3aed"/></marker>
+                    </defs>
+                </svg>
+                <div style="font-size:.9rem;flex:1;min-width:180px;">
+                    <b>Friction between the tires and the road</b> is the only horizontal force. It points sideways — toward the center of the curve.<br><br>
+                    Think of it this way: without friction (icy road), you slide straight. <b>Friction is what bends your path into a circle.</b>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 3: Side view — why only friction matters -->
+        <div style="margin-bottom:14px;">
+            <div style="font-weight:700;color:#1e293b;margin-bottom:6px;">Step 3: What about gravity and normal force?</div>
+            <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+                <svg width="160" height="140" viewBox="0 0 160 140" style="background:#f8fafc;border-radius:6px;border:1px solid #e2e8f0;flex-shrink:0;">
+                    <!-- Side view label -->
+                    <text x="80" y="14" font-size="9" fill="#94a3b8" text-anchor="middle" font-family="sans-serif">SIDE VIEW</text>
+                    <!-- Road surface -->
+                    <line x1="10" y1="100" x2="150" y2="100" stroke="#94a3b8" stroke-width="3"/>
+                    <text x="80" y="115" font-size="8" fill="#94a3b8" text-anchor="middle" font-family="sans-serif">flat road</text>
+                    <!-- Car (box) -->
+                    <rect x="55" y="75" width="40" height="24" rx="4" fill="#2563eb"/>
+                    <!-- Wheels -->
+                    <circle cx="65" cy="100" r="4" fill="#1e293b"/>
+                    <circle cx="85" cy="100" r="4" fill="#1e293b"/>
+                    <!-- N arrow UP -->
+                    <line x1="75" y1="73" x2="75" y2="35" stroke="#16a34a" stroke-width="2.5" marker-end="url(#svG)"/>
+                    <text x="82" y="50" font-size="11" fill="#16a34a" font-weight="bold" font-family="sans-serif">N</text>
+                    <!-- mg arrow DOWN -->
+                    <line x1="75" y1="100" x2="75" y2="135" stroke="#dc2626" stroke-width="2.5" marker-end="url(#svR)"/>
+                    <text x="82" y="128" font-size="11" fill="#dc2626" font-weight="bold" font-family="sans-serif">mg</text>
+                    <!-- = sign between them -->
+                    <text x="25" y="88" font-size="10" fill="#64748b" font-weight="bold" font-family="sans-serif">N = mg</text>
+                    <text x="20" y="100" font-size="8" fill="#64748b" font-family="sans-serif">(they cancel)</text>
+                    <!-- friction arrow INTO screen (dot) -->
+                    <circle cx="130" cy="87" r="8" fill="none" stroke="#16a34a" stroke-width="2"/>
+                    <circle cx="130" cy="87" r="2" fill="#16a34a"/>
+                    <text x="118" y="78" font-size="8" fill="#16a34a" font-weight="bold" font-family="sans-serif">friction</text>
+                    <text x="115" y="106" font-size="7" fill="#16a34a" font-family="sans-serif">(into screen,</text>
+                    <text x="115" y="114" font-size="7" fill="#16a34a" font-family="sans-serif">toward center)</text>
+                    <defs>
+                        <marker id="svG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/></marker>
+                        <marker id="svR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/></marker>
+                    </defs>
+                </svg>
+                <div style="font-size:.9rem;flex:1;min-width:180px;">
+                    The road is <b>flat</b>, so:<br>
+                    &bull; $N$ pushes up, $mg$ pulls down<br>
+                    &bull; They <b>cancel each other</b> ($N = mg$)<br>
+                    &bull; Neither one helps turn the car<br><br>
+                    The <b>only horizontal force</b> is friction. That's all you have to work with. So:<br>
+                    <b style="color:#2563eb;">$f_s = mv^2/r$</b>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 4: Why max speed? -->
+        <div>
+            <div style="font-weight:700;color:#1e293b;margin-bottom:6px;">Step 4: Why is there a maximum speed?</div>
+            <div style="font-size:.9rem;margin-bottom:8px;">
+                Friction can only push so hard. Its maximum value is:
+            </div>
+            <div class="eq" style="font-size:.95rem;">$f_{s,max} = \mu_s N = \mu_s mg$</div>
+            <div style="font-size:.9rem;margin:8px 0;">
+                The faster you go, the more friction you <b>need</b> to stay on the curve ($f = mv^2/r$ increases with $v$). At some speed, you need more friction than the tires can provide:
+            </div>
+            <div style="display:flex;gap:10px;margin:8px 0;flex-wrap:wrap;">
+                <div style="flex:1;min-width:140px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:8px 10px;text-align:center;font-size:.85rem;">
+                    <div style="color:#16a34a;font-weight:700;">Slow speed</div>
+                    Need: small friction<br>Have: enough<br><b style="color:#16a34a;">Car turns safely</b>
+                </div>
+                <div style="flex:1;min-width:140px;background:#fefce8;border:1px solid #fde68a;border-radius:6px;padding:8px 10px;text-align:center;font-size:.85rem;">
+                    <div style="color:#d97706;font-weight:700;">At $v_{max}$</div>
+                    Need = max friction<br>$mv^2/r = \mu_s mg$<br><b style="color:#d97706;">Just barely makes it</b>
+                </div>
+                <div style="flex:1;min-width:140px;background:#fef2f2;border:1px solid #fecaca;border-radius:6px;padding:8px 10px;text-align:center;font-size:.85rem;">
+                    <div style="color:#dc2626;font-weight:700;">Too fast</div>
+                    Need > max friction<br>Not enough grip<br><b style="color:#dc2626;">Car slides outward!</b>
+                </div>
+            </div>
+            <div class="eq" style="margin-top:8px;">$\mu_s mg = \dfrac{mv^2_{max}}{r}$ &nbsp;&rarr;&nbsp; $v_{max} = \sqrt{\mu_s g r}$</div>
+            <div class="trap" style="margin-top:6px;"><b>Icy road intuition:</b> Low $\mu_s$ = low max speed. That's why you slow down on curves when it's icy — less friction available to bend your path.</div>
+        </div>
+    </div>
 </div>
 
 <!-- TYPE 2 -->
