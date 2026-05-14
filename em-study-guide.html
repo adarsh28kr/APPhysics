@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP Physics C: E&amp;M — Last-Minute Study Guide</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',-apple-system,sans-serif;background:#fff;color:#1e293b;line-height:1.6;font-size:14px}
+        .page{max-width:880px;margin:0 auto;padding:16px 20px}
+        .hdr{background:linear-gradient(135deg,#0f172a,#2563eb);color:#fff;padding:16px 24px;border-radius:10px;text-align:center;margin-bottom:18px}
+        .hdr h1{font-size:1.5rem;letter-spacing:1px;margin-bottom:2px}
+        .hdr .sub{font-size:.8rem;opacity:.75}
+        .nav-links{margin-bottom:14px;font-size:.85rem}
+        .nav-links a{color:#2563eb;text-decoration:none;margin-right:14px}
+        .unit-hdr{padding:10px 18px;border-radius:8px;color:#fff;font-size:1.1rem;font-weight:700;margin:24px 0 12px;letter-spacing:.5px}
+        .u1{background:linear-gradient(135deg,#1e40af,#2563eb)} .s1{border-color:#2563eb} .s1 .num{background:#2563eb}
+        .u2{background:linear-gradient(135deg,#047857,#059669)} .s2{border-color:#059669} .s2 .num{background:#059669}
+        .u3{background:linear-gradient(135deg,#b45309,#d97706)} .s3{border-color:#d97706} .s3 .num{background:#d97706}
+        .u4{background:linear-gradient(135deg,#991b1b,#dc2626)} .s4{border-color:#dc2626} .s4 .num{background:#dc2626}
+        .u5{background:linear-gradient(135deg,#6b21a8,#7c3aed)} .s5{border-color:#7c3aed} .s5 .num{background:#7c3aed}
+        .sec{border:2px solid;border-radius:10px;padding:16px 20px;margin-bottom:14px;break-inside:avoid}
+        .sec h2{font-size:1rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+        .sec h2 .num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;color:#fff;font-size:.78rem;font-weight:700;flex-shrink:0}
+        .p{font-size:.92rem;margin:6px 0;line-height:1.7}
+        .eq{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:6px 12px;margin:6px 0;text-align:center;font-size:1rem}
+        .eq2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+        .eq2 .eq{margin:0}
+        .eq3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+        .eq3 .eq{margin:0}
+        .insight{background:#eff6ff;border-left:3px solid #2563eb;padding:6px 12px;margin:6px 0;font-size:.88rem;border-radius:0 6px 6px 0}
+        .insight b{color:#2563eb}
+        .trap{background:#fef2f2;border-left:3px solid #dc2626;padding:6px 12px;margin:6px 0;font-size:.88rem;border-radius:0 6px 6px 0}
+        .trap b{color:#dc2626}
+        .ap{background:#faf5ff;border-left:3px solid #7c3aed;padding:6px 12px;margin:6px 0;font-size:.88rem;border-radius:0 6px 6px 0}
+        .ap b{color:#7c3aed}
+        .gold{background:#1e293b;color:#fbbf24;padding:6px 12px;border-radius:6px;font-size:.9rem;font-weight:700;margin:8px 0;text-align:center}
+        .tbl{width:100%;border-collapse:collapse;font-size:.88rem;margin:8px 0}
+        .tbl th,.tbl td{border:1px solid #e2e8f0;padding:6px 10px;text-align:center}
+        .tbl th{background:#f8fafc;font-weight:700;color:#64748b;font-size:.8rem}
+        .tbl td:first-child{text-align:left;font-weight:600}
+        .method{background:#f8fafc;border:2px solid #2563eb;border-radius:8px;padding:14px 18px;margin:12px 0}
+        .method h3{color:#2563eb;margin-bottom:8px;font-size:1rem}
+        .method ol,.method ul{margin-left:20px;font-size:.92rem}
+        .method li{margin-bottom:4px}
+        .toc{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px 18px;margin-bottom:18px;columns:2;column-gap:20px;font-size:.85rem}
+        .toc div{break-inside:avoid;margin-bottom:2px}
+        .toc b{display:block;margin-top:6px;color:#2563eb}
+        @media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:10.5px}.no-print{display:none}.page{padding:0;max-width:100%}.sec{break-inside:avoid;padding:10px 14px;margin-bottom:8px}}
+        @media(max-width:600px){.eq2,.eq3{grid-template-columns:1fr}.toc{columns:1}}
+    </style>
+</head>
+<body>
+<div class="no-print nav-links" style="max-width:880px;margin:10px auto 0;padding:0 20px;">
+    <a href="index.html">Home</a>
+    <a href="refresher-circular-motion.html">Circular Motion</a>
+    <a href="refresher-momentum.html">Momentum</a>
+    <a href="refresher-work-energy.html">Work &amp; Energy</a>
+</div>
+
+<div class="page">
+
+<div class="hdr">
+    <h1>AP PHYSICS C: E&amp;M</h1>
+    <div class="sub">Last-Minute Study Guide &bull; 29 Topics &bull; Detailed Explanations &bull; Exam-Day Ready</div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <b>Unit 1: Electrostatics</b>
+    <div>1. Charge &amp; Coulomb's Law</div>
+    <div>2. Electric Field</div>
+    <div>3. Continuous Charge Distributions</div>
+    <div>4. Gauss's Law</div>
+    <div>5. Gauss's Law Applications</div>
+    <div>6. Electric Potential</div>
+    <div>7. E-Field &harr; Potential</div>
+    <div>8. Conductors in Electrostatics</div>
+    <b>Unit 2: Capacitors &amp; Dielectrics</b>
+    <div>9. Capacitance</div>
+    <div>10. Caps in Series &amp; Parallel</div>
+    <div>11. Energy in Capacitors</div>
+    <div>12. Dielectrics</div>
+    <div>13. Energy Density</div>
+    <b>Unit 3: Circuits</b>
+    <div>14. Current &amp; Resistance</div>
+    <div>15. Resistors in Series &amp; Parallel</div>
+    <div>16. Kirchhoff's Rules</div>
+    <div>17. RC Circuits</div>
+    <div>18. Power</div>
+    <b>Unit 4: Magnetism</b>
+    <div>19. Magnetic Force on Charges</div>
+    <div>20. Charged Particle in B</div>
+    <div>21. Force on Current-Carrying Wire</div>
+    <div>22. Biot-Savart Law</div>
+    <div>23. Amp&egrave;re's Law</div>
+    <div>24. Magnetic Flux</div>
+    <b>Unit 5: Induction</b>
+    <div>25. Faraday's Law</div>
+    <div>26. Lenz's Law</div>
+    <div>27. Inductance</div>
+    <div>28. LR Circuits</div>
+    <div>29. Energy in B Fields</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="unit-hdr u1">UNIT 1: ELECTROSTATICS</div>
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- 1 -->
+<div class="sec s1">
+    <h2><span class="num">1</span> Electric Charge &amp; Coulomb's Law</h2>
+    <p class="p"><b>Electric charge</b> is a fundamental property of matter. There are two types: positive (protons) and negative (electrons). Like charges repel; opposite charges attract. Charge is quantized in units of $e = 1.6 \times 10^{-19}$ C and is always conserved.</p>
+    <div class="eq">$F = k\dfrac{|q_1 q_2|}{r^2} = \dfrac{1}{4\pi\varepsilon_0}\dfrac{|q_1 q_2|}{r^2}$</div>
+    <p class="p">where $k = 8.99 \times 10^9$ N$\cdot$m$^2$/C$^2$ and $\varepsilon_0 = 8.85 \times 10^{-12}$ C$^2$/(N$\cdot$m$^2$).</p>
+    <p class="p"><b>Superposition:</b> The force on a charge from multiple other charges is the vector sum of the individual forces. You must add forces as vectors (components), not magnitudes.</p>
+    <div class="insight"><b>Coulomb's law looks like gravity:</b> $F = kq_1q_2/r^2$ vs. $F = Gm_1m_2/r^2$. Same $1/r^2$ structure, but electric force can attract OR repel (gravity only attracts), and electric force is vastly stronger.</div>
+    <div class="trap"><b>Direction matters.</b> $F = kq_1q_2/r^2$ gives magnitude only. You must determine direction separately: toward or away based on sign of charges.</div>
+</div>
+
+<!-- 2 -->
+<div class="sec s1">
+    <h2><span class="num">2</span> Electric Field</h2>
+    <p class="p">The <b>electric field</b> $\vec{E}$ at a point in space tells you the force per unit positive charge that would be felt by a test charge placed there. It's the "influence" a charge creates around itself.</p>
+    <div class="eq2">
+        <div class="eq">$\vec{E} = \dfrac{\vec{F}}{q_0}$ <span style="font-size:.8rem;color:#64748b;">(definition)</span></div>
+        <div class="eq">$\vec{E} = k\dfrac{q}{r^2}\,\hat{r}$ <span style="font-size:.8rem;color:#64748b;">(point charge)</span></div>
+    </div>
+    <p class="p"><b>Field lines:</b> Start on positive charges, end on negative charges. Density of lines represents field strength. Lines never cross. The field at any point is tangent to the line through that point.</p>
+    <p class="p"><b>Superposition:</b> $\vec{E}_{total} = \vec{E}_1 + \vec{E}_2 + \cdots$ — add field contributions as vectors.</p>
+    <div class="insight"><b>Think of E-field as a map.</b> Once you know $\vec{E}$ everywhere, you can find the force on ANY charge placed there: $\vec{F} = q\vec{E}$. Positive charges feel force in the direction of $\vec{E}$; negative charges feel force opposite to $\vec{E}$.</div>
+</div>
+
+<!-- 3 -->
+<div class="sec s1">
+    <h2><span class="num">3</span> Continuous Charge Distributions</h2>
+    <p class="p">When charge is spread over an object (not a point charge), you must integrate. Cut the object into tiny pieces $dq$, find the field $d\vec{E}$ from each piece, and add them up.</p>
+    <div class="eq">$\vec{E} = \int \dfrac{k\,dq}{r^2}\,\hat{r}$</div>
+    <p class="p"><b>Charge densities:</b></p>
+    <div class="eq3">
+        <div class="eq">$\lambda = \dfrac{Q}{L}$ <span style="font-size:.8rem;color:#64748b;">(linear, C/m)</span></div>
+        <div class="eq">$\sigma = \dfrac{Q}{A}$ <span style="font-size:.8rem;color:#64748b;">(surface, C/m$^2$)</span></div>
+        <div class="eq">$\rho = \dfrac{Q}{V}$ <span style="font-size:.8rem;color:#64748b;">(volume, C/m$^3$)</span></div>
+    </div>
+    <p class="p"><b>Key results to know:</b></p>
+    <table class="tbl">
+        <tr><th>Shape</th><th>E-field on axis</th></tr>
+        <tr><td>Infinite line (charge/length $\lambda$)</td><td>$E = \dfrac{\lambda}{2\pi\varepsilon_0 r}$ (radially outward)</td></tr>
+        <tr><td>Ring (radius $R$, total charge $Q$, at distance $x$ on axis)</td><td>$E = \dfrac{kQx}{(x^2+R^2)^{3/2}}$</td></tr>
+        <tr><td>Infinite plane (charge/area $\sigma$)</td><td>$E = \dfrac{\sigma}{2\varepsilon_0}$ (uniform, independent of distance)</td></tr>
+    </table>
+    <div class="ap"><b>AP tip:</b> On FRQs, they often ask you to SET UP the integral (choose $dq$, express $r$, find limits) even if you don't solve it. Show every step of the setup for full credit.</div>
+</div>
+
+<!-- 4 -->
+<div class="sec s1">
+    <h2><span class="num">4</span> Gauss's Law</h2>
+    <div class="gold">$\displaystyle\oint \vec{E} \cdot d\vec{A} = \dfrac{q_{enc}}{\varepsilon_0}$</div>
+    <p class="p"><b>What it says:</b> The total electric flux (field times area) through any closed surface equals the enclosed charge divided by $\varepsilon_0$. This is always true, but only <b>useful</b> when there's enough symmetry to pull $E$ out of the integral.</p>
+    <p class="p"><b>Electric flux:</b> $\Phi_E = \oint \vec{E} \cdot d\vec{A}$. Think of it as "how much field passes through the surface." $d\vec{A}$ points outward from the closed surface.</p>
+    <div class="method">
+        <h3>When to use Gauss's Law (the symmetry test)</h3>
+        <ul>
+            <li><b>Spherical symmetry</b> (point charge, solid sphere, shell) &rarr; use a spherical Gaussian surface</li>
+            <li><b>Cylindrical symmetry</b> (infinite line, infinite cylinder) &rarr; use a cylindrical Gaussian surface</li>
+            <li><b>Planar symmetry</b> (infinite plane, parallel plates) &rarr; use a "pillbox" (short cylinder straddling the surface)</li>
+        </ul>
+    </div>
+    <div class="trap"><b>Gauss's Law gives $E$ only when symmetry lets you argue that $E$ is constant on your Gaussian surface.</b> For arbitrary shapes, Gauss's law is true but not useful for finding $E$ — you'd need Coulomb's law integration instead.</div>
+</div>
+
+<!-- 5 -->
+<div class="sec s1">
+    <h2><span class="num">5</span> Applications of Gauss's Law</h2>
+    <table class="tbl">
+        <tr><th>Configuration</th><th>Gaussian Surface</th><th>Result</th></tr>
+        <tr><td>Point charge / outside sphere</td><td>Sphere of radius $r$</td><td>$E = \dfrac{kQ}{r^2}$</td></tr>
+        <tr><td>Inside solid sphere (uniform $\rho$)</td><td>Sphere of radius $r < R$</td><td>$E = \dfrac{kQr}{R^3}$ (grows linearly)</td></tr>
+        <tr><td>Inside conducting shell</td><td>Sphere inside shell</td><td>$E = 0$</td></tr>
+        <tr><td>Infinite line charge</td><td>Cylinder of radius $r$</td><td>$E = \dfrac{\lambda}{2\pi\varepsilon_0 r}$</td></tr>
+        <tr><td>Infinite plane of charge</td><td>Pillbox</td><td>$E = \dfrac{\sigma}{2\varepsilon_0}$</td></tr>
+        <tr><td>Between parallel plates ($\pm\sigma$)</td><td>Pillbox</td><td>$E = \dfrac{\sigma}{\varepsilon_0}$ (between), $0$ (outside)</td></tr>
+    </table>
+    <div class="insight"><b>Inside a uniform solid sphere</b>, $E$ grows linearly with $r$ (more charge enclosed as $r$ increases). <b>Outside</b>, it falls as $1/r^2$ (looks like a point charge). The field is maximum at the surface.</div>
+</div>
+
+<!-- 6 -->
+<div class="sec s1">
+    <h2><span class="num">6</span> Electric Potential</h2>
+    <p class="p"><b>Electric potential</b> $V$ is the electric potential energy per unit charge. It's a scalar (not a vector!), which makes it much easier to work with than $\vec{E}$.</p>
+    <div class="eq2">
+        <div class="eq">$V = \dfrac{U}{q_0} = \dfrac{kq}{r}$ <span style="font-size:.8rem;color:#64748b;">(point charge)</span></div>
+        <div class="eq">$V = -\displaystyle\int_{\infty}^{r} \vec{E} \cdot d\vec{l}$ <span style="font-size:.8rem;color:#64748b;">(from E-field)</span></div>
+    </div>
+    <p class="p"><b>Potential difference</b> (voltage): $\Delta V = V_B - V_A = -\int_A^B \vec{E} \cdot d\vec{l}$. This is what batteries provide and what voltmeters measure.</p>
+    <p class="p"><b>Superposition:</b> $V_{total} = V_1 + V_2 + \cdots$ — just add scalars! No vector components needed. This is why potential is often easier than field.</p>
+    <div class="insight"><b>Equipotential surfaces</b> are surfaces where $V$ is constant. They are always perpendicular to field lines. No work is done moving a charge along an equipotential surface.</div>
+    <div class="trap"><b>$V$ can be positive, negative, or zero.</b> $V = 0$ does NOT mean $E = 0$. (Example: midpoint between $+q$ and $-q$ has $V = 0$ but $E \neq 0$.)</div>
+</div>
+
+<!-- 7 -->
+<div class="sec s1">
+    <h2><span class="num">7</span> E-Field &harr; Potential Relationship</h2>
+    <div class="gold">$\vec{E}$ and $V$ are two descriptions of the same thing. You can always go from one to the other.</div>
+    <div class="eq2">
+        <div class="eq"><b>E from V:</b><br>$E_x = -\dfrac{\partial V}{\partial x}$<br><span style="font-size:.82rem;color:#64748b;">E points from high V to low V</span></div>
+        <div class="eq"><b>V from E:</b><br>$\Delta V = -\displaystyle\int \vec{E}\cdot d\vec{l}$<br><span style="font-size:.82rem;color:#64748b;">Integrate along any path</span></div>
+    </div>
+    <p class="p">In 1D (field only in $x$-direction): $E = -dV/dx$. The E-field is the negative slope of the $V$ vs. $x$ graph.</p>
+    <div class="insight"><b>Steep slope on $V$-vs-$x$ graph = strong field.</b> Flat region = no field. $E$ points in the direction of decreasing $V$ (like a ball rolls downhill).</div>
+    <div class="ap"><b>AP loves:</b> "Given $V(x) = 3x^2 - 5x$, find $E_x$." Answer: $E_x = -dV/dx = -(6x - 5) = -6x + 5$.</div>
+</div>
+
+<!-- 8 -->
+<div class="sec s1">
+    <h2><span class="num">8</span> Conductors in Electrostatics</h2>
+    <p class="p">In a conductor in electrostatic equilibrium (charges not moving):</p>
+    <div class="method" style="border-color:#2563eb;">
+        <h3>The 5 Rules of Conductors</h3>
+        <ol>
+            <li><b>$E = 0$ inside</b> the conductor (if $E \neq 0$, charges would move &mdash; not equilibrium)</li>
+            <li><b>All excess charge sits on the surface</b> (Gauss's law: if $E = 0$ inside, $q_{enc} = 0$ for any interior surface)</li>
+            <li><b>$E$ is perpendicular to the surface</b> just outside (any parallel component would move surface charges)</li>
+            <li><b>$V$ is constant throughout</b> the conductor and its surface (since $E = 0$ inside, no potential difference)</li>
+            <li><b>Charge concentrates at sharp points</b> (small radius of curvature = higher surface charge density = stronger field)</li>
+        </ol>
+    </div>
+    <div class="eq">Just outside a conductor: $E = \dfrac{\sigma}{\varepsilon_0}$</div>
+    <div class="insight"><b>Shielding (Faraday cage):</b> A hollow conductor shields its interior from external fields. No matter what's outside, $E = 0$ inside the cavity (as long as there's no charge in the cavity).</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="unit-hdr u2">UNIT 2: CAPACITORS &amp; DIELECTRICS</div>
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- 9 -->
+<div class="sec s2">
+    <h2><span class="num">9</span> Capacitance</h2>
+    <p class="p">A <b>capacitor</b> stores charge (and energy) by maintaining a potential difference between two conductors. Capacitance measures how much charge it can store per volt.</p>
+    <div class="eq2">
+        <div class="eq">$C = \dfrac{Q}{V}$ <span style="font-size:.82rem;color:#64748b;">(definition, units: Farads)</span></div>
+        <div class="eq">$C = \dfrac{\varepsilon_0 A}{d}$ <span style="font-size:.82rem;color:#64748b;">(parallel plate)</span></div>
+    </div>
+    <p class="p"><b>Parallel plate capacitor:</b> Two plates of area $A$ separated by distance $d$. The field between them is uniform: $E = \sigma/\varepsilon_0 = V/d$.</p>
+    <div class="insight"><b>Bigger plates = more capacitance</b> (more area to store charge). <b>Closer plates = more capacitance</b> (same charge creates larger $E$, hence larger $V$... wait, actually closer plates means less $V$ for same $Q$, so $C = Q/V$ is larger). Think: $C \propto A/d$.</div>
+</div>
+
+<!-- 10 -->
+<div class="sec s2">
+    <h2><span class="num">10</span> Capacitors in Series &amp; Parallel</h2>
+    <div class="eq2">
+        <div class="eq"><b>Series:</b><br>$\dfrac{1}{C_{eq}} = \dfrac{1}{C_1} + \dfrac{1}{C_2} + \cdots$<br><span style="font-size:.82rem;color:#64748b;">Same $Q$, voltages add</span></div>
+        <div class="eq"><b>Parallel:</b><br>$C_{eq} = C_1 + C_2 + \cdots$<br><span style="font-size:.82rem;color:#64748b;">Same $V$, charges add</span></div>
+    </div>
+    <div class="trap"><b>Opposite of resistors!</b> Capacitors in series combine like resistors in parallel (and vice versa). Easy to mix up on the AP.</div>
+    <div class="insight"><b>Series:</b> $C_{eq}$ is always LESS than the smallest individual capacitor. <b>Parallel:</b> $C_{eq}$ is the SUM (always bigger).</div>
+</div>
+
+<!-- 11 -->
+<div class="sec s2">
+    <h2><span class="num">11</span> Energy Stored in Capacitors</h2>
+    <div class="eq3">
+        <div class="eq">$U = \dfrac{1}{2}CV^2$</div>
+        <div class="eq">$U = \dfrac{Q^2}{2C}$</div>
+        <div class="eq">$U = \dfrac{1}{2}QV$</div>
+    </div>
+    <p class="p">All three are equivalent (use $Q = CV$ to convert). Choose the form based on what's constant in the problem.</p>
+    <div class="ap"><b>AP classic:</b> "A capacitor is charged, then disconnected from the battery. The plates are pulled apart. What happens to $V$, $E$, $U$?" Since $Q$ is constant (disconnected): $C$ decreases, $V = Q/C$ increases, $U = Q^2/2C$ increases. The extra energy comes from the work YOU do pulling the plates apart.</div>
+</div>
+
+<!-- 12 -->
+<div class="sec s2">
+    <h2><span class="num">12</span> Dielectrics</h2>
+    <p class="p">A <b>dielectric</b> is an insulating material inserted between capacitor plates. It gets polarized by the field, creating an internal field that partially cancels the external field.</p>
+    <div class="eq2">
+        <div class="eq">$C = \kappa C_0 = \kappa\dfrac{\varepsilon_0 A}{d}$</div>
+        <div class="eq">$E = \dfrac{E_0}{\kappa}$ <span style="font-size:.82rem;color:#64748b;">(field reduced)</span></div>
+    </div>
+    <p class="p">$\kappa$ (kappa) is the dielectric constant. Always $\kappa \ge 1$. Vacuum: $\kappa = 1$.</p>
+    <div class="insight"><b>Effect of inserting dielectric:</b><br>
+    &bull; Battery connected (constant $V$): $C$ increases, $Q = CV$ increases, $U = \frac{1}{2}CV^2$ increases<br>
+    &bull; Battery disconnected (constant $Q$): $C$ increases, $V = Q/C$ decreases, $U = Q^2/2C$ decreases</div>
+</div>
+
+<!-- 13 -->
+<div class="sec s2">
+    <h2><span class="num">13</span> Energy Density of Electric Field</h2>
+    <div class="eq">$u_E = \dfrac{1}{2}\varepsilon_0 E^2$ <span style="font-size:.82rem;color:#64748b;">(energy per unit volume, J/m$^3$)</span></div>
+    <p class="p">The energy stored in a capacitor is actually stored <b>in the electric field</b> between the plates. This concept generalizes: wherever there's an electric field, there's energy density $u_E$.</p>
+    <div class="insight"><b>Total energy:</b> $U = \int u_E\,dV = \int \frac{1}{2}\varepsilon_0 E^2\,dV$ (integrate over all space where $E$ exists).</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="unit-hdr u3">UNIT 3: ELECTRIC CIRCUITS</div>
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- 14 -->
+<div class="sec s3">
+    <h2><span class="num">14</span> Current, Resistance &amp; Ohm's Law</h2>
+    <div class="eq3">
+        <div class="eq">$I = \dfrac{dQ}{dt}$ <span style="font-size:.8rem;color:#64748b;">(current, Amperes)</span></div>
+        <div class="eq">$V = IR$ <span style="font-size:.8rem;color:#64748b;">(Ohm's law)</span></div>
+        <div class="eq">$R = \dfrac{\rho L}{A}$ <span style="font-size:.8rem;color:#64748b;">(resistance)</span></div>
+    </div>
+    <p class="p"><b>Current</b> is the flow of charge. Conventional current flows from $+$ to $-$ (opposite to electron flow). $I$ = charge per second passing a point.</p>
+    <p class="p"><b>Resistance</b> depends on the material ($\rho$ = resistivity), length $L$, and cross-sectional area $A$. Longer wire = more resistance. Thicker wire = less resistance.</p>
+    <div class="insight"><b>Water pipe analogy:</b> Voltage = water pressure, current = flow rate, resistance = pipe narrowness. Higher pressure (voltage) drives more flow (current). Narrow pipe (high resistance) limits flow.</div>
+</div>
+
+<!-- 15 -->
+<div class="sec s3">
+    <h2><span class="num">15</span> Resistors in Series &amp; Parallel</h2>
+    <div class="eq2">
+        <div class="eq"><b>Series:</b><br>$R_{eq} = R_1 + R_2 + \cdots$<br><span style="font-size:.82rem;color:#64748b;">Same $I$, voltages add</span></div>
+        <div class="eq"><b>Parallel:</b><br>$\dfrac{1}{R_{eq}} = \dfrac{1}{R_1} + \dfrac{1}{R_2} + \cdots$<br><span style="font-size:.82rem;color:#64748b;">Same $V$, currents add</span></div>
+    </div>
+    <div class="insight"><b>Series:</b> Current is the same through all resistors (only one path). Voltage drops add up to the battery voltage.<br>
+    <b>Parallel:</b> Voltage is the same across all resistors (connected to same two nodes). Currents split and add back together.</div>
+</div>
+
+<!-- 16 -->
+<div class="sec s3">
+    <h2><span class="num">16</span> Kirchhoff's Rules</h2>
+    <div class="eq2">
+        <div class="eq"><b>Junction Rule:</b><br>$\sum I_{in} = \sum I_{out}$<br><span style="font-size:.82rem;color:#64748b;">Conservation of charge</span></div>
+        <div class="eq"><b>Loop Rule:</b><br>$\sum \Delta V = 0$<br><span style="font-size:.82rem;color:#64748b;">Conservation of energy</span></div>
+    </div>
+    <div class="method">
+        <h3>How to apply Kirchhoff's Loop Rule</h3>
+        <ol>
+            <li>Choose a loop direction (clockwise or counterclockwise)</li>
+            <li>Going through a battery from $-$ to $+$: voltage RISES by $+\mathcal{E}$</li>
+            <li>Going through a battery from $+$ to $-$: voltage DROPS by $-\mathcal{E}$</li>
+            <li>Going through a resistor in the direction of current: voltage DROPS by $-IR$</li>
+            <li>Going through a resistor against the current: voltage RISES by $+IR$</li>
+            <li>Sum all changes around the loop = 0</li>
+        </ol>
+    </div>
+    <div class="ap"><b>AP tip:</b> For circuits with two batteries or complex branching, you MUST use Kirchhoff's rules. Write one equation per loop and one per junction. Solve the system of equations.</div>
+</div>
+
+<!-- 17 -->
+<div class="sec s3">
+    <h2><span class="num">17</span> RC Circuits</h2>
+    <p class="p">When a capacitor charges or discharges through a resistor, the current changes exponentially with time constant $\tau = RC$.</p>
+    <div class="eq2">
+        <div class="eq"><b>Charging ($V_0$ = battery):</b><br>$q(t) = CV_0\left(1 - e^{-t/RC}\right)$<br>$I(t) = \dfrac{V_0}{R}\,e^{-t/RC}$<br>$V_C(t) = V_0\left(1 - e^{-t/RC}\right)$</div>
+        <div class="eq"><b>Discharging:</b><br>$q(t) = Q_0\,e^{-t/RC}$<br>$I(t) = \dfrac{Q_0}{RC}\,e^{-t/RC}$<br>$V_C(t) = V_0\,e^{-t/RC}$</div>
+    </div>
+    <div class="gold">Time constant: $\tau = RC$. After $1\tau$: 63% charged (or 37% remaining). After $5\tau$: essentially complete.</div>
+    <div class="insight"><b>At $t = 0$:</b> An uncharged capacitor acts like a wire (no voltage across it, max current). <b>At $t = \infty$:</b> A fully charged capacitor acts like an open circuit (no current, max voltage).</div>
+    <div class="trap"><b>Current during charging DECREASES exponentially</b> (starts high, decays to zero). Charge and voltage INCREASE exponentially toward their final values.</div>
+</div>
+
+<!-- 18 -->
+<div class="sec s3">
+    <h2><span class="num">18</span> Power in Circuits</h2>
+    <div class="eq3">
+        <div class="eq">$P = IV$</div>
+        <div class="eq">$P = I^2R$</div>
+        <div class="eq">$P = \dfrac{V^2}{R}$</div>
+    </div>
+    <p class="p">Power is the rate of energy dissipation (in resistors) or energy delivery (by batteries). All three forms are equivalent via $V = IR$.</p>
+    <div class="insight"><b>In series:</b> Same $I$, so the resistor with the largest $R$ dissipates the most power ($P = I^2R$).<br>
+    <b>In parallel:</b> Same $V$, so the resistor with the smallest $R$ dissipates the most power ($P = V^2/R$).</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="unit-hdr u4">UNIT 4: MAGNETIC FIELDS</div>
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- 19 -->
+<div class="sec s4">
+    <h2><span class="num">19</span> Magnetic Force on Moving Charges</h2>
+    <div class="eq">$\vec{F} = q\vec{v} \times \vec{B}$ &nbsp;&nbsp;&rarr;&nbsp;&nbsp; $F = |q|vB\sin\theta$</div>
+    <p class="p">The magnetic force is <b>always perpendicular</b> to both $\vec{v}$ and $\vec{B}$. This means it NEVER does work (doesn't change speed, only direction).</p>
+    <div class="method">
+        <h3>Right-Hand Rule for $\vec{F} = q\vec{v} \times \vec{B}$</h3>
+        <ol>
+            <li>Point fingers in the direction of $\vec{v}$</li>
+            <li>Curl fingers toward $\vec{B}$</li>
+            <li>Thumb points in the direction of $\vec{F}$ (for positive charge)</li>
+            <li>For negative charges, flip the direction of $\vec{F}$</li>
+        </ol>
+    </div>
+    <div class="trap"><b>If $\vec{v}$ is parallel to $\vec{B}$:</b> $\sin\theta = 0$, so $F = 0$. A charge moving along a field line feels no force. Maximum force when $\vec{v} \perp \vec{B}$.</div>
+</div>
+
+<!-- 20 -->
+<div class="sec s4">
+    <h2><span class="num">20</span> Charged Particle in a Magnetic Field</h2>
+    <p class="p">Since $\vec{F}$ is always perpendicular to $\vec{v}$, a charged particle in a uniform $\vec{B}$ field moves in a <b>circle</b> (if $\vec{v} \perp \vec{B}$) or a <b>helix</b> (if there's a component along $\vec{B}$).</p>
+    <div class="eq2">
+        <div class="eq">$r = \dfrac{mv}{|q|B}$ <span style="font-size:.82rem;color:#64748b;">(radius of circular orbit)</span></div>
+        <div class="eq">$T = \dfrac{2\pi m}{|q|B}$ <span style="font-size:.82rem;color:#64748b;">(period — independent of speed!)</span></div>
+    </div>
+    <div class="insight"><b>Faster particle = bigger circle</b> (but same period). This is the basis of the cyclotron: particles spiral outward as they accelerate, but always take the same time per revolution.</div>
+    <div class="ap"><b>AP classic:</b> "A proton and an electron enter the same B field with the same speed. Compare their radii." The proton has $\sim 1836\times$ more mass, so its radius is $\sim 1836\times$ bigger.</div>
+</div>
+
+<!-- 21 -->
+<div class="sec s4">
+    <h2><span class="num">21</span> Force on a Current-Carrying Wire</h2>
+    <div class="eq">$\vec{F} = I\vec{L} \times \vec{B}$ &nbsp;&nbsp;&rarr;&nbsp;&nbsp; $F = BIL\sin\theta$</div>
+    <p class="p">$\vec{L}$ points in the direction of current flow. The force on the wire is perpendicular to both $\vec{L}$ and $\vec{B}$. Use the same right-hand rule as before, but with $I\vec{L}$ replacing $q\vec{v}$.</p>
+    <div class="insight"><b>Two parallel wires:</b> Currents in the same direction attract. Currents in opposite directions repel. (Each wire's field exerts a force on the other wire.)</div>
+</div>
+
+<!-- 22 -->
+<div class="sec s4">
+    <h2><span class="num">22</span> Biot-Savart Law</h2>
+    <p class="p">Biot-Savart tells you the magnetic field created by a current-carrying wire. It's the magnetic analog of Coulomb's law.</p>
+    <div class="eq">$d\vec{B} = \dfrac{\mu_0}{4\pi}\dfrac{I\,d\vec{l} \times \hat{r}}{r^2}$</div>
+    <p class="p">where $\mu_0 = 4\pi \times 10^{-7}$ T$\cdot$m/A. Integrate over the wire to get total $\vec{B}$.</p>
+    <p class="p"><b>Key results:</b></p>
+    <table class="tbl">
+        <tr><th>Source</th><th>B-field</th></tr>
+        <tr><td>Long straight wire (distance $r$)</td><td>$B = \dfrac{\mu_0 I}{2\pi r}$</td></tr>
+        <tr><td>Center of circular loop (radius $R$)</td><td>$B = \dfrac{\mu_0 I}{2R}$</td></tr>
+        <tr><td>On axis of loop (distance $x$)</td><td>$B = \dfrac{\mu_0 I R^2}{2(R^2 + x^2)^{3/2}}$</td></tr>
+    </table>
+    <div class="insight"><b>Direction:</b> Use the right-hand rule for wires. Curl your right hand in the direction of current flow; your thumb points in the direction of $\vec{B}$ (for a loop) or curl fingers around the wire (for a straight wire).</div>
+</div>
+
+<!-- 23 -->
+<div class="sec s4">
+    <h2><span class="num">23</span> Amp&egrave;re's Law</h2>
+    <div class="gold">$\displaystyle\oint \vec{B} \cdot d\vec{l} = \mu_0 I_{enc}$</div>
+    <p class="p"><b>Amp&egrave;re's Law is to magnetism what Gauss's Law is to electrostatics.</b> It relates the line integral of $\vec{B}$ around a closed loop to the current passing through the loop. Like Gauss's Law, it's always true but only <b>useful</b> with high symmetry.</p>
+    <p class="p"><b>Key applications:</b></p>
+    <table class="tbl">
+        <tr><th>Configuration</th><th>Amperian Loop</th><th>Result</th></tr>
+        <tr><td>Long straight wire</td><td>Circle around wire</td><td>$B = \dfrac{\mu_0 I}{2\pi r}$</td></tr>
+        <tr><td>Solenoid (inside)</td><td>Rectangle through coil</td><td>$B = \mu_0 n I$ <span style="font-size:.8rem;color:#64748b;">($n$ = turns/length)</span></td></tr>
+        <tr><td>Solenoid (outside)</td><td>—</td><td>$B \approx 0$</td></tr>
+        <tr><td>Toroid (inside)</td><td>Circle inside toroid</td><td>$B = \dfrac{\mu_0 N I}{2\pi r}$</td></tr>
+    </table>
+    <div class="insight"><b>Solenoid:</b> A coil of wire wound tightly. Inside: uniform $B = \mu_0 n I$ (strong, uniform field). Outside: $B \approx 0$. It's the magnetic analog of a parallel-plate capacitor (uniform field in a region).</div>
+</div>
+
+<!-- 24 -->
+<div class="sec s4">
+    <h2><span class="num">24</span> Magnetic Flux</h2>
+    <div class="eq">$\Phi_B = \int \vec{B} \cdot d\vec{A} = BA\cos\theta$ <span style="font-size:.82rem;color:#64748b;">(uniform $B$, flat area)</span></div>
+    <p class="p">Magnetic flux measures "how much magnetic field passes through a surface." $\theta$ is the angle between $\vec{B}$ and the normal to the surface. Units: Weber (Wb) = T$\cdot$m$^2$.</p>
+    <div class="insight"><b>Maximum flux:</b> when $\vec{B}$ is perpendicular to the surface ($\theta = 0°$, field goes straight through). <b>Zero flux:</b> when $\vec{B}$ is parallel to the surface ($\theta = 90°$, field skims along the surface).</div>
+    <div class="gold">Gauss's Law for magnetism: $\oint \vec{B} \cdot d\vec{A} = 0$ (no magnetic monopoles). Net flux through any closed surface is always zero.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div class="unit-hdr u5">UNIT 5: ELECTROMAGNETIC INDUCTION</div>
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- 25 -->
+<div class="sec s5">
+    <h2><span class="num">25</span> Faraday's Law</h2>
+    <div class="gold">$\mathcal{E} = -\dfrac{d\Phi_B}{dt}$</div>
+    <p class="p"><b>A changing magnetic flux through a loop induces an EMF (voltage).</b> This is the foundation of generators, transformers, and induction cooktops.</p>
+    <p class="p"><b>Three ways to change flux</b> ($\Phi = BA\cos\theta$):</p>
+    <div class="eq3">
+        <div class="eq">Change $B$<br><span style="font-size:.82rem;color:#64748b;">(field strengthens/weakens)</span></div>
+        <div class="eq">Change $A$<br><span style="font-size:.82rem;color:#64748b;">(loop expands/shrinks)</span></div>
+        <div class="eq">Change $\theta$<br><span style="font-size:.82rem;color:#64748b;">(loop rotates)</span></div>
+    </div>
+    <p class="p"><b>For $N$ loops:</b> $\mathcal{E} = -N\dfrac{d\Phi_B}{dt}$</p>
+    <div class="insight"><b>Motional EMF:</b> A conducting rod of length $L$ moving at speed $v$ perpendicular to a field $B$ generates: $\mathcal{E} = BLv$. This is Faraday's law applied to a changing area.</div>
+    <div class="ap"><b>AP FRQ favorite:</b> A rectangular loop enters/exits a region of uniform $B$. Find the EMF, current, and force as functions of position.</div>
+</div>
+
+<!-- 26 -->
+<div class="sec s5">
+    <h2><span class="num">26</span> Lenz's Law</h2>
+    <div class="gold">The induced current flows in a direction that OPPOSES the change in flux that caused it.</div>
+    <p class="p">Lenz's law is the reason for the negative sign in Faraday's law. It's a consequence of energy conservation — if the induced current aided the change, you'd get runaway energy from nothing.</p>
+    <div class="method">
+        <h3>How to Apply Lenz's Law</h3>
+        <ol>
+            <li>Determine if the flux through the loop is increasing or decreasing</li>
+            <li>The induced current creates a B-field that <b>opposes the change</b>:<br>
+                &bull; Flux increasing? Induced B opposes the external B (induced current creates B in opposite direction)<br>
+                &bull; Flux decreasing? Induced B supports the external B (tries to maintain it)</li>
+            <li>Use the right-hand rule to find which current direction produces the needed induced B</li>
+        </ol>
+    </div>
+    <div class="insight"><b>Quick test:</b> If a magnet's north pole approaches a loop, the loop creates its own north pole facing the magnet (to repel and oppose the approach). If the magnet retreats, the loop creates a south pole (to attract and oppose the retreat).</div>
+</div>
+
+<!-- 27 -->
+<div class="sec s5">
+    <h2><span class="num">27</span> Inductance</h2>
+    <p class="p">An <b>inductor</b> is a coil of wire that opposes changes in current (just as a capacitor opposes changes in voltage). When the current through an inductor changes, it induces an EMF that resists the change.</p>
+    <div class="eq2">
+        <div class="eq">$\mathcal{E} = -L\dfrac{dI}{dt}$ <span style="font-size:.82rem;color:#64748b;">(self-induced EMF)</span></div>
+        <div class="eq">$L = \mu_0 n^2 A \ell$ <span style="font-size:.82rem;color:#64748b;">(solenoid, $\ell$ = length)</span></div>
+    </div>
+    <p class="p">$L$ is the inductance, measured in Henries (H). It depends on the geometry of the coil.</p>
+    <div class="insight"><b>Analogy:</b> An inductor is like a heavy flywheel. It resists changes in current (like a flywheel resists changes in rotation speed). Once current is flowing, the inductor tries to keep it flowing.</div>
+</div>
+
+<!-- 28 -->
+<div class="sec s5">
+    <h2><span class="num">28</span> LR Circuits</h2>
+    <p class="p">When an inductor and resistor are connected to a battery, the current grows exponentially (the inductor opposes sudden changes).</p>
+    <div class="eq2">
+        <div class="eq"><b>Energizing:</b><br>$I(t) = \dfrac{\mathcal{E}}{R}\left(1 - e^{-Rt/L}\right)$<br>$V_L(t) = \mathcal{E}\,e^{-Rt/L}$</div>
+        <div class="eq"><b>De-energizing:</b><br>$I(t) = I_0\,e^{-Rt/L}$<br>$V_L(t) = -I_0 R\,e^{-Rt/L}$</div>
+    </div>
+    <div class="gold">Time constant: $\tau = L/R$. After $1\tau$: 63% of final current. After $5\tau$: essentially complete.</div>
+    <div class="insight"><b>At $t = 0$:</b> An inductor with no initial current acts like an open circuit (blocks sudden current). <b>At $t = \infty$:</b> An inductor acts like a plain wire (no voltage drop, full current).</div>
+    <div class="trap"><b>Compare with RC circuits:</b> In RC, current STARTS high and decays. In LR, current STARTS at zero and grows. They are "mirror images" of each other. The time constant is $\tau = RC$ for capacitors and $\tau = L/R$ for inductors.</div>
+</div>
+
+<!-- 29 -->
+<div class="sec s5">
+    <h2><span class="num">29</span> Energy in Inductors &amp; Magnetic Fields</h2>
+    <div class="eq2">
+        <div class="eq">$U = \dfrac{1}{2}LI^2$ <span style="font-size:.82rem;color:#64748b;">(energy in inductor)</span></div>
+        <div class="eq">$u_B = \dfrac{B^2}{2\mu_0}$ <span style="font-size:.82rem;color:#64748b;">(energy density of B field)</span></div>
+    </div>
+    <p class="p">Just as a capacitor stores energy in its electric field ($U = \frac{1}{2}CV^2$, $u_E = \frac{1}{2}\varepsilon_0 E^2$), an inductor stores energy in its magnetic field.</p>
+    <div class="insight"><b>Beautiful symmetry between E and B:</b></div>
+    <table class="tbl">
+        <tr><th>Electric</th><th>Magnetic</th></tr>
+        <tr><td>$U = \frac{1}{2}CV^2$</td><td>$U = \frac{1}{2}LI^2$</td></tr>
+        <tr><td>$u_E = \frac{1}{2}\varepsilon_0 E^2$</td><td>$u_B = \dfrac{B^2}{2\mu_0}$</td></tr>
+        <tr><td>$\tau = RC$</td><td>$\tau = L/R$</td></tr>
+        <tr><td>Capacitor: opposes $\Delta V$</td><td>Inductor: opposes $\Delta I$</td></tr>
+        <tr><td>$t=0$: wire (no $V$)</td><td>$t=0$: open (no $I$)</td></tr>
+        <tr><td>$t=\infty$: open (full $V$)</td><td>$t=\infty$: wire (full $I$)</td></tr>
+    </table>
+</div>
+
+<!-- FINAL SUMMARY -->
+<div class="method" style="margin-top:20px;">
+    <h3>Exam-Day Decision Tree</h3>
+    <ul>
+        <li><b>Finding E-field from charge distribution?</b> &rarr; Coulomb/integration (any shape) or Gauss's law (symmetric shapes)</li>
+        <li><b>Finding potential?</b> &rarr; $V = kq/r$ (point charges) or $V = -\int \vec{E}\cdot d\vec{l}$ (from known E)</li>
+        <li><b>Capacitor problem?</b> &rarr; $C = Q/V$, check what's constant (battery connected vs disconnected)</li>
+        <li><b>Circuit with batteries and resistors?</b> &rarr; Kirchhoff's rules</li>
+        <li><b>Circuit with capacitor?</b> &rarr; RC exponentials, $\tau = RC$</li>
+        <li><b>Force on charge in B field?</b> &rarr; $F = qvB\sin\theta$, right-hand rule</li>
+        <li><b>Finding B-field from current?</b> &rarr; Biot-Savart (any shape) or Amp&egrave;re's law (symmetric shapes)</li>
+        <li><b>Changing flux?</b> &rarr; Faraday's law $\mathcal{E} = -d\Phi/dt$, Lenz's law for direction</li>
+        <li><b>Circuit with inductor?</b> &rarr; LR exponentials, $\tau = L/R$</li>
+    </ul>
+</div>
+
+</div><!-- end .page -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    renderMathInElement(document.body, {
+        delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]
+    });
+});
+</script>
+</body>
+</html>
