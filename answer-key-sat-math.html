@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Math Practice — Answer Key</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#f8fafc;--card:#fff;--text:#1e293b;--text2:#64748b;--border:#e2e8f0;--primary:#2563eb;--success:#16a34a;--danger:#dc2626;--warning:#d97706}
+        [data-theme="dark"]{--bg:#1a1a2e;--card:#16213e;--text:#e0e0e0;--text2:#aaa;--border:#333;--primary:#4f8cff}
+        body{font-family:'Georgia',serif;background:var(--bg);color:var(--text);line-height:1.7;padding:20px}
+        .container{max-width:900px;margin:0 auto}
+        h1{font-size:1.6rem;text-align:center;color:var(--primary);margin-bottom:5px}
+        .sub{text-align:center;color:var(--text2);margin-bottom:20px}
+        .nav{text-align:center;font-size:.85rem;margin-bottom:20px}
+        .nav a{color:var(--primary);text-decoration:none;margin:0 8px}
+        .quick{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:20px;font-size:.9rem}
+        .quick strong{color:var(--primary)}
+        .cat-header{background:var(--primary);color:#fff;padding:8px 16px;border-radius:6px;margin:20px 0 12px;font-size:1rem;font-weight:700}
+        .cat-header.adv{background:#7c3aed}
+        .cat-header.data{background:#d97706}
+        .cat-header.geom{background:#059669}
+        .sol{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px}
+        .sol-header{display:flex;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:4px}
+        .sol-num{font-weight:700;color:var(--primary)}
+        .sol-ans{font-weight:700;color:var(--success);font-size:1.05rem}
+        .sol-diff{font-size:.7rem;padding:2px 8px;border-radius:8px;font-weight:600}
+        .sol-diff.d1{background:rgba(22,163,74,0.1);color:var(--success)}
+        .sol-diff.d2{background:rgba(245,158,11,0.1);color:var(--warning)}
+        .sol-diff.d3{background:rgba(220,38,38,0.1);color:var(--danger)}
+        .step{margin-bottom:6px;padding:5px 10px;border-left:3px solid var(--primary);font-size:.92rem}
+        .step strong{color:var(--primary)}
+        .teach{margin-top:8px;padding:8px 12px;background:rgba(37,99,235,.05);border-left:3px solid var(--primary);border-radius:0 6px 6px 0;font-size:.88rem;font-style:italic}
+        .teach strong{color:var(--primary);font-style:normal}
+        .gotcha{margin-top:8px;padding:8px 12px;background:rgba(139,92,246,.08);border-left:3px solid #8b5cf6;border-radius:0 6px 6px 0;font-size:.85rem}
+        .gotcha strong{color:#7c3aed}
+        .mistake{margin-top:8px;padding:8px 12px;background:rgba(220,38,38,.05);border-left:3px solid var(--danger);border-radius:0 6px 6px 0;font-size:.85rem}
+        .mistake strong{color:var(--danger)}
+        [data-theme="dark"] .teach{background:rgba(79,140,255,.1)}
+        [data-theme="dark"] .gotcha{background:rgba(139,92,246,.15)}
+        [data-theme="dark"] .mistake{background:rgba(220,38,38,.1)}
+        .theme-toggle{position:fixed;bottom:20px;right:20px;padding:10px;border-radius:50%;border:2px solid var(--border);background:var(--card);cursor:pointer;font-size:1.2rem;z-index:100}
+        @media print{.nav,.theme-toggle,#pin-gate{display:none}body{background:#fff;padding:10px}.sol{break-inside:avoid}}
+    </style>
+</head>
+<body>
+    <!-- PIN Gate -->
+    <div id="pin-gate" style="position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;align-items:center;justify-content:center;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:30px;text-align:center;width:280px;">
+            <h3 style="margin-bottom:15px;">Teacher Access Required</h3>
+            <input type="password" id="gate-pin" maxlength="4" inputmode="numeric" style="width:120px;padding:10px;text-align:center;font-size:1.5rem;border:2px solid var(--border);border-radius:8px;letter-spacing:8px;background:var(--bg);color:var(--text);" onkeydown="if(event.key==='Enter')gateCheck()">
+            <div id="gate-err" style="color:#dc2626;font-size:.8rem;margin-top:8px;display:none;">Incorrect PIN</div>
+            <br><button onclick="gateCheck()" style="margin-top:15px;padding:8px 20px;font-size:.9rem;border:none;border-radius:8px;background:#2563eb;color:#fff;cursor:pointer;">Unlock</button>
+        </div>
+    </div>
+    <script>
+    function gateCheck(){if(document.getElementById('gate-pin').value==='2026'){sessionStorage.setItem('satMathTeacher','true');document.getElementById('pin-gate').style.display='none';}else{document.getElementById('gate-err').style.display='block';document.getElementById('gate-pin').value='';}}
+    if(sessionStorage.getItem('satMathTeacher')==='true'){document.getElementById('pin-gate').style.display='none';}
+    </script>
+
+    <div class="container">
+        <h1>SAT Math Practice — Answer Key</h1>
+        <p class="sub">20 Questions &mdash; Complete Solutions with Strategy Tips</p>
+        <div class="nav"><a href="sat-math-practice.html">Back to Exam</a> <a href="index.html">Home</a></div>
+
+        <!-- QUICK ANSWERS -->
+        <div class="quick">
+            <strong>Quick Key:</strong><br>
+            1.C &nbsp; 2.A &nbsp; 3.B &nbsp; 4.B &nbsp; 5.B &nbsp; 6.B &nbsp; 7.C &nbsp; 8.B &nbsp; 9.C &nbsp; 10.B<br>
+            11.B &nbsp; 12.B &nbsp; 13.A &nbsp; 14.B &nbsp; 15.C &nbsp; 16.C &nbsp; 17.D &nbsp; 18.C &nbsp; 19.B &nbsp; 20.C
+        </div>
+
+        <!-- ═══════════ ALGEBRA ═══════════ -->
+        <div class="cat-header">Algebra (Q1–Q7)</div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q1 — Linear Equations</span>
+                <span><span class="sol-diff d1">Easy</span> <span class="sol-ans">Answer: (C) $17$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Distribute: $3(x - 4) = 3x - 12$</div>
+            <div class="step"><strong>Step 2:</strong> Equation becomes $3x - 12 = 2x + 5$</div>
+            <div class="step"><strong>Step 3:</strong> Subtract $2x$: $x - 12 = 5$</div>
+            <div class="step"><strong>Step 4:</strong> Add $12$: $x = 17$</div>
+            <div class="teach"><strong>Strategy:</strong> Always distribute first, then isolate. Move variables to one side, constants to the other. Check by plugging back in: $3(17-4) = 3(13) = 39$ and $2(17)+5 = 39$. &#10003;</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (A) $7$ — forgot to distribute the $3$ to the $-4$, writing $3x - 4 = 2x + 5$. (D) $-1$ — sign error when moving $12$ across.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q2 — Linear Inequalities</span>
+                <span><span class="sol-diff d1">Easy</span> <span class="sol-ans">Answer: (A) $0$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> $-2x + 7 > 3$</div>
+            <div class="step"><strong>Step 2:</strong> Subtract $7$: $-2x > -4$</div>
+            <div class="step"><strong>Step 3:</strong> Divide by $-2$ (FLIP the sign): $x < 2$</div>
+            <div class="step"><strong>Step 4:</strong> Only $x = 0$ from the choices satisfies $x < 2$.</div>
+            <div class="teach"><strong>Strategy:</strong> Dividing or multiplying by a negative FLIPS the inequality. This is tested on almost every SAT. Memorize the rule.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> If you forget to flip: $x > 2$, you'd pick (C) $3$ or (D) $5$ — both wrong.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (B) $2$ — boundary value, but $x < 2$ is strict (not $\le$). (C)/(D) — forgot to flip the inequality sign.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q3 — Systems (Substitution)</span>
+                <span><span class="sol-diff d2">Medium</span> <span class="sol-ans">Answer: (B) $8$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Substitute $y = 2x - 1$ into $3x + y = 14$:</div>
+            <div class="step"><strong>Step 2:</strong> $3x + (2x - 1) = 14 \Rightarrow 5x - 1 = 14$</div>
+            <div class="step"><strong>Step 3:</strong> $5x = 15 \Rightarrow x = 3$</div>
+            <div class="step"><strong>Step 4:</strong> $y = 2(3) - 1 = 5$</div>
+            <div class="step"><strong>Step 5:</strong> $x + y = 3 + 5 = 8$</div>
+            <div class="teach"><strong>Strategy:</strong> When one equation is already solved for a variable (like $y = ...$), substitution is faster than elimination.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (A) $5$ — gave only $y$, not $x + y$. (D) $14$ — the RHS of the second equation, not the answer. Always read what the question asks!</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q4 — Linear Word Problem</span>
+                <span><span class="sol-diff d2">Medium</span> <span class="sol-ans">Answer: (B) $5$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Translate: Total $=$ Service fee $+$ Hourly rate $\times$ Hours</div>
+            <div class="step"><strong>Step 2:</strong> $225 = 50 + 35h$</div>
+            <div class="step"><strong>Step 3:</strong> $35h = 175$</div>
+            <div class="step"><strong>Step 4:</strong> $h = 5$</div>
+            <div class="teach"><strong>Strategy:</strong> Word problems → equation. Identify: fixed cost ($50), rate ($35/hr), and total ($225). The structure is always: Total = Fixed + Rate × Variable.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (C) $6$ — dividing $225 \div 35 \approx 6.4$ without subtracting the $50 fee first. (A) $4$ — arithmetic error $175/35$.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q5 — Systems (Elimination)</span>
+                <span><span class="sol-diff d2">Medium</span> <span class="sol-ans">Answer: (B) $2$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Notice $+3y$ and $-3y$ → add equations directly.</div>
+            <div class="step"><strong>Step 2:</strong> $(2x + 3y) + (4x - 3y) = 12 + 6$</div>
+            <div class="step"><strong>Step 3:</strong> $6x = 18 \Rightarrow x = 3$</div>
+            <div class="step"><strong>Step 4:</strong> Substitute into first: $2(3) + 3y = 12 \Rightarrow 3y = 6 \Rightarrow y = 2$</div>
+            <div class="teach"><strong>Strategy:</strong> Look for coefficients that cancel when adding or subtracting. Here $+3y$ and $-3y$ cancel immediately — no multiplication needed.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> The question asks for $y$, not $x$. Finding $x = 3$ is only halfway done.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (C) $3$ — gave $x$ instead of $y$. This is the #1 careless error on systems problems.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q6 — Absolute Value</span>
+                <span><span class="sol-diff d3">Hard</span> <span class="sol-ans">Answer: (B) $4$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Split into two cases:</div>
+            <div class="step"><strong>Case 1:</strong> $3x - 6 = 12 \Rightarrow 3x = 18 \Rightarrow x = 6$</div>
+            <div class="step"><strong>Case 2:</strong> $3x - 6 = -12 \Rightarrow 3x = -6 \Rightarrow x = -2$</div>
+            <div class="step"><strong>Step 2:</strong> Sum of all solutions: $6 + (-2) = 4$</div>
+            <div class="teach"><strong>Strategy:</strong> $|A| = B$ splits into $A = B$ or $A = -B$ (provided $B \ge 0$). Always find ALL solutions, then answer the actual question (sum, product, etc.).</div>
+            <div class="gotcha"><strong>Gotcha:</strong> The question asks for the SUM, not individual solutions. (C) $6$ is only one solution.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (C) $6$ — found only the positive solution and stopped. (A) $2$ — computed $6 - (-2) = 8$... no wait, that gives $8$. Actually (A) could come from $6 + (-2)/2 = 2$ (accidentally averaging).</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q7 — Infinite Solutions</span>
+                <span><span class="sol-diff d3">Hard</span> <span class="sol-ans">Answer: (C) $8$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Expand left side: $4(2x + 3) = 8x + 12$</div>
+            <div class="step"><strong>Step 2:</strong> Equation becomes: $8x + 12 = kx + 12$</div>
+            <div class="step"><strong>Step 3:</strong> For infinitely many solutions, both sides must be identical.</div>
+            <div class="step"><strong>Step 4:</strong> Coefficients of $x$ must match: $k = 8$. Constants already match ($12 = 12$). &#10003;</div>
+            <div class="teach"><strong>Strategy:</strong> Infinitely many solutions = identical expressions (all $x$ work). No solutions = contradiction ($0 = \text{nonzero}$). One solution = normal case. This is a high-value concept on the SAT.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (D) $12$ — matching the constant, but the constants already match regardless of $k$. The constraint comes from the $x$-coefficients.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (B) $4$ — dividing $8$ by $2$ for no reason. (A) $3$ — confusing the constant in the parentheses with the answer.</div>
+        </div>
+
+        <!-- ═══════════ ADVANCED MATH ═══════════ -->
+        <div class="cat-header adv">Advanced Math (Q8–Q14)</div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q8 — Exponent Rules</span>
+                <span><span class="sol-diff d1">Easy</span> <span class="sol-ans">Answer: (B) $27$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Numerator: $3^5 \cdot 3^2 = 3^{5+2} = 3^7$</div>
+            <div class="step"><strong>Step 2:</strong> Divide: $3^7 / 3^4 = 3^{7-4} = 3^3$</div>
+            <div class="step"><strong>Step 3:</strong> $3^3 = 27$</div>
+            <div class="teach"><strong>Strategy:</strong> Three rules: $a^m \cdot a^n = a^{m+n}$, $a^m / a^n = a^{m-n}$, $(a^m)^n = a^{mn}$. Don't compute large powers — simplify the exponent first.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (A) $9 = 3^2$ — subtracted exponents wrong ($7-4 \ne 2$). (C) $81 = 3^4$ — forgot to add in the numerator.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q9 — Factoring Quadratics</span>
+                <span><span class="sol-diff d1">Easy</span> <span class="sol-ans">Answer: (C) $x = 2$ and $x = 3$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Need two numbers that multiply to $+6$ and add to $-5$.</div>
+            <div class="step"><strong>Step 2:</strong> $(-2)(-3) = 6$ &#10003; and $(-2) + (-3) = -5$ &#10003;</div>
+            <div class="step"><strong>Step 3:</strong> Factor: $(x - 2)(x - 3) = 0$</div>
+            <div class="step"><strong>Step 4:</strong> Solutions: $x = 2$ or $x = 3$</div>
+            <div class="teach"><strong>Strategy:</strong> For $x^2 + bx + c$: find two numbers with product $= c$ and sum $= b$. Signs matter!</div>
+            <div class="gotcha"><strong>Gotcha:</strong> The factored form is $(x-2)(x-3)$, so solutions are $+2$ and $+3$. Don't confuse the signs in the factors with the signs of the solutions.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (B) $x = -2, -3$ — correct magnitudes but wrong signs. The factors have minus signs, but that means the roots are positive.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q10 — Discriminant</span>
+                <span><span class="sol-diff d2">Medium</span> <span class="sol-ans">Answer: (B) $9$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> One real solution $\Rightarrow$ discriminant $= 0$</div>
+            <div class="step"><strong>Step 2:</strong> $\Delta = b^2 - 4ac = 6^2 - 4(1)(c) = 36 - 4c$</div>
+            <div class="step"><strong>Step 3:</strong> Set $\Delta = 0$: $36 - 4c = 0 \Rightarrow c = 9$</div>
+            <div class="teach"><strong>Strategy:</strong> Discriminant determines the number of solutions. For exactly one solution (a "double root"), set $b^2 - 4ac = 0$ and solve for the unknown.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (D) $36$ — this is $b^2$, not $c$. You need $c = b^2/(4a) = 36/4 = 9$. (A) $6$ — confused $b$ with $c$.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q11 — Factor Theorem</span>
+                <span><span class="sol-diff d2">Medium</span> <span class="sol-ans">Answer: (B) $(x - 2)$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Given $p(2) = 0$, by the Factor Theorem, $(x - 2)$ is a factor.</div>
+            <div class="step"><strong>Verify:</strong> $p(2) = 8 - 16 + 2 + 6 = 0$ &#10003;</div>
+            <div class="teach"><strong>Strategy:</strong> Factor Theorem: $p(a) = 0 \Leftrightarrow (x - a)$ is a factor. The sign flips! $p(2) = 0$ gives $(x - 2)$, not $(x + 2)$.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (A) $(x+2)$ is the most common wrong answer. Remember: zero at $x = 2$ means factor $(x - 2)$.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q12 — Exponential Growth</span>
+                <span><span class="sol-diff d2">Medium</span> <span class="sol-ans">Answer: (B) $500 \cdot 2^{t/3}$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Initial amount: $500$. Growth factor: $2$ (doubling). Period: $3$ hours.</div>
+            <div class="step"><strong>Step 2:</strong> After $t$ hours, number of doubling periods $= t/3$.</div>
+            <div class="step"><strong>Step 3:</strong> Formula: $N = 500 \cdot 2^{t/3}$</div>
+            <div class="step"><strong>Check:</strong> At $t = 3$: $500 \cdot 2^1 = 1000$ (doubled). At $t = 6$: $500 \cdot 2^2 = 2000$ (doubled again). &#10003;</div>
+            <div class="teach"><strong>Strategy:</strong> Exponential model: $N = N_0 \cdot b^{t/T}$. The exponent is always (time elapsed) ÷ (period for one cycle). Doubling $\Rightarrow b = 2$.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (A) $2^{3t}$ — this puts the period in the wrong spot; it should divide $t$, not multiply. (D) linear growth, not exponential.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q13 — Rational Equations</span>
+                <span><span class="sol-diff d3">Hard</span> <span class="sol-ans">Answer: (A) $-5$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Multiply everything by $(x-2)(x+2)$:</div>
+            <div class="step"><strong>Step 2:</strong> $x(x+2) + 1(x-2) = 8$</div>
+            <div class="step"><strong>Step 3:</strong> $x^2 + 2x + x - 2 = 8 \Rightarrow x^2 + 3x - 10 = 0$</div>
+            <div class="step"><strong>Step 4:</strong> Factor: $(x + 5)(x - 2) = 0 \Rightarrow x = -5$ or $x = 2$</div>
+            <div class="step"><strong>Step 5:</strong> Check: $x = 2$ makes $(x-2) = 0$ in the denominator. REJECT.</div>
+            <div class="step"><strong>Step 6:</strong> Only valid solution: $x = -5$</div>
+            <div class="teach"><strong>Strategy:</strong> After solving a rational equation, ALWAYS plug solutions back into the original denominators. Any value that makes a denominator zero is extraneous and must be rejected.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> $x = 2$ is a trap. It satisfies the quadratic but NOT the original equation. This is exactly what the SAT tests with rational equations.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (B) $2$ — a valid algebraic solution but extraneous (makes denominator $0$). (C) "$-5$ and $2$" — didn't check for extraneous solutions.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q14 — Function Composition</span>
+                <span><span class="sol-diff d3">Hard</span> <span class="sol-ans">Answer: (B) $3$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Build the composite: $f(g(x)) = 2(x^2 - 3) + 1 = 2x^2 - 5$</div>
+            <div class="step"><strong>Step 2:</strong> Set equal to $13$: $2x^2 - 5 = 13$</div>
+            <div class="step"><strong>Step 3:</strong> $2x^2 = 18 \Rightarrow x^2 = 9 \Rightarrow x = \pm 3$</div>
+            <div class="step"><strong>Step 4:</strong> Positive value: $x = 3$</div>
+            <div class="teach"><strong>Strategy:</strong> For $f(g(x))$, work inside-out: first write $g(x)$, then plug it into $f$. Simplify the result, then solve the equation.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> Don't confuse $f(g(x))$ with $g(f(x))$. Order matters! Also, $x^2 = 9$ gives $\pm 3$, but the question specifies "positive."</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (D) $9$ — this is $x^2$, not $x$. Always take the square root as the final step. (A) $2$ — computed $g(x)$ wrong.</div>
+        </div>
+
+        <!-- ═══════════ PROBLEM SOLVING & DATA ═══════════ -->
+        <div class="cat-header data">Problem Solving &amp; Data Analysis (Q15–Q17)</div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q15 — Ratios</span>
+                <span><span class="sol-diff d1">Easy</span> <span class="sol-ans">Answer: (C) $18$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Ratio $2:3$ means total parts $= 2 + 3 = 5$</div>
+            <div class="step"><strong>Step 2:</strong> Each part $= 30 \div 5 = 6$ students</div>
+            <div class="step"><strong>Step 3:</strong> Girls $= 3 \times 6 = 18$</div>
+            <div class="teach"><strong>Strategy:</strong> In a ratio $a:b$, the second group is $\frac{b}{a+b}$ of the total. Here: $\frac{3}{5} \times 30 = 18$.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (A) $12$ — this is the number of boys ($2 \times 6$), not girls. (B) $15$ — assumed equal split.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q16 — Line of Best Fit</span>
+                <span><span class="sol-diff d2">Medium</span> <span class="sol-ans">Answer: (C) $68$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Substitute $x = 8$ into $y = -1.5x + 80$</div>
+            <div class="step"><strong>Step 2:</strong> $y = -1.5(8) + 80 = -12 + 80 = 68$</div>
+            <div class="teach"><strong>Strategy:</strong> A line of best fit is just a linear equation. Plug in the given $x$-value and compute. The slope tells you the rate of change: here, each additional hour of exercise predicts $1.5$ bpm lower heart rate.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> The slope is negative. If you miss the negative sign: $1.5(8) + 80 = 92$, which isn't even a choice — a clue you made a sign error.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q17 — Mean = Median</span>
+                <span><span class="sol-diff d3">Hard</span> <span class="sol-ans">Answer: (D) $11$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> With 7 values, the median is the 4th value when sorted.</div>
+            <div class="step"><strong>Step 2:</strong> If $x \ge 10$ (as we'll verify), sorted order is: $3, 5, 7, 8, 10, x, 12$ or $3, 5, 7, 8, 10, 11, 12$. Either way, the median is $8$.</div>
+            <div class="step"><strong>Step 3:</strong> Set mean $= 8$: $\frac{3 + 5 + 7 + 8 + 10 + 12 + x}{7} = 8$</div>
+            <div class="step"><strong>Step 4:</strong> $45 + x = 56 \Rightarrow x = 11$</div>
+            <div class="step"><strong>Verify:</strong> Sorted: $3, 5, 7, 8, 10, 11, 12$. Median $= 8$. Mean $= 56/7 = 8$. &#10003;</div>
+            <div class="teach"><strong>Strategy:</strong> When mean = median, figure out what the median would be (it depends on where $x$ falls in the sorted order). Then set the mean equal to that value and solve for $x$. Check that $x$'s position doesn't change the median.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> You must verify that $x = 11$ doesn't change the position of the median. Since $11$ slots between $10$ and $12$, the 4th value is still $8$. &#10003;</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (A) $8$ — assumed $x$ must equal the median. But $x = 8$ gives mean $= 53/7 \approx 7.6 \ne 8$.</div>
+        </div>
+
+        <!-- ═══════════ GEOMETRY & TRIG ═══════════ -->
+        <div class="cat-header geom">Geometry &amp; Trigonometry (Q18–Q20)</div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q18 — Triangle Angles</span>
+                <span><span class="sol-diff d1">Easy</span> <span class="sol-ans">Answer: (C) $65°$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Angles in a triangle sum to $180°$.</div>
+            <div class="step"><strong>Step 2:</strong> $\angle C = 180° - 50° - 65° = 65°$</div>
+            <div class="teach"><strong>Strategy:</strong> This is the most fundamental geometry fact: triangle angles sum to $180°$. Quick mental math.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (A) $55°$ — subtracted only one angle: $180 - 50 - 75$... arithmetic confusion. (D) $75°$ — computed $180 - 50 - 55$, misreading $\angle B$.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q19 — Circle Equations</span>
+                <span><span class="sol-diff d2">Medium</span> <span class="sol-ans">Answer: (B) $5$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Group and complete the square for $x$: $x^2 - 6x \rightarrow (x-3)^2 - 9$</div>
+            <div class="step"><strong>Step 2:</strong> Complete the square for $y$: $y^2 + 4y \rightarrow (y+2)^2 - 4$</div>
+            <div class="step"><strong>Step 3:</strong> Substitute: $(x-3)^2 - 9 + (y+2)^2 - 4 = 12$</div>
+            <div class="step"><strong>Step 4:</strong> $(x-3)^2 + (y+2)^2 = 12 + 9 + 4 = 25$</div>
+            <div class="step"><strong>Step 5:</strong> Radius $= \sqrt{25} = 5$</div>
+            <div class="teach"><strong>Strategy:</strong> To complete the square for $x^2 + bx$: take half of $b$, square it, and add/subtract. The standard form $(x-h)^2 + (y-k)^2 = r^2$ immediately gives center $(h,k)$ and radius $r$.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (D) $25$ is $r^2$, not $r$. Always take the square root! (A) $3$ is the $x$-coordinate of the center.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (C) $12$ — the original RHS, before completing the square. You must add $9$ and $4$ to get $25$.</div>
+        </div>
+
+        <div class="sol">
+            <div class="sol-header">
+                <span class="sol-num">Q20 — Right Triangle Trig</span>
+                <span><span class="sol-diff d3">Hard</span> <span class="sol-ans">Answer: (C) $\dfrac{7}{5}$</span></span>
+            </div>
+            <div class="step"><strong>Step 1:</strong> Find missing side $QR$: $QR = \sqrt{PR^2 - PQ^2} = \sqrt{225 - 81} = \sqrt{144} = 12$</div>
+            <div class="step"><strong>Step 2:</strong> From angle $P$: opposite $= QR = 12$, adjacent $= PQ = 9$, hypotenuse $= PR = 15$</div>
+            <div class="step"><strong>Step 3:</strong> $\sin P = 12/15 = 4/5$</div>
+            <div class="step"><strong>Step 4:</strong> $\cos P = 9/15 = 3/5$</div>
+            <div class="step"><strong>Step 5:</strong> $\sin P + \cos P = 4/5 + 3/5 = 7/5$</div>
+            <div class="teach"><strong>Strategy:</strong> SOH-CAH-TOA. Always identify which sides are opposite, adjacent, and hypotenuse RELATIVE TO THE ANGLE in question. Use Pythagorean theorem first if a side is missing. Simplify fractions before adding.</div>
+            <div class="gotcha"><strong>Gotcha:</strong> (A) $7/15$ comes from writing $12/15 + 9/15 = 21/15$ but then reducing incorrectly. Actually $21/15 = 7/5$ — this IS the correct answer, so (A) is wrong because $7/15 \ne 21/15$. The trap is adding numerators without a common denominator.</div>
+            <div class="mistake"><strong>Common mistakes:</strong> (A) $7/15$ — adding $12 + 9 = 21$ in numerator but keeping $15$ as denominator without simplifying $12/15$ and $9/15$ first (they DO have the same denominator, and $21/15 = 7/5$). (B) $1$ — a common misconception that $\sin^2 + \cos^2 = 1$ implies $\sin + \cos = 1$ (it doesn't!).</div>
+        </div>
+
+    </div>
+
+    <button class="theme-toggle" onclick="document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme')==='dark'?'':'dark')">&#9790;</button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof renderMathInElement === 'function') {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
+        }
+    });
+    </script>
+</body>
+</html>
