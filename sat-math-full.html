@@ -253,6 +253,8 @@
         <div class="student-only" style="text-align:center;padding:60px 20px;">
             <h1 style="color:var(--success);margin-bottom:15px;">Test Submitted Successfully</h1>
             <p style="font-size:1.1rem;color:var(--text2);max-width:400px;margin:0 auto;">Your responses have been saved. Your teacher will review your results with you.</p>
+            <p style="margin-top:20px;"><button onclick="downloadResults()" style="padding:12px 28px;font-size:1rem;border:none;border-radius:8px;background:var(--primary);color:#fff;cursor:pointer;font-weight:600;">Download My Results</button></p>
+            <p style="margin-top:10px;font-size:.8rem;color:var(--text2);">Send the downloaded file to your teacher for analysis.</p>
         </div>
         <div class="results-header teacher-only-block">
             <h1>Full Test Complete</h1>
@@ -919,6 +921,26 @@ function saveProgress(score,m1,m2){
         totalTime:Date.now()-examStartTime,flags:flags,
         questions:allQs.map(function(q){return{topic:q.topic,subtopic:q.subtopic,difficulty:q.difficulty,correctIndex:q.correctIndex};})
     }));
+}
+
+// ═══════════════════════════════════════════════
+// DOWNLOAD RESULTS
+// ═══════════════════════════════════════════════
+function downloadResults() {
+    var data = JSON.parse(localStorage.getItem('satMathFullResults'));
+    if (!data) return;
+    var allQs = module1Questions.concat(module2Questions);
+    data.correctAnswers = allQs.map(function(q){ return q.correctIndex; });
+    data.testType = 'SAT Math Full (44 questions)';
+    var blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'SAT-Math-' + data.studentName.replace(/\s+/g,'-') + '-' + new Date().toISOString().slice(0,10) + '.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 }
 
 // ═══════════════════════════════════════════════
