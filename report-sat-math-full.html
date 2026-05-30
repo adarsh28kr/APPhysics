@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Math Full Test — Performance Report</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',-apple-system,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6;padding:20px}
+        .container{max-width:960px;margin:0 auto}
+        @media print{body{background:#fff;font-size:10pt}.container{padding:0;max-width:100%}.no-print{display:none}.page-break{page-break-before:always}}
+        .report-header{text-align:center;padding:30px 20px;background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;border-radius:16px;margin-bottom:25px}
+        .report-header h1{font-size:1.6rem;margin-bottom:4px}
+        .report-header .sub{opacity:.8;font-size:.9rem}
+        .report-header .date{margin-top:10px;font-size:.8rem;opacity:.6}
+        .heroes{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:20px 0}
+        .hero{text-align:center;min-width:80px}
+        .hero .v{font-size:2.2rem;font-weight:800;line-height:1}
+        .hero .l{font-size:.72rem;color:#64748b;margin-top:3px}
+        h2{font-size:1.1rem;color:#1e3a5f;margin:25px 0 10px;padding-bottom:5px;border-bottom:2px solid #2563eb}
+        .card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin-bottom:15px}
+        .card h3{font-size:.92rem;color:#2563eb;margin-bottom:8px}
+        .grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+        @media(max-width:700px){.grid2{grid-template-columns:1fr}}
+        table{width:100%;border-collapse:collapse;font-size:.8rem}
+        th,td{padding:5px 8px;text-align:left;border-bottom:1px solid #e2e8f0}
+        th{font-weight:600;color:#64748b;font-size:.72rem;text-transform:uppercase;background:#f8fafc}
+        .cg{color:#16a34a;font-weight:700}.cr{color:#dc2626;font-weight:700}.cw{color:#d97706;font-weight:700}
+        .bar-row{display:flex;align-items:center;margin-bottom:6px}
+        .bar-label{width:170px;font-size:.8rem;font-weight:500}
+        .bar-bg{flex:1;height:18px;background:#e2e8f0;border-radius:9px;overflow:hidden;margin:0 8px}
+        .bar-fill{height:100%;border-radius:9px}
+        .bar-val{width:65px;font-size:.78rem;font-weight:700;text-align:right}
+        .stat-row{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0}
+        .stat-box{flex:1;min-width:90px;text-align:center;padding:10px;border-radius:8px;background:#f1f5f9}
+        .stat-box .sv{font-size:1.4rem;font-weight:800}.stat-box .sl{font-size:.68rem;color:#64748b}
+        .badge{display:inline-block;padding:2px 6px;border-radius:6px;font-size:.68rem;font-weight:600}
+        .b-r{background:#fee2e2;color:#991b1b}.b-y{background:#fef3c7;color:#92400e}.b-g{background:#dcfce7;color:#166534}
+        .no-data{text-align:center;padding:60px 20px;color:#64748b}
+        .no-data h2{color:#1e3a5f;margin-bottom:10px;border:none}
+        .print-bar{text-align:center;margin-bottom:15px}
+        .print-bar button{padding:8px 25px;font-size:.95rem;border:none;border-radius:8px;background:#2563eb;color:#fff;cursor:pointer;font-weight:600}
+        .q-row{display:flex;align-items:center;padding:5px 0;border-bottom:1px solid #e2e8f0;font-size:.78rem}
+        .q-row .qn{width:36px;font-weight:700;color:#2563eb}
+        .q-row .qt{flex:1}
+        .q-row .qr{width:70px;text-align:center;font-weight:700}
+        .q-row .qtime{width:50px;text-align:right;color:#64748b}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="print-bar no-print"><button onclick="window.print()">Print / Save as PDF</button></div>
+
+    <div id="no-data" class="no-data">
+        <h2>No Exam Data Found</h2>
+        <p>This report auto-populates after completing the SAT Math Full Practice Test.</p>
+        <p><a href="sat-math-full.html" style="color:#2563eb;">Go to Full Practice Test</a></p>
+    </div>
+
+    <div id="report-content" style="display:none;">
+        <div class="report-header">
+            <h1>SAT Math — Full Practice Test</h1>
+            <div class="sub">Performance Report</div>
+            <div class="date" id="report-meta"></div>
+        </div>
+
+        <div class="heroes" id="hero-stats"></div>
+
+        <h2>Performance by Domain</h2>
+        <div class="card" id="domain-bars"></div>
+
+        <h2>Module Comparison</h2>
+        <div class="grid2">
+            <div class="card" id="mod-compare"></div>
+            <div class="card" id="diff-bars"></div>
+        </div>
+
+        <h2>Time Per Question</h2>
+        <div class="card"><div id="time-bars"></div><div class="stat-row" id="time-stats" style="margin-top:12px;"></div></div>
+
+        <h2>Confidence Calibration</h2>
+        <div class="grid2">
+            <div class="card" id="conf-table"></div>
+            <div class="card" id="conf-insight"></div>
+        </div>
+
+        <div class="page-break"></div>
+        <h2>Question-by-Question Review</h2>
+        <div class="card" id="q-review"></div>
+
+        <h2>Recommended Focus Areas</h2>
+        <div class="card" id="recommendations"></div>
+
+        <h2>SAT Score Estimate</h2>
+        <div class="card" id="score-estimate"></div>
+    </div>
+</div>
+
+<script>
+const data = JSON.parse(localStorage.getItem('satMathFullResults') || 'null');
+if (!data) { document.getElementById('no-data').style.display = 'block'; }
+else { document.getElementById('no-data').style.display='none'; document.getElementById('report-content').style.display='block'; buildReport(data); }
+
+function buildReport(d) {
+    const letters=['A','B','C','D'];
+    const total=d.mcTotal, score=d.mcScore, pct=Math.round(score/total*100);
+
+    // Meta
+    const date=new Date(d.date);
+    document.getElementById('report-meta').textContent='Student: '+d.studentName+' \u2022 '+date.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})+' \u2022 '+(d.mode==='timed'?'Timed':'Review')+' \u2022 44 Questions (2 Modules)';
+
+    // Heroes
+    const unanswered=d.answers.filter(a=>a<0).length;
+    const flagged=d.flags.filter(f=>f).length;
+    const totalSec=Math.round(d.totalTime/1000);
+    const mm=Math.floor(totalSec/60), ss=totalSec%60;
+    const scoreColor=pct>=70?'#16a34a':pct>=50?'#d97706':'#dc2626';
+    document.getElementById('hero-stats').innerHTML=
+        '<div class="hero"><div class="v" style="color:'+scoreColor+'">'+score+'<span style="font-size:1rem;color:#94a3b8">/'+total+'</span></div><div class="l">Score</div></div>'+
+        '<div class="hero"><div class="v" style="color:'+scoreColor+'">'+pct+'%</div><div class="l">Percentage</div></div>'+
+        '<div class="hero"><div class="v" style="color:#2563eb">'+d.mod1Score+'<span style="font-size:1rem;color:#94a3b8">/22</span></div><div class="l">Module 1</div></div>'+
+        '<div class="hero"><div class="v" style="color:#7c3aed">'+d.mod2Score+'<span style="font-size:1rem;color:#94a3b8">/22</span></div><div class="l">Module 2</div></div>'+
+        '<div class="hero"><div class="v" style="color:#2563eb">'+mm+':'+((ss<10?'0':'')+ss)+'</div><div class="l">Time</div></div>'+
+        '<div class="hero"><div class="v" style="color:'+(unanswered>0?'#d97706':'#16a34a')+'">'+unanswered+'</div><div class="l">Blank</div></div>';
+
+    // Domain bars
+    const domains={};
+    const domainColors={'Algebra':'#2563eb','Advanced Math':'#7c3aed','Problem Solving':'#d97706','Geometry':'#059669'};
+    d.questions.forEach((q,i)=>{if(!domains[q.topic])domains[q.topic]={c:0,t:0};domains[q.topic].t++;if(d.answers[i]===q.correctIndex)domains[q.topic].c++;});
+    let dbH='';
+    for(const t in domains){const p=Math.round(domains[t].c/domains[t].t*100);dbH+='<div class="bar-row"><span class="bar-label">'+t+'</span><div class="bar-bg"><div class="bar-fill" style="width:'+p+'%;background:'+(domainColors[t]||'#2563eb')+'"></div></div><span class="bar-val">'+domains[t].c+'/'+domains[t].t+' ('+p+'%)</span></div>';}
+    document.getElementById('domain-bars').innerHTML=dbH;
+
+    // Module comparison
+    document.getElementById('mod-compare').innerHTML='<h3>Module Scores</h3>'+
+        '<div class="bar-row"><span class="bar-label">Module 1 (easier)</span><div class="bar-bg"><div class="bar-fill" style="width:'+Math.round(d.mod1Score/22*100)+'%;background:#2563eb"></div></div><span class="bar-val">'+d.mod1Score+'/22 ('+Math.round(d.mod1Score/22*100)+'%)</span></div>'+
+        '<div class="bar-row"><span class="bar-label">Module 2 (harder)</span><div class="bar-bg"><div class="bar-fill" style="width:'+Math.round(d.mod2Score/22*100)+'%;background:#7c3aed"></div></div><span class="bar-val">'+d.mod2Score+'/22 ('+Math.round(d.mod2Score/22*100)+'%)</span></div>'+
+        '<p style="font-size:.78rem;color:#64748b;margin-top:10px;">Module 2 is harder. A drop of 1–3 questions is typical.</p>';
+
+    // Difficulty breakdown
+    const diffs={1:{c:0,t:0,l:'Easy'},2:{c:0,t:0,l:'Medium'},3:{c:0,t:0,l:'Hard'}};
+    const diffCol={1:'#16a34a',2:'#d97706',3:'#dc2626'};
+    d.questions.forEach((q,i)=>{diffs[q.difficulty].t++;if(d.answers[i]===q.correctIndex)diffs[q.difficulty].c++;});
+    let dfH='<h3>By Difficulty</h3>';
+    for(const lv in diffs){if(!diffs[lv].t)continue;const p=Math.round(diffs[lv].c/diffs[lv].t*100);dfH+='<div class="bar-row"><span class="bar-label">'+diffs[lv].l+'</span><div class="bar-bg"><div class="bar-fill" style="width:'+p+'%;background:'+diffCol[lv]+'"></div></div><span class="bar-val">'+diffs[lv].c+'/'+diffs[lv].t+' ('+p+'%)</span></div>';}
+    document.getElementById('diff-bars').innerHTML=dfH;
+
+    // Time
+    let tH='';const maxT=Math.max(...d.timePerQuestion);
+    d.timePerQuestion.forEach((t,i)=>{const s=Math.round(t/1000);const w=Math.round(t/maxT*100);const ok=d.answers[i]===d.questions[i].correctIndex;tH+='<div class="bar-row"><span class="bar-label" style="width:42px;">Q'+(i+1)+'</span><div class="bar-bg"><div class="bar-fill" style="width:'+w+'%;background:'+(ok?'#16a34a':'#dc2626')+'"></div></div><span class="bar-val" style="width:40px;">'+s+'s</span></div>';});
+    document.getElementById('time-bars').innerHTML=tH;
+    const avgT=Math.round(d.timePerQuestion.reduce((a,b)=>a+b,0)/total/1000);
+    const target=95;
+    document.getElementById('time-stats').innerHTML='<div class="stat-box"><div class="sv">'+avgT+'s</div><div class="sl">Avg/Question</div></div><div class="stat-box"><div class="sv">'+(avgT<=target?'\u2713':'\u26A0')+'</div><div class="sl">'+(avgT<=target?'Good Pace':'Too Slow')+'<br>(target: '+target+'s)</div></div>';
+
+    // Confidence
+    const conf=[{l:'Guessing',c:0,t:0},{l:'Maybe',c:0,t:0},{l:'Sure',c:0,t:0}];
+    d.confidence.forEach((cv,i)=>{if(cv>0){conf[cv-1].t++;if(d.answers[i]===d.questions[i].correctIndex)conf[cv-1].c++;}});
+    let cH='<h3>Accuracy by Confidence</h3><table><tr><th>Level</th><th>Correct</th><th>Total</th><th>Acc</th></tr>';
+    conf.forEach(c=>{if(c.t>0)cH+='<tr><td>'+c.l+'</td><td>'+c.c+'</td><td>'+c.t+'</td><td><strong>'+Math.round(c.c/c.t*100)+'%</strong></td></tr>';});
+    cH+='</table>';
+    document.getElementById('conf-table').innerHTML=cH;
+
+    let insH='<h3>Calibration</h3>';
+    if(conf[2].t>0){const sAcc=Math.round(conf[2].c/conf[2].t*100);insH+=sAcc>=80?'<p class="cg">Well-calibrated! "Sure" answers are '+sAcc+'% correct.</p>':'<p class="cr">Overconfidence: "Sure" is only '+sAcc+'% correct. Review what you think you know.</p>';}
+    if(conf[0].t>0){const gAcc=Math.round(conf[0].c/conf[0].t*100);insH+=gAcc>=40?'<p class="cw">"Guessing" hit at '+gAcc+'% — better than random (25%). Your instincts are decent.</p>':'<p>"Guessing" at '+gAcc+'% — close to random. Focus on eliminating wrong choices.</p>';}
+    document.getElementById('conf-insight').innerHTML=insH;
+
+    // Q-by-Q
+    let qH='';
+    d.questions.forEach((q,i)=>{const ok=d.answers[i]===q.correctIndex;const sa=d.answers[i]>=0?letters[d.answers[i]]:'—';const ca=letters[q.correctIndex];const ts=Math.round(d.timePerQuestion[i]/1000);
+    qH+='<div class="q-row"><span class="qn">Q'+(i+1)+'</span><span class="qt">'+q.topic+' — '+q.subtopic+' <span class="badge '+['','b-g','b-y','b-r'][q.difficulty]+'">'+['','E','M','H'][q.difficulty]+'</span></span><span class="qr '+(ok?'cg':'cr')+'">'+(ok?'\u2713 '+ca:'\u2717 '+sa+' ('+ca+')')+'</span><span class="qtime">'+ts+'s</span></div>';});
+    document.getElementById('q-review').innerHTML=qH;
+
+    // Recommendations
+    let rH='<ul style="padding-left:16px;font-size:.85rem;">';
+    const weak=[];
+    for(const t in domains){if(Math.round(domains[t].c/domains[t].t*100)<60)weak.push(t);}
+    if(weak.length)rH+='<li><strong>Weak domains:</strong> '+weak.join(', ')+' (below 60%)</li>';
+    if(diffs[3].t>0&&diffs[3].c/diffs[3].t<0.4)rH+='<li><strong>Hard questions:</strong> Below 40%. Practice multi-step and conceptual problems.</li>';
+    if(d.mod2Score<d.mod1Score-4)rH+='<li><strong>Module 2 drop:</strong> Significant decline on harder module. Build stamina and focus on harder problem types.</li>';
+    if(unanswered>0)rH+='<li><strong>No penalty for guessing!</strong> Always answer every question on the real SAT.</li>';
+    if(avgT>target)rH+='<li><strong>Pacing:</strong> '+avgT+'s/question exceeds '+target+'s target. Practice under timed conditions.</li>';
+    if(!weak.length&&unanswered===0&&avgT<=target)rH+='<li class="cg"><strong>Strong performance!</strong> Review specific missed questions in the answer key.</li>';
+    rH+='</ul>';
+    document.getElementById('recommendations').innerHTML=rH;
+
+    // Score estimate
+    const rawPct=score/44;
+    let estimated;
+    if(rawPct>=.95) estimated='780–800';
+    else if(rawPct>=.9) estimated='740–780';
+    else if(rawPct>=.84) estimated='700–740';
+    else if(rawPct>=.75) estimated='650–700';
+    else if(rawPct>=.66) estimated='600–650';
+    else if(rawPct>=.55) estimated='540–600';
+    else if(rawPct>=.45) estimated='480–540';
+    else if(rawPct>=.35) estimated='420–480';
+    else estimated='Below 420';
+    document.getElementById('score-estimate').innerHTML='<h3>Estimated SAT Math Score Range</h3><div style="text-align:center;margin:15px 0;"><span style="font-size:2rem;font-weight:800;color:#2563eb;">'+estimated+'</span><p style="font-size:.78rem;color:#64748b;margin-top:5px;">Based on '+score+'/44 raw score. Actual SAT scoring uses equating and is slightly different.</p></div>';
+}
+</script>
+</body>
+</html>
