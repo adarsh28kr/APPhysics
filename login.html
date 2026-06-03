@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In — SAT Math Prep</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#f5f5f5;--card:#fff;--text:#1a1a1a;--text2:#555;--border:#ddd;--primary:#2563eb;--primary-hover:#1d4ed8;--danger:#dc2626;--success:#16a34a}
+        [data-theme="dark"]{--bg:#1a1a2e;--card:#16213e;--text:#e0e0e0;--text2:#aaa;--border:#333;--primary:#4f8cff;--primary-hover:#3b7aed}
+        body{font-family:'Georgia',serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+        .auth-container{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px;width:100%;max-width:400px;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+        .auth-header{text-align:center;margin-bottom:30px}
+        .auth-header h1{font-size:1.6rem;color:var(--primary);margin-bottom:5px}
+        .auth-header p{color:var(--text2);font-size:.9rem}
+        .tabs{display:flex;margin-bottom:25px;border-bottom:2px solid var(--border)}
+        .tab{flex:1;padding:10px;text-align:center;cursor:pointer;font-weight:600;color:var(--text2);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+        .tab.active{color:var(--primary);border-bottom-color:var(--primary)}
+        .tab:hover{color:var(--primary)}
+        .form-group{margin-bottom:18px}
+        .form-group label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px;color:var(--text2)}
+        .form-group input{width:100%;padding:12px 16px;font-size:1rem;border:2px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-family:inherit}
+        .form-group input:focus{outline:none;border-color:var(--primary)}
+        .btn{width:100%;padding:14px;font-size:1.05rem;border:none;border-radius:8px;cursor:pointer;font-weight:600;transition:all .2s}
+        .btn-primary{background:var(--primary);color:#fff}
+        .btn-primary:hover{background:var(--primary-hover)}
+        .btn:disabled{opacity:.6;cursor:not-allowed}
+        .error-msg{color:var(--danger);font-size:.85rem;margin-top:8px;display:none;text-align:center}
+        .success-msg{color:var(--success);font-size:.85rem;margin-top:8px;display:none;text-align:center}
+        .forgot-link{text-align:center;margin-top:15px}
+        .forgot-link a{color:var(--primary);font-size:.85rem;text-decoration:none}
+        .forgot-link a:hover{text-decoration:underline}
+        .divider{text-align:center;color:var(--text2);font-size:.8rem;margin:20px 0;position:relative}
+        .divider::before,.divider::after{content:'';position:absolute;top:50%;width:40%;height:1px;background:var(--border)}
+        .divider::before{left:0}
+        .divider::after{right:0}
+        #signup-form{display:none}
+        #reset-form{display:none}
+        .back-link{text-align:center;margin-top:15px;font-size:.85rem}
+        .back-link a{color:var(--primary);cursor:pointer;text-decoration:none}
+        .theme-toggle{position:fixed;bottom:20px;right:20px;padding:10px;border-radius:50%;border:2px solid var(--border);background:var(--card);cursor:pointer;font-size:1.2rem}
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-header">
+            <h1>SAT Math Prep</h1>
+            <p>Sign in to access practice tests</p>
+        </div>
+
+        <!-- TABS -->
+        <div class="tabs">
+            <div class="tab active" onclick="showForm('login')">Log In</div>
+            <div class="tab" onclick="showForm('signup')">Sign Up</div>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="login-email" required placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="login-password" required placeholder="Enter password" minlength="6">
+            </div>
+            <button type="submit" class="btn btn-primary" id="login-btn">Log In</button>
+            <div class="error-msg" id="login-error"></div>
+            <div class="forgot-link"><a href="#" onclick="showForm('reset')">Forgot password?</a></div>
+        </form>
+
+        <!-- SIGNUP FORM -->
+        <form id="signup-form" onsubmit="handleSignup(event)">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="signup-name" required placeholder="Your full name">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="signup-email" required placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="signup-password" required placeholder="At least 6 characters" minlength="6">
+            </div>
+            <button type="submit" class="btn btn-primary" id="signup-btn">Create Account</button>
+            <div class="error-msg" id="signup-error"></div>
+            <div class="success-msg" id="signup-success"></div>
+        </form>
+
+        <!-- RESET FORM -->
+        <form id="reset-form" onsubmit="handleReset(event)">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="reset-email" required placeholder="you@example.com">
+            </div>
+            <button type="submit" class="btn btn-primary">Send Reset Link</button>
+            <div class="error-msg" id="reset-error"></div>
+            <div class="success-msg" id="reset-success"></div>
+            <div class="back-link"><a onclick="showForm('login')">Back to login</a></div>
+        </form>
+    </div>
+
+    <button class="theme-toggle" onclick="document.documentElement.setAttribute('data-theme',document.documentElement.getAttribute('data-theme')==='dark'?'':'dark')">&#9790;</button>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+    <script>
+    // Firebase config — REPLACE with your own
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT.firebaseapp.com",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_PROJECT.appspot.com",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // If already logged in, redirect
+    auth.onAuthStateChanged(function(user) {
+        if (user) {
+            var params = new URLSearchParams(window.location.search);
+            var redirect = params.get('redirect') || '/';
+            window.location.href = redirect;
+        }
+    });
+
+    // Form switching
+    function showForm(form) {
+        document.getElementById('login-form').style.display = form === 'login' ? 'block' : 'none';
+        document.getElementById('signup-form').style.display = form === 'signup' ? 'block' : 'none';
+        document.getElementById('reset-form').style.display = form === 'reset' ? 'block' : 'none';
+        document.querySelectorAll('.tab').forEach(function(t, i) {
+            t.classList.toggle('active', (i === 0 && form === 'login') || (i === 1 && form === 'signup'));
+        });
+        // Clear errors
+        document.querySelectorAll('.error-msg, .success-msg').forEach(function(el) { el.style.display = 'none'; });
+    }
+
+    // Login
+    function handleLogin(e) {
+        e.preventDefault();
+        var email = document.getElementById('login-email').value;
+        var password = document.getElementById('login-password').value;
+        var btn = document.getElementById('login-btn');
+        var errEl = document.getElementById('login-error');
+        btn.disabled = true; btn.textContent = 'Signing in...';
+        errEl.style.display = 'none';
+
+        auth.signInWithEmailAndPassword(email, password)
+            .then(function() {
+                var params = new URLSearchParams(window.location.search);
+                var redirect = params.get('redirect') || '/';
+                window.location.href = redirect;
+            })
+            .catch(function(err) {
+                errEl.textContent = friendlyError(err.code);
+                errEl.style.display = 'block';
+                btn.disabled = false; btn.textContent = 'Log In';
+            });
+    }
+
+    // Signup
+    function handleSignup(e) {
+        e.preventDefault();
+        var name = document.getElementById('signup-name').value.trim();
+        var email = document.getElementById('signup-email').value;
+        var password = document.getElementById('signup-password').value;
+        var btn = document.getElementById('signup-btn');
+        var errEl = document.getElementById('signup-error');
+        var successEl = document.getElementById('signup-success');
+        btn.disabled = true; btn.textContent = 'Creating account...';
+        errEl.style.display = 'none'; successEl.style.display = 'none';
+
+        auth.createUserWithEmailAndPassword(email, password)
+            .then(function(cred) {
+                // Update display name
+                cred.user.updateProfile({ displayName: name });
+                // Create Firestore user doc (no access by default)
+                return db.collection('users').doc(cred.user.uid).set({
+                    email: email,
+                    displayName: name,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    lastLogin: firebase.firestore.FieldValue.serverTimestamp(),
+                    access: {},
+                    role: 'student'
+                });
+            })
+            .then(function() {
+                successEl.textContent = 'Account created! Your teacher will grant access shortly.';
+                successEl.style.display = 'block';
+                btn.disabled = false; btn.textContent = 'Create Account';
+            })
+            .catch(function(err) {
+                errEl.textContent = friendlyError(err.code);
+                errEl.style.display = 'block';
+                btn.disabled = false; btn.textContent = 'Create Account';
+            });
+    }
+
+    // Password reset
+    function handleReset(e) {
+        e.preventDefault();
+        var email = document.getElementById('reset-email').value;
+        var errEl = document.getElementById('reset-error');
+        var successEl = document.getElementById('reset-success');
+        errEl.style.display = 'none'; successEl.style.display = 'none';
+
+        auth.sendPasswordResetEmail(email)
+            .then(function() {
+                successEl.textContent = 'Reset link sent! Check your email.';
+                successEl.style.display = 'block';
+            })
+            .catch(function(err) {
+                errEl.textContent = friendlyError(err.code);
+                errEl.style.display = 'block';
+            });
+    }
+
+    // Friendly error messages
+    function friendlyError(code) {
+        switch(code) {
+            case 'auth/user-not-found': return 'No account with this email. Sign up first.';
+            case 'auth/wrong-password': return 'Incorrect password. Try again.';
+            case 'auth/invalid-credential': return 'Invalid email or password.';
+            case 'auth/email-already-in-use': return 'An account with this email already exists.';
+            case 'auth/weak-password': return 'Password must be at least 6 characters.';
+            case 'auth/invalid-email': return 'Please enter a valid email address.';
+            case 'auth/too-many-requests': return 'Too many attempts. Try again later.';
+            default: return 'Something went wrong. Please try again.';
+        }
+    }
+    </script>
+</body>
+</html>

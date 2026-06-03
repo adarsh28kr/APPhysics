@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Manage Students</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#f5f5f5;--card:#fff;--text:#1a1a1a;--text2:#555;--border:#ddd;--primary:#2563eb;--danger:#dc2626;--success:#16a34a;--warning:#d97706}
+        body{font-family:'Segoe UI',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;padding:20px}
+        .container{max-width:1000px;margin:0 auto}
+        h1{font-size:1.5rem;color:var(--primary);margin-bottom:5px}
+        .sub{color:var(--text2);font-size:.9rem;margin-bottom:20px}
+        .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:15px}
+        .card h3{color:var(--primary);margin-bottom:12px;font-size:1rem}
+        .search-bar{width:100%;padding:10px 16px;font-size:.95rem;border:2px solid var(--border);border-radius:8px;margin-bottom:15px}
+        .search-bar:focus{outline:none;border-color:var(--primary)}
+        table{width:100%;border-collapse:collapse;font-size:.85rem}
+        th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--border)}
+        th{font-weight:600;color:var(--text2);font-size:.75rem;text-transform:uppercase;background:#f8fafc}
+        .badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.7rem;font-weight:600}
+        .b-green{background:#dcfce7;color:#166534}
+        .b-red{background:#fee2e2;color:#991b1b}
+        .b-blue{background:#dbeafe;color:#1e40af}
+        .toggle-btn{padding:4px 10px;font-size:.75rem;border:none;border-radius:6px;cursor:pointer;font-weight:600;transition:all .15s}
+        .toggle-btn.grant{background:#dcfce7;color:#166534}
+        .toggle-btn.grant:hover{background:#16a34a;color:#fff}
+        .toggle-btn.revoke{background:#fee2e2;color:#991b1b}
+        .toggle-btn.revoke:hover{background:#dc2626;color:#fff}
+        .grant-all-btn{padding:6px 14px;font-size:.8rem;border:none;border-radius:6px;cursor:pointer;font-weight:600;background:var(--primary);color:#fff;margin-right:8px}
+        .revoke-all-btn{padding:6px 14px;font-size:.8rem;border:none;border-radius:6px;cursor:pointer;font-weight:600;background:var(--danger);color:#fff}
+        .stats{display:flex;gap:15px;margin-bottom:20px;flex-wrap:wrap}
+        .stat{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 18px;text-align:center;min-width:100px}
+        .stat .v{font-size:1.5rem;font-weight:800;color:var(--primary)}
+        .stat .l{font-size:.7rem;color:var(--text2)}
+        .loading{text-align:center;padding:40px;color:var(--text2)}
+        .no-users{text-align:center;padding:30px;color:var(--text2);font-style:italic}
+        #pin-gate{position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;align-items:center;justify-content:center}
+        .pin-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:30px;text-align:center;width:280px}
+        .pin-box h3{margin-bottom:15px}
+        .pin-box input{width:120px;padding:10px;text-align:center;font-size:1.5rem;border:2px solid var(--border);border-radius:8px;letter-spacing:8px}
+        .pin-box input:focus{outline:none;border-color:var(--primary)}
+        .pin-box .err{color:var(--danger);font-size:.8rem;margin-top:8px;display:none}
+        .pin-box button{margin-top:15px;padding:8px 20px;font-size:.9rem;border:none;border-radius:8px;background:var(--primary);color:#fff;cursor:pointer}
+    </style>
+</head>
+<body>
+    <!-- PIN Gate -->
+    <div id="pin-gate">
+        <div class="pin-box">
+            <h3>Admin Access</h3>
+            <input type="password" id="gate-pin" maxlength="4" inputmode="numeric" onkeydown="if(event.key==='Enter')gateCheck()">
+            <div class="err" id="gate-err">Incorrect PIN</div>
+            <br><button onclick="gateCheck()">Unlock</button>
+        </div>
+    </div>
+
+    <div class="container" id="admin-content" style="display:none;">
+        <h1>Student Management</h1>
+        <p class="sub">Grant or revoke access to tests for each student</p>
+
+        <div class="stats" id="stats"></div>
+
+        <div class="card">
+            <h3>All Registered Students</h3>
+            <input type="text" class="search-bar" id="search" placeholder="Search by name or email..." oninput="filterUsers()">
+            <div style="margin-bottom:12px;">
+                <button class="grant-all-btn" onclick="bulkAccess(true)">Grant All Access</button>
+                <button class="revoke-all-btn" onclick="bulkAccess(false)">Revoke All Access</button>
+            </div>
+            <div id="user-table"><div class="loading">Loading students...</div></div>
+        </div>
+
+        <div class="card">
+            <h3>Access Keys</h3>
+            <p style="font-size:.85rem;color:var(--text2);margin-bottom:10px;">These are the access identifiers used in Firestore. Each corresponds to a test page.</p>
+            <table>
+                <tr><th>Key</th><th>Page</th></tr>
+                <tr><td><code>sat-math-practice</code></td><td>SAT Math Practice (20 questions)</td></tr>
+                <tr><td><code>sat-math-full</code></td><td>SAT Math Full Test (44 questions)</td></tr>
+                <tr><td><code>exam2</code></td><td>AP Physics Exam 2</td></tr>
+                <tr><td><code>exam3</code></td><td>AP Physics Exam 3</td></tr>
+                <tr><td><code>exam4</code></td><td>AP Physics Exam 4</td></tr>
+                <tr><td><code>exam5</code></td><td>AP Physics Exam 5</td></tr>
+                <tr><td><code>all</code></td><td>Access to everything</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+    <script>
+    // Firebase config — REPLACE with your own
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT.firebaseapp.com",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_PROJECT.appspot.com",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    let allUsers = [];
+    const ACCESS_KEYS = ['sat-math-practice', 'sat-math-full', 'exam2', 'exam3', 'exam4', 'exam5'];
+
+    // PIN gate
+    function gateCheck() {
+        if (document.getElementById('gate-pin').value === '2929') {
+            sessionStorage.setItem('adminAuth', 'true');
+            document.getElementById('pin-gate').style.display = 'none';
+            document.getElementById('admin-content').style.display = 'block';
+            loadUsers();
+        } else {
+            document.getElementById('gate-err').style.display = 'block';
+            document.getElementById('gate-pin').value = '';
+        }
+    }
+    if (sessionStorage.getItem('adminAuth') === 'true') {
+        document.getElementById('pin-gate').style.display = 'none';
+        document.getElementById('admin-content').style.display = 'block';
+        loadUsers();
+    }
+
+    // Load users from Firestore
+    function loadUsers() {
+        db.collection('users').orderBy('createdAt', 'desc').get().then(function(snapshot) {
+            allUsers = [];
+            snapshot.forEach(function(doc) {
+                allUsers.push({ uid: doc.id, ...doc.data() });
+            });
+            renderStats();
+            renderTable(allUsers);
+        }).catch(function(err) {
+            document.getElementById('user-table').innerHTML = '<div class="no-users">Error loading users. Make sure Firebase is configured correctly.<br><small>' + err.message + '</small></div>';
+        });
+    }
+
+    // Stats
+    function renderStats() {
+        var total = allUsers.length;
+        var withAccess = allUsers.filter(function(u) { return u.access && (u.access.all || Object.values(u.access).some(function(v) { return v; })); }).length;
+        document.getElementById('stats').innerHTML =
+            '<div class="stat"><div class="v">' + total + '</div><div class="l">Total Students</div></div>' +
+            '<div class="stat"><div class="v">' + withAccess + '</div><div class="l">With Access</div></div>' +
+            '<div class="stat"><div class="v">' + (total - withAccess) + '</div><div class="l">Pending</div></div>';
+    }
+
+    // Render table
+    function renderTable(users) {
+        if (users.length === 0) {
+            document.getElementById('user-table').innerHTML = '<div class="no-users">No students registered yet.</div>';
+            return;
+        }
+        var html = '<table><tr><th>Name</th><th>Email</th><th>Role</th>';
+        ACCESS_KEYS.forEach(function(k) { html += '<th style="text-align:center;">' + k.replace('sat-math-','SAT ').replace('exam','Exam ') + '</th>'; });
+        html += '<th style="text-align:center;">All</th></tr>';
+
+        users.forEach(function(u) {
+            html += '<tr><td><strong>' + (u.displayName || '—') + '</strong></td>';
+            html += '<td style="font-size:.8rem;">' + (u.email || '—') + '</td>';
+            html += '<td><span class="badge ' + (u.role === 'admin' ? 'b-blue' : 'b-green') + '">' + (u.role || 'student') + '</span></td>';
+            ACCESS_KEYS.forEach(function(k) {
+                var has = u.access && u.access[k];
+                html += '<td style="text-align:center;"><button class="toggle-btn ' + (has ? 'revoke' : 'grant') + '" onclick="toggleAccess(\'' + u.uid + '\',\'' + k + '\',' + !has + ')">' + (has ? 'Revoke' : 'Grant') + '</button></td>';
+            });
+            var hasAll = u.access && u.access.all;
+            html += '<td style="text-align:center;"><button class="toggle-btn ' + (hasAll ? 'revoke' : 'grant') + '" onclick="toggleAccess(\'' + u.uid + '\',\'all\',' + !hasAll + ')">' + (hasAll ? 'Revoke' : 'Grant') + '</button></td>';
+            html += '</tr>';
+        });
+        html += '</table>';
+        document.getElementById('user-table').innerHTML = html;
+    }
+
+    // Toggle access
+    function toggleAccess(uid, key, value) {
+        var update = {};
+        update['access.' + key] = value;
+        db.collection('users').doc(uid).update(update).then(function() {
+            // Update local data
+            var user = allUsers.find(function(u) { return u.uid === uid; });
+            if (user) { if (!user.access) user.access = {}; user.access[key] = value; }
+            renderStats();
+            renderTable(allUsers.filter(filterFn));
+        });
+    }
+
+    // Bulk access
+    function bulkAccess(grant) {
+        if (!confirm(grant ? 'Grant ALL access to ALL students?' : 'Revoke ALL access from ALL students?')) return;
+        var batch = db.batch();
+        allUsers.forEach(function(u) {
+            var ref = db.collection('users').doc(u.uid);
+            batch.update(ref, { 'access.all': grant });
+        });
+        batch.commit().then(function() {
+            allUsers.forEach(function(u) { if (!u.access) u.access = {}; u.access.all = grant; });
+            renderStats();
+            renderTable(allUsers);
+        });
+    }
+
+    // Search/filter
+    var filterFn = function(u) { return true; };
+    function filterUsers() {
+        var q = document.getElementById('search').value.toLowerCase();
+        filterFn = function(u) {
+            return !q || (u.displayName || '').toLowerCase().includes(q) || (u.email || '').toLowerCase().includes(q);
+        };
+        renderTable(allUsers.filter(filterFn));
+    }
+    </script>
+</body>
+</html>
